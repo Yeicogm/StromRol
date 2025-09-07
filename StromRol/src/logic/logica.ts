@@ -12,7 +12,7 @@ interface Clase {
   variacion_caracteristicas?: string; // Ejemplo: "Int +1", "POD +1D"
 }
 
-function parseDados(dado: string): number {
+export function parseDados(dado: string): number {
   const match = dado.match(/(\d+)D(\d+)([+-]\d+)?/i);
   if (!match) return 0;
 
@@ -28,7 +28,7 @@ function parseDados(dado: string): number {
   return total + modificador;
 }
 
-function aplicarVariaciones(
+export function aplicarVariaciones(
   caracteristicas: Caracteristicas,
   variaciones: string | undefined
 ): Caracteristicas {
@@ -58,7 +58,7 @@ function aplicarVariaciones(
   return nuevasCaracteristicas;
 }
 
-function calcularCaracteristicasFinales(
+export function calcularCaracteristicasFinales(
   raza: Raza,
   clase: Clase
 ): Caracteristicas {
@@ -68,8 +68,8 @@ function calcularCaracteristicasFinales(
   return aplicarVariaciones(base, variaciones);
 }
 
-// Ejemplo de uso:
-const razaSeleccionada: Raza = {
+/* // Ejemplo de uso:
+export const razaSeleccionada: Raza = {
   nombre: "ELFOS",
   caracteristicas: {
     Fuerza: "3D8",
@@ -82,14 +82,14 @@ const razaSeleccionada: Raza = {
   },
 };
 
-const claseSeleccionada: Clase = {
+export const claseSeleccionada: Clase = {
   nombre: "MAGO / HECHICERO",
   variacion_caracteristicas: "POD 5D8 INT +1D6 (MAX FUE18)",
 };
 
-const caracteristicasFinales = calcularCaracteristicasFinales(
+export const caracteristicasFinales = calcularCaracteristicasFinales(
   razaSeleccionada,
   claseSeleccionada
 );
 
-console.log("Características finales:", caracteristicasFinales);
+console.log("Características finales:", caracteristicasFinales); */
