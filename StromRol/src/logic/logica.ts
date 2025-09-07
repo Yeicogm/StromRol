@@ -38,14 +38,16 @@ export function aplicarVariaciones(
 
   for (const variacion of variaciones) {
     // Ejemplo: "Inteligencia +1", "Destreza +1D", "PODER +2D6", etc.
-    const match = variacion.match(/^(\w+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i);
+    const match = variacion.match(
+      /^(\w+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i
+    );
     if (!match) continue;
     const atributo = match[1];
     const cambio = match[2];
 
     // Buscar el atributo ignorando mayúsculas/minúsculas
     const claveReal = Object.keys(nuevasCaracteristicas).find(
-      k => k.toLowerCase() === atributo.toLowerCase()
+      (k) => k.toLowerCase() === atributo.toLowerCase()
     );
     if (!claveReal) continue;
 
@@ -64,9 +66,11 @@ export function aplicarVariaciones(
 
       if (/^[+-]?\d+D$/.test(cambio)) {
         // Ejemplo: '+1D' => sumar un dado
-        const dadosExtra = parseInt(cambio.replace('D',''), 10);
+        const dadosExtra = parseInt(cambio.replace("D", ""), 10);
         dados += dadosExtra;
-        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${
+          mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
+        }`;
       } else if (/^[+-]?\d+D\d+$/.test(cambio)) {
         // Ejemplo: '+2D6' => sumar dados y caras (no muy común, pero soportado)
         const extraMatch = cambio.match(/([+-]?\d+)D(\d+)/);
@@ -74,17 +78,23 @@ export function aplicarVariaciones(
           dados += parseInt(extraMatch[1], 10);
           caras = parseInt(extraMatch[2], 10); // se puede ajustar según reglas
         }
-        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${
+          mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
+        }`;
       } else if (/^[+-]?\d+$/.test(cambio)) {
         // Ejemplo: '+1' => sumar modificador
         mod += parseInt(cambio, 10);
-        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${
+          mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
+        }`;
       }
     } else {
       // Si no es una tirada de dados, sumar normalmente
       if (/^[+-]?\d+$/.test(cambio)) {
         const valorActual = parseInt(actual || "0", 10);
-        nuevasCaracteristicas[claveReal] = (valorActual + parseInt(cambio, 10)).toString();
+        nuevasCaracteristicas[claveReal] = (
+          valorActual + parseInt(cambio, 10)
+        ).toString();
       } else {
         nuevasCaracteristicas[claveReal] = cambio;
       }
