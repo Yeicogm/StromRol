@@ -1,6 +1,6 @@
 /* Estilos para el generador de fichas */
 .ficha-container {
-  max-width: 500px;
+  max-width: 800px;
   margin: 2rem auto;
   padding: 1.5rem;
   background: #fff;
@@ -8,6 +8,158 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   color: #222;
   border: 1px solid #ddd;
+}
+
+/* Estilos para la tarjeta de información de raza */
+.raza-card {
+  margin: 2rem 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.raza-content {
+  padding: 1.5rem;
+}
+
+.raza-title {
+  color: #1976d2;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  line-height: 1.334;
+}
+
+.raza-description {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.raza-divider {
+  border: none;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.12);
+  margin: 1.5rem 0;
+}
+
+.raza-info-grid {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .raza-info-grid {
+    flex-direction: row;
+  }
+}
+
+.raza-section {
+  flex: 1;
+}
+
+.raza-section-title {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.6;
+}
+
+.raza-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.raza-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+  min-height: 32px;
+}
+
+.raza-characteristic-name {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.raza-bonus-name {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.raza-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+  min-width: 50px;
+  text-align: center;
+}
+
+.raza-chip-secondary {
+  background-color: #dc004e;
+}
+
+.raza-chip-success {
+  background-color: #2e7d32;
+}
+
+.raza-additional-info {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .raza-additional-info {
+    flex-direction: row;
+  }
+}
+
+.raza-info-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.raza-info-label {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.57;
+}
+
+.raza-info-value {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.raza-notes {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.raza-notes-text {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.43;
+  margin: 0;
 }
 .ficha-title {
   color: #222;
