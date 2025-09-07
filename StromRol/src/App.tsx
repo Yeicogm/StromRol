@@ -146,17 +146,19 @@ function App() {
             )}
 
             {/* Bonificaciones de Habilidades */}
-            {claseSeleccionada.variacion_habilidades && (
+            {claseSeleccionada.variacion_habilidades && claseSeleccionada.variacion_habilidades.length > 0 && (
               <div className="raza-section">
                 <h4 className="raza-section-title">
                   Bonificaciones de Habilidades
                 </h4>
                 <div className="raza-list">
-                  <div className="raza-list-item">
-                    <span className="raza-bonus-name">
-                      {claseSeleccionada.variacion_habilidades}
-                    </span>
-                  </div>
+                  {claseSeleccionada.variacion_habilidades.map((habilidad, index) => (
+                    <div key={index} className="raza-list-item">
+                      <span className="raza-bonus-name">
+                        {habilidad}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
@@ -237,6 +239,109 @@ function App() {
     );
   };
 
+  const calcularBonificacionesTotales = () => {
+    if (!razaSeleccionada && !claseSeleccionada) return null;
+
+    const bonificacionesTotales: { [key: string]: number } = {};
+
+    // Agregar bonificaciones de la raza
+    if (razaSeleccionada) {
+      Object.entries(razaSeleccionada.bonificaciones).forEach(([habilidad, bonus]) => {
+        const valorNumerico = parseInt(bonus.replace(/[+-]/g, '')) || 0;
+        const signo = bonus.startsWith('-') ? -1 : 1;
+        bonificacionesTotales[habilidad] = (bonificacionesTotales[habilidad] || 0) + (valorNumerico * signo);
+      });
+    }
+
+    // Agregar bonificaciones de la clase (de variacion_habilidades)
+    if (claseSeleccionada && claseSeleccionada.variacion_habilidades) {
+      // Ahora variacion_habilidades es un array
+      claseSeleccionada.variacion_habilidades.forEach(habilidad => {
+        const trimmed = habilidad.trim();
+        
+        // Ignorar habilidades descriptivas sin valores numéricos
+        if (trimmed.includes('Regeneración de SM') || 
+            trimmed.includes('al día') || 
+            trimmed.includes('1D6') ||
+            trimmed === '') {
+          return;
+        }
+        
+        // Casos especiales de 100%
+        if (trimmed.includes('100%')) {
+          // Extraer el nombre de la habilidad (todo antes de "100%")
+          const nombreHabilidad = trimmed.replace(/100\s*%.*$/, '').trim();
+          if (nombreHabilidad) {
+            bonificacionesTotales[nombreHabilidad] = 100;
+          }
+        }
+        // Patrones con números positivos/negativos
+        else {
+          // Buscar todos los patrones posibles de bonificaciones
+          const patrones = [
+            // Patrón: "+10 Habilidad" o "-5 Habilidad"
+            /^([+-]\d+)\s*%?\s*(.+?)(?:\(.*\))?$/,
+            // Patrón: "Habilidad +10" o "Habilidad -5"
+            /^(.+?)\s*([+-]\s*\d+)\s*%?(?:\(.*\))?$/,
+            // Patrón: "Habilidad+10" (sin espacios)
+            /^(.+?)([+-]\d+)\s*%?(?:\(.*\))?$/
+          ];
+          
+          for (const patron of patrones) {
+            const match = trimmed.match(patron);
+            if (match) {
+              let nombreHabilidad, valorStr;
+              
+              if (patron === patrones[0]) {
+                // Formato: "+10 Habilidad"
+                valorStr = match[1];
+                nombreHabilidad = match[2].trim();
+              } else {
+                // Formato: "Habilidad +10"
+                nombreHabilidad = match[1].trim();
+                valorStr = match[2].replace(/\s/g, ''); // Quitar espacios del valor
+              }
+              
+              // Procesar el valor numérico
+              const valorNumerico = parseInt(valorStr.replace(/[+-]/g, '')) || 0;
+              const signo = valorStr.startsWith('-') ? -1 : 1;
+              
+              if (nombreHabilidad && valorNumerico > 0) {
+                bonificacionesTotales[nombreHabilidad] = (bonificacionesTotales[nombreHabilidad] || 0) + (valorNumerico * signo);
+                break; // Encontramos una coincidencia, no buscar más patrones
+              }
+            }
+          }
+        }
+      });
+    }
+
+    return bonificacionesTotales;
+  };
+
+  const renderBonificacionesTotales = () => {
+    const bonificaciones = calcularBonificacionesTotales();
+    if (!bonificaciones || Object.keys(bonificaciones).length === 0) return null;
+
+    return (
+      <div className="ficha-resultado">
+        <h3 className="ficha-resultado-title">
+          Total de Bonificaciones (Raza + Clase):
+        </h3>
+        <ul className="ficha-resultado-list">
+          {Object.entries(bonificaciones).map(([habilidad, total]) => (
+            <li key={habilidad} className="ficha-resultado-item">
+              <b className="ficha-resultado-carac">{habilidad}:</b>{" "}
+              <span className="raza-chip raza-chip-success bonificacion-chip">
+                {total > 0 ? `+${total}` : total}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   useEffect(() => {
     // Cargar razas
     fetch("/Razas.json")
@@ -313,11 +418,11 @@ function App() {
         </select>
       </div>
       
-      {/* Dados para cada característica - Debajo de los combos */}
+      {/* Dados que debe tirar el jugador - Debajo de los combos */}
       {resultado && (
         <div className="ficha-resultado">
           <h3 className="ficha-resultado-title">
-            Dados para cada característica:
+            Dados que debe tirar el jugador:
           </h3>
           <ul className="ficha-resultado-list">
             {Object.entries(resultado).map(([car, dado]) => (
@@ -329,6 +434,9 @@ function App() {
           </ul>
         </div>
       )}
+      
+      {/* Total de bonificaciones */}
+      {renderBonificacionesTotales()}
       
       {/* Información de la raza seleccionada */}
       {renderRazaInfo()}

@@ -6,7 +6,7 @@
       "rango": "+1",
       "variacion_caracteristicas": ["Inteligencia +1"],
       "variacion_carac_info": "",
-      "variacion_habilidades": "+10 Percepción",
+      "variacion_habilidades": ["+10 Percepción"],
       "equipo_especial": "Arco Simple, Hacha de mano.",
       "Bonus_combate": {
         "ataque": "35%",
@@ -22,7 +22,7 @@
       "rango": "0",
       "variacion_caracteristicas": [],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Equitación 100%",
+      "variacion_habilidades": ["Equitación 100%"],
       "equipo_especial": "Caballo Pura Sangre + Escudo Pavés",
       "Bonus_combate": {
         "ataque": "35%",
@@ -39,7 +39,7 @@
       "rango": "0",
       "variacion_caracteristicas": ["Destreza +3"],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Conocimiento de plantas y venenos 100%, Cartografía +25, Percepción +25, Agilidad +10, Discreción +5",
+      "variacion_habilidades": ["Conocimiento de plantas y venenos 100%", "Cartografía +25", "Percepción +25", "Agilidad +10", "Discreción +5"],
       "equipo_especial": "Lanza larga, hierbas curativas 1d6 (3), Cuero -2",
       "Bonus_combate": {
         "ataque": "30% /45%*",
@@ -55,7 +55,7 @@
       "rango": "-2/+2",
       "variacion_caracteristicas": ["PODER 5D8", "INTELIGENCIA +1D6"],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Regeneración de SM 3 al día",
+      "variacion_habilidades": ["Regeneración de SM 3 al día"],
       "equipo_especial": "Bastón de combate Mágico +5% Bonus",
       "Bonus_combate": {
         "ataque": "25%",
@@ -71,7 +71,7 @@
       "rango": "0",
       "variacion_caracteristicas": ["FUERZA +1"],
       "variacion_carac_info": "",
-      "variacion_habilidades": "",
+      "variacion_habilidades": [],
       "equipo_especial": "PLACA COMPLETA SIN YELMO (-8 PESADA)",
       "Bonus_combate": {
         "ataque": "50%",
@@ -87,7 +87,7 @@
       "rango": "0 / +1",
       "variacion_caracteristicas": [],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Regeneración de SM 2 al dia",
+      "variacion_habilidades": ["Regeneración de SM 2 al dia"],
       "equipo_especial": "Cuero y Anillas + Espada ancha",
       "Bonus_combate": {
         "ataque": "40%",
@@ -103,7 +103,7 @@
       "rango": "+2 /-1",
       "variacion_caracteristicas": ["+2 En todas por medallón mágico."],
       "variacion_carac_info": "",
-      "variacion_habilidades": "",
+      "variacion_habilidades": [],
       "equipo_especial": "Hacha de Batalla, Cuero y Anillas",
       "Bonus_combate": {
         "ataque": "30%",
@@ -119,7 +119,7 @@
       "rango": "0",
       "variacion_caracteristicas": [],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Percepción +10",
+      "variacion_habilidades": ["Percepción +10"],
       "equipo_especial": "Arco Simple + espada corta",
       "Bonus_combate": {
         "ataque": "30%",
@@ -135,7 +135,7 @@
       "rango": "0",
       "variacion_caracteristicas": ["CARISMA +1"],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Emboscada +10",
+      "variacion_habilidades": ["Emboscada +10"],
       "equipo_especial": "Espada Larga + Armadura MON (Semi-Placa -3)",
       "Bonus_combate": {
         "ataque": "50%",
@@ -151,7 +151,7 @@
       "rango": "1/0/-1",
       "variacion_caracteristicas": [],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Agilidad +10, Equilibrio +15, Ver+10, Evitar+5, Hacer V.+30, Saltar +10, Trepar +10 Emboscada +15, Desli Y Esconderse +10",
+      "variacion_habilidades": ["Agilidad +10", "Equilibrio +15", "Ver +10", "Evitar +5", "Hacer V. +30", "Saltar +10", "Trepar +10", "Emboscada +15", "Desli Y Esconderse +10"],
       "equipo_especial": "Dos Espadas C. Ninja o Catana + 10 Shuriken y 5 plutonios por aventura.",
       "Bonus_combate": {
         "ataque": "50%",
@@ -167,7 +167,7 @@
       "rango": "+1",
       "variacion_caracteristicas": ["+1D PODER", "+1D INTELIGENCIA"],
       "variacion_carac_info": "mínimo 5D, MAX FURZA 19",
-      "variacion_habilidades": "+50 % plantas y venenos +5 Percepción, Regeneración de SM 3 al día",
+      "variacion_habilidades": ["+50 plantas y venenos", "+5 Percepción", "Regeneración de SM 3 al día"],
       "equipo_especial": "Cimitarra y tarja",
       "Bonus_combate": {
         "ataque": "25%",
@@ -183,7 +183,7 @@
       "rango": "0",
       "variacion_caracteristicas": ["-2 INTELIGENCIA"],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Primeros Auxilios 100 % 1D6 sobre si mismo, +15 saltar(extralargo)",
+      "variacion_habilidades": ["Primeros Auxilios 100", "+15 saltar(extralargo)"],
       "equipo_especial": "Bastarda",
       "Bonus_combate": {
         "ataque": "50%",
@@ -199,7 +199,7 @@
       "rango": "0",
       "variacion_caracteristicas": ["CONSTITUCION +1"],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Emboscara + 10 %",
+      "variacion_habilidades": ["Emboscada +10"],
       "equipo_especial": "Semi placa en torso Demonio PV variables",
       "Bonus_combate": {
         "ataque": "50%",
@@ -215,7 +215,7 @@
       "rango": "0",
       "variacion_caracteristicas": [],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Emboscara + 10 %, Agilidad +25, Percepción +10",
+      "variacion_habilidades": ["Emboscada +10", "Agilidad +25", "Percepción +10"],
       "equipo_especial": "Hacha de batalla + 2 Protectores",
       "Bonus_combate": {
         "ataque": "50%",
@@ -235,7 +235,7 @@
         "Inteligencia +1"
       ],
       "variacion_carac_info": "MAX FUE 20",
-      "variacion_habilidades": "Comunicación +25%, Regeneración de SM 2 al día",
+      "variacion_habilidades": ["Comunicación +25", "Regeneración de SM 2 al día"],
       "equipo_especial": "Espada Ionica (3d6 a una mano con escudo)",
       "Bonus_combate": {
         "ataque": "35%",
@@ -251,7 +251,7 @@
       "rango": "+3/-3",
       "variacion_caracteristicas": [],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Comunicación +5%, Primeros Auxilio +5%",
+      "variacion_habilidades": ["Comunicación +5", "Primeros Auxilios +5"],
       "equipo_especial": "Caballo de Guerra, Lanza Torneo.1100 M.O",
       "Bonus_combate": {
         "ataque": "50%",
@@ -270,7 +270,7 @@
         "DESTREZA +1D (MAX FUERZA 19)"
       ],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Evaluar T. +10, Percepción +5, Agilidad +5, Manipulación + 10, Forzar C. + 15, Robar Bolsas +15, Disimular +15",
+      "variacion_habilidades": ["Evaluar T. +10", "Percepción +5", "Agilidad +5", "Manipulación +10", "Forzar C. +15", "Robar Bolsas +15", "Disimular +15"],
       "equipo_especial": "Cerbatana 5 dardos Veneno somnífero Pot 14, Espada Corta.",
       "Bonus_combate": {
         "ataque": "25%",
@@ -286,7 +286,7 @@
       "rango": "-2",
       "variacion_caracteristicas": ["INTELIGENCIA +2", "DESt +1D"],
       "variacion_carac_info": "mínimo 5D DESTREZA, MAX FUE 19",
-      "variacion_habilidades": "Conocimiento de plantas y venenos +10, Equilibrio +5, Agilidad +5, Manipulación +3, disimular +10, esconderse +10, deslizarse +10",
+      "variacion_habilidades": ["Conocimiento de plantas y venenos +10", "Equilibrio +5", "Agilidad +5", "Manipulación +3", "disimular +10", "esconderse +10", "deslizarse +10"],
       "equipo_especial": "Espada Corta",
       "Bonus_combate": {
         "ataque": "25%",
@@ -301,7 +301,7 @@
       "descripcion": "El asesino es un maestro en asestar golpes rápidos y letales. También sobresale en el arte del difraz y la infiltración. Los asesinos trabajan a menudo como espías, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatomía, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mortíferas con precisión espeluznante y terrorífica.",
       "rango": "-2",
       "variacion_caracteristicas": "INT +2, DES +1D(mínimo 5D) (MAX FUE 19)",
-      "variacion_habilidades": "Conocimiento de plantas y venenos +20, Equilibrio +5, Agilidad +5, Manipulación +5, disimular +5, esconderse +6, deslizarse +6",
+      "variacion_habilidades": ["Conocimiento de plantas y venenos +20", "Equilibrio +5", "Agilidad +5", "Manipulación +5", "disimular +5", "esconderse +6", "deslizarse +6"],
       "equipo_especial": "Pack Asesino Esmir (Libro Demonios y magia)",
       "Bonus_combate": {
         "ataque": "25%",
@@ -321,7 +321,7 @@
         "INTELIGENCIA +1"
       ],
       "variacion_carac_info": "",
-      "variacion_habilidades": "Emboscada +5, Regeneración de SM 2 al día",
+      "variacion_habilidades": ["Emboscada +5", "Regeneración de SM 2 al día"],
       "equipo_especial": "Martillo de guerra",
       "Bonus_combate": {
         "ataque": "30%",
@@ -337,7 +337,7 @@
       "rango": "-1",
       "variacion_caracteristicas": ["PODER +1D", "INTELIGENCIA +1"],
       "variacion_carac_info": "MAX FUERZA 30",
-      "variacion_habilidades": "Emboscada +5, Regeneración de SM 2 al día",
+      "variacion_habilidades": ["Emboscada +5", "Regeneración de SM 2 al día"],
       "equipo_especial": "Daga + Espada corta",
       "Bonus_combate": {
         "ataque": "30%",
@@ -353,7 +353,7 @@
       "rango": "-1",
       "variacion_caracteristicas": ["Fuerza -1", "Destreza +1D"],
       "variacion_carac_info": "MAX FUE 30",
-      "variacion_habilidades": "Conocimiento de plantas y venenos +5, Equilibrio +5, Agilidad +5, Manipulación +5, disimular +10, esconderse +10, deslizarse +5",
+      "variacion_habilidades": ["Conocimiento de plantas y venenos +5", "Equilibrio +5", "Agilidad +5", "Manipulación +5", "disimular +10", "esconderse +10", "deslizarse +5"],
       "equipo_especial": "Cimitarra + 5 Dardos de Veneno Somnífero POT 13",
       "Bonus_combate": {
         "ataque": "30%",

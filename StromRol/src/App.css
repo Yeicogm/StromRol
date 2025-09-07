@@ -161,6 +161,10 @@
   line-height: 1.43;
   margin: 0;
 }
+
+.bonificacion-chip {
+  margin-left: 8px;
+}
 .ficha-title {
   color: #222;
   margin-bottom: 24px;

@@ -11,7 +11,7 @@ export interface Clase {
   rango: string;
   variacion_caracteristicas?: string | string[];
   variacion_carac_info?: string;
-  variacion_habilidades?: string;
+  variacion_habilidades?: string[];
   equipo_especial?: string;
   Bonus_combate?: BonusCombate;
   especial?: string;
