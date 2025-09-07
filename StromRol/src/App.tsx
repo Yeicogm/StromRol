@@ -442,11 +442,11 @@ function App() {
       {/* Total de bonificaciones */}
       {renderBonificacionesTotales()}
 
-      {/* Información de la raza seleccionada */}
-      {renderRazaInfo()}
-
       {/* Información de la clase seleccionada */}
       {renderClaseInfo()}
+
+      {/* Información de la raza seleccionada */}
+      {renderRazaInfo()}
     </div>
   );
 }
