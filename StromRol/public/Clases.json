@@ -39,7 +39,13 @@
       "rango": "0",
       "variacion_caracteristicas": ["Destreza +3"],
       "variacion_carac_info": "",
-      "variacion_habilidades": ["Conocimiento de plantas y venenos 100%", "Cartografía +25", "Percepción +25", "Agilidad +10", "Discreción +5"],
+      "variacion_habilidades": [
+        "Conocimiento de plantas y venenos 100%",
+        "Cartografía +25",
+        "Percepción +25",
+        "Agilidad +10",
+        "Discreción +5"
+      ],
       "equipo_especial": "Lanza larga, hierbas curativas 1d6 (3), Cuero -2",
       "Bonus_combate": {
         "ataque": "30% /45%*",
@@ -101,7 +107,15 @@
       "nombre": "GUARDIA DE LEY / CAOS",
       "descripcion": "Adorador fanático",
       "rango": "+2 /-1",
-      "variacion_caracteristicas": ["FUERZA +2", "CONSTITUCIÓN +2", "TAMAÑO +2", "INTELIGENCIA +2", "PODER +2", "DESTREZA +2", "CARISMA +2"],
+      "variacion_caracteristicas": [
+        "FUERZA +2",
+        "CONSTITUCIÓN +2",
+        "TAMAÑO +2",
+        "INTELIGENCIA +2",
+        "PODER +2",
+        "DESTREZA +2",
+        "CARISMA +2"
+      ],
       "variacion_carac_info": "Por medallón mágico",
       "variacion_habilidades": [],
       "equipo_especial": "Hacha de Batalla, Cuero y Anillas",
@@ -151,7 +165,17 @@
       "rango": "1/0/-1",
       "variacion_caracteristicas": [],
       "variacion_carac_info": "",
-      "variacion_habilidades": ["Agilidad +10", "Equilibrio +15", "Ver +10", "Evitar +5", "Hacer V. +30", "Saltar +10", "Trepar +10", "Emboscada +15", "Desli Y Esconderse +10"],
+      "variacion_habilidades": [
+        "Agilidad +10",
+        "Equilibrio +15",
+        "Ver +10",
+        "Evitar +5",
+        "Hacer V. +30",
+        "Saltar +10",
+        "Trepar +10",
+        "Emboscada +15",
+        "Desli Y Esconderse +10"
+      ],
       "equipo_especial": "Dos Espadas C. Ninja o Catana + 10 Shuriken y 5 plutonios por aventura.",
       "Bonus_combate": {
         "ataque": "50%",
@@ -167,7 +191,11 @@
       "rango": "+1",
       "variacion_caracteristicas": ["+1D PODER", "+1D INTELIGENCIA"],
       "variacion_carac_info": "mínimo 5D, MAX FURZA 19",
-      "variacion_habilidades": ["+50 plantas y venenos", "+5 Percepción", "Regeneración de SM 3 al día"],
+      "variacion_habilidades": [
+        "+50 plantas y venenos",
+        "+5 Percepción",
+        "Regeneración de SM 3 al día"
+      ],
       "equipo_especial": "Cimitarra y tarja",
       "Bonus_combate": {
         "ataque": "25%",
@@ -215,7 +243,11 @@
       "rango": "0",
       "variacion_caracteristicas": [],
       "variacion_carac_info": "",
-      "variacion_habilidades": ["Emboscada +10", "Agilidad +25", "Percepción +10"],
+      "variacion_habilidades": [
+        "Emboscada +10",
+        "Agilidad +25",
+        "Percepción +10"
+      ],
       "equipo_especial": "Hacha de batalla + 2 Protectores",
       "Bonus_combate": {
         "ataque": "50%",
@@ -235,7 +267,10 @@
         "Inteligencia +1"
       ],
       "variacion_carac_info": "MAX FUE 20",
-      "variacion_habilidades": ["Comunicación +25", "Regeneración de SM 2 al día"],
+      "variacion_habilidades": [
+        "Comunicación +25",
+        "Regeneración de SM 2 al día"
+      ],
       "equipo_especial": "Espada Ionica (3d6 a una mano con escudo)",
       "Bonus_combate": {
         "ataque": "35%",
@@ -270,7 +305,15 @@
         "DESTREZA +1D (MAX FUERZA 19)"
       ],
       "variacion_carac_info": "",
-      "variacion_habilidades": ["Evaluar T. +10", "Percepción +5", "Agilidad +5", "Manipulación +10", "Forzar C. +15", "Robar Bolsas +15", "Disimular +15"],
+      "variacion_habilidades": [
+        "Evaluar T. +10",
+        "Percepción +5",
+        "Agilidad +5",
+        "Manipulación +10",
+        "Forzar C. +15",
+        "Robar Bolsas +15",
+        "Disimular +15"
+      ],
       "equipo_especial": "Cerbatana 5 dardos Veneno somnífero Pot 14, Espada Corta.",
       "Bonus_combate": {
         "ataque": "25%",
@@ -286,7 +329,15 @@
       "rango": "-2",
       "variacion_caracteristicas": ["INTELIGENCIA +2", "DESt +1D"],
       "variacion_carac_info": "mínimo 5D DESTREZA, MAX FUE 19",
-      "variacion_habilidades": ["Conocimiento de plantas y venenos +10", "Equilibrio +5", "Agilidad +5", "Manipulación +3", "disimular +10", "esconderse +10", "deslizarse +10"],
+      "variacion_habilidades": [
+        "Conocimiento de plantas y venenos +10",
+        "Equilibrio +5",
+        "Agilidad +5",
+        "Manipulación +3",
+        "disimular +10",
+        "esconderse +10",
+        "deslizarse +10"
+      ],
       "equipo_especial": "Espada Corta",
       "Bonus_combate": {
         "ataque": "25%",
@@ -302,7 +353,15 @@
       "rango": "-2",
       "variacion_caracteristicas": ["INTELIGENCIA +2", "DESTREZA +1D"],
       "variacion_carac_info": "mínimo 5D DESTREZA, MAX FUE 19",
-      "variacion_habilidades": ["Conocimiento de plantas y venenos +20", "Equilibrio +5", "Agilidad +5", "Manipulación +5", "disimular +5", "esconderse +6", "deslizarse +6"],
+      "variacion_habilidades": [
+        "Conocimiento de plantas y venenos +20",
+        "Equilibrio +5",
+        "Agilidad +5",
+        "Manipulación +5",
+        "disimular +5",
+        "esconderse +6",
+        "deslizarse +6"
+      ],
       "equipo_especial": "Pack Asesino Esmir (Libro Demonios y magia)",
       "Bonus_combate": {
         "ataque": "25%",
@@ -354,7 +413,15 @@
       "rango": "-1",
       "variacion_caracteristicas": ["Fuerza -1", "Destreza +1D"],
       "variacion_carac_info": "MAX FUE 30",
-      "variacion_habilidades": ["Conocimiento de plantas y venenos +5", "Equilibrio +5", "Agilidad +5", "Manipulación +5", "disimular +10", "esconderse +10", "deslizarse +5"],
+      "variacion_habilidades": [
+        "Conocimiento de plantas y venenos +5",
+        "Equilibrio +5",
+        "Agilidad +5",
+        "Manipulación +5",
+        "disimular +10",
+        "esconderse +10",
+        "deslizarse +5"
+      ],
       "equipo_especial": "Cimitarra + 5 Dardos de Veneno Somnífero POT 13",
       "Bonus_combate": {
         "ataque": "30%",

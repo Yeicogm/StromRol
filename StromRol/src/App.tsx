@@ -13,9 +13,7 @@ function App() {
   const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(
     null
   );
-  const [resultado, setResultado] = useState<Caracteristicas | null>(
-    null
-  );
+  const [resultado, setResultado] = useState<Caracteristicas | null>(null);
 
   const renderRazaInfo = () => {
     if (!razaSeleccionada) return null;
@@ -23,52 +21,44 @@ function App() {
     return (
       <div className="raza-card">
         <div className="raza-content">
-          <h3 className="raza-title">
-            {razaSeleccionada.nombre}
-          </h3>
-          
-          <p className="raza-description">
-            {razaSeleccionada.descripcion}
-          </p>
+          <h3 className="raza-title">{razaSeleccionada.nombre}</h3>
+
+          <p className="raza-description">{razaSeleccionada.descripcion}</p>
 
           <hr className="raza-divider" />
 
           <div className="raza-info-grid">
             {/* Características */}
             <div className="raza-section">
-              <h4 className="raza-section-title">
-                Características
-              </h4>
+              <h4 className="raza-section-title">Características</h4>
               <div className="raza-list">
-                {Object.entries(razaSeleccionada.caracteristicas).map(([carac, valor]) => (
-                  <div key={carac} className="raza-list-item">
-                    <span className="raza-characteristic-name">
-                      {carac}:
-                    </span>
-                    <span className="raza-chip raza-chip-secondary">
-                      {valor}
-                    </span>
-                  </div>
-                ))}
+                {Object.entries(razaSeleccionada.caracteristicas).map(
+                  ([carac, valor]) => (
+                    <div key={carac} className="raza-list-item">
+                      <span className="raza-characteristic-name">{carac}:</span>
+                      <span className="raza-chip raza-chip-secondary">
+                        {valor}
+                      </span>
+                    </div>
+                  )
+                )}
               </div>
             </div>
 
             {/* Bonificaciones */}
             <div className="raza-section">
-              <h4 className="raza-section-title">
-                Bonificaciones
-              </h4>
+              <h4 className="raza-section-title">Bonificaciones</h4>
               <div className="raza-list">
-                {Object.entries(razaSeleccionada.bonificaciones).map(([habilidad, bonus]) => (
-                  <div key={habilidad} className="raza-list-item">
-                    <span className="raza-bonus-name">
-                      {habilidad}:
-                    </span>
-                    <span className="raza-chip raza-chip-success">
-                      {bonus}
-                    </span>
-                  </div>
-                ))}
+                {Object.entries(razaSeleccionada.bonificaciones).map(
+                  ([habilidad, bonus]) => (
+                    <div key={habilidad} className="raza-list-item">
+                      <span className="raza-bonus-name">{habilidad}:</span>
+                      <span className="raza-chip raza-chip-success">
+                        {bonus}
+                      </span>
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -83,13 +73,17 @@ function App() {
             {razaSeleccionada.armadura && (
               <div className="raza-info-item">
                 <span className="raza-info-label">Armadura</span>
-                <span className="raza-info-value">{razaSeleccionada.armadura}</span>
+                <span className="raza-info-value">
+                  {razaSeleccionada.armadura}
+                </span>
               </div>
             )}
             {razaSeleccionada.ataque && (
               <div className="raza-info-item">
                 <span className="raza-info-label">Ataque</span>
-                <span className="raza-info-value">{razaSeleccionada.ataque}</span>
+                <span className="raza-info-value">
+                  {razaSeleccionada.ataque}
+                </span>
               </div>
             )}
           </div>
@@ -99,9 +93,7 @@ function App() {
               <hr className="raza-divider" />
               <h4 className="raza-section-title">Notas</h4>
               <div className="raza-notes">
-                <p className="raza-notes-text">
-                  {razaSeleccionada.notas}
-                </p>
+                <p className="raza-notes-text">{razaSeleccionada.notas}</p>
               </div>
             </>
           )}
@@ -116,54 +108,53 @@ function App() {
     return (
       <div className="raza-card">
         <div className="raza-content">
-          <h3 className="raza-title">
-            {claseSeleccionada.nombre}
-          </h3>
-          
-          <p className="raza-description">
-            {claseSeleccionada.descripcion}
-          </p>
+          <h3 className="raza-title">{claseSeleccionada.nombre}</h3>
+
+          <p className="raza-description">{claseSeleccionada.descripcion}</p>
 
           <hr className="raza-divider" />
 
           <div className="raza-info-grid">
             {/* Variaciones de Características */}
-            {claseSeleccionada.variacion_caracteristicas && 
-             Array.isArray(claseSeleccionada.variacion_caracteristicas) && 
-             claseSeleccionada.variacion_caracteristicas.length > 0 && (
-              <div className="raza-section">
-                <h4 className="raza-section-title">
-                  Variaciones de Características
-                </h4>
-                <div className="raza-list">
-                  {claseSeleccionada.variacion_caracteristicas.map((variacion, index) => (
-                    <div key={index} className="raza-list-item">
-                      <span className="raza-characteristic-name">
-                        {variacion}
-                      </span>
-                    </div>
-                  ))}
+            {claseSeleccionada.variacion_caracteristicas &&
+              Array.isArray(claseSeleccionada.variacion_caracteristicas) &&
+              claseSeleccionada.variacion_caracteristicas.length > 0 && (
+                <div className="raza-section">
+                  <h4 className="raza-section-title">
+                    Variaciones de Características
+                  </h4>
+                  <div className="raza-list">
+                    {claseSeleccionada.variacion_caracteristicas.map(
+                      (variacion, index) => (
+                        <div key={index} className="raza-list-item">
+                          <span className="raza-characteristic-name">
+                            {variacion}
+                          </span>
+                        </div>
+                      )
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
             {/* Bonificaciones de Habilidades */}
-            {claseSeleccionada.variacion_habilidades && claseSeleccionada.variacion_habilidades.length > 0 && (
-              <div className="raza-section">
-                <h4 className="raza-section-title">
-                  Bonificaciones de Habilidades
-                </h4>
-                <div className="raza-list">
-                  {claseSeleccionada.variacion_habilidades.map((habilidad, index) => (
-                    <div key={index} className="raza-list-item">
-                      <span className="raza-bonus-name">
-                        {habilidad}
-                      </span>
-                    </div>
-                  ))}
+            {claseSeleccionada.variacion_habilidades &&
+              claseSeleccionada.variacion_habilidades.length > 0 && (
+                <div className="raza-section">
+                  <h4 className="raza-section-title">
+                    Bonificaciones de Habilidades
+                  </h4>
+                  <div className="raza-list">
+                    {claseSeleccionada.variacion_habilidades.map(
+                      (habilidad, index) => (
+                        <div key={index} className="raza-list-item">
+                          <span className="raza-bonus-name">{habilidad}</span>
+                        </div>
+                      )
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
 
           {/* Bonus de Combate */}
@@ -187,7 +178,9 @@ function App() {
                   </div>
                   {claseSeleccionada.Bonus_combate.armas_arrojadizas && (
                     <div className="raza-list-item">
-                      <span className="raza-bonus-name">Armas Arrojadizas:</span>
+                      <span className="raza-bonus-name">
+                        Armas Arrojadizas:
+                      </span>
                       <span className="raza-chip raza-chip-secondary">
                         {claseSeleccionada.Bonus_combate.armas_arrojadizas}
                       </span>
@@ -195,7 +188,9 @@ function App() {
                   )}
                   {claseSeleccionada.Bonus_combate.montado_a_caballo && (
                     <div className="raza-list-item">
-                      <span className="raza-bonus-name">Montado a Caballo:</span>
+                      <span className="raza-bonus-name">
+                        Montado a Caballo:
+                      </span>
                       <span className="raza-chip raza-chip-secondary">
                         {claseSeleccionada.Bonus_combate.montado_a_caballo}
                       </span>
@@ -215,12 +210,16 @@ function App() {
             </div>
             <div className="raza-info-item">
               <span className="raza-info-label">Cualidades</span>
-              <span className="raza-info-value">{claseSeleccionada.cualidades}</span>
+              <span className="raza-info-value">
+                {claseSeleccionada.cualidades}
+              </span>
             </div>
             {claseSeleccionada.equipo_especial && (
               <div className="raza-info-item">
                 <span className="raza-info-label">Equipo Especial</span>
-                <span className="raza-info-value">{claseSeleccionada.equipo_especial}</span>
+                <span className="raza-info-value">
+                  {claseSeleccionada.equipo_especial}
+                </span>
               </div>
             )}
           </div>
@@ -230,9 +229,7 @@ function App() {
               <hr className="raza-divider" />
               <h4 className="raza-section-title">Habilidades Especiales</h4>
               <div className="raza-notes">
-                <p className="raza-notes-text">
-                  {claseSeleccionada.especial}
-                </p>
+                <p className="raza-notes-text">{claseSeleccionada.especial}</p>
               </div>
             </>
           )}
@@ -248,43 +245,53 @@ function App() {
 
     // Agregar bonificaciones de la raza
     if (razaSeleccionada) {
-      Object.entries(razaSeleccionada.bonificaciones).forEach(([habilidad, bonus]) => {
-        if (typeof bonus === 'number') {
-          bonificacionesTotales[habilidad] = (bonificacionesTotales[habilidad] || 0) + bonus;
-        } else if (typeof bonus === 'string') {
-          // Manejar casos donde bonus sea string (para compatibilidad)
-          const valorNumerico = parseInt(bonus.replace(/[+-]/g, '')) || 0;
-          const signo = bonus.startsWith('-') ? -1 : 1;
-          bonificacionesTotales[habilidad] = (bonificacionesTotales[habilidad] || 0) + (valorNumerico * signo);
+      Object.entries(razaSeleccionada.bonificaciones).forEach(
+        ([habilidad, bonus]) => {
+          if (typeof bonus === "number") {
+            bonificacionesTotales[habilidad] =
+              (bonificacionesTotales[habilidad] || 0) + bonus;
+          } else if (typeof bonus === "string") {
+            // Manejar casos donde bonus sea string (para compatibilidad)
+            const valorNumerico = parseInt(bonus.replace(/[+-]/g, "")) || 0;
+            const signo = bonus.startsWith("-") ? -1 : 1;
+            bonificacionesTotales[habilidad] =
+              (bonificacionesTotales[habilidad] || 0) + valorNumerico * signo;
+          }
         }
-      });
+      );
     }
 
     // Agregar bonificaciones de la clase (de variacion_habilidades)
     if (claseSeleccionada && claseSeleccionada.variacion_habilidades) {
       // Ahora variacion_habilidades es un array
-      claseSeleccionada.variacion_habilidades.forEach(habilidadTexto => {
+      claseSeleccionada.variacion_habilidades.forEach((habilidadTexto) => {
         const trimmed = habilidadTexto.trim();
-        
+
         // Ignorar habilidades descriptivas sin valores numéricos
-        if (trimmed.includes('Regeneración de SM') || 
-            trimmed.includes('al día') || 
-            trimmed.includes('1D6') ||
-            trimmed === '') {
+        if (
+          trimmed.includes("Regeneración de SM") ||
+          trimmed.includes("al día") ||
+          trimmed.includes("1D6") ||
+          trimmed === ""
+        ) {
           return;
         }
-        
+
         // Usar la nueva función para extraer bonificaciones
         const bonificacion = extraerBonificacionHabilidad(trimmed);
         if (bonificacion) {
-          bonificacionesTotales[bonificacion.habilidad] = (bonificacionesTotales[bonificacion.habilidad] || 0) + bonificacion.valor;
+          bonificacionesTotales[bonificacion.habilidad] =
+            (bonificacionesTotales[bonificacion.habilidad] || 0) +
+            bonificacion.valor;
           return;
         }
-        
+
         // Casos especiales de 100% (como "Primeros Auxilios +100")
-        if (trimmed.includes('100%') || trimmed.includes('+100')) {
+        if (trimmed.includes("100%") || trimmed.includes("+100")) {
           // Extraer el nombre de la habilidad
-          const nombreHabilidad = trimmed.replace(/(\+100|100\s*%).*$/, '').trim();
+          const nombreHabilidad = trimmed
+            .replace(/(\+100|100\s*%).*$/, "")
+            .trim();
           if (nombreHabilidad) {
             bonificacionesTotales[nombreHabilidad] = 100;
           }
@@ -297,7 +304,8 @@ function App() {
 
   const renderBonificacionesTotales = () => {
     const bonificaciones = calcularBonificacionesTotales();
-    if (!bonificaciones || Object.keys(bonificaciones).length === 0) return null;
+    if (!bonificaciones || Object.keys(bonificaciones).length === 0)
+      return null;
 
     return (
       <div className="ficha-resultado">
@@ -334,7 +342,9 @@ function App() {
       // Adaptar claseSeleccionada para asegurar que variacion_caracteristicas sea string[]
       const claseAdaptada = {
         ...claseSeleccionada,
-        variacion_caracteristicas: Array.isArray(claseSeleccionada.variacion_caracteristicas)
+        variacion_caracteristicas: Array.isArray(
+          claseSeleccionada.variacion_caracteristicas
+        )
           ? claseSeleccionada.variacion_caracteristicas
           : typeof claseSeleccionada.variacion_caracteristicas === "string"
           ? [claseSeleccionada.variacion_caracteristicas]
@@ -393,7 +403,7 @@ function App() {
           ))}
         </select>
       </div>
-      
+
       {/* Dados que debe tirar el jugador - Debajo de los combos */}
       {resultado && (
         <div className="ficha-resultado">
@@ -410,13 +420,13 @@ function App() {
           </ul>
         </div>
       )}
-      
+
       {/* Total de bonificaciones */}
       {renderBonificacionesTotales()}
-      
+
       {/* Información de la raza seleccionada */}
       {renderRazaInfo()}
-      
+
       {/* Información de la clase seleccionada */}
       {renderClaseInfo()}
     </div>

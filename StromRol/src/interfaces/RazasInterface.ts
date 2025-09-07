@@ -1,5 +1,5 @@
-import type { Caracteristicas } from './Caracteristicas';
-import type { BonificacionesHabilidades } from './Habilidades';
+import type { Caracteristicas } from "./Caracteristicas";
+import type { BonificacionesHabilidades } from "./Habilidades";
 
 export interface Raza {
   nombre: string;

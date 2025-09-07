@@ -1,6 +1,6 @@
-import type { Caracteristicas } from '../interfaces/Caracteristicas';
-import { MAPEO_CARACTERISTICAS } from '../interfaces/Caracteristicas';
-import type { Raza } from '../interfaces/RazasInterface';
+import type { Caracteristicas } from "../interfaces/Caracteristicas";
+import { MAPEO_CARACTERISTICAS } from "../interfaces/Caracteristicas";
+import type { Raza } from "../interfaces/RazasInterface";
 
 export function parseDados(dado: string): number {
   const match = dado.match(/(\d+)D(\d+)([+-]\d+)?/i);
@@ -28,15 +28,11 @@ export function aplicarVariaciones(
 
   for (const variacion of variaciones) {
     // Ejemplo: "Inteligencia +1", "Destreza +1D", "PODER +2D6", "-2 INTELIGENCIA", etc.
-    let match = variacion.match(
-      /^(\w+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i
-    );
-    
+    let match = variacion.match(/^(\w+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i);
+
     // Si no coincide con el primer patrón, intentar con el formato "-2 INTELIGENCIA" o "+2 FUERZA"
     if (!match) {
-      match = variacion.match(
-        /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+(\w+)$/i
-      );
+      match = variacion.match(/^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+(\w+)$/i);
       if (match) {
         // Intercambiar el orden: el cambio está primero, luego el atributo
         const temp = match[1];
@@ -44,26 +40,28 @@ export function aplicarVariaciones(
         match[2] = temp;
       }
     }
-    
+
     if (!match) continue;
     const atributo = match[1];
     const cambio = match[2];
 
     // Normalizar el nombre de la característica usando el mapeo
-    const nombreNormalizado = MAPEO_CARACTERISTICAS[atributo.toUpperCase()] || MAPEO_CARACTERISTICAS[atributo];
+    const nombreNormalizado =
+      MAPEO_CARACTERISTICAS[atributo.toUpperCase()] ||
+      MAPEO_CARACTERISTICAS[atributo];
     if (!nombreNormalizado) continue;
 
     const actual = nuevasCaracteristicas[nombreNormalizado] || "";
-    
+
     // Si el valor actual es una tirada de dados (ej: "2D6", "2D6+1")
     const dadoMatch = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
-    
+
     // Si la variación NO contiene operador '+' ni '-', SIEMPRE reemplaza el valor
     if (!cambio.includes("+") && !cambio.includes("-")) {
       nuevasCaracteristicas[nombreNormalizado] = cambio;
       continue;
     }
-    
+
     if (dadoMatch) {
       let dados = parseInt(dadoMatch[1], 10);
       let caras = parseInt(dadoMatch[2], 10);
