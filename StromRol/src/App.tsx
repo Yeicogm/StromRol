@@ -338,21 +338,30 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (razaSeleccionada && claseSeleccionada) {
-      // Adaptar claseSeleccionada para asegurar que variacion_caracteristicas sea string[]
-      const claseAdaptada = {
-        ...claseSeleccionada,
-        variacion_caracteristicas: Array.isArray(
-          claseSeleccionada.variacion_caracteristicas
-        )
-          ? claseSeleccionada.variacion_caracteristicas
-          : typeof claseSeleccionada.variacion_caracteristicas === "string"
-          ? [claseSeleccionada.variacion_caracteristicas]
-          : undefined,
-      };
-      setResultado(
-        calcularCaracteristicasFinales(razaSeleccionada, claseAdaptada)
-      );
+    if (razaSeleccionada) {
+      // Si la raza es SELOROK o DEMONIO, calcular solo con la raza
+      if (
+        ["SELOROK", "DEMONIO"].includes(razaSeleccionada.nombre.toUpperCase())
+      ) {
+        setResultado(calcularCaracteristicasFinales(razaSeleccionada));
+      } else if (claseSeleccionada) {
+        // Adaptar claseSeleccionada para asegurar que variacion_caracteristicas sea string[]
+        const claseAdaptada = {
+          ...claseSeleccionada,
+          variacion_caracteristicas: Array.isArray(
+            claseSeleccionada.variacion_caracteristicas
+          )
+            ? claseSeleccionada.variacion_caracteristicas
+            : typeof claseSeleccionada.variacion_caracteristicas === "string"
+            ? [claseSeleccionada.variacion_caracteristicas]
+            : undefined,
+        };
+        setResultado(
+          calcularCaracteristicasFinales(razaSeleccionada, claseAdaptada)
+        );
+      } else {
+        setResultado(null);
+      }
     } else {
       setResultado(null);
     }
@@ -372,12 +381,15 @@ function App() {
           onChange={(e) => {
             const r = razas.find((r) => r.nombre === e.target.value);
             setRazaSeleccionada(r || null);
+            if (r && ["SELOROK", "DEMONIO"].includes(r.nombre.toUpperCase())) {
+              setClaseSeleccionada(null);
+            }
           }}
         >
           <option value="">Elige una raza</option>
           {razas.map((r) => (
             <option key={r.nombre} value={r.nombre}>
-              {r.nombre}
+              {r.nombre.toUpperCase()}
             </option>
           ))}
         </select>
@@ -394,11 +406,17 @@ function App() {
             const c = clases.find((c) => c.nombre === e.target.value);
             setClaseSeleccionada(c || null);
           }}
+          disabled={Boolean(
+            razaSeleccionada &&
+              ["SELOROK", "DEMONIOS"].includes(
+                razaSeleccionada.nombre.toUpperCase()
+              )
+          )}
         >
           <option value="">Elige una clase</option>
           {clases.map((c) => (
             <option key={c.nombre} value={c.nombre}>
-              {c.nombre}
+              {c.nombre.toUpperCase()}
             </option>
           ))}
         </select>

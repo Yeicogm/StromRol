@@ -109,10 +109,10 @@ export function aplicarVariaciones(
 
 export function calcularCaracteristicasFinales(
   raza: Raza,
-  clase: { variacion_caracteristicas?: string[] }
+  clase?: { variacion_caracteristicas?: string[] }
 ): Caracteristicas {
   const base = raza.caracteristicas;
-  const variaciones = clase.variacion_caracteristicas;
+  const variaciones = clase?.variacion_caracteristicas;
   return aplicarVariaciones(base, variaciones);
 }
 
