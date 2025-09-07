@@ -1,16 +1,6 @@
-interface Caracteristicas {
-  [key: string]: string; // Ejemplo: "Fuerza": "3D6"
-}
-
-interface Raza {
-  nombre: string;
-  caracteristicas: Caracteristicas;
-}
-
-interface Clase {
-  nombre: string;
-  variacion_caracteristicas?: string; // Ejemplo: "Int +1", "POD +1D"
-}
+import type { Caracteristicas } from '../interfaces/Caracteristicas';
+import { MAPEO_CARACTERISTICAS } from '../interfaces/Caracteristicas';
+import type { Raza } from '../interfaces/RazasInterface';
 
 export function parseDados(dado: string): number {
   const match = dado.match(/(\d+)D(\d+)([+-]\d+)?/i);
@@ -37,28 +27,43 @@ export function aplicarVariaciones(
   const nuevasCaracteristicas = { ...caracteristicas };
 
   for (const variacion of variaciones) {
-    // Ejemplo: "Inteligencia +1", "Destreza +1D", "PODER +2D6", etc.
-    const match = variacion.match(
+    // Ejemplo: "Inteligencia +1", "Destreza +1D", "PODER +2D6", "-2 INTELIGENCIA", etc.
+    let match = variacion.match(
       /^(\w+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i
     );
+    
+    // Si no coincide con el primer patrón, intentar con el formato "-2 INTELIGENCIA" o "+2 FUERZA"
+    if (!match) {
+      match = variacion.match(
+        /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+(\w+)$/i
+      );
+      if (match) {
+        // Intercambiar el orden: el cambio está primero, luego el atributo
+        const temp = match[1];
+        match[1] = match[2];
+        match[2] = temp;
+      }
+    }
+    
     if (!match) continue;
     const atributo = match[1];
     const cambio = match[2];
 
-    // Buscar el atributo ignorando mayúsculas/minúsculas
-    const claveReal = Object.keys(nuevasCaracteristicas).find(
-      (k) => k.toLowerCase() === atributo.toLowerCase()
-    );
-    if (!claveReal) continue;
+    // Normalizar el nombre de la característica usando el mapeo
+    const nombreNormalizado = MAPEO_CARACTERISTICAS[atributo.toUpperCase()] || MAPEO_CARACTERISTICAS[atributo];
+    if (!nombreNormalizado) continue;
 
-    const actual = nuevasCaracteristicas[claveReal] || "";
+    const actual = nuevasCaracteristicas[nombreNormalizado] || "";
+    
     // Si el valor actual es una tirada de dados (ej: "2D6", "2D6+1")
     const dadoMatch = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
+    
     // Si la variación NO contiene operador '+' ni '-', SIEMPRE reemplaza el valor
     if (!cambio.includes("+") && !cambio.includes("-")) {
-      nuevasCaracteristicas[claveReal] = cambio;
+      nuevasCaracteristicas[nombreNormalizado] = cambio;
       continue;
     }
+    
     if (dadoMatch) {
       let dados = parseInt(dadoMatch[1], 10);
       let caras = parseInt(dadoMatch[2], 10);
@@ -68,7 +73,7 @@ export function aplicarVariaciones(
         // Ejemplo: '+1D' => sumar un dado
         const dadosExtra = parseInt(cambio.replace("D", ""), 10);
         dados += dadosExtra;
-        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${
+        nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
           mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
         }`;
       } else if (/^[+-]?\d+D\d+$/.test(cambio)) {
@@ -78,13 +83,13 @@ export function aplicarVariaciones(
           dados += parseInt(extraMatch[1], 10);
           caras = parseInt(extraMatch[2], 10); // se puede ajustar según reglas
         }
-        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${
+        nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
           mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
         }`;
       } else if (/^[+-]?\d+$/.test(cambio)) {
         // Ejemplo: '+1' => sumar modificador
         mod += parseInt(cambio, 10);
-        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${
+        nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
           mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
         }`;
       }
@@ -92,11 +97,11 @@ export function aplicarVariaciones(
       // Si no es una tirada de dados, sumar normalmente
       if (/^[+-]?\d+$/.test(cambio)) {
         const valorActual = parseInt(actual || "0", 10);
-        nuevasCaracteristicas[claveReal] = (
+        nuevasCaracteristicas[nombreNormalizado] = (
           valorActual + parseInt(cambio, 10)
         ).toString();
       } else {
-        nuevasCaracteristicas[claveReal] = cambio;
+        nuevasCaracteristicas[nombreNormalizado] = cambio;
       }
     }
   }

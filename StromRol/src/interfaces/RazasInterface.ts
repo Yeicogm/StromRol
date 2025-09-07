@@ -1,22 +1,15 @@
+import type { Caracteristicas } from './Caracteristicas';
+import type { BonificacionesHabilidades } from './Habilidades';
+
 export interface Raza {
   nombre: string;
   descripcion: string;
-  caracteristicas: {
-    Fuerza: string;
-    Constitución: string;
-    Tamaño: string;
-    Inteligencia: string;
-    Poder: string;
-    Destreza: string;
-    Carisma: string;
-  };
+  caracteristicas: Caracteristicas;
   notas?: string;
   armadura?: string;
   ataque?: string;
   rango: string;
-  bonificaciones: {
-    [key: string]: string; // Permite bonificaciones dinámicas como "Olfatear", "Degustar", etc.
-  };
+  bonificaciones: BonificacionesHabilidades;
 }
 
 export interface RazasData {

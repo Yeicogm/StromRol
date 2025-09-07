@@ -101,8 +101,8 @@
       "nombre": "GUARDIA DE LEY / CAOS",
       "descripcion": "Adorador fanático",
       "rango": "+2 /-1",
-      "variacion_caracteristicas": ["+2 En todas por medallón mágico."],
-      "variacion_carac_info": "",
+      "variacion_caracteristicas": ["FUERZA +2", "CONSTITUCIÓN +2", "TAMAÑO +2", "INTELIGENCIA +2", "PODER +2", "DESTREZA +2", "CARISMA +2"],
+      "variacion_carac_info": "Por medallón mágico",
       "variacion_habilidades": [],
       "equipo_especial": "Hacha de Batalla, Cuero y Anillas",
       "Bonus_combate": {
@@ -183,7 +183,7 @@
       "rango": "0",
       "variacion_caracteristicas": ["-2 INTELIGENCIA"],
       "variacion_carac_info": "",
-      "variacion_habilidades": ["Primeros Auxilios 100", "+15 saltar(extralargo)"],
+      "variacion_habilidades": ["Primeros Auxilios +100", "Saltar +15"],
       "equipo_especial": "Bastarda",
       "Bonus_combate": {
         "ataque": "50%",
@@ -300,7 +300,8 @@
       "nombre": "Asesino Eshmiriano",
       "descripcion": "El asesino es un maestro en asestar golpes rápidos y letales. También sobresale en el arte del difraz y la infiltración. Los asesinos trabajan a menudo como espías, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatomía, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mortíferas con precisión espeluznante y terrorífica.",
       "rango": "-2",
-      "variacion_caracteristicas": "INT +2, DES +1D(mínimo 5D) (MAX FUE 19)",
+      "variacion_caracteristicas": ["INTELIGENCIA +2", "DESTREZA +1D"],
+      "variacion_carac_info": "mínimo 5D DESTREZA, MAX FUE 19",
       "variacion_habilidades": ["Conocimiento de plantas y venenos +20", "Equilibrio +5", "Agilidad +5", "Manipulación +5", "disimular +5", "esconderse +6", "deslizarse +6"],
       "equipo_especial": "Pack Asesino Esmir (Libro Demonios y magia)",
       "Bonus_combate": {

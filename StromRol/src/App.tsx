@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { calcularCaracteristicasFinales } from "./logic/logica";
+import { extraerBonificacionHabilidad } from "./interfaces/Habilidades";
 import type { Raza } from "./interfaces/RazasInterface";
 import type { Clase } from "./interfaces/ClasesInterface";
+import type { Caracteristicas } from "./interfaces/Caracteristicas";
 
 function App() {
   const [razas, setRazas] = useState<Raza[]>([]);
@@ -11,7 +13,7 @@ function App() {
   const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(
     null
   );
-  const [resultado, setResultado] = useState<{ [key: string]: string } | null>(
+  const [resultado, setResultado] = useState<Caracteristicas | null>(
     null
   );
 
@@ -247,17 +249,22 @@ function App() {
     // Agregar bonificaciones de la raza
     if (razaSeleccionada) {
       Object.entries(razaSeleccionada.bonificaciones).forEach(([habilidad, bonus]) => {
-        const valorNumerico = parseInt(bonus.replace(/[+-]/g, '')) || 0;
-        const signo = bonus.startsWith('-') ? -1 : 1;
-        bonificacionesTotales[habilidad] = (bonificacionesTotales[habilidad] || 0) + (valorNumerico * signo);
+        if (typeof bonus === 'number') {
+          bonificacionesTotales[habilidad] = (bonificacionesTotales[habilidad] || 0) + bonus;
+        } else if (typeof bonus === 'string') {
+          // Manejar casos donde bonus sea string (para compatibilidad)
+          const valorNumerico = parseInt(bonus.replace(/[+-]/g, '')) || 0;
+          const signo = bonus.startsWith('-') ? -1 : 1;
+          bonificacionesTotales[habilidad] = (bonificacionesTotales[habilidad] || 0) + (valorNumerico * signo);
+        }
       });
     }
 
     // Agregar bonificaciones de la clase (de variacion_habilidades)
     if (claseSeleccionada && claseSeleccionada.variacion_habilidades) {
       // Ahora variacion_habilidades es un array
-      claseSeleccionada.variacion_habilidades.forEach(habilidad => {
-        const trimmed = habilidad.trim();
+      claseSeleccionada.variacion_habilidades.forEach(habilidadTexto => {
+        const trimmed = habilidadTexto.trim();
         
         // Ignorar habilidades descriptivas sin valores numéricos
         if (trimmed.includes('Regeneración de SM') || 
@@ -267,50 +274,19 @@ function App() {
           return;
         }
         
-        // Casos especiales de 100%
-        if (trimmed.includes('100%')) {
-          // Extraer el nombre de la habilidad (todo antes de "100%")
-          const nombreHabilidad = trimmed.replace(/100\s*%.*$/, '').trim();
+        // Usar la nueva función para extraer bonificaciones
+        const bonificacion = extraerBonificacionHabilidad(trimmed);
+        if (bonificacion) {
+          bonificacionesTotales[bonificacion.habilidad] = (bonificacionesTotales[bonificacion.habilidad] || 0) + bonificacion.valor;
+          return;
+        }
+        
+        // Casos especiales de 100% (como "Primeros Auxilios +100")
+        if (trimmed.includes('100%') || trimmed.includes('+100')) {
+          // Extraer el nombre de la habilidad
+          const nombreHabilidad = trimmed.replace(/(\+100|100\s*%).*$/, '').trim();
           if (nombreHabilidad) {
             bonificacionesTotales[nombreHabilidad] = 100;
-          }
-        }
-        // Patrones con números positivos/negativos
-        else {
-          // Buscar todos los patrones posibles de bonificaciones
-          const patrones = [
-            // Patrón: "+10 Habilidad" o "-5 Habilidad"
-            /^([+-]\d+)\s*%?\s*(.+?)(?:\(.*\))?$/,
-            // Patrón: "Habilidad +10" o "Habilidad -5"
-            /^(.+?)\s*([+-]\s*\d+)\s*%?(?:\(.*\))?$/,
-            // Patrón: "Habilidad+10" (sin espacios)
-            /^(.+?)([+-]\d+)\s*%?(?:\(.*\))?$/
-          ];
-          
-          for (const patron of patrones) {
-            const match = trimmed.match(patron);
-            if (match) {
-              let nombreHabilidad, valorStr;
-              
-              if (patron === patrones[0]) {
-                // Formato: "+10 Habilidad"
-                valorStr = match[1];
-                nombreHabilidad = match[2].trim();
-              } else {
-                // Formato: "Habilidad +10"
-                nombreHabilidad = match[1].trim();
-                valorStr = match[2].replace(/\s/g, ''); // Quitar espacios del valor
-              }
-              
-              // Procesar el valor numérico
-              const valorNumerico = parseInt(valorStr.replace(/[+-]/g, '')) || 0;
-              const signo = valorStr.startsWith('-') ? -1 : 1;
-              
-              if (nombreHabilidad && valorNumerico > 0) {
-                bonificacionesTotales[nombreHabilidad] = (bonificacionesTotales[nombreHabilidad] || 0) + (valorNumerico * signo);
-                break; // Encontramos una coincidencia, no buscar más patrones
-              }
-            }
           }
         }
       });
