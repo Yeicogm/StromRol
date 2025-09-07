@@ -30,28 +30,64 @@ export function parseDados(dado: string): number {
 
 export function aplicarVariaciones(
   caracteristicas: Caracteristicas,
-  variaciones: string | undefined
+  variaciones: string[] | undefined
 ): Caracteristicas {
-  if (!variaciones) return caracteristicas;
+  if (!variaciones || variaciones.length === 0) return caracteristicas;
 
   const nuevasCaracteristicas = { ...caracteristicas };
-  const cambios = variaciones.split(" ");
 
-  for (let i = 0; i < cambios.length; i += 2) {
-    const atributo = cambios[i];
-    const cambio = cambios[i + 1];
+  for (const variacion of variaciones) {
+    // Ejemplo: "Inteligencia +1", "Destreza +1D", "PODER +2D6", etc.
+    const match = variacion.match(/^(\w+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i);
+    if (!match) continue;
+    const atributo = match[1];
+    const cambio = match[2];
 
-    if (cambio.includes("D")) {
-      // Agregar dados (por ejemplo, "+1D6")
-      nuevasCaracteristicas[
-        atributo
-      ] = `${nuevasCaracteristicas[atributo]} + ${cambio}`;
+    // Buscar el atributo ignorando mayúsculas/minúsculas
+    const claveReal = Object.keys(nuevasCaracteristicas).find(
+      k => k.toLowerCase() === atributo.toLowerCase()
+    );
+    if (!claveReal) continue;
+
+    const actual = nuevasCaracteristicas[claveReal] || "";
+    // Si el valor actual es una tirada de dados (ej: "2D6", "2D6+1")
+    const dadoMatch = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
+    // Si la variación NO contiene operador '+' ni '-', SIEMPRE reemplaza el valor
+    if (!cambio.includes("+") && !cambio.includes("-")) {
+      nuevasCaracteristicas[claveReal] = cambio;
+      continue;
+    }
+    if (dadoMatch) {
+      let dados = parseInt(dadoMatch[1], 10);
+      let caras = parseInt(dadoMatch[2], 10);
+      let mod = dadoMatch[3] ? parseInt(dadoMatch[3], 10) : 0;
+
+      if (/^[+-]?\d+D$/.test(cambio)) {
+        // Ejemplo: '+1D' => sumar un dado
+        const dadosExtra = parseInt(cambio.replace('D',''), 10);
+        dados += dadosExtra;
+        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+      } else if (/^[+-]?\d+D\d+$/.test(cambio)) {
+        // Ejemplo: '+2D6' => sumar dados y caras (no muy común, pero soportado)
+        const extraMatch = cambio.match(/([+-]?\d+)D(\d+)/);
+        if (extraMatch) {
+          dados += parseInt(extraMatch[1], 10);
+          caras = parseInt(extraMatch[2], 10); // se puede ajustar según reglas
+        }
+        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+      } else if (/^[+-]?\d+$/.test(cambio)) {
+        // Ejemplo: '+1' => sumar modificador
+        mod += parseInt(cambio, 10);
+        nuevasCaracteristicas[claveReal] = `${dados}D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+      }
     } else {
-      // Modificar valor base (por ejemplo, "+1")
-      const valorActual = parseInt(nuevasCaracteristicas[atributo] || "0", 10);
-      nuevasCaracteristicas[atributo] = (
-        valorActual + parseInt(cambio, 10)
-      ).toString();
+      // Si no es una tirada de dados, sumar normalmente
+      if (/^[+-]?\d+$/.test(cambio)) {
+        const valorActual = parseInt(actual || "0", 10);
+        nuevasCaracteristicas[claveReal] = (valorActual + parseInt(cambio, 10)).toString();
+      } else {
+        nuevasCaracteristicas[claveReal] = cambio;
+      }
     }
   }
 
@@ -60,11 +96,10 @@ export function aplicarVariaciones(
 
 export function calcularCaracteristicasFinales(
   raza: Raza,
-  clase: Clase
+  clase: { variacion_caracteristicas?: string[] }
 ): Caracteristicas {
   const base = raza.caracteristicas;
   const variaciones = clase.variacion_caracteristicas;
-
   return aplicarVariaciones(base, variaciones);
 }
 
