@@ -590,7 +590,7 @@ function App() {
             {Object.entries(resultado).map(([car, dado]) => (
               <li key={car} className="ficha-resultado-item">
                 <b className="ficha-resultado-carac">{car}:</b>{" "}
-                <span className="ficha-resultado-dado">{dado as string}</span>
+                <span className="ficha-resultado-dado">{dado}</span>
                 <input
                   type="number"
                   min="1"
@@ -600,7 +600,6 @@ function App() {
                   onChange={(e) => {
                     setTiradas((prev) => ({ ...prev, [car]: e.target.value }));
                   }}
-                  // ...estilos movidos a App.css...
                 />
               </li>
             ))}

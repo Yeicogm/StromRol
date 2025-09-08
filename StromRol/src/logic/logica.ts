@@ -95,10 +95,21 @@ export function aplicarVariaciones(
     } else {
       // Si no es una tirada de dados, sumar normalmente
       if (/^[+-]?\d+$/.test(cambio)) {
-        const valorActual = parseInt(actual || "0", 10);
-        nuevasCaracteristicas[nombreNormalizado] = (
-          valorActual + parseInt(cambio, 10)
-        ).toString();
+        // Si el valor actual es tipo XdY+Z, sumar al modificador
+        const dadoMatchSimple = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
+        if (dadoMatchSimple) {
+          let dados = parseInt(dadoMatchSimple[1], 10);
+          let caras = parseInt(dadoMatchSimple[2], 10);
+          let mod = dadoMatchSimple[3] ? parseInt(dadoMatchSimple[3], 10) : 0;
+          mod += parseInt(cambio, 10);
+          nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+        } else {
+          // Si no es tipo XdY, sumar normalmente
+          const valorActual = parseInt(actual || "0", 10);
+          nuevasCaracteristicas[nombreNormalizado] = (
+            valorActual + parseInt(cambio, 10)
+          ).toString();
+        }
       } else {
         nuevasCaracteristicas[nombreNormalizado] = cambio;
       }
