@@ -6,6 +6,6 @@ export default defineConfig({
   base: "/StromRol/",
   plugins: [react()],
   build: {
-    outDir: "docs",
+    outDir: "../docs", // Genera la build en la carpeta docs en el root del proyecto
   },
 });
