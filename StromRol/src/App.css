@@ -275,6 +275,10 @@
   background-color: #2e7d32;
 }
 
+.raza-chip-mental {
+  background-color: #8e24aa; /* púrpura para salud mental */
+}
+
 .raza-additional-info {
   display: flex;
   gap: 1rem;
