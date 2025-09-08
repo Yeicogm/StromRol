@@ -4,7 +4,7 @@
 
 StromRol es una aplicación web desarrollada con React, TypeScript y Vite que permite generar personajes para juegos de rol de fantasía. Puedes seleccionar razas, clases y características para crear tu personaje de forma rápida y visual.
 
-Strom es un juego de fantasia creado en 1996 por un grupo de chavales de Marbella. En la actualidad el juego se encuentra en al version 3.1.
+Strom es un juego de fantasia creado en 1996 por un grupo de chavales de Marbella. Esta inspirado y toma contenido de otros juegos de rol como: Stormbriger,Elric,Rune Quest y D&D. En la actualidad el juego se encuentra en al version 3.1.
 
 <div align="center"><img src="StromRol/public/Foto1.JPG" alt="Foto StromRol" width="380" /></div>
 
