@@ -33,8 +33,8 @@
         "Tamaño": "2D4+1",
         "Inteligencia": "4D6",
         "Poder": "2D6",
-        "Destreza": "4D6 +1",
-        "Carisma": "2D6 +1"
+        "Destreza": "4D6+1",
+        "Carisma": "2D6+1"
       },
       "notas": "30% de poseer un Hechizo. Se comunica con otros Drow a 120 metros con un lenguaje de símbolos.",
       "rango": "-1",

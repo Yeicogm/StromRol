@@ -86,6 +86,7 @@ export function aplicarVariaciones(
         }`;
       } else if (/^[+-]?\d+$/.test(cambio)) {
         // Ejemplo: '+1' => sumar modificador
+        // Si el valor actual es tipo XdY+Z, suma al modificador
         mod += parseInt(cambio, 10);
         nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
           mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
