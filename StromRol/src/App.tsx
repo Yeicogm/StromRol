@@ -513,7 +513,12 @@ function App() {
             const r = razas.find((r) => r.nombre === e.target.value);
             setRazaSeleccionada(r || null);
             handleComboChange();
-            if (r && ["SELOROK", "DEMONIO"].includes(r.nombre.toUpperCase())) {
+            if (
+              r &&
+              ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
+                r.nombre.toUpperCase()
+              )
+            ) {
               setClaseSeleccionada(null);
             }
           }}
@@ -542,7 +547,7 @@ function App() {
           }}
           disabled={Boolean(
             razaSeleccionada &&
-              ["SELOROK", "DEMONIOS"].includes(
+              ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
                 razaSeleccionada.nombre.toUpperCase()
               )
           )}
