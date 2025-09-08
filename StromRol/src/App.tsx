@@ -90,11 +90,19 @@ function App() {
 
     const destreza = parseInt(nuevasTiradas["Destreza"] || "0", 10);
     const sumaAA = fuerza + destreza;
-    let bonusAA = "Nada";
-    if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
-    else if (sumaAA >= 25 && sumaAA <= 40) bonusAA = "+1D4";
-    else if (sumaAA >= 41 && sumaAA <= 52) bonusAA = "+2D4";
-    else if (sumaAA >= 53) bonusAA = "2D4+1";
+    let bonusAA = "NO TIENE";
+    const clasesAA = ["ARQUERO", "CASACA AZUL", "ILMIONARIO", "GUARDABOSQUES"];
+    if (
+      claseSeleccionada &&
+      clasesAA.some(
+        (c) => claseSeleccionada.nombre.toUpperCase() === c.toUpperCase()
+      )
+    ) {
+      if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
+      else if (sumaAA >= 25 && sumaAA <= 40) bonusAA = "+1D4";
+      else if (sumaAA >= 41 && sumaAA <= 52) bonusAA = "+2D4";
+      else if (sumaAA >= 53) bonusAA = "2D4+1";
+    }
 
     const int = parseInt(nuevasTiradas["Inteligencia"] || "0", 10);
     const con = parseInt(nuevasTiradas["Constitución"] || "0", 10);
