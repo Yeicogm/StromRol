@@ -523,6 +523,7 @@ function App() {
             const r = razas.find((r) => r.nombre === e.target.value);
             setRazaSeleccionada(r || null);
             handleComboChange();
+            setResultadoHabilidades(null); // Oculta resultados de habilidades
             if (
               r &&
               ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
@@ -553,6 +554,7 @@ function App() {
             const c = clases.find((c) => c.nombre === e.target.value);
             setClaseSeleccionada(c || null);
             setTiradas({}); // Limpiar tiradas al cambiar la clase
+            setResultadoHabilidades(null); // Oculta resultados de habilidades
             handleComboChange();
           }}
           disabled={Boolean(
