@@ -73,7 +73,7 @@
       "caracteristicas": {
         "Fuerza": "6D8",
         "Constitución": "5D6",
-        "Tamaño": "2D6 +1",
+        "Tamaño": "2D6+1",
         "Inteligencia": "3D6",
         "Poder": "2D6",
         "Destreza": "2D6",
@@ -138,8 +138,8 @@
         "Tamaño": "2D4",
         "Inteligencia": "4D6",
         "Poder": "2D6",
-        "Destreza": "4D6 +1",
-        "Carisma": "2D6 +1"
+        "Destreza": "4D6+1",
+        "Carisma": "2D6+1"
       },
       "notas": "",
       "rango": "0",
