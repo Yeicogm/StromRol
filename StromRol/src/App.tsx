@@ -503,7 +503,7 @@ function App() {
       <h2 className="ficha-title">Generador de Fichas</h2>
       <div className="ficha-select-group">
         <label htmlFor="raza-select" className="ficha-label">
-          Raza:&nbsp;
+          Raza:
         </label>
         <select
           id="raza-select"
@@ -533,7 +533,7 @@ function App() {
       </div>
       <div className="ficha-select-group">
         <label htmlFor="clase-select" className="ficha-label">
-          Clase:&nbsp;
+          Clase:
         </label>
         <select
           id="clase-select"

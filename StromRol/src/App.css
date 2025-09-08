@@ -1,3 +1,13 @@
+/* Estilos para los labels de los combos */
+.ficha-label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Reducir separación entre los combos */
+.ficha-select-group {
+  margin-bottom: 4px;
+}
 /* Estilos para el label y checkbox de Dados min. 2 */
 .ficha-dadosmin-label {
   margin-left: 16px;
