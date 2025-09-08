@@ -1,3 +1,36 @@
+@media (max-width: 600px) {
+  .ficha-resultado-list {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .ficha-resultado-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .ficha-resultado-input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
+/* Alinear horizontalmente los inputs de tiradas */
+.ficha-resultado-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+.ficha-resultado-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 /* Contenedor de botones alineados horizontalmente */
 .ficha-botones-group {
   display: flex;

@@ -533,6 +533,7 @@ function App() {
           onChange={(e) => {
             const c = clases.find((c) => c.nombre === e.target.value);
             setClaseSeleccionada(c || null);
+            setTiradas({}); // Limpiar tiradas al cambiar la clase
             handleComboChange();
           }}
           disabled={Boolean(
