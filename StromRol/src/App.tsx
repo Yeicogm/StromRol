@@ -341,7 +341,7 @@ function App() {
     if (razaSeleccionada) {
       // Si la raza es SELOROK o DEMONIO, calcular solo con la raza
       if (
-        ["SELOROK", "DEMONIO"].includes(razaSeleccionada.nombre.toUpperCase())
+        ["SELOROK", "DEMONIOS"].includes(razaSeleccionada.nombre.toUpperCase())
       ) {
         setResultado(calcularCaracteristicasFinales(razaSeleccionada));
       } else if (claseSeleccionada) {
@@ -443,7 +443,12 @@ function App() {
       {renderBonificacionesTotales()}
 
       {/* Información de la clase seleccionada */}
-      {renderClaseInfo()}
+      {razaSeleccionada &&
+      ["SELOROK", "DEMONIO", "SELOROKS", "DEMONIOS"].includes(
+        razaSeleccionada.nombre.toUpperCase()
+      )
+        ? null
+        : renderClaseInfo()}
 
       {/* Información de la raza seleccionada */}
       {renderRazaInfo()}
