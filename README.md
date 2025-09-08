@@ -1,10 +1,12 @@
 # StromRol - Generador de personajes para rol
 
+# <div align="center"><img src="docs/logo.webp" alt="Logo de StromRol" width="320" /><br>
+
 StromRol es una aplicación web desarrollada con React, TypeScript y Vite que permite generar personajes para juegos de rol de fantasía. Puedes seleccionar razas, clases y características para crear tu personaje de forma rápida y visual.
 
 Strom es un juego de fantasia creado en 1996 por un grupo de chavales de Marbella. En la actualidad el juego se encuentra en al version 3.1.
 
-# <div align="center"><img src="docs/logo.webp" alt="Logo de StromRol" width="120" /><br><img src="StromRol/public/Foto1.JPG" alt="Foto StromRol" width="180" /></div>
+<div align="center"><img src="StromRol/public/Foto1.JPG" alt="Foto StromRol" width="380" /></div>
 
 ## Características principales
 
