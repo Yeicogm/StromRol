@@ -25,6 +25,7 @@ function App() {
     manipulacion: number;
     discrecion: number;
     saludMental: number;
+    puntosVida: number;
   };
   const [resultadoHabilidades, setResultadoHabilidades] =
     useState<HabilidadesResultado | null>(null);
@@ -121,7 +122,7 @@ function App() {
     const manipulacion = int * 2 + destreza + car - 15;
     const discrecion = int + Math.floor(fuerza / 2) + pod + destreza - tam - 5;
     const saludMental = pod + car + int + 40 - con;
-
+    const puntosVida = Math.max(1, con + tam - 12);
     setResultadoHabilidades({
       bonusCC: `Bonus de Fuerza CC: ${bonusCC}`,
       bonusAA: `Bonus de Fuerza AA: ${bonusAA}`,
@@ -132,6 +133,7 @@ function App() {
       manipulacion,
       discrecion,
       saludMental,
+      puntosVida,
     });
   };
 
@@ -681,6 +683,7 @@ function App() {
                   manipulacion,
                   discrecion,
                   saludMental,
+                  puntosVida: Math.max(1, con + tam - 12),
                 });
               }}
             >
@@ -717,6 +720,12 @@ function App() {
                 </span>
                 <span className="raza-chip raza-chip-secondary">
                   {resultadoHabilidades.bonusAA.split(":")[1]}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">Puntos de vida:</span>
+                <span className="raza-chip raza-chip-pv">
+                  {resultadoHabilidades.puntosVida}
                 </span>
               </div>
               <div className="raza-list-item">
