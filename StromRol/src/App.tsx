@@ -436,6 +436,13 @@ function App() {
               </li>
             ))}
           </ul>
+          {/* Mostrar variacion_carac_info si existe en la clase seleccionada */}
+          {claseSeleccionada?.variacion_carac_info && (
+            <div className="ficha-resultado-info">
+              <b>Info adicional de dados:</b>{" "}
+              {claseSeleccionada.variacion_carac_info}
+            </div>
+          )}
         </div>
       )}
 

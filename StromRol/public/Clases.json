@@ -60,7 +60,7 @@
       "descripcion": "Los magos son los practicantes supremos de la magia, definidos y unidos como una clase por los hechizos que conjuran. A partir de la sutil onda de la magia que impregna el cosmos, los magos lanzan explosivos hechizos de fuego, arcos voltaicos, sutiles engaños y brutales formas de control mental.",
       "rango": "-2/+2",
       "variacion_caracteristicas": ["PODER 5D8", "INTELIGENCIA +1D6"],
-      "variacion_carac_info": "",
+      "variacion_carac_info": "MAX FUERZA 18",
       "variacion_habilidades": ["Regeneración de SM 3 al día"],
       "equipo_especial": "Bastón de combate Mágico +5% Bonus",
       "Bonus_combate": {
@@ -190,7 +190,7 @@
       "descripcion": "Ya sea invocando a las fuerzas elementales o emulando a las criaturas del mundo animal, los druidas son la personificación de la resistencia, astucia y furia de la naturaleza. Dicen no tener un dominio sobre la naturaleza. En lugar de eso, se ven como una extensión de la voluntad indomable de la misma.",
       "rango": "+1",
       "variacion_caracteristicas": ["+1D PODER", "+1D INTELIGENCIA"],
-      "variacion_carac_info": "mínimo 5D, MAX FURZA 19",
+      "variacion_carac_info": "mínimo 5D PODER, MAX FUERZA 19",
       "variacion_habilidades": [
         "+50 plantas y venenos",
         "+5 Percepción",
