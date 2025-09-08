@@ -1,3 +1,7 @@
+/* Centrar texto en los inputs numéricos de dados */
+.ficha-resultado-input {
+  text-align: center;
+}
 /* Estilos para el generador de fichas */
 .ficha-container {
   max-width: 800px;

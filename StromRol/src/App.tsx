@@ -10,10 +10,10 @@ function App() {
   const [razas, setRazas] = useState<Raza[]>([]);
   const [clases, setClases] = useState<Clase[]>([]);
   const [razaSeleccionada, setRazaSeleccionada] = useState<Raza | null>(null);
-  const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(
-    null
-  );
+  const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(null);
   const [resultado, setResultado] = useState<Caracteristicas | null>(null);
+  // Estado para los resultados de las tiradas
+  const [tiradas, setTiradas] = useState<Record<string, string>>({});
 
   const renderRazaInfo = () => {
     if (!razaSeleccionada) return null;
@@ -433,6 +433,17 @@ function App() {
               <li key={car} className="ficha-resultado-item">
                 <b className="ficha-resultado-carac">{car}:</b>{" "}
                 <span className="ficha-resultado-dado">{dado as string}</span>
+                <input
+                  type="number"
+                  min="1"
+                  className="ficha-resultado-input"
+                  placeholder="Tirada"
+                  value={tiradas[car] || ""}
+                  onChange={e => {
+                    setTiradas(prev => ({ ...prev, [car]: e.target.value }));
+                  }}
+                  style={{ marginLeft: '8px', width: '60px' }}
+                />
               </li>
             ))}
           </ul>
@@ -443,6 +454,18 @@ function App() {
               {claseSeleccionada.variacion_carac_info}
             </div>
           )}
+          {/* Botón para calcular habilidades */}
+          <button
+            className="ficha-calcular-btn"
+            style={{ marginTop: '16px', padding: '8px 20px', fontWeight: 'bold' }}
+            disabled={Object.keys(resultado || {}).length === 0 || Object.entries(resultado || {}).some(([car]) => !tiradas[car])}
+            onClick={() => {
+              // Aquí puedes manejar el cálculo de habilidades
+              alert('¡Habilidades calculadas!');
+            }}
+          >
+            Calcular habilidades
+          </button>
         </div>
       )}
 
