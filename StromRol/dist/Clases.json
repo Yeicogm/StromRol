@@ -1,0 +1,435 @@
+{
+  "clases": [
+    {
+      "nombre": "GUARDABOSQUES",
+      "descripcion": "Hombre de los bosques, experto cazador, rastreador y superviviente, y un mero vistazo a su iteración original revela a las claras que su fuente de inspiración directa son los montaraces del norte de la obra de J.R.R.",
+      "rango": "+1",
+      "variacion_caracteristicas": ["Inteligencia +1"],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["+10 Percepción"],
+      "equipo_especial": "Arco Simple, Hacha de mano.",
+      "Bonus_combate": {
+        "ataque": "35%",
+        "defensa": "30%",
+        "armas_arrojadizas": "40%"
+      },
+      "especial": "-GOLPE DE CAZADOR- 1 ATAQUE CON +15% y Daño +3 contra criaturas salvajes 1 vez por combate, 1 HECHIZO DE GUARDABOSQUES X NIVEL, Bonus daño Arco Simple.",
+      "cualidades": "GUERRERO"
+    },
+    {
+      "nombre": "JINETE",
+      "descripcion": "Los jinetes de caballería son diestros guerreros a caballo. Su simbiosis con el animal hace que el control sobre él sea absoluto",
+      "rango": "0",
+      "variacion_caracteristicas": [],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["Equitación 100%"],
+      "equipo_especial": "Caballo Pura Sangre + Escudo Pavés",
+      "Bonus_combate": {
+        "ataque": "35%",
+        "defensa": "35%",
+        "montado_a_caballo": "+15%",
+        "armas_arrojadizas": "35%"
+      },
+      "especial": "-Cambio de arma fuera de turno si está en caballo, Sin Restricciones de uso en lanzas.",
+      "cualidades": "GUERRERO"
+    },
+    {
+      "nombre": "CASACA AZUL",
+      "descripcion": "Guerrero bárbaro criado en los bosques",
+      "rango": "0",
+      "variacion_caracteristicas": ["Destreza +3"],
+      "variacion_carac_info": "",
+      "variacion_habilidades": [
+        "Conocimiento de plantas y venenos 100%",
+        "Cartografía +25",
+        "Percepción +25",
+        "Agilidad +10",
+        "Discreción +5"
+      ],
+      "equipo_especial": "Lanza larga, hierbas curativas 1d6 (3), Cuero -2",
+      "Bonus_combate": {
+        "ataque": "30% /45%*",
+        "defensa": "35%",
+        "armas_arrojadizas": "35%"
+      },
+      "especial": "No necesita comprar alimentos debido a sus conocimientos de supervivencia, +15 con todo tipo de armas tipo picas, lanzas, Sin Restricciones de uso en lanzas, Bonus daño Lanzas Arrojadizas",
+      "cualidades": "GUERRERO"
+    },
+    {
+      "nombre": "MAGO / HECHICERO",
+      "descripcion": "Los magos son los practicantes supremos de la magia, definidos y unidos como una clase por los hechizos que conjuran. A partir de la sutil onda de la magia que impregna el cosmos, los magos lanzan explosivos hechizos de fuego, arcos voltaicos, sutiles engaños y brutales formas de control mental.",
+      "rango": "-2/+2",
+      "variacion_caracteristicas": ["PODER 5D8", "INTELIGENCIA +1D6"],
+      "variacion_carac_info": "MAX FUERZA 18",
+      "variacion_habilidades": ["Regeneración de SM 3 al día"],
+      "equipo_especial": "Bastón de combate Mágico +5% Bonus",
+      "Bonus_combate": {
+        "ataque": "25%",
+        "defensa": "25%",
+        "armas_arrojadizas": "25%"
+      },
+      "especial": "5 HECHIZOS SEGÚN RANGO MAGO O HECHICERO, Pueden Elegir Escuela y tendrá ½ de conjuros de ella.",
+      "cualidades": "MAGOS Y HECHICEROS"
+    },
+    {
+      "nombre": "GUERRERO MELNIBONES",
+      "descripcion": "Todos los guerreros comparten un dominio magistral de las armas y armaduras, y un exhaustivo conocimiento de las habilidades del combate. Además, están muy relacionados con la muerte, tanto repartiéndola como mirándola fijamente, desafiantes.",
+      "rango": "0",
+      "variacion_caracteristicas": ["FUERZA +1"],
+      "variacion_carac_info": "",
+      "variacion_habilidades": [],
+      "equipo_especial": "PLACA COMPLETA SIN YELMO (-8 PESADA)",
+      "Bonus_combate": {
+        "ataque": "50%",
+        "defensa": "50%",
+        "armas_arrojadizas": "40%"
+      },
+      "especial": "Adapta Tamaño Armadura TAM +-3",
+      "cualidades": "GUERRERO"
+    },
+    {
+      "nombre": "MELNIBONES BORAIN",
+      "descripcion": "Guerrero Clérigo adorador de los 4 elementos",
+      "rango": "0 / +1",
+      "variacion_caracteristicas": [],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["Regeneración de SM 2 al dia"],
+      "equipo_especial": "Cuero y Anillas + Espada ancha",
+      "Bonus_combate": {
+        "ataque": "40%",
+        "defensa": "40%",
+        "armas_arrojadizas": "40%"
+      },
+      "especial": "CONVOCA ELEMENTALES CON 30 SM - Sin Restricciones en Cimitarras",
+      "cualidades": "GUERRERO"
+    },
+    {
+      "nombre": "GUARDIA DE LEY / CAOS",
+      "descripcion": "Adorador fanático",
+      "rango": "+2 /-1",
+      "variacion_caracteristicas": [
+        "FUERZA +2",
+        "CONSTITUCIÓN +2",
+        "TAMAÑO +2",
+        "INTELIGENCIA +2",
+        "PODER +2",
+        "DESTREZA +2",
+        "CARISMA +2"
+      ],
+      "variacion_carac_info": "Por medallón mágico",
+      "variacion_habilidades": [],
+      "equipo_especial": "Hacha de Batalla, Cuero y Anillas",
+      "Bonus_combate": {
+        "ataque": "30%",
+        "defensa": "35%",
+        "armas_arrojadizas": "30%"
+      },
+      "especial": "Sin restricciones en Mazas",
+      "cualidades": "GUERRERO"
+    },
+    {
+      "nombre": "ARQUERO",
+      "descripcion": "Especialista en arcos.",
+      "rango": "0",
+      "variacion_caracteristicas": [],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["Percepción +10"],
+      "equipo_especial": "Arco Simple + espada corta",
+      "Bonus_combate": {
+        "ataque": "30%",
+        "defensa": "35%",
+        "armas_arrojadizas": "50%"
+      },
+      "especial": "Sin Restricciones de uso en arcos y ballestas, Bonus daños en arcos y ballestas.",
+      "cualidades": "GUERRERO"
+    },
+    {
+      "nombre": "GUERRERO MON",
+      "descripcion": "Guerrero entrenado para el combate de ascendencia noble",
+      "rango": "0",
+      "variacion_caracteristicas": ["CARISMA +1"],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["Emboscada +10"],
+      "equipo_especial": "Espada Larga + Armadura MON (Semi-Placa -3)",
+      "Bonus_combate": {
+        "ataque": "50%",
+        "defensa": "50%",
+        "armas_arrojadizas": "40%"
+      },
+      "especial": "Sin Restricciones de uso en Espadas 2M.",
+      "cualidades": "GUERRERO"
+    },
+    {
+      "nombre": "NINJA",
+      "descripcion": "Se mueven por entre las sombras, abatiendo a los incautos y desvaneciéndose de nuevo con facilidad. Caminan donde otros no pueden, combinando su entrenamiento en el sigilo y el asesinato con una mente centrada.",
+      "rango": "1/0/-1",
+      "variacion_caracteristicas": [],
+      "variacion_carac_info": "",
+      "variacion_habilidades": [
+        "Agilidad +10",
+        "Equilibrio +15",
+        "Ver +10",
+        "Evitar +5",
+        "Hacer V. +30",
+        "Saltar +10",
+        "Trepar +10",
+        "Emboscada +15",
+        "Desli Y Esconderse +10"
+      ],
+      "equipo_especial": "Dos Espadas C. Ninja o Catana + 10 Shuriken y 5 plutonios por aventura.",
+      "Bonus_combate": {
+        "ataque": "50%",
+        "defensa": "50%",
+        "armas_arrojadizas": "45%"
+      },
+      "especial": "SOLO ARMAS NINJA - Asesinato X 2 (50%), Sin Restricciones de uso ARMAS NINJA.",
+      "cualidades": "GUERRERO / PICAROS (Cambio rango)"
+    },
+    {
+      "nombre": "DRUIDA",
+      "descripcion": "Ya sea invocando a las fuerzas elementales o emulando a las criaturas del mundo animal, los druidas son la personificación de la resistencia, astucia y furia de la naturaleza. Dicen no tener un dominio sobre la naturaleza. En lugar de eso, se ven como una extensión de la voluntad indomable de la misma.",
+      "rango": "+1",
+      "variacion_caracteristicas": ["+1D PODER", "+1D INTELIGENCIA"],
+      "variacion_carac_info": "mínimo 5D PODER, MAX FUERZA 19",
+      "variacion_habilidades": [
+        "+50 plantas y venenos",
+        "+5 Percepción",
+        "Regeneración de SM 3 al día"
+      ],
+      "equipo_especial": "Cimitarra y tarja",
+      "Bonus_combate": {
+        "ataque": "25%",
+        "defensa": "25%",
+        "armas_arrojadizas": "25%"
+      },
+      "especial": "5 HECHICOS DE DRUIDA",
+      "cualidades": "MAGOS Y HECHICEROS"
+    },
+    {
+      "nombre": "Bárbaro",
+      "descripcion": "Para algunos, su rabia brota de la comunión con espíritus de animales salvajes. Otros recurren a su hirviente reserva de ira frente a un mundo lleno de dolor. Para los barbaros, la furia es un poder que no solo les proporciona un frenesí? ciego en la batalla, sino también extraordinarios reflejos, resistencia y proezas de fuerza.",
+      "rango": "0",
+      "variacion_caracteristicas": ["-2 INTELIGENCIA"],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["Primeros Auxilios +100", "Saltar +15"],
+      "equipo_especial": "Bastarda",
+      "Bonus_combate": {
+        "ataque": "50%",
+        "defensa": "50%",
+        "armas_arrojadizas": "40%"
+      },
+      "especial": "Puede usar 2 Bastardas, 3 turnos concentrado ataque x3, Sin Restricciones de uso en E.Bastardas.",
+      "cualidades": "GUERREROS"
+    },
+    {
+      "nombre": "Guardia Purpura",
+      "descripcion": "Entrenado como soltado, el purpura nunca abandonara el combate ni la formación.",
+      "rango": "0",
+      "variacion_caracteristicas": ["CONSTITUCION +1"],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["Emboscada +10"],
+      "equipo_especial": "Semi placa en torso Demonio PV variables",
+      "Bonus_combate": {
+        "ataque": "50%",
+        "defensa": "50%",
+        "armas_arrojadizas": "40%"
+      },
+      "especial": "Siempre usa escudo, Sin Restricciones de uso en Escudos.",
+      "cualidades": "GUERREROS"
+    },
+    {
+      "nombre": "Guerrero ilmionario",
+      "descripcion": "Bárbaro en las montañas de ilmiora. Vivir en un terreno tan duro le ha forjado unas habilidades especiales.",
+      "rango": "0",
+      "variacion_caracteristicas": [],
+      "variacion_carac_info": "",
+      "variacion_habilidades": [
+        "Emboscada +10",
+        "Agilidad +25",
+        "Percepción +10"
+      ],
+      "equipo_especial": "Hacha de batalla + 2 Protectores",
+      "Bonus_combate": {
+        "ataque": "50%",
+        "defensa": "50%",
+        "armas_arrojadizas": "40%"
+      },
+      "especial": "No usa armas 2M. Puede equipar 2 hachas de batalla. No usa armaduras metálicas, excepto virtuosas, Sin Restricciones de uso HACHAS 1M, Bonus Daño Hachas Arrojadizas.",
+      "cualidades": "GUERREROS"
+    },
+    {
+      "nombre": "Bardo",
+      "descripcion": "Ya sea un erudito, un poeta o un canalla, un bardo teje su magia a través de sus palabras y su música para inspirar a los aliados, desmoralizar a los enemigos, manipular mentes, crear ilusiones e incluso sanar heridas.",
+      "rango": "2",
+      "variacion_caracteristicas": [
+        "Poder +2",
+        "Carisma +1D",
+        "Inteligencia +1"
+      ],
+      "variacion_carac_info": "MAX FUE 20",
+      "variacion_habilidades": [
+        "Comunicación +25",
+        "Regeneración de SM 2 al día"
+      ],
+      "equipo_especial": "Espada Ionica (3d6 a una mano con escudo)",
+      "Bonus_combate": {
+        "ataque": "35%",
+        "defensa": "40%",
+        "armas_arrojadizas": "35%"
+      },
+      "especial": "2 hechizos de Bardo por nivel",
+      "cualidades": "GUERREROS/MAGOS"
+    },
+    {
+      "nombre": "Noble Guerrero / Caballero del Caos",
+      "descripcion": "Sean cuales sean sus orígenes y sus misiones, los paladines están unidos por sus juramentos para luchar en contra de las fuerzas del mal. El juramento de un paladín es un lazo muy poderoso. Es una fuente de poder que convierte a un devoto guerrero en un campeón bendecido.",
+      "rango": "+3/-3",
+      "variacion_caracteristicas": [],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["Comunicación +5", "Primeros Auxilios +5"],
+      "equipo_especial": "Caballo de Guerra, Lanza Torneo.1100 M.O",
+      "Bonus_combate": {
+        "ataque": "50%",
+        "defensa": "50%",
+        "armas_arrojadizas": "40%"
+      },
+      "especial": "Resistencia hasta -10PV en pie – Sin Res. Lanza Torneo",
+      "cualidades": "GUERREROS"
+    },
+    {
+      "nombre": "Ladrón",
+      "descripcion": "Has perfeccionado tus habilidades en las artes del latrocinio. Ladrones, bandidos, rateros y otros criminales suelen seguir este arquetipo, pero también lo hacen los pícaros que prefieren pensar en sí mismos como en buscadores de tesoros profesionales.",
+      "rango": "-1",
+      "variacion_caracteristicas": [
+        "INTELIGENCIA +2",
+        "DESTREZA +1D (MAX FUERZA 19)"
+      ],
+      "variacion_carac_info": "",
+      "variacion_habilidades": [
+        "Evaluar T. +10",
+        "Percepción +5",
+        "Agilidad +5",
+        "Manipulación +10",
+        "Forzar C. +15",
+        "Robar Bolsas +15",
+        "Disimular +15"
+      ],
+      "equipo_especial": "Cerbatana 5 dardos Veneno somnífero Pot 14, Espada Corta.",
+      "Bonus_combate": {
+        "ataque": "25%",
+        "defensa": "25%",
+        "armas_arrojadizas": "25%"
+      },
+      "especial": "-Saqueo, -Asesinato X2 100%, -Doble Acción si está escondido, -Improvisar. (requiere nivel 3 y solo una vez) puede elegir un objeto mágico que normalmente no puede usar y usarlo permanentemente. NEGOCIAR con Master.",
+      "cualidades": "PICAROS"
+    },
+    {
+      "nombre": "Asesino",
+      "descripcion": "El asesino es un maestro en asestar golpes rápidos y letales. También sobresale en el arte del difraz y la infiltración. Los asesinos trabajan a menudo como espías, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatomía, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mortíferas con precisión espeluznante y terrorífica.",
+      "rango": "-2",
+      "variacion_caracteristicas": ["INTELIGENCIA +2", "DESt +1D"],
+      "variacion_carac_info": "mínimo 5D DESTREZA, MAX FUE 19",
+      "variacion_habilidades": [
+        "Conocimiento de plantas y venenos +10",
+        "Equilibrio +5",
+        "Agilidad +5",
+        "Manipulación +3",
+        "disimular +10",
+        "esconderse +10",
+        "deslizarse +10"
+      ],
+      "equipo_especial": "Espada Corta",
+      "Bonus_combate": {
+        "ataque": "25%",
+        "defensa": "25%",
+        "armas_arrojadizas": "25%"
+      },
+      "especial": "-Asesinato X2 100% y X5 con 25%, -Doble Acción si está escondido",
+      "cualidades": "PICAROS"
+    },
+    {
+      "nombre": "Asesino Eshmiriano",
+      "descripcion": "El asesino es un maestro en asestar golpes rápidos y letales. También sobresale en el arte del difraz y la infiltración. Los asesinos trabajan a menudo como espías, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatomía, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mortíferas con precisión espeluznante y terrorífica.",
+      "rango": "-2",
+      "variacion_caracteristicas": ["INTELIGENCIA +2", "DESTREZA +1D"],
+      "variacion_carac_info": "mínimo 5D DESTREZA, MAX FUE 19",
+      "variacion_habilidades": [
+        "Conocimiento de plantas y venenos +20",
+        "Equilibrio +5",
+        "Agilidad +5",
+        "Manipulación +5",
+        "disimular +5",
+        "esconderse +6",
+        "deslizarse +6"
+      ],
+      "equipo_especial": "Pack Asesino Esmir (Libro Demonios y magia)",
+      "Bonus_combate": {
+        "ataque": "25%",
+        "defensa": "25%",
+        "armas_arrojadizas": "25%"
+      },
+      "especial": "-Asesinato X2 100% y X5 con 25%, -Doble Acción si está escondido",
+      "cualidades": "PICAROS"
+    },
+    {
+      "nombre": "Clérigo",
+      "descripcion": "Los clérigos buenos se dedican a curar, proteger y vengar, los malignos a saquear, destruir y sabotear. Un clérigo manifiesta la voluntad divina utilizando el poder de su dios, aunque también es de esperar que lo emplee para mejorar sus propios asuntos.",
+      "rango": "+1",
+      "variacion_caracteristicas": [
+        "FUERZA -1",
+        "PODER +1D",
+        "INTELIGENCIA +1"
+      ],
+      "variacion_carac_info": "",
+      "variacion_habilidades": ["Emboscada +5", "Regeneración de SM 2 al día"],
+      "equipo_especial": "Martillo de guerra",
+      "Bonus_combate": {
+        "ataque": "30%",
+        "defensa": "35%",
+        "armas_arrojadizas": "30%"
+      },
+      "especial": "3 hechizos Clérigo",
+      "cualidades": "GUERREROS / MAGO"
+    },
+    {
+      "nombre": "Hechicero Guerrero",
+      "descripcion": "Combinando los poderes dinámicos de la habilidad marcial y el poder arcano, el Hechicero Guerrero supone un desafío mortal para los oponentes que no están acostumbrados a enemigos de su calibre.",
+      "rango": "-1",
+      "variacion_caracteristicas": ["PODER +1D", "INTELIGENCIA +1"],
+      "variacion_carac_info": "MAX FUERZA 30",
+      "variacion_habilidades": ["Emboscada +5", "Regeneración de SM 2 al día"],
+      "equipo_especial": "Daga + Espada corta",
+      "Bonus_combate": {
+        "ataque": "30%",
+        "defensa": "35%",
+        "armas_arrojadizas": "30%"
+      },
+      "especial": "3 hechizos",
+      "cualidades": "GUERREROS / MAGO"
+    },
+    {
+      "nombre": "Guerrero Asesino",
+      "descripcion": "Algunos son sigilosos ladrones; otros, embusteros con pico de oro; y aún otros son infiltrados, espías, diplomáticos o matones. Lo único que tienen en común es que son polifacéticos, además de poseer un gran ingenio y mucha capacidad de adaptación.",
+      "rango": "-1",
+      "variacion_caracteristicas": ["Fuerza -1", "Destreza +1D"],
+      "variacion_carac_info": "MAX FUE 30",
+      "variacion_habilidades": [
+        "Conocimiento de plantas y venenos +5",
+        "Equilibrio +5",
+        "Agilidad +5",
+        "Manipulación +5",
+        "disimular +10",
+        "esconderse +10",
+        "deslizarse +5"
+      ],
+      "equipo_especial": "Cimitarra + 5 Dardos de Veneno Somnífero POT 13",
+      "Bonus_combate": {
+        "ataque": "30%",
+        "defensa": "35%",
+        "armas_arrojadizas": "30%"
+      },
+      "especial": "-Doble Acción si está escondido",
+      "cualidades": "GUERREROS / Pikaros"
+    }
+  ]
+}

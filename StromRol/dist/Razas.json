@@ -1,0 +1,196 @@
+{
+  "razas": [
+    {
+      "nombre": "DEMONIOS",
+      "descripcion": "Los Demonios son criaturas provenientes de los infiernos, criaturas despiadadas. Son más parecidas a un animal que a otras razas. Es una raza guerrera y conquistadora por naturaleza. En la actualidad solo existen unos pocos, los cuales se unen a aventureros para sobrevivir, ya que de lo contrario serian atados como sus antepasados. Los demonios son antisociales, no usan ropa y son mal vistos por todas las razas.",
+      "caracteristicas": {
+        "Fuerza": "7D8",
+        "Constitución": "4D6",
+        "Tamaño": "4D6",
+        "Inteligencia": "2D6",
+        "Poder": "2D6",
+        "Destreza": "3D6",
+        "Carisma": "1D4"
+      },
+      "notas": "No eligen clase ni origen, no usan armas y no niegan la magia.",
+      "armadura": "-4",
+      "ataque": "50% - 50% (GarraX2 y Mordisco)",
+      "rango": "-2",
+      "bonificaciones": {
+        "Olfatear": "+5",
+        "Degustar": "+25",
+        "Persuadir": "+10",
+        "Buscar": "+5",
+        "Trepar": "+5"
+      }
+    },
+    {
+      "nombre": "DROW",
+      "descripcion": "Aunque relacionados con los elfos, los drow son el primo vil y malvado, en el mejor de los casos. A veces llamados elfos oscuros, estas astutas criaturas merodean por las cuevas y túneles de la oscuridad. Adoradores de demonios y esclavizan a la mayoría de razas que encuentran. Tienen piel oscura, que va desde el negro hasta un tono púrpura brumoso. La mayoría de los drow tienen pelo blanco o plateado y ojos blancos o rojos. La sociedad drow está gobernada por una poderosa nobleza, se rigen por sádicas y peligrosas matriarcas que constantemente intrigan y conspiran contra las casas rivales En combate, son completamente despiadados, con poco respeto por la justicia o la piedad.",
+      "caracteristicas": {
+        "Fuerza": "3D8",
+        "Constitución": "5D6",
+        "Tamaño": "2D4+1",
+        "Inteligencia": "4D6",
+        "Poder": "2D6",
+        "Destreza": "4D6+1",
+        "Carisma": "2D6+1"
+      },
+      "notas": "30% de poseer un Hechizo. Se comunica con otros Drow a 120 metros con un lenguaje de símbolos.",
+      "rango": "-1",
+      "bonificaciones": {
+        "Música y Leyendas": "+5",
+        "Conocimiento de plantas y venenos": "+5",
+        "Escuchar": "+5",
+        "Cantar": "+5"
+      }
+    },
+    {
+      "nombre": "ELFOS",
+      "descripcion": "Los Elfos tienden a ser un poco más bajos y delgados que los Humanos. Sus rasgos son tallados y delicados, hablan en todo melódico. Aunque parecen frágiles y débiles, como raza son rápidos y fuertes. Los Elfos viven unos 1.200 años. Los Elfos conocen la magia y no la niegan. Prefieren distanciarse de los Humanos y sienten poco amor por los Enanos y los ocupantes malignos de los bosques.",
+      "caracteristicas": {
+        "Fuerza": "3D8",
+        "Constitución": "4D6",
+        "Tamaño": "3D6",
+        "Inteligencia": "4D6",
+        "Poder": "2D8",
+        "Destreza": "4D6",
+        "Carisma": "1D8+2"
+      },
+      "notas": "Poseen un hechizo de primer nivel de cualquier clase de elección del DJ. (Este hechizo no se dará en el caso de que ya controlé magia).",
+      "rango": "+1",
+      "bonificaciones": {
+        "Música y Leyendas": "+5",
+        "Conocimiento de plantas y venenos": "+5",
+        "Escuchar": "+5",
+        "Ver": "+5%",
+        "Cantar": "+5"
+      }
+    },
+    {
+      "nombre": "ENANOS",
+      "descripcion": "Los Enanos son bajos, robustos y fácilmente identificables por su tamaño y forma. Tienen mofletes rojizos, ojos y pelo oscuro. Los Enanos viven unos 350 años. Están acostumbrados a trabajar duro, son fuertes y valientes. Odian a los Elfos y a la navegación, pero les encantan las gemas. Prefieren la vida en la penumbra bajo tierra.",
+      "caracteristicas": {
+        "Fuerza": "6D8",
+        "Constitución": "5D6",
+        "Tamaño": "2D6 +1",
+        "Inteligencia": "3D6",
+        "Poder": "2D6",
+        "Destreza": "2D6",
+        "Carisma": "2D6"
+      },
+      "notas": "Poseen infravisión y conocen por perfección todo lo referente a grutas y cueva.",
+      "rango": "0",
+      "bonificaciones": {
+        "Evaluar un tesoro": "+10",
+        "Olfatear": "+5",
+        "Ver": "+10"
+      }
+    },
+    {
+      "nombre": "HUMANO DEMONIO",
+      "descripcion": "Los humanos demonios se crearon en la Gran Batalla de los Reinos, entonces los demonios eran atados a las armas, pero el hierro empezó a faltar y los grandes hechiceros comenzaron a utilizar a los humanos. Los H&D son más humanos, pero poseen la fuerza brutal de los demonios y su gran maldad. Tienen aspecto de humano gigante muy corpulento y estúpido.",
+      "caracteristicas": {
+        "Fuerza": "5D8",
+        "Constitución": "4D6",
+        "Tamaño": "5D8",
+        "Inteligencia": "2D4+1",
+        "Poder": "2D6",
+        "Destreza": "2D6",
+        "Carisma": "1D6"
+      },
+      "notas": "Sus uñas son muy resistentes y se pueden usar de arma Daño 1d4.",
+      "rango": "-1",
+      "bonificaciones": {
+        "Degustar": "+10",
+        "Persuadir": "+10",
+        "Trepar": "+5"
+      }
+    },
+    {
+      "nombre": "HUMANO",
+      "descripcion": "Los humanos en la actualidad son la raza que más existe en los reinos. Los humanos no destacan en nada, son unas de las razas más valientes debido a que es la raza que más cree en la religión. Sin embargo, los humanos tienen un lado tenebroso que les hace hacer el mal en algunas ocasiones.",
+      "caracteristicas": {
+        "Fuerza": "5D6",
+        "Constitución": "4D6",
+        "Tamaño": "4D6",
+        "Inteligencia": "3D6",
+        "Poder": "2D6",
+        "Destreza": "3D6+1",
+        "Carisma": "2D6"
+      },
+      "notas": "Raza muy social.",
+      "rango": "0",
+      "bonificaciones": {
+        "Equilibrio": "+5",
+        "Equitación": "+6",
+        "Primeros Auxilios": "+5",
+        "Saltar": "+5",
+        "Nadar": "+5"
+      }
+    },
+    {
+      "nombre": "MEDIANO",
+      "descripcion": "Los medianos alcanzan una discreta altura de unos 3 pies. Prefieren caminar descalzos, haciendo que las plantas de sus pies acaben siendo sumamente duras. Optimistas y alegres por naturaleza, dotados de una extraordinaria suerte y con una inusitada pasión por los viajes, los medianos compensan su corta estatura con una gran dosis de bravuconería y curiosidad. Los medianos se enorgullecen por su habilidad de pasar desapercibidos a las demás razas es precisamente esto lo que les permite a muchos de ellos destacar en el robo y el engaño.",
+      "caracteristicas": {
+        "Fuerza": "3D8",
+        "Constitución": "5D6",
+        "Tamaño": "2D4",
+        "Inteligencia": "4D6",
+        "Poder": "2D6",
+        "Destreza": "4D6 +1",
+        "Carisma": "2D6 +1"
+      },
+      "notas": "",
+      "rango": "0",
+      "bonificaciones": {
+        "Movimiento silencioso": "+3%",
+        "Hacer volteretas": "+5%",
+        "Robar Bolsa": "+5%",
+        "Cantar": "+5%",
+        "Esconderse": "+3%",
+        "Equilibrio": "+10%"
+      }
+    },
+    {
+      "nombre": "SELOROK",
+      "descripcion": "Se cree que provienen de los Onais. Son gordos, de color rosado, tienen manos y pies con garras y no son muy listos. Esta raza tiene alguna simpatía por parte de los humanos debido a su aspecto, pues recuerda al de los cerdos. Son antisociales y no usan ropa.",
+      "caracteristicas": {
+        "Fuerza": "6D8",
+        "Constitución": "6D8",
+        "Tamaño": "4D6",
+        "Inteligencia": "2D6",
+        "Poder": "2D6",
+        "Destreza": "2D6",
+        "Carisma": "1D4"
+      },
+      "notas": "No eligen clase, no usan armas. Flotan bastante en el agua.",
+      "rango": "-1",
+      "bonificaciones": {
+        "Olfatear": "+5",
+        "Degustar": "+25",
+        "Persuadir": "+10",
+        "Nadar": "+50"
+      }
+    },
+    {
+      "nombre": "TIFLIN",
+      "descripcion": "Los Tiflin son humanos con sangre de demonios, diablos u otros ajenos malvados en su ascendencia. A menudo perseguidos por su aspecto extraño y sus peculiaridades antinaturales, la mayoría de los Tiflin disfrazan su naturaleza o son obligados a vivir en los límites o en los bajos fondos de las sociedades civilizadas. A pesar de que no nacen malvados, es sencillo para ellos seguir ese camino, especialmente debido a que la mayoría sufren a manos de la gente “normal” durante su crecimiento. Los Tiflin aparentan ser humanos casi normales, excepto por algunas particularidades físicas que revelan su extraña herencia.",
+      "caracteristicas": {
+        "Fuerza": "4D6",
+        "Constitución": "4D6",
+        "Tamaño": "4D6",
+        "Inteligencia": "3D6",
+        "Poder": "2D6 +1",
+        "Destreza": "3D6",
+        "Carisma": "1D6+1"
+      },
+      "notas": "+2 Rasgos. Uno de cada bloque: BLOQUE 1: Pelaje -1, Piernas Animal (+2 cuadros sin ataque), Marca Nacimiento (+5% rango contrario) | BLOQUE 2: Infra visión, Mordisco 1D10, Cuernos (Yelmo que no sube armadura. Pro.Crit 50%), Protección Mágica (Frio, Fuego, Hielo 15% + 1% por nivel)",
+      "rango": "-1 / 0 / +1",
+      "bonificaciones": {
+        "Equilibrio": "+5",
+        "PX": "+200 en la tabla"
+      }
+    }
+  ]
+}
