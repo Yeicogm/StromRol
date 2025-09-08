@@ -1,54 +1,87 @@
-/* Estilos para los labels de los combos */
-.ficha-label {
-  display: block;
-  margin-bottom: 4px;
-}
+:root {
+  --primary-color: #6c63ff; /* violeta moderno */
+  --secondary-color: #48cae4; /* azul pastel */
+  --background-color: #f8f9fa; /* fondo claro pastel */
+  --accent-color: #ffb6b9; /* rosa suave */
+  --text-color: #22223b; /* azul oscuro */
+  /* llave extra eliminada */
 
-/* Reducir separación entre los combos */
-.ficha-select-group {
-  margin-bottom: 4px;
-}
-/* Estilos para el label y checkbox de Dados min. 2 */
-.ficha-dadosmin-label {
-  margin-left: 16px;
-  font-weight: normal;
-  font-size: 1rem;
-}
-.ficha-dadosmin-checkbox {
-  margin-right: 6px;
-}
-@media (max-width: 600px) {
-  .ficha-resultado-list {
-    flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
+  body {
+    background: linear-gradient(
+      135deg,
+      var(--background-color) 60%,
+      var(--secondary-color) 100%
+    );
+    color: var(--text-color);
+    font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 1rem;
   }
-  .ficha-resultado-item {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 4px;
-  }
-  .ficha-resultado-input {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-}
-/* Alinear horizontalmente los inputs de tiradas */
-.ficha-resultado-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-}
 
-.ficha-resultado-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  .header {
+    background: linear-gradient(
+      90deg,
+      var(--primary-color) 70%,
+      var(--accent-color) 100%
+    );
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(76, 81, 109, 0.08);
+  }
+
+  .button {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .button:hover {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(76, 81, 109, 0.1);
+    padding: 1.5em;
+    margin: 1.5em 0;
+    border: 1px solid var(--secondary-color);
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+
+  /* Estilos para los labels de los combos */
+  .ficha-label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .ficha-resultado-list {
+      align-items: stretch;
+      gap: 4px;
+    }
+    .card {
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      padding: 0.8em;
+    }
+  }
 }
 /* Contenedor de botones alineados horizontalmente */
 .ficha-botones-group {
@@ -311,7 +344,7 @@
   border-radius: 4px;
   border: 1px solid #bbb;
   text-align: center;
-  text-align-last: center;
+  /* text-align-last eliminado por compatibilidad */
 }
 .ficha-resultado {
   margin-top: 32px;
