@@ -1,3 +1,4 @@
+// El logo se usará como URL pública: /logo.webp
 import { useState, useEffect } from "react";
 import "./App.css";
 import { calcularCaracteristicasFinales } from "./logic/logica";
@@ -7,6 +8,12 @@ import type { Clase } from "./interfaces/ClasesInterface";
 import type { Caracteristicas } from "./interfaces/Caracteristicas";
 
 function App() {
+  // Estado para mostrar/ocultar el logo
+  const [mostrarLogo, setMostrarLogo] = useState(true);
+  // Función para ocultar el logo al interactuar con cualquier combobox
+  const handleComboChange = () => {
+    if (mostrarLogo) setMostrarLogo(false);
+  };
   // Estado para mostrar el resultado del cálculo de habilidades
   type HabilidadesResultado = {
     bonusCC: string;
@@ -473,6 +480,22 @@ function App() {
 
   return (
     <div className="ficha-container">
+      {mostrarLogo && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "2rem 0",
+          }}
+        >
+          <img
+            src={"/logo.webp"}
+            alt="Logo"
+            style={{ maxWidth: "320px", width: "100%", height: "auto" }}
+          />
+        </div>
+      )}
       <h2 className="ficha-title">Generador de Fichas</h2>
       <div className="ficha-select-group">
         <label htmlFor="raza-select" className="ficha-label">
@@ -485,6 +508,7 @@ function App() {
           onChange={(e) => {
             const r = razas.find((r) => r.nombre === e.target.value);
             setRazaSeleccionada(r || null);
+            handleComboChange();
             if (r && ["SELOROK", "DEMONIO"].includes(r.nombre.toUpperCase())) {
               setClaseSeleccionada(null);
             }
@@ -509,6 +533,7 @@ function App() {
           onChange={(e) => {
             const c = clases.find((c) => c.nombre === e.target.value);
             setClaseSeleccionada(c || null);
+            handleComboChange();
           }}
           disabled={Boolean(
             razaSeleccionada &&
