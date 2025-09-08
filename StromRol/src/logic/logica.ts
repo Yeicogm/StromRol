@@ -102,7 +102,9 @@ export function aplicarVariaciones(
           let caras = parseInt(dadoMatchSimple[2], 10);
           let mod = dadoMatchSimple[3] ? parseInt(dadoMatchSimple[3], 10) : 0;
           mod += parseInt(cambio, 10);
-          nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+          nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
+            mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
+          }`;
         } else {
           // Si no es tipo XdY, sumar normalmente
           const valorActual = parseInt(actual || "0", 10);

@@ -576,15 +576,6 @@ function App() {
         <div className="ficha-resultado">
           <h3 className="ficha-resultado-title">
             Dados que debe tirar el jugador:
-            <label className="ficha-dadosmin-label">
-              <input
-                type="checkbox"
-                checked={dadosMin2}
-                onChange={(e) => setDadosMin2(e.target.checked)}
-                className="ficha-dadosmin-checkbox"
-              />
-              Dados min. 2
-            </label>
           </h3>
           <ul className="ficha-resultado-list">
             {Object.entries(resultado).map(([car, dado]) => (
@@ -604,6 +595,18 @@ function App() {
               </li>
             ))}
           </ul>
+          {/* Checkbox justo encima de los botones */}
+          <div className="ficha-dadosmin2-group">
+            <label className="ficha-dadosmin-label">
+              <input
+                type="checkbox"
+                checked={dadosMin2}
+                onChange={(e) => setDadosMin2(e.target.checked)}
+                className="ficha-dadosmin-checkbox"
+              />
+              Dados min. 2
+            </label>
+          </div>
           {/* Botones juntos */}
           <div className="ficha-botones-group">
             <button
