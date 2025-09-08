@@ -1,8 +1,10 @@
-# ![Logo de StromRol](docs/logo.webp)
+# <img src="docs/logo.webp" alt="Logo de StromRol" width="150" />
 
 # StromRol - Generador de personajes para rol
 
 StromRol es una aplicación web desarrollada con React, TypeScript y Vite que permite generar personajes para juegos de rol de fantasía. Puedes seleccionar razas, clases y características para crear tu personaje de forma rápida y visual.
+
+Strom es un juego de fantasia creado en 1996 por un grupo de chavales de Marbella. En la actualidad el juego se encuentra en al version 3.1.
 
 ## Características principales
 
@@ -33,32 +35,3 @@ Accede a la aplicación en: [https://yeicogm.github.io/StromRol/](https://yeicog
 ---
 
 Desarrollado por Yeicogm
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
