@@ -250,6 +250,9 @@ function App() {
                       (habilidad, index) => (
                         <div key={index} className="raza-list-item">
                           <span className="raza-bonus-name">{habilidad}</span>
+                          <span className="raza-chip raza-chip-secondary">
+                            Habilidad
+                          </span>
                         </div>
                       )
                     )}
@@ -644,39 +647,70 @@ function App() {
 
       {/* Sección de resultado de habilidades */}
       {resultadoHabilidades && (
-        <div className="ficha-habilidades-resultado">
-          <h4 className="ficha-habilidades-titulo">
-            Resultados de habilidades
-          </h4>
-          <ul className="ficha-habilidades-list">
-            <li>
-              <b>{resultadoHabilidades.bonusCC}</b>
-            </li>
-            <li>
-              <b>{resultadoHabilidades.bonusAA}</b>
-            </li>
-            <li>
-              Conocimiento: <b>{resultadoHabilidades.conocimiento}</b>
-            </li>
-            <li>
-              Percepción: <b>{resultadoHabilidades.percepcion}</b>
-            </li>
-            <li>
-              Comunicación: <b>{resultadoHabilidades.comunicacion}</b>
-            </li>
-            <li>
-              Agilidad: <b>{resultadoHabilidades.agilidad}</b>
-            </li>
-            <li>
-              Manipulación: <b>{resultadoHabilidades.manipulacion}</b>
-            </li>
-            <li>
-              Discreción: <b>{resultadoHabilidades.discrecion}</b>
-            </li>
-            <li>
-              Salud Mental: <b>{resultadoHabilidades.saludMental}</b>
-            </li>
-          </ul>
+        <div className="raza-card">
+          <div className="raza-content">
+            <h4 className="raza-section-title">Resultados de habilidades</h4>
+            <div className="raza-list">
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">
+                  {resultadoHabilidades.bonusCC.split(":")[0]}:
+                </span>
+                <span className="raza-chip raza-chip-secondary">
+                  {resultadoHabilidades.bonusCC.split(":")[1]}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">
+                  {resultadoHabilidades.bonusAA.split(":")[0]}:
+                </span>
+                <span className="raza-chip raza-chip-secondary">
+                  {resultadoHabilidades.bonusAA.split(":")[1]}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">Conocimiento:</span>
+                <span className="raza-chip raza-chip-success">
+                  {resultadoHabilidades.conocimiento}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">Percepción:</span>
+                <span className="raza-chip raza-chip-success">
+                  {resultadoHabilidades.percepcion}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">Comunicación:</span>
+                <span className="raza-chip raza-chip-success">
+                  {resultadoHabilidades.comunicacion}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">Agilidad:</span>
+                <span className="raza-chip raza-chip-success">
+                  {resultadoHabilidades.agilidad}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">Manipulación:</span>
+                <span className="raza-chip raza-chip-success">
+                  {resultadoHabilidades.manipulacion}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">Discreción:</span>
+                <span className="raza-chip raza-chip-success">
+                  {resultadoHabilidades.discrecion}
+                </span>
+              </div>
+              <div className="raza-list-item">
+                <span className="raza-bonus-name">Salud Mental:</span>
+                <span className="raza-chip raza-chip-success">
+                  {resultadoHabilidades.saludMental}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
