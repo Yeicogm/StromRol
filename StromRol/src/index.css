@@ -46,6 +46,18 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+/* Evitar desbordamiento de texto en botones en pantallas pequeñas */
+@media (max-width: 600px) {
+  button {
+    font-size: 0.95em;
+    padding: 0.5em 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90vw;
+    box-sizing: border-box;
+  }
+}
 button:hover {
   border-color: #646cff;
 }
