@@ -31,6 +31,34 @@ function App() {
   // Estado para los resultados de las tiradas
   const [tiradas, setTiradas] = useState<Record<string, string>>({});
 
+  // Función para tirar dados aleatorios según el formato (ej: "2D6+3")
+  function tirarDado(formula: string): number {
+    // Ejemplo de fórmula: "2D6+3", "1D10", "3D4-2"
+    const regex = /(\d+)D(\d+)([+-]\d+)?/i;
+    const match = formula.match(regex);
+    if (!match) return 0;
+    const cantidad = parseInt(match[1], 10);
+    const caras = parseInt(match[2], 10);
+    const modificador = match[3] ? parseInt(match[3], 10) : 0;
+    let total = 0;
+    for (let i = 0; i < cantidad; i++) {
+      total += Math.floor(Math.random() * caras) + 1;
+    }
+    return total + modificador;
+  }
+
+  // Genera tiradas aleatorias para cada característica
+  const generarTiradasAleatorias = () => {
+    if (!resultado) return;
+    const nuevasTiradas: Record<string, string> = {};
+    Object.entries(resultado).forEach(([car, dado]) => {
+      if (typeof dado === "string") {
+        nuevasTiradas[car] = tirarDado(dado).toString();
+      }
+    });
+    setTiradas(nuevasTiradas);
+  };
+
   const renderRazaInfo = () => {
     if (!razaSeleccionada) return null;
 
@@ -463,6 +491,20 @@ function App() {
               </li>
             ))}
           </ul>
+          {/* Botón para generar tiradas aleatorias */}
+          <button
+            className="ficha-calcular-btn"
+            style={{
+              marginTop: "8px",
+              marginBottom: "8px",
+              padding: "8px 20px",
+              fontWeight: "bold",
+            }}
+            onClick={generarTiradasAleatorias}
+            disabled={Object.keys(resultado || {}).length === 0}
+          >
+            Generar tiradas aleatorias
+          </button>
           {/* Mostrar variacion_carac_info si existe en la clase seleccionada */}
           {claseSeleccionada?.variacion_carac_info && (
             <div className="ficha-resultado-info">
