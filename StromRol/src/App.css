@@ -1,3 +1,53 @@
+/* Contenedor de botones alineados horizontalmente */
+.ficha-botones-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+  justify-content: center;
+}
+/* Estilo para el input de tirada */
+.ficha-resultado-input {
+  text-align: center;
+  margin-left: 8px;
+  width: 60px;
+}
+
+/* Botón principal de ficha */
+.ficha-calcular-btn {
+  margin: 0;
+  padding: 10px 24px;
+  height: 44px;
+  font-weight: bold;
+  border-radius: 6px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ficha-calcular-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+
+/* Botón de calcular habilidades (más separación arriba) */
+.ficha-habilidades-btn {
+  margin: 0;
+  padding: 10px 24px;
+  height: 44px;
+  font-weight: bold;
+  border-radius: 6px;
+  background: #388e3c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ficha-habilidades-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
 /* Centrar texto en los inputs numéricos de dados */
 .ficha-resultado-input {
   text-align: center;

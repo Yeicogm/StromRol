@@ -50,6 +50,14 @@ function App() {
   // Genera tiradas aleatorias para cada característica
   const generarTiradasAleatorias = () => {
     if (!resultado) return;
+    if (
+      Object.values(tiradas).some((v) => v && v.trim() !== "") &&
+      !window.confirm(
+        "¿Seguro que quieres generar tiradas aleatorias? Se borrarán los valores que hayas insertado manualmente."
+      )
+    ) {
+      return;
+    }
     const nuevasTiradas: Record<string, string> = {};
     Object.entries(resultado).forEach(([car, dado]) => {
       if (typeof dado === "string") {
@@ -57,6 +65,55 @@ function App() {
       }
     });
     setTiradas(nuevasTiradas);
+
+    // Calcular habilidades automáticamente
+    // --- Copia de la lógica del botón Calcular habilidades ---
+    const fuerza = parseInt(nuevasTiradas["Fuerza"] || "0", 10);
+    let bonusCC = "";
+    if (fuerza >= 18 && fuerza <= 23) bonusCC = "+1";
+    else if (fuerza >= 24 && fuerza <= 30) bonusCC = "+1D4";
+    else if (fuerza >= 31 && fuerza <= 38) bonusCC = "+1D6";
+    else if (fuerza >= 39 && fuerza <= 45) bonusCC = "+1D10";
+    else if (fuerza >= 46) bonusCC = "+2D6";
+    else bonusCC = "Sin bonus";
+
+    const destreza = parseInt(nuevasTiradas["Destreza"] || "0", 10);
+    const sumaAA = fuerza + destreza;
+    let bonusAA = "Nada";
+    if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
+    else if (sumaAA >= 25 && sumaAA <= 40) bonusAA = "+1D4";
+    else if (sumaAA >= 41 && sumaAA <= 52) bonusAA = "+2D4";
+    else if (sumaAA >= 53) bonusAA = "2D4+1";
+
+    const int = parseInt(nuevasTiradas["Inteligencia"] || "0", 10);
+    const con = parseInt(nuevasTiradas["Constitución"] || "0", 10);
+    const pod = parseInt(nuevasTiradas["Poder"] || "0", 10);
+    const car = parseInt(nuevasTiradas["Carisma"] || "0", 10);
+    const tam = parseInt(nuevasTiradas["Tamaño"] || "0", 10);
+
+    let conocimiento = 0;
+    if (int >= 1 && int <= 10) conocimiento = int;
+    else if (int >= 11 && int <= 18) conocimiento = int + 20;
+    else if (int >= 19) conocimiento = int + 30;
+
+    const percepcion = int + destreza + 10;
+    const comunicacion = Math.floor(con / 2) + int + pod + car - 5;
+    const agilidad = destreza * 2 + int + pod - tam - 5;
+    const manipulacion = int * 2 + destreza + car - 15;
+    const discrecion = int + Math.floor(fuerza / 2) + pod + destreza - tam - 5;
+    const saludMental = pod + car + int + 40 - con;
+
+    setResultadoHabilidades({
+      bonusCC: `Bonus de Fuerza CC: ${bonusCC}`,
+      bonusAA: `Bonus de Fuerza AA: ${bonusAA}`,
+      conocimiento,
+      percepcion,
+      comunicacion,
+      agilidad,
+      manipulacion,
+      discrecion,
+      saludMental,
+    });
   };
 
   const renderRazaInfo = () => {
@@ -486,25 +543,95 @@ function App() {
                   onChange={(e) => {
                     setTiradas((prev) => ({ ...prev, [car]: e.target.value }));
                   }}
-                  style={{ marginLeft: "8px", width: "60px" }}
+                  // ...estilos movidos a App.css...
                 />
               </li>
             ))}
           </ul>
-          {/* Botón para generar tiradas aleatorias */}
-          <button
-            className="ficha-calcular-btn"
-            style={{
-              marginTop: "8px",
-              marginBottom: "8px",
-              padding: "8px 20px",
-              fontWeight: "bold",
-            }}
-            onClick={generarTiradasAleatorias}
-            disabled={Object.keys(resultado || {}).length === 0}
-          >
-            Generar tiradas aleatorias
-          </button>
+          {/* Botones juntos */}
+          <div className="ficha-botones-group">
+            <button
+              className="ficha-calcular-btn"
+              onClick={generarTiradasAleatorias}
+              disabled={Object.keys(resultado || {}).length === 0}
+            >
+              Generar tiradas aleatorias
+            </button>
+            <button
+              className="ficha-habilidades-btn"
+              disabled={
+                Object.keys(resultado || {}).length === 0 ||
+                Object.entries(resultado || {}).some(([car]) => !tiradas[car])
+              }
+              onClick={() => {
+                // Cálculo del bonus de fuerza CC
+                const fuerza = parseInt(tiradas["Fuerza"] || "0", 10);
+                let bonusCC = "";
+                if (fuerza >= 18 && fuerza <= 23) bonusCC = "+1";
+                else if (fuerza >= 24 && fuerza <= 30) bonusCC = "+1D4";
+                else if (fuerza >= 31 && fuerza <= 38) bonusCC = "+1D6";
+                else if (fuerza >= 39 && fuerza <= 45) bonusCC = "+1D10";
+                else if (fuerza >= 46) bonusCC = "+2D6";
+                else bonusCC = "Sin bonus";
+
+                // Cálculo del bonus de fuerza AA (Fuerza + Destreza)
+                const destreza = parseInt(tiradas["Destreza"] || "0", 10);
+                const sumaAA = fuerza + destreza;
+                let bonusAA = "Nada";
+                if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
+                else if (sumaAA >= 25 && sumaAA <= 40) bonusAA = "+1D4";
+                else if (sumaAA >= 41 && sumaAA <= 52) bonusAA = "+2D4";
+                else if (sumaAA >= 53) bonusAA = "2D4+1";
+
+                // Obtener todas las características necesarias
+                const int = parseInt(tiradas["Inteligencia"] || "0", 10);
+                const con = parseInt(tiradas["Constitución"] || "0", 10);
+                const pod = parseInt(tiradas["Poder"] || "0", 10);
+                const car = parseInt(tiradas["Carisma"] || "0", 10);
+                const tam = parseInt(tiradas["Tamaño"] || "0", 10);
+
+                // CONOCIMIENTO
+                let conocimiento = 0;
+                if (int >= 1 && int <= 10) conocimiento = int;
+                else if (int >= 11 && int <= 18) conocimiento = int + 20;
+                else if (int >= 19) conocimiento = int + 30;
+
+                // PERCEPCION
+                const percepcion = int + destreza + 10;
+
+                // COMUNICACIÓN
+                const comunicacion = Math.floor(con / 2) + int + pod + car - 5;
+
+                // AGILIDAD
+                const agilidad = destreza * 2 + int + pod - tam - 5;
+
+                // MANIPULACION
+                const manipulacion = int * 2 + destreza + car - 15;
+
+                // DISCRECION
+                const discrecion =
+                  int + Math.floor(fuerza / 2) + pod + destreza - tam - 5;
+
+                // SALUD MENTAL
+                const saludMental = pod + car + int + 40 - con;
+
+                // Mostrar todos los resultados
+                setResultadoHabilidades({
+                  bonusCC: `Bonus de Fuerza CC: ${bonusCC}`,
+                  bonusAA: `Bonus de Fuerza AA: ${bonusAA}`,
+                  conocimiento,
+                  percepcion,
+                  comunicacion,
+                  agilidad,
+                  manipulacion,
+                  discrecion,
+                  saludMental,
+                });
+              }}
+            >
+              Calcular habilidades
+            </button>
+          </div>
           {/* Mostrar variacion_carac_info si existe en la clase seleccionada */}
           {claseSeleccionada?.variacion_carac_info && (
             <div className="ficha-resultado-info">
@@ -512,122 +639,44 @@ function App() {
               {claseSeleccionada.variacion_carac_info}
             </div>
           )}
-          {/* Botón para calcular habilidades */}
-          <button
-            className="ficha-calcular-btn"
-            style={{
-              marginTop: "16px",
-              padding: "8px 20px",
-              fontWeight: "bold",
-            }}
-            disabled={
-              Object.keys(resultado || {}).length === 0 ||
-              Object.entries(resultado || {}).some(([car]) => !tiradas[car])
-            }
-            onClick={() => {
-              // Cálculo del bonus de fuerza CC
-              const fuerza = parseInt(tiradas["Fuerza"] || "0", 10);
-              let bonusCC = "";
-              if (fuerza >= 18 && fuerza <= 23) bonusCC = "+1";
-              else if (fuerza >= 24 && fuerza <= 30) bonusCC = "+1D4";
-              else if (fuerza >= 31 && fuerza <= 38) bonusCC = "+1D6";
-              else if (fuerza >= 39 && fuerza <= 45) bonusCC = "+1D10";
-              else if (fuerza >= 46) bonusCC = "+2D6";
-              else bonusCC = "Sin bonus";
+        </div>
+      )}
 
-              // Cálculo del bonus de fuerza AA (Fuerza + Destreza)
-              const destreza = parseInt(tiradas["Destreza"] || "0", 10);
-              const sumaAA = fuerza + destreza;
-              let bonusAA = "Nada";
-              if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
-              else if (sumaAA >= 25 && sumaAA <= 40) bonusAA = "+1D4";
-              else if (sumaAA >= 41 && sumaAA <= 52) bonusAA = "+2D4";
-              else if (sumaAA >= 53) bonusAA = "2D4+1";
-
-              // Obtener todas las características necesarias
-              const int = parseInt(tiradas["Inteligencia"] || "0", 10);
-              const con = parseInt(tiradas["Constitución"] || "0", 10);
-              const pod = parseInt(tiradas["Poder"] || "0", 10);
-              const car = parseInt(tiradas["Carisma"] || "0", 10);
-              const tam = parseInt(tiradas["Tamaño"] || "0", 10);
-
-              // CONOCIMIENTO
-              let conocimiento = 0;
-              if (int >= 1 && int <= 10) conocimiento = int;
-              else if (int >= 11 && int <= 18) conocimiento = int + 20;
-              else if (int >= 19) conocimiento = int + 30;
-
-              // PERCEPCION
-              const percepcion = int + destreza + 10;
-
-              // COMUNICACIÓN
-              const comunicacion = Math.floor(con / 2) + int + pod + car - 5;
-
-              // AGILIDAD
-              const agilidad = destreza * 2 + int + pod - tam - 5;
-
-              // MANIPULACION
-              const manipulacion = int * 2 + destreza + car - 15;
-
-              // DISCRECION
-              const discrecion =
-                int + Math.floor(fuerza / 2) + pod + destreza - tam - 5;
-
-              // SALUD MENTAL
-              const saludMental = pod + car + int + 40 - con;
-
-              // Mostrar todos los resultados
-              setResultadoHabilidades({
-                bonusCC: `Bonus de Fuerza CC: ${bonusCC}`,
-                bonusAA: `Bonus de Fuerza AA: ${bonusAA}`,
-                conocimiento,
-                percepcion,
-                comunicacion,
-                agilidad,
-                manipulacion,
-                discrecion,
-                saludMental,
-              });
-            }}
-          >
-            Calcular habilidades
-          </button>
-          {resultadoHabilidades && (
-            <div className="ficha-habilidades-resultado">
-              <h4 className="ficha-habilidades-titulo">
-                Resultados de habilidades
-              </h4>
-              <ul className="ficha-habilidades-list">
-                <li>
-                  <b>{resultadoHabilidades.bonusCC}</b>
-                </li>
-                <li>
-                  <b>{resultadoHabilidades.bonusAA}</b>
-                </li>
-                <li>
-                  Conocimiento: <b>{resultadoHabilidades.conocimiento}</b>
-                </li>
-                <li>
-                  Percepción: <b>{resultadoHabilidades.percepcion}</b>
-                </li>
-                <li>
-                  Comunicación: <b>{resultadoHabilidades.comunicacion}</b>
-                </li>
-                <li>
-                  Agilidad: <b>{resultadoHabilidades.agilidad}</b>
-                </li>
-                <li>
-                  Manipulación: <b>{resultadoHabilidades.manipulacion}</b>
-                </li>
-                <li>
-                  Discreción: <b>{resultadoHabilidades.discrecion}</b>
-                </li>
-                <li>
-                  Salud Mental: <b>{resultadoHabilidades.saludMental}</b>
-                </li>
-              </ul>
-            </div>
-          )}
+      {/* Sección de resultado de habilidades */}
+      {resultadoHabilidades && (
+        <div className="ficha-habilidades-resultado">
+          <h4 className="ficha-habilidades-titulo">
+            Resultados de habilidades
+          </h4>
+          <ul className="ficha-habilidades-list">
+            <li>
+              <b>{resultadoHabilidades.bonusCC}</b>
+            </li>
+            <li>
+              <b>{resultadoHabilidades.bonusAA}</b>
+            </li>
+            <li>
+              Conocimiento: <b>{resultadoHabilidades.conocimiento}</b>
+            </li>
+            <li>
+              Percepción: <b>{resultadoHabilidades.percepcion}</b>
+            </li>
+            <li>
+              Comunicación: <b>{resultadoHabilidades.comunicacion}</b>
+            </li>
+            <li>
+              Agilidad: <b>{resultadoHabilidades.agilidad}</b>
+            </li>
+            <li>
+              Manipulación: <b>{resultadoHabilidades.manipulacion}</b>
+            </li>
+            <li>
+              Discreción: <b>{resultadoHabilidades.discrecion}</b>
+            </li>
+            <li>
+              Salud Mental: <b>{resultadoHabilidades.saludMental}</b>
+            </li>
+          </ul>
         </div>
       )}
 
