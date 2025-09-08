@@ -180,6 +180,8 @@
   font-size: 16px;
   border-radius: 4px;
   border: 1px solid #bbb;
+  text-align: center;
+  text-align-last: center;
 }
 .ficha-resultado {
   margin-top: 32px;
