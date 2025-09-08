@@ -37,6 +37,8 @@ function App() {
   const [resultado, setResultado] = useState<Caracteristicas | null>(null);
   // Estado para los resultados de las tiradas
   const [tiradas, setTiradas] = useState<Record<string, string>>({});
+  // Estado para el checkbox "Dados min. 2"
+  const [dadosMin2, setDadosMin2] = useState(true);
 
   // Función para tirar dados aleatorios según el formato (ej: "2D6+3")
   function tirarDado(formula: string): number {
@@ -49,7 +51,9 @@ function App() {
     const modificador = match[3] ? parseInt(match[3], 10) : 0;
     let total = 0;
     for (let i = 0; i < cantidad; i++) {
-      total += Math.floor(Math.random() * caras) + 1;
+      let dado = Math.floor(Math.random() * caras) + 1;
+      if (dadosMin2 && dado < 2) dado = 2;
+      total += dado;
     }
     return total + modificador;
   }
@@ -557,6 +561,15 @@ function App() {
         <div className="ficha-resultado">
           <h3 className="ficha-resultado-title">
             Dados que debe tirar el jugador:
+            <label className="ficha-dadosmin-label">
+              <input
+                type="checkbox"
+                checked={dadosMin2}
+                onChange={(e) => setDadosMin2(e.target.checked)}
+                className="ficha-dadosmin-checkbox"
+              />
+              Dados min. 2
+            </label>
           </h3>
           <ul className="ficha-resultado-list">
             {Object.entries(resultado).map(([car, dado]) => (
