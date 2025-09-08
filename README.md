@@ -1,4 +1,4 @@
-# <img src="docs/logo.webp" alt="Logo de StromRol" width="150" />
+# <div align="center"><img src="docs/logo.webp" alt="Logo de StromRol" width="320" /></div>
 
 # StromRol - Generador de personajes para rol
 
