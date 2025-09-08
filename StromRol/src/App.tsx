@@ -443,11 +443,11 @@ function App() {
 
   useEffect(() => {
     // Cargar razas
-    fetch("/Razas.json")
+    fetch("/StromRol/Razas.json")
       .then((res) => res.json())
       .then((data) => setRazas(data.razas as Raza[]));
     // Cargar clases
-    fetch("/Clases.json")
+    fetch("/StromRol/Clases.json")
       .then((res) => res.json())
       .then((data) => setClases(data.clases as Clase[]));
   }, []);
@@ -494,7 +494,7 @@ function App() {
           }}
         >
           <img
-            src={"/logo.webp"}
+            src={"/StromRol/logo.webp"}
             alt="Logo"
             style={{ maxWidth: "320px", width: "100%", height: "auto" }}
           />
