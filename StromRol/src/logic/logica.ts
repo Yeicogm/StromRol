@@ -28,11 +28,16 @@ export function aplicarVariaciones(
 
   for (const variacion of variaciones) {
     // Ejemplo: "Inteligencia +1", "Destreza +1D", "PODER +2D6", "-2 INTELIGENCIA", etc.
-    let match = variacion.match(/^(\w+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i);
+    // Permitir letras acentuadas y ñ en el nombre de la característica
+    let match = variacion.match(
+      /^([\wÁÉÍÓÚÜÑáéíóúüñ]+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i
+    );
 
     // Si no coincide con el primer patrón, intentar con el formato "-2 INTELIGENCIA" o "+2 FUERZA"
     if (!match) {
-      match = variacion.match(/^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+(\w+)$/i);
+      match = variacion.match(
+        /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+([\wÁÉÍÓÚÜÑáéíóúüñ]+)$/i
+      );
       if (match) {
         // Intercambiar el orden: el cambio está primero, luego el atributo
         const temp = match[1];
@@ -41,7 +46,10 @@ export function aplicarVariaciones(
       }
     }
 
-    if (!match) continue;
+    if (!match) {
+      console.log(`[Variación ignorada] No coincide:`, variacion);
+      continue;
+    }
     const atributo = match[1];
     const cambio = match[2];
 
@@ -49,9 +57,24 @@ export function aplicarVariaciones(
     const nombreNormalizado =
       MAPEO_CARACTERISTICAS[atributo.toUpperCase()] ||
       MAPEO_CARACTERISTICAS[atributo];
-    if (!nombreNormalizado) continue;
+    if (!nombreNormalizado) {
+      console.log(
+        `[Atributo ignorado] No normalizado:`,
+        atributo,
+        "de variación",
+        variacion
+      );
+      continue;
+    }
 
     const actual = nuevasCaracteristicas[nombreNormalizado] || "";
+    console.log(`[Aplicando variación]`, {
+      atributo,
+      nombreNormalizado,
+      cambio,
+      actual,
+      variacion,
+    });
 
     // Si el valor actual es una tirada de dados (ej: "2D6", "2D6+1")
     const dadoMatch = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
@@ -59,6 +82,7 @@ export function aplicarVariaciones(
     // Si la variación NO contiene operador '+' ni '-', SIEMPRE reemplaza el valor
     if (!cambio.includes("+") && !cambio.includes("-")) {
       nuevasCaracteristicas[nombreNormalizado] = cambio;
+      console.log(`[Reemplazo directo]`, nombreNormalizado, "->", cambio);
       continue;
     }
 
@@ -74,6 +98,12 @@ export function aplicarVariaciones(
         nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
           mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
         }`;
+        console.log(
+          `[Suma dados]`,
+          nombreNormalizado,
+          "->",
+          nuevasCaracteristicas[nombreNormalizado]
+        );
       } else if (/^[+-]?\d+D\d+$/.test(cambio)) {
         // Ejemplo: '+2D6' => sumar dados y caras (no muy común, pero soportado)
         const extraMatch = cambio.match(/([+-]?\d+)D(\d+)/);
@@ -84,6 +114,12 @@ export function aplicarVariaciones(
         nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
           mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
         }`;
+        console.log(
+          `[Suma dados y caras]`,
+          nombreNormalizado,
+          "->",
+          nuevasCaracteristicas[nombreNormalizado]
+        );
       } else if (/^[+-]?\d+$/.test(cambio)) {
         // Ejemplo: '+1' => sumar modificador
         // Si el valor actual es tipo XdY+Z, suma al modificador
@@ -91,6 +127,12 @@ export function aplicarVariaciones(
         nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
           mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
         }`;
+        console.log(
+          `[Suma modificador]`,
+          nombreNormalizado,
+          "->",
+          nuevasCaracteristicas[nombreNormalizado]
+        );
       }
     } else {
       // Si no es una tirada de dados, sumar normalmente
@@ -105,15 +147,28 @@ export function aplicarVariaciones(
           nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
             mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
           }`;
+          console.log(
+            `[Suma modificador simple]`,
+            nombreNormalizado,
+            "->",
+            nuevasCaracteristicas[nombreNormalizado]
+          );
         } else {
           // Si no es tipo XdY, sumar normalmente
           const valorActual = parseInt(actual || "0", 10);
           nuevasCaracteristicas[nombreNormalizado] = (
             valorActual + parseInt(cambio, 10)
           ).toString();
+          console.log(
+            `[Suma valor simple]`,
+            nombreNormalizado,
+            "->",
+            nuevasCaracteristicas[nombreNormalizado]
+          );
         }
       } else {
         nuevasCaracteristicas[nombreNormalizado] = cambio;
+        console.log(`[Reemplazo no dado]`, nombreNormalizado, "->", cambio);
       }
     }
   }
@@ -129,29 +184,3 @@ export function calcularCaracteristicasFinales(
   const variaciones = clase?.variacion_caracteristicas;
   return aplicarVariaciones(base, variaciones);
 }
-
-/* // Ejemplo de uso:
-export const razaSeleccionada: Raza = {
-  nombre: "ELFOS",
-  caracteristicas: {
-    Fuerza: "3D8",
-    Constitución: "4D6",
-    Tamaño: "3D6",
-    Inteligencia: "4D6",
-    Poder: "2D8",
-    Destreza: "4D6",
-    Carisma: "1D8+2",
-  },
-};
-
-export const claseSeleccionada: Clase = {
-  nombre: "MAGO / HECHICERO",
-  variacion_caracteristicas: "POD 5D8 INT +1D6 (MAX FUE18)",
-};
-
-export const caracteristicasFinales = calcularCaracteristicasFinales(
-  razaSeleccionada,
-  claseSeleccionada
-);
-
-console.log("Características finales:", caracteristicasFinales); */

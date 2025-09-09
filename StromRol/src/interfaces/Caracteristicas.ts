@@ -106,7 +106,6 @@ export const MAPEO_CARACTERISTICAS: Record<string, NombreCaracteristica> = {
   POD: "Poder",
   DES: "Destreza",
   CAR: "Carisma",
-  DESt: "Destreza", // Variación encontrada en los JSONs
 };
 
 /**
