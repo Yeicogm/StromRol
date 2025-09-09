@@ -302,9 +302,9 @@
       "rango": "-1",
       "variacion_caracteristicas": [
         "INTELIGENCIA +2",
-        "DESTREZA +1D (MAX FUERZA 19)"
+        "DESTREZA +1D"
       ],
-      "variacion_carac_info": "",
+      "variacion_carac_info": "(MAX FUERZA 19)",
       "variacion_habilidades": [
         "Evaluar T. +10",
         "Percepción +5",
