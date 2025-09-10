@@ -795,13 +795,21 @@ function App() {
               Calcular habilidades
             </button>
           </div>
-          {/* Mostrar variacion_carac_info si existe en la clase seleccionada */}
-          {claseSeleccionada?.variacion_carac_info && (
-            <div className="ficha-resultado-info">
-              <b>Info adicional de dados:</b>{" "}
-              {claseSeleccionada.variacion_carac_info}
-            </div>
-          )}
+          {/* Mostrar variacion_carac_info si existe y tiene contenido útil (no vacío, no null, no undefined, no array vacío) */}
+          {claseSeleccionada?.variacion_carac_info &&
+            ((typeof claseSeleccionada.variacion_carac_info === "string" &&
+              claseSeleccionada.variacion_carac_info.trim() !== "") ||
+              (Array.isArray(claseSeleccionada.variacion_carac_info) &&
+                claseSeleccionada.variacion_carac_info.length > 0) ||
+              (typeof claseSeleccionada.variacion_carac_info === "number" &&
+                !isNaN(claseSeleccionada.variacion_carac_info))) && (
+              <div className="ficha-resultado-info">
+                <b>Info adicional de dados:</b>{" "}
+                {Array.isArray(claseSeleccionada.variacion_carac_info)
+                  ? claseSeleccionada.variacion_carac_info.join(", ")
+                  : claseSeleccionada.variacion_carac_info}
+              </div>
+            )}
         </div>
       )}
 
