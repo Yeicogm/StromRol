@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "postbuild": "echo. > ./docs/.nojekyll",
+  "postbuild": "echo. > ../docs/.nojekyll",
     "lint": "eslint .",
     "preview": "vite preview"
   },

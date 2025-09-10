@@ -1,1 +1,3 @@
-npm run build
+cd StromRol && npm run build
+cd ..
+git add docs
