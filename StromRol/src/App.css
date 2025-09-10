@@ -275,6 +275,10 @@
   background-color: #2e7d32;
 }
 
+.raza-chip-warning {
+  background-color: #f57c00; /* naranja para advertencias/limitaciones */
+}
+
 .raza-chip-mental {
   background-color: #8e24aa; /* púrpura para salud mental */
 }

@@ -1,11 +1,19 @@
 // El logo se usará como URL pública: /logo.webp
 import { useState, useEffect } from "react";
 import "./App.css";
-import { calcularCaracteristicasFinales } from "./logic/logica";
+import {
+  calcularCaracteristicasFinales,
+  obtenerLimitacionesClase,
+  validarLimitesCaracteristica,
+  type LimitacionCaracteristica,
+} from "./logic/logica";
 import { extraerBonificacionHabilidad } from "./interfaces/Habilidades";
 import type { Raza } from "./interfaces/RazasInterface";
 import type { Clase } from "./interfaces/ClasesInterface";
-import type { Caracteristicas } from "./interfaces/Caracteristicas";
+import type {
+  Caracteristicas,
+  NombreCaracteristica,
+} from "./interfaces/Caracteristicas";
 
 function App() {
   // Estado para mostrar/ocultar el logo
@@ -40,6 +48,37 @@ function App() {
   const [tiradas, setTiradas] = useState<Record<string, string>>({});
   // Estado para el checkbox "Dados min. 2"
   const [dadosMin2, setDadosMin2] = useState(true);
+  // Estado para las limitaciones de la clase actual
+  const [limitaciones, setLimitaciones] = useState<LimitacionCaracteristica[]>(
+    []
+  );
+
+  // Función para manejar cambios en inputs con validación de límites
+  const manejarCambioCaracteristica = (
+    caracteristica: string,
+    valor: string
+  ) => {
+    const valorNumerico = parseInt(valor, 10);
+
+    // Si es un número válido, validar límites
+    if (!isNaN(valorNumerico) && limitaciones.length > 0) {
+      const validacion = validarLimitesCaracteristica(
+        caracteristica as NombreCaracteristica,
+        valorNumerico,
+        limitaciones
+      );
+      if (!validacion.valido && validacion.valorCorregido !== undefined) {
+        // Aplicar valor corregido automáticamente, sin mostrar alerta
+        setTiradas((prev) => ({
+          ...prev,
+          [caracteristica]: validacion.valorCorregido!.toString(),
+        }));
+        return;
+      }
+    }
+    // Si no hay problemas, aplicar el valor normalmente
+    setTiradas((prev) => ({ ...prev, [caracteristica]: valor }));
+  };
 
   // Función para tirar dados aleatorios según el formato (ej: "2D6+3")
   function tirarDado(formula: string): number {
@@ -73,7 +112,19 @@ function App() {
     const nuevasTiradas: Record<string, string> = {};
     Object.entries(resultado).forEach(([car, dado]) => {
       if (typeof dado === "string") {
-        nuevasTiradas[car] = tirarDado(dado).toString();
+        let valor = tirarDado(dado);
+        // Validar límites si existen
+        if (limitaciones.length > 0) {
+          const validacion = validarLimitesCaracteristica(
+            car as NombreCaracteristica,
+            valor,
+            limitaciones
+          );
+          if (!validacion.valido && validacion.valorCorregido !== undefined) {
+            valor = validacion.valorCorregido;
+          }
+        }
+        nuevasTiradas[car] = valor.toString();
       }
     });
     setTiradas(nuevasTiradas);
@@ -251,6 +302,30 @@ function App() {
                         <div key={index} className="raza-list-item">
                           <span className="raza-characteristic-name">
                             {variacion}
+                          </span>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              )}
+
+            {/* Limitaciones MIN/MAX de Características */}
+            {claseSeleccionada.variacion_caracMINMAX &&
+              claseSeleccionada.variacion_caracMINMAX.length > 0 && (
+                <div className="raza-section">
+                  <h4 className="raza-section-title">
+                    Limitaciones de Características
+                  </h4>
+                  <div className="raza-list">
+                    {claseSeleccionada.variacion_caracMINMAX.map(
+                      (limitacion, index) => (
+                        <div key={index} className="raza-list-item">
+                          <span className="raza-characteristic-name">
+                            {limitacion}
+                          </span>
+                          <span className="raza-chip raza-chip-warning">
+                            Límite
                           </span>
                         </div>
                       )
@@ -463,6 +538,8 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // Limpiar tiradas al cambiar raza o clase
+    setTiradas({});
     if (razaSeleccionada) {
       // Si la raza es SELOROK o DEMONIO, calcular solo con la raza
       if (
@@ -491,6 +568,16 @@ function App() {
       setResultado(null);
     }
   }, [razaSeleccionada, claseSeleccionada]);
+
+  // useEffect para actualizar limitaciones cuando cambie la clase
+  useEffect(() => {
+    if (claseSeleccionada) {
+      const nuevasLimitaciones = obtenerLimitacionesClase(claseSeleccionada);
+      setLimitaciones(nuevasLimitaciones);
+    } else {
+      setLimitaciones([]);
+    }
+  }, [claseSeleccionada]);
 
   return (
     <div className="ficha-container">
@@ -591,7 +678,7 @@ function App() {
                   placeholder="Tirada"
                   value={tiradas[car] || ""}
                   onChange={(e) => {
-                    setTiradas((prev) => ({ ...prev, [car]: e.target.value }));
+                    manejarCambioCaracteristica(car, e.target.value);
                   }}
                 />
               </li>
