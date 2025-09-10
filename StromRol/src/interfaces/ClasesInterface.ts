@@ -10,6 +10,7 @@ export interface Clase {
   descripcion: string;
   rango: string;
   variacion_caracteristicas?: string[];
+  variacion_caracMINMAX?: string[];
   variacion_carac_info?: string;
   variacion_habilidades?: string[];
   equipo_especial?: string;
