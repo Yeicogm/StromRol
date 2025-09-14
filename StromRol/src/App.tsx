@@ -671,6 +671,42 @@ function App() {
           ))}
         </select>
       </div>
+      {/* Combo de Nacionalidad */}
+      <div className="ficha-select-group">
+        <label htmlFor="nacionalidad-select" className="ficha-label">
+          Nacionalidad:
+        </label>
+        <select
+          id="nacionalidad-select"
+          className="ficha-select"
+          onChange={handleComboChange}
+        >
+          <option value="">Elige una nacionalidad</option>
+          {nacionalidades.map((n) => (
+            <option key={n.nombre} value={n.nombre}>
+              {n.nombre}
+            </option>
+          ))}
+        </select>
+      </div>
+      {/* Combo de Origen */}
+      <div className="ficha-select-group">
+        <label htmlFor="origen-select" className="ficha-label">
+          Origen:
+        </label>
+        <select
+          id="origen-select"
+          className="ficha-select"
+          onChange={handleComboChange}
+        >
+          <option value="">Elige un origen</option>
+          {origenes.map((o) => (
+            <option key={o.nombre} value={o.nombre}>
+              {o.nombre}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {/* Dados que debe tirar el jugador - Debajo de los combos */}
       {resultado && (
