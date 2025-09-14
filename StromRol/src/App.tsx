@@ -730,14 +730,10 @@ function App() {
     // Limpiar tiradas al cambiar raza o clase
     setTiradas({});
     if (razaSeleccionada) {
-      // Si la raza es SELOROK o DEMONIO, calcular solo con la raza
-      if (
-        ["SELOROK", "DEMONIOS"].includes(razaSeleccionada.nombre.toUpperCase())
-      ) {
-        setResultado(calcularCaracteristicasFinales(razaSeleccionada));
-      } else {
-        // Adaptar claseSeleccionada para asegurar que variacion_caracteristicas sea string[]
-        const claseAdaptada = claseSeleccionada
+      // Si la raza es SELOROK o DEMONIO, calcular solo con la raza, pero aplicar variaciones de nacionalidad si existen
+      let resultadoBase = calcularCaracteristicasFinales(
+        razaSeleccionada,
+        claseSeleccionada
           ? {
               ...claseSeleccionada,
               variacion_caracteristicas: Array.isArray(
@@ -749,24 +745,18 @@ function App() {
                 ? [claseSeleccionada.variacion_caracteristicas]
                 : undefined,
             }
-          : undefined;
-        // Si hay nacionalidad seleccionada, combinar sus variaciones
-        let resultadoBase = calcularCaracteristicasFinales(
-          razaSeleccionada,
-          claseAdaptada
-        );
-        if (
-          nacionalidadSeleccionada &&
+          : undefined
+      );
+      if (
+        nacionalidadSeleccionada &&
+        nacionalidadSeleccionada.variacion_caracteristicas
+      ) {
+        resultadoBase = aplicarVariaciones(
+          resultadoBase,
           nacionalidadSeleccionada.variacion_caracteristicas
-        ) {
-          // Aplica las variaciones de nacionalidad sobre el resultado base
-          resultadoBase = aplicarVariaciones(
-            resultadoBase,
-            nacionalidadSeleccionada.variacion_caracteristicas
-          );
-        }
-        setResultado(resultadoBase);
+        );
       }
+      setResultado(resultadoBase);
     } else {
       setResultado(null);
     }
@@ -814,6 +804,7 @@ function App() {
             setRazaSeleccionada(r || null);
             handleComboChange();
             setResultadoHabilidades(null); // Oculta resultados de habilidades
+            setNacionalidadSeleccionada(null); // Deselecciona nacionalidad al cambiar raza
             if (
               r &&
               ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
@@ -909,7 +900,13 @@ function App() {
             setResultadoHabilidades(null); // Oculta resultados de habilidades
             handleComboChange();
           }}
-          disabled={!nacionalidadSeleccionada}
+          disabled={
+            !nacionalidadSeleccionada ||
+            (!!razaSeleccionada &&
+              ["SELOROK", "DEMONIOS", "DEMONIO", "SELOROKS"].includes(
+                razaSeleccionada.nombre.toUpperCase()
+              ))
+          }
         >
           <option value="">Elige un origen</option>
           {origenesFiltrados.map((o) => (
