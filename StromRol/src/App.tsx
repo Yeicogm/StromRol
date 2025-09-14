@@ -878,6 +878,7 @@ function App() {
             setNacionalidadSeleccionada(n || null);
             setTiradas({}); // Limpiar tiradas al cambiar nacionalidad
             setResultadoHabilidades(null); // Oculta resultados de habilidades
+            setOrigenSeleccionado(null); // Limpiar origen al cambiar nacionalidad
             handleComboChange();
           }}
           disabled={!razaSeleccionada}
@@ -904,6 +905,8 @@ function App() {
               (o) => o.nombre === e.target.value
             );
             setOrigenSeleccionado(o || null);
+            setTiradas({}); // Limpiar tiradas al cambiar origen
+            setResultadoHabilidades(null); // Oculta resultados de habilidades
             handleComboChange();
           }}
           disabled={!nacionalidadSeleccionada}
