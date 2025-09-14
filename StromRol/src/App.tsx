@@ -48,6 +48,27 @@ function App() {
                 </div>
               </div>
             )}
+          {/* Mostrar origen_social si existe */}
+          {nacionalidadSeleccionada.origen_social && (
+            <div className="raza-section">
+              <h4 className="raza-section-title">Origen social</h4>
+              <div className="raza-list">
+                {Array.isArray(nacionalidadSeleccionada.origen_social) ? (
+                  nacionalidadSeleccionada.origen_social.map((origen, idx) => (
+                    <div key={idx} className="raza-list-item">
+                      <span className="raza-characteristic-name">{origen}</span>
+                    </div>
+                  ))
+                ) : (
+                  <div className="raza-list-item">
+                    <span className="raza-characteristic-name">
+                      {nacionalidadSeleccionada.origen_social}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -135,6 +156,8 @@ function App() {
   const [clases, setClases] = useState<Clase[]>([]);
   const [nacionalidades, setNacionalidades] = useState<Nacionalidad[]>([]);
   const [origenes, setOrigenes] = useState<Origen[]>([]);
+  // Estado para los orígenes filtrados según nacionalidad
+  const [origenesFiltrados, setOrigenesFiltrados] = useState<Origen[]>([]);
   const [origenSeleccionado, setOrigenSeleccionado] = useState<Origen | null>(
     null
   );
@@ -144,6 +167,33 @@ function App() {
   );
   const [nacionalidadSeleccionada, setNacionalidadSeleccionada] =
     useState<Nacionalidad | null>(null);
+  // Filtrar orígenes según la nacionalidad seleccionada
+  useEffect(() => {
+    if (!nacionalidadSeleccionada) {
+      setOrigenesFiltrados(origenes);
+      return;
+    }
+    // Extraer nombres de origen del campo origen_social
+    let origenesPermitidos: string[] = [];
+    if (Array.isArray(nacionalidadSeleccionada.origen_social)) {
+      origenesPermitidos = nacionalidadSeleccionada.origen_social.map((o) => {
+        // Ejemplo: "01-50: Noble" => "Noble"
+        const partes = o.split(":");
+        return partes.length > 1
+          ? partes[1].trim().toUpperCase()
+          : o.trim().toUpperCase();
+      });
+    } else if (typeof nacionalidadSeleccionada.origen_social === "string") {
+      // Si es string, puede ser una tabla especial, mostrar todos
+      setOrigenesFiltrados(origenes);
+      return;
+    }
+    // Filtrar los orígenes que coincidan con los nombres permitidos
+    const filtrados = origenes.filter((origen) =>
+      origenesPermitidos.includes(origen.nombre.trim().toUpperCase())
+    );
+    setOrigenesFiltrados(filtrados);
+  }, [nacionalidadSeleccionada, origenes]);
   const [resultado, setResultado] = useState<Caracteristicas | null>(null);
   // Estado para los resultados de las tiradas
   const [tiradas, setTiradas] = useState<Record<string, string>>({});
@@ -850,14 +900,16 @@ function App() {
           className="ficha-select"
           value={origenSeleccionado?.nombre || ""}
           onChange={(e) => {
-            const o = origenes.find((o) => o.nombre === e.target.value);
+            const o = origenesFiltrados.find(
+              (o) => o.nombre === e.target.value
+            );
             setOrigenSeleccionado(o || null);
             handleComboChange();
           }}
           disabled={!nacionalidadSeleccionada}
         >
           <option value="">Elige un origen</option>
-          {origenes.map((o) => (
+          {origenesFiltrados.map((o) => (
             <option key={o.nombre} value={o.nombre}>
               {o.nombre}
             </option>
