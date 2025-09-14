@@ -7,6 +7,8 @@ import {
   validarLimitesCaracteristica,
   type LimitacionCaracteristica,
 } from "./logic/logica";
+import type { Nacionalidad } from "./interfaces/Nacionalidad";
+import type { Origen } from "./interfaces/Origen";
 import { extraerBonificacionHabilidad } from "./interfaces/Habilidades";
 import type { Raza } from "./interfaces/RazasInterface";
 import type { Clase } from "./interfaces/ClasesInterface";
@@ -39,6 +41,8 @@ function App() {
     useState<HabilidadesResultado | null>(null);
   const [razas, setRazas] = useState<Raza[]>([]);
   const [clases, setClases] = useState<Clase[]>([]);
+  const [nacionalidades, setNacionalidades] = useState<Nacionalidad[]>([]);
+  const [origenes, setOrigenes] = useState<Origen[]>([]);
   const [razaSeleccionada, setRazaSeleccionada] = useState<Raza | null>(null);
   const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(
     null
@@ -535,6 +539,14 @@ function App() {
     fetch("/StromRol/Clases.json")
       .then((res) => res.json())
       .then((data) => setClases(data.clases as Clase[]));
+    //carga nacionalides
+    fetch("/StromRol/Nacionalidad.json")
+      .then((res) => res.json())
+      .then((data) => setNacionalidades(data.nacionalidades as Nacionalidad[]));
+    //carga origenes
+    fetch("/StromRol/Origen.json")
+      .then((res) => res.json())
+      .then((data) => setOrigenes(data.origenes as Origen[]));
   }, []);
 
   useEffect(() => {

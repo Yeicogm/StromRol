@@ -5,9 +5,9 @@
       "minimo": "01",
       "maximo": "02",
       "variacion_caracteristicas": [
-        "Inteligencia+1D10",
-        "Poder+2D6",
-        "Tamaño+3"
+        "Inteligencia +1D10",
+        "Poder +2D6",
+        "Tamaño +3"
       ],
       "origen_social": ["01-50: Noble", "51-00: Guerrero"],
       "info_nacionalidad": ""
@@ -17,9 +17,9 @@
       "minimo": "03",
       "maximo": "05",
       "variacion_caracteristicas": [
-        "Inteligencia+1D6",
-        "Poder+1D8",
-        "Tamaño+1"
+        "Inteligencia +1D6",
+        "Poder +1D8",
+        "Tamaño +1"
       ],
       "origen_social": ["01-20: Noble-Guerrero", "21-00: Guerrero"],
       "info_nacionalidad": ""
@@ -51,7 +51,7 @@
       "nombre": "Dharijor",
       "minimo": "09",
       "maximo": "12",
-      "variacion_caracteristicas": ["Constitución+1D4"],
+      "variacion_caracteristicas": ["Constitución +1D4"],
       "origen_social": [
         "01-10: Guerrero",
         "11-16: Asesino",
@@ -71,7 +71,7 @@
       "nombre": "Jharkor",
       "minimo": "13",
       "maximo": "16",
-      "variacion_caracteristicas": ["Destreza+1D4", "Carisma-1D4"],
+      "variacion_caracteristicas": ["Destreza +1D4", "Carisma -1D4"],
       "origen_social": [
         "01-10: Guerrero",
         "11-16: Asesino",
@@ -91,7 +91,7 @@
       "nombre": "Shazaar",
       "minimo": "17",
       "maximo": "24",
-      "variacion_caracteristicas": ["Constitución+1D6"],
+      "variacion_caracteristicas": ["Constitución +1D6"],
       "origen_social": [
         "01-10: Guerrero",
         "11-16: Asesino",
@@ -111,7 +111,7 @@
       "nombre": "Tarkesh",
       "minimo": "25",
       "maximo": "29",
-      "variacion_caracteristicas": ["Constitución+1D4", "Tamaño-1"],
+      "variacion_caracteristicas": ["Constitución +1D4", "Tamaño -1"],
       "origen_social": [
         "01-20: Guerrero",
         "21-30: Mercader",
@@ -148,7 +148,7 @@
       "nombre": "Ilmiora",
       "minimo": "38",
       "maximo": "44",
-      "variacion_caracteristicas": ["Carisma+1D4"],
+      "variacion_caracteristicas": ["Carisma +1D4"],
       "origen_social": [
         "01-10: Guerrero",
         "11-16: Asesino",
@@ -168,7 +168,7 @@
       "nombre": "Nadsokor",
       "minimo": "45",
       "maximo": "49",
-      "variacion_caracteristicas": ["Constitución-1D6", "Carisma-1D6"],
+      "variacion_caracteristicas": ["Constitución -1D6", "Carisma -1D6"],
       "origen_social": ["01-00: Mendigo"],
       "info_nacionalidad": ""
     },
@@ -202,7 +202,7 @@
       "nombre": "Isla de las Ciudades Purpura",
       "minimo": "61",
       "maximo": "67",
-      "variacion_caracteristicas": ["Fuerza+1D4", "Constitución+1D6"],
+      "variacion_caracteristicas": ["Fuerza +1D4", "Constitución +1D6"],
       "origen_social": [
         "01-20: Guerrero",
         "21-30: Mercader(3)",
@@ -240,7 +240,7 @@
       "nombre": "Pikarayd",
       "minimo": "75",
       "maximo": "81",
-      "variacion_caracteristicas": ["Fuerza+2D4", "Tamaño+1"],
+      "variacion_caracteristicas": ["Fuerza +2D4", "Tamaño +1"],
       "origen_social": [
         "01-10: Guerrero",
         "11-16: Asesino",
@@ -260,7 +260,7 @@
       "nombre": "Lormyr",
       "minimo": "82",
       "maximo": "88",
-      "variacion_caracteristicas": ["Inteligencia-1D4", "Tamaño+2"],
+      "variacion_caracteristicas": ["Inteligencia -1D4", "Tamaño +2"],
       "origen_social": [
         "01-10: Guerrero",
         "11-16: Asesino",
@@ -280,7 +280,7 @@
       "nombre": "Filkhar",
       "minimo": "89",
       "maximo": "95",
-      "variacion_caracteristicas": ["Destreza+1D4"],
+      "variacion_caracteristicas": ["Destreza +1D4"],
       "origen_social": [
         "01-10: Guerrero",
         "11-16: Asesino",
@@ -301,10 +301,10 @@
       "minimo": "96",
       "maximo": "97",
       "variacion_caracteristicas": [
-        "Constitución+1D6",
-        "Inteligencia-1D6",
-        "Poder-1D6",
-        "Destreza-1D6"
+        "Constitución +1D6",
+        "Inteligencia -1D6",
+        "Poder -1D6",
+        "Destreza -1D6"
       ],
       "origen_social": [
         "01-20: Guerrero",
@@ -324,11 +324,11 @@
       "minimo": "98",
       "maximo": "99",
       "variacion_caracteristicas": [
-        "Fuerza+1D6",
-        "Constitución+1D6",
-        "Poder-1D6",
-        "Inteligencia-1D6",
-        "Carisma-1D6"
+        "Fuerza +1D6",
+        "Constitución +1D6",
+        "Poder -1D6",
+        "Inteligencia -1D6",
+        "Carisma -1D6"
       ],
       "origen_social": [
         "01-20: Guerrero",
@@ -347,13 +347,13 @@
       "minimo": "00",
       "maximo": "00",
       "variacion_caracteristicas": [
-        "Fuerza+1D4",
-        "Constitución+1D8",
-        "Tamaño-2(4)",
-        "Inteligencia-1D6(4)",
-        "Poder-2D4(4)",
-        "Destreza-1D6(4)",
-        "Carisma-2D4.(4)"
+        "Fuerza +1D4",
+        "Constitución +1D8",
+        "Tamaño -2",
+        "Inteligencia -1D6",
+        "Poder -2D4",
+        "Destreza -1D6",
+        "Carisma -2D4"
       ],
       "origen_social": ["01-05: Noble", "06-00: Cazador"],
       "info_nacionalidad": ""
