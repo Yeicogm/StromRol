@@ -1072,77 +1072,169 @@ function App() {
 
       {/* Sección de resultado de habilidades */}
       {resultadoHabilidades && (
-        <div className="raza-card">
-          <div className="raza-content">
-            <h4 className="raza-section-title">Resultados de habilidades</h4>
-            <div className="raza-list">
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">
-                  {resultadoHabilidades.bonusCC.split(":")[0]}:
-                </span>
-                <span className="raza-chip raza-chip-secondary">
-                  {resultadoHabilidades.bonusCC.split(":")[1]}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">
-                  {resultadoHabilidades.bonusAA.split(":")[0]}:
-                </span>
-                <span className="raza-chip raza-chip-secondary">
-                  {resultadoHabilidades.bonusAA.split(":")[1]}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">Puntos de vida:</span>
-                <span className="raza-chip raza-chip-pv">
-                  {resultadoHabilidades.puntosVida}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">Conocimiento:</span>
-                <span className="raza-chip raza-chip-success">
-                  {resultadoHabilidades.conocimiento}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">Percepción:</span>
-                <span className="raza-chip raza-chip-success">
-                  {resultadoHabilidades.percepcion}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">Comunicación:</span>
-                <span className="raza-chip raza-chip-success">
-                  {resultadoHabilidades.comunicacion}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">Agilidad:</span>
-                <span className="raza-chip raza-chip-success">
-                  {resultadoHabilidades.agilidad}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">Manipulación:</span>
-                <span className="raza-chip raza-chip-success">
-                  {resultadoHabilidades.manipulacion}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">Discreción:</span>
-                <span className="raza-chip raza-chip-success">
-                  {resultadoHabilidades.discrecion}
-                </span>
-              </div>
-              <div className="raza-list-item">
-                <span className="raza-bonus-name">Salud Mental:</span>
-                <span className="raza-chip raza-chip-mental">
-                  {resultadoHabilidades.saludMental}
-                </span>
+        <>
+          <div className="raza-card">
+            <div className="raza-content">
+              <h4 className="raza-section-title">Resultados de habilidades</h4>
+              <div className="raza-list">
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">
+                    {resultadoHabilidades.bonusCC.split(":")[0]}:
+                  </span>
+                  <span className="raza-chip raza-chip-secondary">
+                    {resultadoHabilidades.bonusCC.split(":")[1]}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">
+                    {resultadoHabilidades.bonusAA.split(":")[0]}:
+                  </span>
+                  <span className="raza-chip raza-chip-secondary">
+                    {resultadoHabilidades.bonusAA.split(":")[1]}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">Puntos de vida:</span>
+                  <span className="raza-chip raza-chip-pv">
+                    {resultadoHabilidades.puntosVida}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">Conocimiento:</span>
+                  <span className="raza-chip raza-chip-success">
+                    {resultadoHabilidades.conocimiento}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">Percepción:</span>
+                  <span className="raza-chip raza-chip-success">
+                    {resultadoHabilidades.percepcion}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">Comunicación:</span>
+                  <span className="raza-chip raza-chip-success">
+                    {resultadoHabilidades.comunicacion}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">Agilidad:</span>
+                  <span className="raza-chip raza-chip-success">
+                    {resultadoHabilidades.agilidad}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">Manipulación:</span>
+                  <span className="raza-chip raza-chip-success">
+                    {resultadoHabilidades.manipulacion}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">Discreción:</span>
+                  <span className="raza-chip raza-chip-success">
+                    {resultadoHabilidades.discrecion}
+                  </span>
+                </div>
+                <div className="raza-list-item">
+                  <span className="raza-bonus-name">Salud Mental:</span>
+                  <span className="raza-chip raza-chip-mental">
+                    {resultadoHabilidades.saludMental}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          {/* Bonus de combate */}
+          {origenSeleccionado && (
+            <div className="raza-card">
+              <div className="raza-content">
+                <h4 className="raza-section-title">Bonus de combate</h4>
+                <div className="raza-list">
+                  {/* Calcular bonus sumando clase y origen, mostrar siempre */}
+                  {(() => {
+                    const bonusClase = claseSeleccionada?.Bonus_combate || {};
+                    const bonusOrigen =
+                      origenSeleccionado.variacion_bonus_combate || {};
+                    type BonusCombateValor = string | number | undefined;
+                    function sumarBonus(
+                      a: BonusCombateValor,
+                      b: BonusCombateValor
+                    ): string {
+                      const numA =
+                        typeof a === "string"
+                          ? parseInt(a)
+                          : typeof a === "number"
+                          ? a
+                          : 0;
+                      const numB =
+                        typeof b === "string"
+                          ? parseInt(b)
+                          : typeof b === "number"
+                          ? b
+                          : 0;
+                      const total = numA + numB;
+                      if (
+                        (typeof a === "string" && a.includes("%")) ||
+                        (typeof b === "string" && b.includes("%"))
+                      ) {
+                        return `${total > 0 ? "+" : ""}${total}%`;
+                      }
+                      return `${total > 0 ? "+" : ""}${total}`;
+                    }
+                    const ataque = sumarBonus(
+                      bonusClase && "ataque" in bonusClase
+                        ? (bonusClase.ataque as BonusCombateValor)
+                        : undefined,
+                      bonusOrigen && "ataque" in bonusOrigen
+                        ? (bonusOrigen.ataque as BonusCombateValor)
+                        : undefined
+                    );
+                    const defensa = sumarBonus(
+                      bonusClase && "defensa" in bonusClase
+                        ? (bonusClase.defensa as BonusCombateValor)
+                        : undefined,
+                      bonusOrigen && "defensa" in bonusOrigen
+                        ? (bonusOrigen.defensa as BonusCombateValor)
+                        : undefined
+                    );
+                    const armasArrojadizas = sumarBonus(
+                      bonusClase && "armas_arrojadizas" in bonusClase
+                        ? (bonusClase.armas_arrojadizas as BonusCombateValor)
+                        : undefined,
+                      bonusOrigen && "armas_arrojadizas" in bonusOrigen
+                        ? (bonusOrigen.armas_arrojadizas as BonusCombateValor)
+                        : undefined
+                    );
+                    return (
+                      <>
+                        <div className="raza-list-item">
+                          <span className="raza-bonus-name">Ataque:</span>
+                          <span className="raza-chip raza-chip-secondary">
+                            {ataque}
+                          </span>
+                        </div>
+                        <div className="raza-list-item">
+                          <span className="raza-bonus-name">Defensa:</span>
+                          <span className="raza-chip raza-chip-secondary">
+                            {defensa}
+                          </span>
+                        </div>
+                        <div className="raza-list-item">
+                          <span className="raza-bonus-name">
+                            Armas Arrojadizas:
+                          </span>
+                          <span className="raza-chip raza-chip-secondary">
+                            {armasArrojadizas}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })()}
+                </div>
+              </div>
+            </div>
+          )}
+        </>
       )}
 
       {/* Total de bonificaciones */}
