@@ -19,6 +19,97 @@ import type {
 } from "./interfaces/Caracteristicas";
 
 function App() {
+  // Renderiza la información de la nacionalidad seleccionada
+  const renderNacionalidadInfo = () => {
+    if (!nacionalidadSeleccionada) return null;
+    return (
+      <div className="raza-card">
+        <div className="raza-content">
+          <h3 className="raza-title">
+            Nacionalidad: {nacionalidadSeleccionada.nombre}
+          </h3>
+          <hr className="raza-divider" />
+          {nacionalidadSeleccionada.variacion_caracteristicas &&
+            nacionalidadSeleccionada.variacion_caracteristicas.length > 0 && (
+              <div className="raza-section">
+                <h4 className="raza-section-title">
+                  Variaciones de Características
+                </h4>
+                <div className="raza-list">
+                  {nacionalidadSeleccionada.variacion_caracteristicas.map(
+                    (variacion, idx) => (
+                      <div key={idx} className="raza-list-item">
+                        <span className="raza-characteristic-name">
+                          {variacion}
+                        </span>
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
+        </div>
+      </div>
+    );
+  };
+
+  // Renderiza la información del origen seleccionado
+  const renderOrigenInfo = () => {
+    if (!origenSeleccionado) return null;
+    return (
+      <div className="raza-card">
+        <div className="raza-content">
+          <h3 className="raza-title">Origen: {origenSeleccionado.nombre}</h3>
+          {origenSeleccionado.info_Origen &&
+            origenSeleccionado.info_Origen.trim() !== "" && (
+              <p className="raza-description">
+                {origenSeleccionado.info_Origen}
+              </p>
+            )}
+          <hr className="raza-divider" />
+          {origenSeleccionado.variacion_habilidades &&
+            origenSeleccionado.variacion_habilidades.length > 0 && (
+              <div className="raza-section">
+                <h4 className="raza-section-title">
+                  Bonificaciones de Habilidades
+                </h4>
+                <div className="raza-list">
+                  {origenSeleccionado.variacion_habilidades.map(
+                    (habilidad, idx) => (
+                      <div key={idx} className="raza-list-item">
+                        <span className="raza-bonus-name">{habilidad}</span>
+                        <span className="raza-chip raza-chip-secondary">
+                          Habilidad
+                        </span>
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
+          {origenSeleccionado.variacion_bonus_combate &&
+            Object.keys(origenSeleccionado.variacion_bonus_combate).length >
+              0 && (
+              <div className="raza-section">
+                <h4 className="raza-section-title">Bonus de Combate</h4>
+                <div className="raza-list">
+                  {Object.entries(
+                    origenSeleccionado.variacion_bonus_combate
+                  ).map(([tipo, valor], idx) => (
+                    <div key={idx} className="raza-list-item">
+                      <span className="raza-bonus-name">{tipo}:</span>
+                      <span className="raza-chip raza-chip-secondary">
+                        {valor}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+        </div>
+      </div>
+    );
+  };
   // Estado para mostrar/ocultar el logo
   const [mostrarLogo, setMostrarLogo] = useState(true);
   // Función para ocultar el logo al interactuar con cualquier combobox
@@ -44,6 +135,9 @@ function App() {
   const [clases, setClases] = useState<Clase[]>([]);
   const [nacionalidades, setNacionalidades] = useState<Nacionalidad[]>([]);
   const [origenes, setOrigenes] = useState<Origen[]>([]);
+  const [origenSeleccionado, setOrigenSeleccionado] = useState<Origen | null>(
+    null
+  );
   const [razaSeleccionada, setRazaSeleccionada] = useState<Raza | null>(null);
   const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(
     null
@@ -454,11 +548,12 @@ function App() {
   };
 
   const calcularBonificacionesTotales = () => {
-    if (!razaSeleccionada && !claseSeleccionada) return null;
+    if (!razaSeleccionada && !claseSeleccionada && !origenSeleccionado)
+      return null;
 
     const bonificacionesTotales: { [key: string]: number } = {};
 
-    // Agregar bonificaciones de la raza
+    // Bonificaciones de raza
     if (razaSeleccionada) {
       Object.entries(razaSeleccionada.bonificaciones).forEach(
         ([habilidad, bonus]) => {
@@ -466,7 +561,6 @@ function App() {
             bonificacionesTotales[habilidad] =
               (bonificacionesTotales[habilidad] || 0) + bonus;
           } else if (typeof bonus === "string") {
-            // Manejar casos donde bonus sea string (para compatibilidad)
             const valorNumerico = parseInt(bonus.replace(/[+-]/g, "")) || 0;
             const signo = bonus.startsWith("-") ? -1 : 1;
             bonificacionesTotales[habilidad] =
@@ -476,13 +570,10 @@ function App() {
       );
     }
 
-    // Agregar bonificaciones de la clase (de variacion_habilidades)
+    // Bonificaciones de clase
     if (claseSeleccionada && claseSeleccionada.variacion_habilidades) {
-      // Ahora variacion_habilidades es un array
       claseSeleccionada.variacion_habilidades.forEach((habilidadTexto) => {
         const trimmed = habilidadTexto.trim();
-
-        // Ignorar habilidades descriptivas sin valores numéricos
         if (
           trimmed.includes("Regeneración de SM") ||
           trimmed.includes("al día") ||
@@ -491,8 +582,6 @@ function App() {
         ) {
           return;
         }
-
-        // Usar la nueva función para extraer bonificaciones
         const bonificacion = extraerBonificacionHabilidad(trimmed);
         if (bonificacion) {
           bonificacionesTotales[bonificacion.habilidad] =
@@ -500,10 +589,37 @@ function App() {
             bonificacion.valor;
           return;
         }
-
-        // Casos especiales de 100% (como "Primeros Auxilios +100")
         if (trimmed.includes("100%") || trimmed.includes("+100")) {
-          // Extraer el nombre de la habilidad
+          const nombreHabilidad = trimmed
+            .replace(/(\+100|100\s*%).*$/, "")
+            .trim();
+          if (nombreHabilidad) {
+            bonificacionesTotales[nombreHabilidad] = 100;
+          }
+        }
+      });
+    }
+
+    // Bonificaciones de origen
+    if (origenSeleccionado && origenSeleccionado.variacion_habilidades) {
+      origenSeleccionado.variacion_habilidades.forEach((habilidadTexto) => {
+        const trimmed = habilidadTexto.trim();
+        if (
+          trimmed.includes("Regeneración de SM") ||
+          trimmed.includes("al día") ||
+          trimmed.includes("1D6") ||
+          trimmed === ""
+        ) {
+          return;
+        }
+        const bonificacion = extraerBonificacionHabilidad(trimmed);
+        if (bonificacion) {
+          bonificacionesTotales[bonificacion.habilidad] =
+            (bonificacionesTotales[bonificacion.habilidad] || 0) +
+            bonificacion.valor;
+          return;
+        }
+        if (trimmed.includes("100%") || trimmed.includes("+100")) {
           const nombreHabilidad = trimmed
             .replace(/(\+100|100\s*%).*$/, "")
             .trim();
@@ -680,10 +796,8 @@ function App() {
             setTiradas({}); // Limpiar tiradas al cambiar la clase
             setResultadoHabilidades(null); // Oculta resultados de habilidades
             setNacionalidadSeleccionada(null); // Deselecciona nacionalidad
-            setOrigenes([]); // Opcional: limpia los orígenes si quieres
+            setOrigenSeleccionado(null); // Limpia el origen seleccionado
             handleComboChange();
-            // Si tienes un estado para el origen seleccionado, ponlo en null aquí
-            // Ejemplo: setOrigenSeleccionado(null);
           }}
           disabled={Boolean(
             razaSeleccionada &&
@@ -734,7 +848,12 @@ function App() {
         <select
           id="origen-select"
           className="ficha-select"
-          onChange={handleComboChange}
+          value={origenSeleccionado?.nombre || ""}
+          onChange={(e) => {
+            const o = origenes.find((o) => o.nombre === e.target.value);
+            setOrigenSeleccionado(o || null);
+            handleComboChange();
+          }}
           disabled={!nacionalidadSeleccionada}
         >
           <option value="">Elige un origen</option>
@@ -987,6 +1106,12 @@ function App() {
 
       {/* Información de la raza seleccionada */}
       {renderRazaInfo()}
+
+      {/* Información de la nacionalidad seleccionada */}
+      {renderNacionalidadInfo()}
+
+      {/* Información del origen seleccionado */}
+      {renderOrigenInfo()}
     </div>
   );
 }
