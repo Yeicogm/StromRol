@@ -1,0 +1,133 @@
+{
+  "origenes": [
+    {
+      "nombre": "Guerrero",
+      "minimo": 1,
+      "maximo": 10,
+      "variacion_habilidades": ["Emboscada +5"],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": { "ataque": "+3%", "defensa": "+3%" },
+      "info_Origen": ""
+    },
+    {
+      "nombre": "Asesino",
+      "minimo": 11,
+      "maximo": 16,
+      "variacion_habilidades": [
+        "Cono.Veneno +5%",
+        "Buscar +5%",
+        "Mov.Silencioso +3%",
+        "Esconderse +3%",
+        "Emboscada +10%",
+        "Escuchar +5%"
+      ],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": ""
+    },
+    {
+      "nombre": "Mercader",
+      "minimo": 17,
+      "maximo": 25,
+      "variacion_habilidades": [
+        "Conocimiento +5%",
+        "Persuadir +5%",
+        "Crédito +5%",
+        "Evaluar Tesoro +10%"
+      ],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": "+100 MO"
+    },
+    {
+      "nombre": "Marino",
+      "minimo": 26,
+      "maximo": 36,
+      "variacion_habilidades": [
+        "Nadar +50%",
+        "Hacer nudos +50%",
+        "Trepar +15%",
+        "Equilibrio +10%",
+        "Navegar +25%"
+      ],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": ""
+    },
+    {
+      "nombre": "Cazador",
+      "minimo": 37,
+      "maximo": 42,
+      "variacion_habilidades": [
+        "Trampas +15%",
+        "Emboscada +10%",
+        "Seguir Rastros +10%"
+      ],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": { "armas_arrojadizas": "+3%" },
+      "info_Origen": ""
+    },
+    {
+      "nombre": "Campesino",
+      "minimo": 43,
+      "maximo": 50,
+      "variacion_habilidades": ["Seguir rastros +5%", "Primeros Auxilios +5%"],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": ""
+    },
+    {
+      "nombre": "Aprendiz Magia",
+      "minimo": 51,
+      "maximo": 60,
+      "variacion_habilidades": ["Conocimiento +6%", "Primeros Auxilios +5%"],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": "Selecciona Clase de magia según rango con nivel -2. 500px para pasar hasta nivel 1. Comienza con un hechizo y se da uno por nivel."
+    },
+    {
+      "nombre": "Noble",
+      "minimo": 61,
+      "maximo": 70,
+      "variacion_habilidades": ["Conocimiento +3%", "Comunicación +5%"],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": "+200 M.O."
+    },
+    {
+      "nombre": "Ladrón",
+      "minimo": 71,
+      "maximo": 80,
+      "variacion_habilidades": [
+        "Disimular +5%",
+        "Trepar +5%",
+        "Saltar +5%",
+        "Abrir cerradura +10%",
+        "Buscar +10%",
+        "Robar +5%",
+        "Forzar Cerraduras +3%"
+      ],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": ""
+    },
+    {
+      "nombre": "Artesano",
+      "minimo": 81,
+      "maximo": 90,
+      "variacion_habilidades": [],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": "-Armero: Puede fabricar armas. Necesita material de forja(70% precio arma), una forja, días de trabajo según arma. Éxito con 20% + 5 por nivel, sino tiene éxito el arma no tiene el bonus. Reparación de armas con forja y reparación improvisada de armas de madera. -Forjador: Repara armaduras dañadas de metal. -Curtidor: Fabrica armaduras de cuero a partir de pieles de animales. Éxito con 30% + 5 por nivel. En caso de fallo Arm-1 -Artesano Arquero. Puede fabricar arcos. Necesita material(70% precio arma), carpintería, días de trabajo según arma. Éxito con 20% + 5 por nivel, sino tiene éxito el arma no tiene el bonus. Reparación improvisada de arcos con pifia a partir de 80%. -Artesano flechero: Puede fabricar flechas completas a partir de flechas rotas. -Tejedor: Fabrica tejidos. -Carpintero: Trabaja la madera. -Cordelero: Trabaja cáñamo, fabrica cuerdas y derivados."
+    },
+    {
+      "nombre": "Mendigo",
+      "minimo": 91,
+      "maximo": 100,
+      "variacion_habilidades": ["Evitar +3%", "Robar +3%", "Disimular +3%"],
+      "variacion_caracteristicas": [],
+      "variacion_bonus_combate": {},
+      "info_Origen": "Comienza con dos HG de cicatriz. -200 M.O."
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+{
+  "nacionalidades": [
+    {
+      "nombre": "Melnibone",
+      "minimo": "01",
+      "maximo": "02",
+      "variacion_caracteristicas": [
+        "Inteligencia+1D10",
+        "Poder+2D6",
+        "Tamaño+3"
+      ],
+      "origen_social": ["01-50: Noble", "51-00: Guerrero"],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Pan Tang",
+      "minimo": "03",
+      "maximo": "05",
+      "variacion_caracteristicas": [
+        "Inteligencia+1D6",
+        "Poder+1D8",
+        "Tamaño+1"
+      ],
+      "origen_social": ["01-20: Noble-Guerrero", "21-00: Guerrero"],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Myrrhyn",
+      "minimo": "06",
+      "maximo": "08",
+      "variacion_caracteristicas": [
+        "Inteligencia+1D6",
+        "Poder+1D6",
+        "Carisma+1D4 (mujeres)"
+      ],
+      "origen_social": [
+        "01-20: Guerrero",
+        "21-30: Mercader",
+        "31-45: Guerrero",
+        "46-60: Cazador",
+        "61-65: Campesino",
+        "66-70: Sacerdote",
+        "71-75: Noble",
+        "76-85: Ladron",
+        "86-90: Mendigo",
+        "91-00: Artesano"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Dharijor",
+      "minimo": "09",
+      "maximo": "12",
+      "variacion_caracteristicas": ["Constitución+1D4"],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Jharkor",
+      "minimo": "13",
+      "maximo": "16",
+      "variacion_caracteristicas": ["Destreza+1D4", "Carisma-1D4"],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Shazaar",
+      "minimo": "17",
+      "maximo": "24",
+      "variacion_caracteristicas": ["Constitución+1D6"],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Tarkesh",
+      "minimo": "25",
+      "maximo": "29",
+      "variacion_caracteristicas": ["Constitución+1D4", "Tamaño-1"],
+      "origen_social": [
+        "01-20: Guerrero",
+        "21-30: Mercader",
+        "31-65: Marino",
+        "66-70: Sacerdote",
+        "71-75: Noble",
+        "76-85: Ladron",
+        "86-90: Mendigo",
+        "91-00: Artesano"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Vilmir",
+      "minimo": "30",
+      "maximo": "37",
+      "variacion_caracteristicas": [],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Ilmiora",
+      "minimo": "38",
+      "maximo": "44",
+      "variacion_caracteristicas": ["Carisma+1D4"],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Nadsokor",
+      "minimo": "45",
+      "maximo": "49",
+      "variacion_caracteristicas": ["Constitución-1D6", "Carisma-1D6"],
+      "origen_social": ["01-00: Mendigo"],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Desierto de las Lágrimas",
+      "minimo": "50",
+      "maximo": "56",
+      "variacion_caracteristicas": [
+        "Fuerza+1D6",
+        "Constitución+1D6",
+        "Tamaño-1(4)",
+        "Destreza+1D4",
+        "Carisma-1D4(4)"
+      ],
+      "origen_social": ["01-50: Cazador", "51-00: Guerrero"],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Eshmir",
+      "minimo": "57",
+      "maximo": "60",
+      "variacion_caracteristicas": [
+        "Tamaño-2(4)",
+        "Inteligencia+1D4",
+        "Poder+16"
+      ],
+      "origen_social": "Usa la tabla normal, excepto si la suma de INT+POD es 32, en cuyo caso será automáticamente sacerdote y hechicero. Si además tiene una fuerza de 13 o más, será también Guerrero.",
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Isla de las Ciudades Purpura",
+      "minimo": "61",
+      "maximo": "67",
+      "variacion_caracteristicas": ["Fuerza+1D4", "Constitución+1D6"],
+      "origen_social": [
+        "01-20: Guerrero",
+        "21-30: Mercader(3)",
+        "31-60: Marino",
+        "61-65: Campesino",
+        "66-70: Sacerdote(1)",
+        "71-75: Noble(3)",
+        "76-85: Ladron",
+        "86-90: Mendigo",
+        "91-00: Artesano"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Argimiliar",
+      "minimo": "68",
+      "maximo": "74",
+      "variacion_caracteristicas": [],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Pikarayd",
+      "minimo": "75",
+      "maximo": "81",
+      "variacion_caracteristicas": ["Fuerza+2D4", "Tamaño+1"],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Lormyr",
+      "minimo": "82",
+      "maximo": "88",
+      "variacion_caracteristicas": ["Inteligencia-1D4", "Tamaño+2"],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Filkhar",
+      "minimo": "89",
+      "maximo": "95",
+      "variacion_caracteristicas": ["Destreza+1D4"],
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Oin",
+      "minimo": "96",
+      "maximo": "97",
+      "variacion_caracteristicas": [
+        "Constitución+1D6",
+        "Inteligencia-1D6",
+        "Poder-1D6",
+        "Destreza-1D6"
+      ],
+      "origen_social": [
+        "01-20: Guerrero",
+        "21-30: Mercader",
+        "31-45: Campesino",
+        "46-60: Cazador",
+        "61-70: Campesino",
+        "71-75: Noble",
+        "76-85: Ladron",
+        "86-90: Mendigo",
+        "91-00: Artesano"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Yu",
+      "minimo": "98",
+      "maximo": "99",
+      "variacion_caracteristicas": [
+        "Fuerza+1D6",
+        "Constitución+1D6",
+        "Poder-1D6",
+        "Inteligencia-1D6",
+        "Carisma-1D6"
+      ],
+      "origen_social": [
+        "01-20: Guerrero",
+        "21-60: Cazador",
+        "61-65: Campesino",
+        "66-70: Cazador",
+        "71-75: Noble",
+        "76-85: Ladron",
+        "86-90: Mendigo",
+        "91-00: Artesano"
+      ],
+      "info_nacionalidad": ""
+    },
+    {
+      "nombre": "Org",
+      "minimo": "00",
+      "maximo": "00",
+      "variacion_caracteristicas": [
+        "Fuerza+1D4",
+        "Constitución+1D8",
+        "Tamaño-2(4)",
+        "Inteligencia-1D6(4)",
+        "Poder-2D4(4)",
+        "Destreza-1D6(4)",
+        "Carisma-2D4.(4)"
+      ],
+      "origen_social": ["01-05: Noble", "06-00: Cazador"],
+      "info_nacionalidad": ""
+    }
+  ]
+}
