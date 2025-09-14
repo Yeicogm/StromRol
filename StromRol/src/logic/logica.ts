@@ -1,4 +1,7 @@
-import type { Caracteristicas, NombreCaracteristica } from "../interfaces/Caracteristicas";
+import type {
+  Caracteristicas,
+  NombreCaracteristica,
+} from "../interfaces/Caracteristicas";
 import { MAPEO_CARACTERISTICAS } from "../interfaces/Caracteristicas";
 import type { Raza } from "../interfaces/RazasInterface";
 
@@ -28,18 +31,15 @@ export function aplicarVariaciones(
 
   for (const variacion of variaciones) {
     // Ejemplo: "Inteligencia +1", "Destreza +1D", "PODER +2D6", "-2 INTELIGENCIA", etc.
-    // Permitir letras acentuadas y ñ en el nombre de la característica
     let match = variacion.match(
       /^([\wÁÉÍÓÚÜÑáéíóúüñ]+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i
     );
 
-    // Si no coincide con el primer patrón, intentar con el formato "-2 INTELIGENCIA" o "+2 FUERZA"
     if (!match) {
       match = variacion.match(
         /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+([\wÁÉÍÓÚÜÑáéíóúüñ]+)$/i
       );
       if (match) {
-        // Intercambiar el orden: el cambio está primero, luego el atributo
         const temp = match[1];
         match[1] = match[2];
         match[2] = temp;
@@ -47,130 +47,96 @@ export function aplicarVariaciones(
     }
 
     if (!match) {
-      console.log(`[Variación ignorada] No coincide:`, variacion);
       continue;
     }
     const atributo = match[1];
     const cambio = match[2];
 
-    // Normalizar el nombre de la característica usando el mapeo
     const nombreNormalizado =
       MAPEO_CARACTERISTICAS[atributo.toUpperCase()] ||
       MAPEO_CARACTERISTICAS[atributo];
     if (!nombreNormalizado) {
-      console.log(
-        `[Atributo ignorado] No normalizado:`,
-        atributo,
-        "de variación",
-        variacion
-      );
       continue;
     }
 
     const actual = nuevasCaracteristicas[nombreNormalizado] || "";
-    console.log(`[Aplicando variación]`, {
-      atributo,
-      nombreNormalizado,
-      cambio,
-      actual,
-      variacion,
-    });
 
-    // Si el valor actual es una tirada de dados (ej: "2D6", "2D6+1")
-    const dadoMatch = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
-
-    // Si la variación NO contiene operador '+' ni '-', SIEMPRE reemplaza el valor
+    // Si la variación NO contiene operador '+' ni '-', reemplaza el valor
     if (!cambio.includes("+") && !cambio.includes("-")) {
       nuevasCaracteristicas[nombreNormalizado] = cambio;
-      console.log(`[Reemplazo directo]`, nombreNormalizado, "->", cambio);
       continue;
     }
 
-    if (dadoMatch) {
-      let dados = parseInt(dadoMatch[1], 10);
-      let caras = parseInt(dadoMatch[2], 10);
-      let mod = dadoMatch[3] ? parseInt(dadoMatch[3], 10) : 0;
+    // Si ambos son expresiones de dados, combinar como suma de expresiones
+    const actualDadosExp = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
+    const cambioDadosExp = cambio.match(/^[+-]?(\d+)D(\d+)([+-]\d+)?$/);
 
-      if (/^[+-]?\d+D$/.test(cambio)) {
-        // Ejemplo: '+1D' => sumar un dado
-        const dadosExtra = parseInt(cambio.replace("D", ""), 10);
-        dados += dadosExtra;
-        nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
-          mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
+    if (actualDadosExp && cambioDadosExp) {
+      // Si el tipo de dado es igual, sumar los dados
+      const dadosActual = parseInt(actualDadosExp[1], 10);
+      const carasActual = parseInt(actualDadosExp[2], 10);
+      const modActual = actualDadosExp[3] ? parseInt(actualDadosExp[3], 10) : 0;
+      const dadosCambio = parseInt(cambioDadosExp[1], 10);
+      const carasCambio = parseInt(cambioDadosExp[2], 10);
+      const modCambio = cambioDadosExp[3] ? parseInt(cambioDadosExp[3], 10) : 0;
+      if (carasActual === carasCambio) {
+        // Sumar dados y modificadores
+        const totalDados = dadosActual + dadosCambio;
+        const totalMod = modActual + modCambio;
+        nuevasCaracteristicas[
+          nombreNormalizado
+        ] = `${totalDados}D${carasActual}${
+          totalMod !== 0 ? (totalMod > 0 ? "+" : "") + totalMod : ""
         }`;
-        console.log(
-          `[Suma dados]`,
-          nombreNormalizado,
-          "->",
-          nuevasCaracteristicas[nombreNormalizado]
-        );
-      } else if (/^[+-]?\d+D\d+$/.test(cambio)) {
-        // Ejemplo: '+2D6' => sumar dados y caras (no muy común, pero soportado)
-        const extraMatch = cambio.match(/([+-]?\d+)D(\d+)/);
-        if (extraMatch) {
-          dados += parseInt(extraMatch[1], 10);
-          caras = parseInt(extraMatch[2], 10); // se puede ajustar según reglas
-        }
-        nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
-          mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
-        }`;
-        console.log(
-          `[Suma dados y caras]`,
-          nombreNormalizado,
-          "->",
-          nuevasCaracteristicas[nombreNormalizado]
-        );
-      } else if (/^[+-]?\d+$/.test(cambio)) {
-        // Ejemplo: '+1' => sumar modificador
-        // Si el valor actual es tipo XdY+Z, suma al modificador
-        mod += parseInt(cambio, 10);
-        nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
-          mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
-        }`;
-        console.log(
-          `[Suma modificador]`,
-          nombreNormalizado,
-          "->",
-          nuevasCaracteristicas[nombreNormalizado]
-        );
-      }
-    } else {
-      // Si no es una tirada de dados, sumar normalmente
-      if (/^[+-]?\d+$/.test(cambio)) {
-        // Si el valor actual es tipo XdY+Z, sumar al modificador
-        const dadoMatchSimple = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
-        if (dadoMatchSimple) {
-          let dados = parseInt(dadoMatchSimple[1], 10);
-          let caras = parseInt(dadoMatchSimple[2], 10);
-          let mod = dadoMatchSimple[3] ? parseInt(dadoMatchSimple[3], 10) : 0;
-          mod += parseInt(cambio, 10);
-          nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
-            mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
-          }`;
-          console.log(
-            `[Suma modificador simple]`,
-            nombreNormalizado,
-            "->",
-            nuevasCaracteristicas[nombreNormalizado]
-          );
-        } else {
-          // Si no es tipo XdY, sumar normalmente
-          const valorActual = parseInt(actual || "0", 10);
-          nuevasCaracteristicas[nombreNormalizado] = (
-            valorActual + parseInt(cambio, 10)
-          ).toString();
-          console.log(
-            `[Suma valor simple]`,
-            nombreNormalizado,
-            "->",
-            nuevasCaracteristicas[nombreNormalizado]
-          );
-        }
       } else {
-        nuevasCaracteristicas[nombreNormalizado] = cambio;
-        console.log(`[Reemplazo no dado]`, nombreNormalizado, "->", cambio);
+        // Si el tipo de dado es diferente, concatenar la expresión
+        const actualStr = actual.trim();
+        const cambioStr = cambio.trim().replace(/^\+/, "");
+        // Si ya contiene la expresión, no duplicar
+        if (!actualStr.includes(cambioStr)) {
+          nuevasCaracteristicas[
+            nombreNormalizado
+          ] = `${actualStr}+${cambioStr}`;
+        }
       }
+      continue;
     }
+
+    // Si el valor actual es una tirada de dados y el cambio es tipo '+1D' (sin caras)
+    if (actualDadosExp && /^[+-]?\d+D$/.test(cambio)) {
+      const dados = parseInt(actualDadosExp[1], 10);
+      const caras = parseInt(actualDadosExp[2], 10);
+      const mod = actualDadosExp[3] ? parseInt(actualDadosExp[3], 10) : 0;
+      const dadosExtra = parseInt(cambio.replace("D", ""), 10);
+      nuevasCaracteristicas[nombreNormalizado] = `${
+        dados + dadosExtra
+      }D${caras}${mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""}`;
+      continue;
+    }
+
+    // Si el valor actual es una tirada de dados y el cambio es tipo '+1' (modificador)
+    if (actualDadosExp && /^[+-]?\d+$/.test(cambio)) {
+      const dados = parseInt(actualDadosExp[1], 10);
+      const caras = parseInt(actualDadosExp[2], 10);
+      let mod = actualDadosExp[3] ? parseInt(actualDadosExp[3], 10) : 0;
+      mod += parseInt(cambio, 10);
+      nuevasCaracteristicas[nombreNormalizado] = `${dados}D${caras}${
+        mod !== 0 ? (mod > 0 ? "+" : "") + mod : ""
+      }`;
+      continue;
+    }
+
+    // Si no es una tirada de dados, sumar normalmente
+    if (/^[+-]?\d+$/.test(cambio)) {
+      const valorActual = parseInt(actual || "0", 10);
+      nuevasCaracteristicas[nombreNormalizado] = (
+        valorActual + parseInt(cambio, 10)
+      ).toString();
+      continue;
+    }
+
+    // Si no se puede sumar, reemplazar
+    nuevasCaracteristicas[nombreNormalizado] = cambio;
   }
 
   return nuevasCaracteristicas;
@@ -178,18 +144,21 @@ export function aplicarVariaciones(
 
 export function calcularCaracteristicasFinales(
   raza: Raza,
-  clase?: { variacion_caracteristicas?: string[]; variacion_caracMINMAX?: string[] }
+  clase?: {
+    variacion_caracteristicas?: string[];
+    variacion_caracMINMAX?: string[];
+  }
 ): Caracteristicas {
   const base = raza.caracteristicas;
   const variaciones = clase?.variacion_caracteristicas;
   let resultado = aplicarVariaciones(base, variaciones);
-  
+
   // Aplicar limitaciones si existen
   if (clase?.variacion_caracMINMAX && clase.variacion_caracMINMAX.length > 0) {
     const limitaciones = parsearLimitaciones(clase.variacion_caracMINMAX);
     resultado = aplicarLimitaciones(resultado, limitaciones);
   }
-  
+
   return resultado;
 }
 
@@ -207,41 +176,45 @@ export interface LimitacionCaracteristica {
  * Parsea el campo variacion_caracMINMAX para extraer limitaciones
  * Ejemplo: ["MIN PODER 5D", "MAX FUERZA 19"]
  */
-export function parsearLimitaciones(variacionMINMAX: string[]): LimitacionCaracteristica[] {
+export function parsearLimitaciones(
+  variacionMINMAX: string[]
+): LimitacionCaracteristica[] {
   const limitaciones: LimitacionCaracteristica[] = [];
-  
+
   for (const limitacion of variacionMINMAX) {
     // Patrón para MIN PODER 5D
     const minMatch = limitacion.match(/^MIN\s+(\w+)\s+(\d+)D$/i);
     if (minMatch) {
-      const caracteristicaNormalizada = MAPEO_CARACTERISTICAS[minMatch[1].toUpperCase()];
+      const caracteristicaNormalizada =
+        MAPEO_CARACTERISTICAS[minMatch[1].toUpperCase()];
       if (caracteristicaNormalizada) {
         const dados = parseInt(minMatch[2], 10);
         limitaciones.push({
           caracteristica: caracteristicaNormalizada,
           tipo: "MIN",
           valor: 0, // Se calculará dinámicamente
-          dados
+          dados,
         });
       }
       continue;
     }
-    
+
     // Patrón para MAX FUERZA 19
     const maxMatch = limitacion.match(/^MAX\s+(\w+)\s+(\d+)$/i);
     if (maxMatch) {
-      const caracteristicaNormalizada = MAPEO_CARACTERISTICAS[maxMatch[1].toUpperCase()];
+      const caracteristicaNormalizada =
+        MAPEO_CARACTERISTICAS[maxMatch[1].toUpperCase()];
       if (caracteristicaNormalizada) {
         const valor = parseInt(maxMatch[2], 10);
         limitaciones.push({
           caracteristica: caracteristicaNormalizada,
           tipo: "MAX",
-          valor
+          valor,
         });
       }
     }
   }
-  
+
   return limitaciones;
 }
 
@@ -253,11 +226,11 @@ export function aplicarLimitaciones(
   limitaciones: LimitacionCaracteristica[]
 ): Caracteristicas {
   const nuevasCaracteristicas = { ...caracteristicas };
-  
+
   for (const limitacion of limitaciones) {
     const valorActual = nuevasCaracteristicas[limitacion.caracteristica];
     if (!valorActual) continue;
-    
+
     if (limitacion.tipo === "MIN" && limitacion.dados) {
       // Para limitaciones mínimas de dados (ej: MIN PODER 5D)
       // Si la característica actual es 3D6 y el mínimo es 5D, cambiar a 5D6
@@ -266,10 +239,11 @@ export function aplicarLimitaciones(
         const dadosActuales = parseInt(dadoMatch[1], 10);
         const caras = parseInt(dadoMatch[2], 10);
         const mod = dadoMatch[3] ? dadoMatch[3] : "";
-        
+
         if (dadosActuales < limitacion.dados) {
-          nuevasCaracteristicas[limitacion.caracteristica] = 
-            `${limitacion.dados}D${caras}${mod}`;
+          nuevasCaracteristicas[
+            limitacion.caracteristica
+          ] = `${limitacion.dados}D${caras}${mod}`;
           console.log(
             `[Aplicando límite MIN]`,
             limitacion.caracteristica,
@@ -279,7 +253,7 @@ export function aplicarLimitaciones(
       }
     }
   }
-  
+
   return nuevasCaracteristicas;
 }
 
@@ -297,22 +271,25 @@ export function validarLimitesCaracteristica(
         return {
           valido: false,
           mensaje: `El valor máximo para ${caracteristica} es ${limitacion.valor}`,
-          valorCorregido: limitacion.valor
+          valorCorregido: limitacion.valor,
         };
       }
     }
   }
-  
+
   return { valido: true };
 }
 
 /**
  * Obtiene las limitaciones de una clase específica
  */
-export function obtenerLimitacionesClase(
-  clase?: { variacion_caracMINMAX?: string[] }
-): LimitacionCaracteristica[] {
-  if (!clase?.variacion_caracMINMAX || clase.variacion_caracMINMAX.length === 0) {
+export function obtenerLimitacionesClase(clase?: {
+  variacion_caracMINMAX?: string[];
+}): LimitacionCaracteristica[] {
+  if (
+    !clase?.variacion_caracMINMAX ||
+    clase.variacion_caracMINMAX.length === 0
+  ) {
     return [];
   }
   return parsearLimitaciones(clase.variacion_caracMINMAX);

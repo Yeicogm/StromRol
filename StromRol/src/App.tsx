@@ -5,6 +5,7 @@ import {
   calcularCaracteristicasFinales,
   obtenerLimitacionesClase,
   validarLimitesCaracteristica,
+  aplicarVariaciones,
   type LimitacionCaracteristica,
 } from "./logic/logica";
 import type { Nacionalidad } from "./interfaces/Nacionalidad";
@@ -47,6 +48,8 @@ function App() {
   const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(
     null
   );
+  const [nacionalidadSeleccionada, setNacionalidadSeleccionada] =
+    useState<Nacionalidad | null>(null);
   const [resultado, setResultado] = useState<Caracteristicas | null>(null);
   // Estado para los resultados de las tiradas
   const [tiradas, setTiradas] = useState<Record<string, string>>({});
@@ -86,20 +89,28 @@ function App() {
 
   // Función para tirar dados aleatorios según el formato (ej: "2D6+3")
   function tirarDado(formula: string): number {
-    // Ejemplo de fórmula: "2D6+3", "1D10", "3D4-2"
-    const regex = /(\d+)D(\d+)([+-]\d+)?/i;
-    const match = formula.match(regex);
-    if (!match) return 0;
-    const cantidad = parseInt(match[1], 10);
-    const caras = parseInt(match[2], 10);
-    const modificador = match[3] ? parseInt(match[3], 10) : 0;
+    // Ejemplo de fórmula: "3D6+1D10+2", "2D6+3", "1D10", "3D4-2"
     let total = 0;
-    for (let i = 0; i < cantidad; i++) {
-      let dado = Math.floor(Math.random() * caras) + 1;
-      if (dadosMin2 && dado < 2) dado = 2;
-      total += dado;
+    // Buscar todas las expresiones de dados (ej: 3D6, 1D10)
+    const dadoRegex = /([+-]?\d+)D(\d+)/gi;
+    let match;
+    while ((match = dadoRegex.exec(formula)) !== null) {
+      const cantidad = parseInt(match[1], 10); // puede ser negativo
+      const caras = parseInt(match[2], 10);
+      const signo = Math.sign(cantidad);
+      for (let i = 0; i < Math.abs(cantidad); i++) {
+        let dado = Math.floor(Math.random() * caras) + 1;
+        if (dadosMin2 && dado < 2) dado = 2;
+        total += signo * dado;
+      }
     }
-    return total + modificador;
+    // Buscar modificadores numéricos (ej: +2, -1)
+    const modRegex = /([+-]\d+)(?!D)/g;
+    let modMatch;
+    while ((modMatch = modRegex.exec(formula)) !== null) {
+      total += parseInt(modMatch[1], 10);
+    }
+    return total;
   }
 
   // Genera tiradas aleatorias para cada característica
@@ -558,28 +569,42 @@ function App() {
         ["SELOROK", "DEMONIOS"].includes(razaSeleccionada.nombre.toUpperCase())
       ) {
         setResultado(calcularCaracteristicasFinales(razaSeleccionada));
-      } else if (claseSeleccionada) {
-        // Adaptar claseSeleccionada para asegurar que variacion_caracteristicas sea string[]
-        const claseAdaptada = {
-          ...claseSeleccionada,
-          variacion_caracteristicas: Array.isArray(
-            claseSeleccionada.variacion_caracteristicas
-          )
-            ? claseSeleccionada.variacion_caracteristicas
-            : typeof claseSeleccionada.variacion_caracteristicas === "string"
-            ? [claseSeleccionada.variacion_caracteristicas]
-            : undefined,
-        };
-        setResultado(
-          calcularCaracteristicasFinales(razaSeleccionada, claseAdaptada)
-        );
       } else {
-        setResultado(null);
+        // Adaptar claseSeleccionada para asegurar que variacion_caracteristicas sea string[]
+        const claseAdaptada = claseSeleccionada
+          ? {
+              ...claseSeleccionada,
+              variacion_caracteristicas: Array.isArray(
+                claseSeleccionada.variacion_caracteristicas
+              )
+                ? claseSeleccionada.variacion_caracteristicas
+                : typeof claseSeleccionada.variacion_caracteristicas ===
+                  "string"
+                ? [claseSeleccionada.variacion_caracteristicas]
+                : undefined,
+            }
+          : undefined;
+        // Si hay nacionalidad seleccionada, combinar sus variaciones
+        let resultadoBase = calcularCaracteristicasFinales(
+          razaSeleccionada,
+          claseAdaptada
+        );
+        if (
+          nacionalidadSeleccionada &&
+          nacionalidadSeleccionada.variacion_caracteristicas
+        ) {
+          // Aplica las variaciones de nacionalidad sobre el resultado base
+          resultadoBase = aplicarVariaciones(
+            resultadoBase,
+            nacionalidadSeleccionada.variacion_caracteristicas
+          );
+        }
+        setResultado(resultadoBase);
       }
     } else {
       setResultado(null);
     }
-  }, [razaSeleccionada, claseSeleccionada]);
+  }, [razaSeleccionada, claseSeleccionada, nacionalidadSeleccionada]);
 
   // useEffect para actualizar limitaciones cuando cambie la clase
   useEffect(() => {
@@ -654,7 +679,11 @@ function App() {
             setClaseSeleccionada(c || null);
             setTiradas({}); // Limpiar tiradas al cambiar la clase
             setResultadoHabilidades(null); // Oculta resultados de habilidades
+            setNacionalidadSeleccionada(null); // Deselecciona nacionalidad
+            setOrigenes([]); // Opcional: limpia los orígenes si quieres
             handleComboChange();
+            // Si tienes un estado para el origen seleccionado, ponlo en null aquí
+            // Ejemplo: setOrigenSeleccionado(null);
           }}
           disabled={Boolean(
             razaSeleccionada &&
@@ -679,7 +708,15 @@ function App() {
         <select
           id="nacionalidad-select"
           className="ficha-select"
-          onChange={handleComboChange}
+          value={nacionalidadSeleccionada?.nombre || ""}
+          onChange={(e) => {
+            const n = nacionalidades.find((n) => n.nombre === e.target.value);
+            setNacionalidadSeleccionada(n || null);
+            setTiradas({}); // Limpiar tiradas al cambiar nacionalidad
+            setResultadoHabilidades(null); // Oculta resultados de habilidades
+            handleComboChange();
+          }}
+          disabled={!razaSeleccionada}
         >
           <option value="">Elige una nacionalidad</option>
           {nacionalidades.map((n) => (
@@ -698,6 +735,7 @@ function App() {
           id="origen-select"
           className="ficha-select"
           onChange={handleComboChange}
+          disabled={!nacionalidadSeleccionada}
         >
           <option value="">Elige un origen</option>
           {origenes.map((o) => (
