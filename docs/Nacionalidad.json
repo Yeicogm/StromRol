@@ -31,7 +31,7 @@
       "variacion_caracteristicas": [
         "Inteligencia+1D6",
         "Poder+1D6",
-        "Carisma+1D4 (mujeres)"
+        "Carisma+1D4"
       ],
       "origen_social": [
         "01-20: Guerrero",
@@ -177,11 +177,11 @@
       "minimo": "50",
       "maximo": "56",
       "variacion_caracteristicas": [
-        "Fuerza+1D6",
-        "Constitución+1D6",
-        "Tamaño-1(4)",
-        "Destreza+1D4",
-        "Carisma-1D4(4)"
+        "Fuerza +1D6",
+        "Constitución +1D6",
+        "Tamaño -1",
+        "Destreza +1D4",
+        "Carisma -1D4"
       ],
       "origen_social": ["01-50: Cazador", "51-00: Guerrero"],
       "info_nacionalidad": ""
@@ -191,11 +191,23 @@
       "minimo": "57",
       "maximo": "60",
       "variacion_caracteristicas": [
-        "Tamaño-2(4)",
-        "Inteligencia+1D4",
-        "Poder+16"
+        "Tamaño -2",
+        "Inteligencia +1D4",
+        "Poder +16"
       ],
-      "origen_social": "Usa la tabla normal, excepto si la suma de INT+POD es 32, en cuyo caso será automáticamente sacerdote y hechicero. Si además tiene una fuerza de 13 o más, será también Guerrero.",
+      "origen_social": [
+        "01-10: Guerrero",
+        "11-16: Asesino",
+        "17-25: Mercader",
+        "26-36: Marino",
+        "37-42: Cazador",
+        "43-50: Campesino",
+        "51-60: Aprendiz Magia",
+        "61-70: Noble",
+        "71-80: Ladrón",
+        "81-90: Artesano",
+        "91-00: Mendigo"
+      ],
       "info_nacionalidad": ""
     },
     {
@@ -205,11 +217,11 @@
       "variacion_caracteristicas": ["Fuerza +1D4", "Constitución +1D6"],
       "origen_social": [
         "01-20: Guerrero",
-        "21-30: Mercader(3)",
+        "21-30: Mercader",
         "31-60: Marino",
         "61-65: Campesino",
-        "66-70: Sacerdote(1)",
-        "71-75: Noble(3)",
+        "66-70: Sacerdote",
+        "71-75: Noble",
         "76-85: Ladron",
         "86-90: Mendigo",
         "91-00: Artesano"
