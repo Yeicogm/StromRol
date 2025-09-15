@@ -895,7 +895,43 @@ function App() {
             title="Tirar dado de nacionalidad"
             disabled={!razaSeleccionada}
             onClick={() => {
-              alert("¡Dado de nacionalidad tirado!");
+              // Lanzar número aleatorio entre 1 y 100
+              const tirada = Math.floor(Math.random() * 100) + 1;
+              // Buscar nacionalidad correspondiente
+              let resultado = null;
+              for (const n of nacionalidades) {
+                // Convertir mínimo y máximo a número (soportando "00" como 100)
+                let min = parseInt(n.minimo, 10);
+                let max = parseInt(n.maximo, 10);
+                if (n.minimo === "00") min = 100;
+                if (n.maximo === "00") max = 100;
+                // Si el rango es invertido (ej: Org: 00-00)
+                if (min > max) {
+                  [min, max] = [max, min];
+                }
+                if (tirada >= min && tirada <= max) {
+                  resultado = n;
+                  break;
+                }
+                // Para rangos que incluyen 100 como "00"
+                if (
+                  tirada === 100 &&
+                  (n.minimo === "00" || n.maximo === "00")
+                ) {
+                  resultado = n;
+                  break;
+                }
+              }
+              if (resultado) {
+                setNacionalidadSeleccionada(resultado);
+                setTiradas({});
+                setResultadoHabilidades(null);
+                setOrigenSeleccionado(null);
+                handleComboChange();
+                alert(`Tirada: ${tirada} → Nacionalidad: ${resultado.nombre}`);
+              } else {
+                alert(`Tirada: ${tirada} → No se encontró nacionalidad.`);
+              }
             }}
           >
             🎲
@@ -937,7 +973,57 @@ function App() {
             title="Tirar dado de origen"
             disabled={!nacionalidadSeleccionada}
             onClick={() => {
-              alert("¡Dado de origen tirado!");
+              if (!nacionalidadSeleccionada) return;
+              const tirada = Math.floor(Math.random() * 100) + 1;
+              const origenSocial = nacionalidadSeleccionada.origen_social;
+              if (!Array.isArray(origenSocial)) {
+                alert(
+                  "La nacionalidad seleccionada no tiene tabla de origen social válida."
+                );
+                return;
+              }
+              let origenNombre = null;
+              for (const rango of origenSocial) {
+                // Ejemplo: "01-50: Noble"
+                const partes = rango.split(":");
+                if (partes.length < 2) continue;
+                const rangoStr = partes[0].trim();
+                const nombre = partes[1].trim();
+                let [minStr, maxStr] = rangoStr.split("-");
+                minStr = minStr.trim();
+                maxStr = maxStr.trim();
+                let min = parseInt(minStr, 10);
+                let max = parseInt(maxStr, 10);
+                if (minStr === "00") min = 100;
+                if (maxStr === "00") max = 100;
+                if (min > max) [min, max] = [max, min];
+                if (tirada >= min && tirada <= max) {
+                  origenNombre = nombre.toUpperCase();
+                  break;
+                }
+                if (tirada === 100 && (minStr === "00" || maxStr === "00")) {
+                  origenNombre = nombre.toUpperCase();
+                  break;
+                }
+              }
+              if (origenNombre) {
+                // Buscar el objeto origen en origenesFiltrados
+                const origenObj = origenesFiltrados.find(
+                  (o) => o.nombre.trim().toUpperCase() === origenNombre
+                );
+                if (origenObj) {
+                  setOrigenSeleccionado(origenObj);
+                  setTiradas({});
+                  setResultadoHabilidades(null);
+                  alert(`Tirada: ${tirada} → Origen: ${origenObj.nombre}`);
+                } else {
+                  alert(
+                    `Tirada: ${tirada} → Origen encontrado en tabla: ${origenNombre}, pero no existe en el combo.`
+                  );
+                }
+              } else {
+                alert(`Tirada: ${tirada} → No se encontró origen.`);
+              }
             }}
           >
             🎲
