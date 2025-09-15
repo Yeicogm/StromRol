@@ -1,10 +1,12 @@
-/* Para layout vertical de combo y botón dado */
-.ficha-combo-col {
+/* Para layout horizontal de combo y botón dado */
+.ficha-combo-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   width: 100%;
+  justify-content: center;
+  margin: 0 auto 12px auto;
 }
 
 /* Botón dado pequeño */

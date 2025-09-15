@@ -792,103 +792,135 @@ function App() {
       )}
       <h2 className="ficha-title">Generador de Fichas</h2>
       <div className="ficha-select-group">
-        <label htmlFor="raza-select" className="ficha-label">
-          Raza:
-        </label>
-        <select
-          id="raza-select"
-          className="ficha-select"
-          value={razaSeleccionada?.nombre || ""}
-          onChange={(e) => {
-            const r = razas.find((r) => r.nombre === e.target.value);
-            setRazaSeleccionada(r || null);
-            handleComboChange();
-            setResultadoHabilidades(null); // Oculta resultados de habilidades
-            setNacionalidadSeleccionada(null); // Deselecciona nacionalidad al cambiar raza
-            if (
-              r &&
-              ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                r.nombre.toUpperCase()
-              )
-            ) {
-              setClaseSeleccionada(null);
-            }
-          }}
-        >
-          <option value="">Elige una raza</option>
-          {razas.map((r) => (
-            <option key={r.nombre} value={r.nombre}>
-              {r.nombre.toUpperCase()}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="ficha-select-group">
-        <label htmlFor="clase-select" className="ficha-label">
-          Clase:
-        </label>
-        <select
-          id="clase-select"
-          className="ficha-select"
-          value={claseSeleccionada?.nombre || ""}
-          onChange={(e) => {
-            const c = clases.find((c) => c.nombre === e.target.value);
-            setClaseSeleccionada(c || null);
-            setTiradas({}); // Limpiar tiradas al cambiar la clase
-            setResultadoHabilidades(null); // Oculta resultados de habilidades
-            setNacionalidadSeleccionada(null); // Deselecciona nacionalidad
-            setOrigenSeleccionado(null); // Limpia el origen seleccionado
-            handleComboChange();
-            // Si hay un origen seleccionado, recalcular automáticamente los valores de ese origen
-            if (origenSeleccionado && c) {
-              // Simular el cambio de origen para recalcular todo lo dependiente
-              setOrigenSeleccionado(origenSeleccionado);
-              // Opcional: puedes agregar aquí cualquier lógica adicional de cálculo si es necesario
-            }
-          }}
-          disabled={Boolean(
-            razaSeleccionada &&
-              ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                razaSeleccionada.nombre.toUpperCase()
-              )
-          )}
-        >
-          <option value="">Elige una clase</option>
-          {clases.map((c) => (
-            <option key={c.nombre} value={c.nombre}>
-              {c.nombre.toUpperCase()}
-            </option>
-          ))}
-        </select>
-      </div>
-      {/* Combo de Nacionalidad */}
-      <div className="ficha-select-group">
-        <label htmlFor="nacionalidad-select" className="ficha-label">
-          Nacionalidad:
-        </label>
-        <div className="ficha-combo-col">
-          <select
-            id="nacionalidad-select"
-            className="ficha-select"
-            value={nacionalidadSeleccionada?.nombre || ""}
-            onChange={(e) => {
-              const n = nacionalidades.find((n) => n.nombre === e.target.value);
-              setNacionalidadSeleccionada(n || null);
-              setTiradas({}); // Limpiar tiradas al cambiar nacionalidad
-              setResultadoHabilidades(null); // Oculta resultados de habilidades
-              setOrigenSeleccionado(null); // Limpiar origen al cambiar nacionalidad
+        <div className="ficha-combo-row">
+          <button
+            type="button"
+            className="ficha-dado-btn"
+            title="Seleccionar raza aleatoria"
+            disabled={razas.length === 0}
+            onClick={() => {
+              if (razas.length === 0) return;
+              const idx = Math.floor(Math.random() * razas.length);
+              const r = razas[idx];
+              setRazaSeleccionada(r);
               handleComboChange();
+              setResultadoHabilidades(null);
+              setNacionalidadSeleccionada(null);
+              if (
+                r &&
+                ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
+                  r.nombre.toUpperCase()
+                )
+              ) {
+                setClaseSeleccionada(null);
+              }
+              alert(`Raza aleatoria: ${r.nombre}`);
             }}
-            disabled={!razaSeleccionada}
           >
-            <option value="">Elige una nacionalidad</option>
-            {nacionalidades.map((n) => (
-              <option key={n.nombre} value={n.nombre}>
-                {n.nombre}
+            🎲
+          </button>
+          <select
+            id="raza-select"
+            className="ficha-select"
+            value={razaSeleccionada?.nombre || ""}
+            onChange={(e) => {
+              const r = razas.find((r) => r.nombre === e.target.value);
+              setRazaSeleccionada(r || null);
+              handleComboChange();
+              setResultadoHabilidades(null); // Oculta resultados de habilidades
+              setNacionalidadSeleccionada(null); // Deselecciona nacionalidad al cambiar raza
+              if (
+                r &&
+                ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
+                  r.nombre.toUpperCase()
+                )
+              ) {
+                setClaseSeleccionada(null);
+              }
+            }}
+          >
+            <option value="">Elige una raza</option>
+            {razas.map((r) => (
+              <option key={r.nombre} value={r.nombre}>
+                {r.nombre.toUpperCase()}
               </option>
             ))}
           </select>
-          {/* Botón dado debajo del combo nacionalidad */}
+        </div>
+      </div>
+      <div className="ficha-select-group">
+        <div className="ficha-combo-row">
+          <button
+            type="button"
+            className="ficha-dado-btn"
+            title="Seleccionar clase aleatoria"
+            disabled={
+              clases.length === 0 ||
+              (!!razaSeleccionada &&
+                ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
+                  razaSeleccionada.nombre.toUpperCase()
+                ))
+            }
+            onClick={() => {
+              if (
+                clases.length === 0 ||
+                (razaSeleccionada &&
+                  ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
+                    razaSeleccionada.nombre.toUpperCase()
+                  ))
+              )
+                return;
+              const idx = Math.floor(Math.random() * clases.length);
+              const c = clases[idx];
+              setClaseSeleccionada(c);
+              setTiradas({});
+              setResultadoHabilidades(null);
+              setNacionalidadSeleccionada(null);
+              setOrigenSeleccionado(null);
+              handleComboChange();
+              alert(`Clase aleatoria: ${c.nombre}`);
+            }}
+          >
+            🎲
+          </button>
+          <select
+            id="clase-select"
+            className="ficha-select"
+            value={claseSeleccionada?.nombre || ""}
+            onChange={(e) => {
+              const c = clases.find((c) => c.nombre === e.target.value);
+              setClaseSeleccionada(c || null);
+              setTiradas({}); // Limpiar tiradas al cambiar la clase
+              setResultadoHabilidades(null); // Oculta resultados de habilidades
+              setNacionalidadSeleccionada(null); // Deselecciona nacionalidad
+              setOrigenSeleccionado(null); // Limpia el origen seleccionado
+              handleComboChange();
+              // Si hay un origen seleccionado, recalcular automáticamente los valores de ese origen
+              if (origenSeleccionado && c) {
+                // Simular el cambio de origen para recalcular todo lo dependiente
+                setOrigenSeleccionado(origenSeleccionado);
+                // Opcional: puedes agregar aquí cualquier lógica adicional de cálculo si es necesario
+              }
+            }}
+            disabled={Boolean(
+              razaSeleccionada &&
+                ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
+                  razaSeleccionada.nombre.toUpperCase()
+                )
+            )}
+          >
+            <option value="">Elige una clase</option>
+            {clases.map((c) => (
+              <option key={c.nombre} value={c.nombre}>
+                {c.nombre.toUpperCase()}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      {/* Combo de Nacionalidad */}
+      <div className="ficha-select-group">
+        <div className="ficha-combo-row">
           <button
             type="button"
             className="ficha-dado-btn"
@@ -936,37 +968,32 @@ function App() {
           >
             🎲
           </button>
+          <select
+            id="nacionalidad-select"
+            className="ficha-select"
+            value={nacionalidadSeleccionada?.nombre || ""}
+            onChange={(e) => {
+              const n = nacionalidades.find((n) => n.nombre === e.target.value);
+              setNacionalidadSeleccionada(n || null);
+              setTiradas({}); // Limpiar tiradas al cambiar nacionalidad
+              setResultadoHabilidades(null); // Oculta resultados de habilidades
+              setOrigenSeleccionado(null); // Limpiar origen al cambiar nacionalidad
+              handleComboChange();
+            }}
+            disabled={!razaSeleccionada}
+          >
+            <option value="">Elige una nacionalidad</option>
+            {nacionalidades.map((n) => (
+              <option key={n.nombre} value={n.nombre}>
+                {n.nombre}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
       {/* Combo de Origen */}
       <div className="ficha-select-group">
-        <label htmlFor="origen-select" className="ficha-label">
-          Origen:
-        </label>
-        <div className="ficha-combo-col">
-          <select
-            id="origen-select"
-            className="ficha-select"
-            value={origenSeleccionado?.nombre || ""}
-            onChange={(e) => {
-              const o = origenesFiltrados.find(
-                (o) => o.nombre === e.target.value
-              );
-              setOrigenSeleccionado(o || null);
-              setTiradas({}); // Limpiar tiradas al cambiar origen
-              setResultadoHabilidades(null); // Oculta resultados de habilidades
-              handleComboChange();
-            }}
-            disabled={!nacionalidadSeleccionada}
-          >
-            <option value="">Elige un origen</option>
-            {origenesFiltrados.map((o) => (
-              <option key={o.nombre} value={o.nombre}>
-                {o.nombre}
-              </option>
-            ))}
-          </select>
-          {/* Botón dado debajo del combo origen */}
+        <div className="ficha-combo-row">
           <button
             type="button"
             className="ficha-dado-btn"
@@ -1028,6 +1055,28 @@ function App() {
           >
             🎲
           </button>
+          <select
+            id="origen-select"
+            className="ficha-select"
+            value={origenSeleccionado?.nombre || ""}
+            onChange={(e) => {
+              const o = origenesFiltrados.find(
+                (o) => o.nombre === e.target.value
+              );
+              setOrigenSeleccionado(o || null);
+              setTiradas({}); // Limpiar tiradas al cambiar origen
+              setResultadoHabilidades(null); // Oculta resultados de habilidades
+              handleComboChange();
+            }}
+            disabled={!nacionalidadSeleccionada}
+          >
+            <option value="">Elige un origen</option>
+            {origenesFiltrados.map((o) => (
+              <option key={o.nombre} value={o.nombre}>
+                {o.nombre}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
