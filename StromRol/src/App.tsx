@@ -839,12 +839,12 @@ function App() {
             setNacionalidadSeleccionada(null); // Deselecciona nacionalidad
             setOrigenSeleccionado(null); // Limpia el origen seleccionado
             handleComboChange();
-              // Si hay un origen seleccionado, recalcular automáticamente los valores de ese origen
-              if (origenSeleccionado && c) {
-                // Simular el cambio de origen para recalcular todo lo dependiente
-                setOrigenSeleccionado(origenSeleccionado);
-                // Opcional: puedes agregar aquí cualquier lógica adicional de cálculo si es necesario
-              }
+            // Si hay un origen seleccionado, recalcular automáticamente los valores de ese origen
+            if (origenSeleccionado && c) {
+              // Simular el cambio de origen para recalcular todo lo dependiente
+              setOrigenSeleccionado(origenSeleccionado);
+              // Opcional: puedes agregar aquí cualquier lógica adicional de cálculo si es necesario
+            }
           }}
           disabled={Boolean(
             razaSeleccionada &&
