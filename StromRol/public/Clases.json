@@ -184,7 +184,8 @@
         "Saltar +10",
         "Trepar +10",
         "Emboscada +15",
-        "Desli Y Esconderse +10"
+        "Deslizarse +10",
+        "Esconderse +10"
       ],
       "equipo_especial": "Dos Espadas C. Ninja o Catana + 10 Shuriken y 5 plutonios por aventura.",
       "Bonus_combate": {
