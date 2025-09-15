@@ -1,3 +1,28 @@
+/* Para layout vertical de combo y botón dado */
+.ficha-combo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+/* Botón dado pequeño */
+.ficha-dado-btn {
+  font-size: 1.2rem;
+  padding: 2px 8px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+  margin-top: 0;
+  margin-bottom: 0;
+  transition: background 0.2s, border 0.2s;
+}
+.ficha-dado-btn:hover {
+  background: #e0e0e0;
+  border-color: #888;
+}
 /* Chip especial para puntos de vida */
 .raza-chip-pv {
   background-color: #ff9800;
@@ -353,6 +378,10 @@ a:hover {
 }
 .ficha-select-group {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .ficha-label {
   font-weight: 500;

@@ -866,61 +866,83 @@ function App() {
         <label htmlFor="nacionalidad-select" className="ficha-label">
           Nacionalidad:
         </label>
-        <select
-          id="nacionalidad-select"
-          className="ficha-select"
-          value={nacionalidadSeleccionada?.nombre || ""}
-          onChange={(e) => {
-            const n = nacionalidades.find((n) => n.nombre === e.target.value);
-            setNacionalidadSeleccionada(n || null);
-            setTiradas({}); // Limpiar tiradas al cambiar nacionalidad
-            setResultadoHabilidades(null); // Oculta resultados de habilidades
-            setOrigenSeleccionado(null); // Limpiar origen al cambiar nacionalidad
-            handleComboChange();
-          }}
-          disabled={!razaSeleccionada}
-        >
-          <option value="">Elige una nacionalidad</option>
-          {nacionalidades.map((n) => (
-            <option key={n.nombre} value={n.nombre}>
-              {n.nombre}
-            </option>
-          ))}
-        </select>
+        <div className="ficha-combo-col">
+          <select
+            id="nacionalidad-select"
+            className="ficha-select"
+            value={nacionalidadSeleccionada?.nombre || ""}
+            onChange={(e) => {
+              const n = nacionalidades.find((n) => n.nombre === e.target.value);
+              setNacionalidadSeleccionada(n || null);
+              setTiradas({}); // Limpiar tiradas al cambiar nacionalidad
+              setResultadoHabilidades(null); // Oculta resultados de habilidades
+              setOrigenSeleccionado(null); // Limpiar origen al cambiar nacionalidad
+              handleComboChange();
+            }}
+            disabled={!razaSeleccionada}
+          >
+            <option value="">Elige una nacionalidad</option>
+            {nacionalidades.map((n) => (
+              <option key={n.nombre} value={n.nombre}>
+                {n.nombre}
+              </option>
+            ))}
+          </select>
+          {/* Botón dado debajo del combo nacionalidad */}
+          <button
+            type="button"
+            className="ficha-dado-btn"
+            title="Tirar dado de nacionalidad"
+            disabled={!razaSeleccionada}
+            onClick={() => {
+              alert("¡Dado de nacionalidad tirado!");
+            }}
+          >
+            🎲
+          </button>
+        </div>
       </div>
       {/* Combo de Origen */}
       <div className="ficha-select-group">
         <label htmlFor="origen-select" className="ficha-label">
           Origen:
         </label>
-        <select
-          id="origen-select"
-          className="ficha-select"
-          value={origenSeleccionado?.nombre || ""}
-          onChange={(e) => {
-            const o = origenesFiltrados.find(
-              (o) => o.nombre === e.target.value
-            );
-            setOrigenSeleccionado(o || null);
-            setTiradas({}); // Limpiar tiradas al cambiar origen
-            setResultadoHabilidades(null); // Oculta resultados de habilidades
-            handleComboChange();
-          }}
-          disabled={
-            !nacionalidadSeleccionada ||
-            (!!razaSeleccionada &&
-              ["SELOROK", "DEMONIOS", "DEMONIO", "SELOROKS"].includes(
-                razaSeleccionada.nombre.toUpperCase()
-              ))
-          }
-        >
-          <option value="">Elige un origen</option>
-          {origenesFiltrados.map((o) => (
-            <option key={o.nombre} value={o.nombre}>
-              {o.nombre}
-            </option>
-          ))}
-        </select>
+        <div className="ficha-combo-col">
+          <select
+            id="origen-select"
+            className="ficha-select"
+            value={origenSeleccionado?.nombre || ""}
+            onChange={(e) => {
+              const o = origenesFiltrados.find(
+                (o) => o.nombre === e.target.value
+              );
+              setOrigenSeleccionado(o || null);
+              setTiradas({}); // Limpiar tiradas al cambiar origen
+              setResultadoHabilidades(null); // Oculta resultados de habilidades
+              handleComboChange();
+            }}
+            disabled={!nacionalidadSeleccionada}
+          >
+            <option value="">Elige un origen</option>
+            {origenesFiltrados.map((o) => (
+              <option key={o.nombre} value={o.nombre}>
+                {o.nombre}
+              </option>
+            ))}
+          </select>
+          {/* Botón dado debajo del combo origen */}
+          <button
+            type="button"
+            className="ficha-dado-btn"
+            title="Tirar dado de origen"
+            disabled={!nacionalidadSeleccionada}
+            onClick={() => {
+              alert("¡Dado de origen tirado!");
+            }}
+          >
+            🎲
+          </button>
+        </div>
       </div>
 
       {/* Dados que debe tirar el jugador - Debajo de los combos */}
