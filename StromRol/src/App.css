@@ -43,6 +43,14 @@
   margin-top: 0;
   margin-bottom: 0;
   transition: background 0.2s, border 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+  aspect-ratio: 1/1;
+  min-width: 2.2em;
+  min-height: 2.2em;
 }
 .ficha-dado-btn:hover {
   background: #e0e0e0;
