@@ -1,3 +1,13 @@
+/* Input pequeño junto a los combos */
+.combo-mini-input {
+  width: 3em;
+  margin-left: 0.5em;
+  text-align: center;
+  font-size: 1em;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+}
 /* Para layout horizontal de combo y botón dado */
 .ficha-combo-row {
   display: flex;
@@ -397,6 +407,10 @@ a:hover {
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align-last: center; /* Centra el texto seleccionado en la mayoría de navegadores */
 }
 
 @media (max-width: 600px) {

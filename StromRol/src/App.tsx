@@ -822,6 +822,7 @@ function App() {
           <select
             id="raza-select"
             className="ficha-select"
+            title="Selecciona una raza"
             value={razaSeleccionada?.nombre || ""}
             onChange={(e) => {
               const r = razas.find((r) => r.nombre === e.target.value);
@@ -846,6 +847,13 @@ function App() {
               </option>
             ))}
           </select>
+          <input
+            type="number"
+            maxLength={3}
+            className="combo-mini-input"
+            placeholder="###"
+            disabled
+          />
         </div>
       </div>
       <div className="ficha-select-group">
@@ -886,6 +894,7 @@ function App() {
           <select
             id="clase-select"
             className="ficha-select"
+            title="Selecciona una clase"
             value={claseSeleccionada?.nombre || ""}
             onChange={(e) => {
               const c = clases.find((c) => c.nombre === e.target.value);
@@ -916,6 +925,13 @@ function App() {
               </option>
             ))}
           </select>
+          <input
+            type="number"
+            maxLength={3}
+            className="combo-mini-input"
+            placeholder="###"
+            disabled
+          />
         </div>
       </div>
       {/* Combo de Nacionalidad */}
@@ -971,6 +987,7 @@ function App() {
           <select
             id="nacionalidad-select"
             className="ficha-select"
+            title="Selecciona una nacionalidad"
             value={nacionalidadSeleccionada?.nombre || ""}
             onChange={(e) => {
               const n = nacionalidades.find((n) => n.nombre === e.target.value);
@@ -989,6 +1006,38 @@ function App() {
               </option>
             ))}
           </select>
+          <input
+            type="number"
+            maxLength={3}
+            className="combo-mini-input"
+            placeholder="###"
+            disabled={!razaSeleccionada}
+            onChange={(e) => {
+              const valor = parseInt(e.target.value, 10);
+              if (isNaN(valor)) return;
+              let resultado = null;
+              for (const n of nacionalidades) {
+                let min = parseInt(n.minimo, 10);
+                let max = parseInt(n.maximo, 10);
+                if (n.minimo === "00") min = 100;
+                if (n.maximo === "00") max = 100;
+                if (min > max) [min, max] = [max, min];
+                if (valor >= min && valor <= max) {
+                  resultado = n;
+                  break;
+                }
+                if (valor === 100 && (n.minimo === "00" || n.maximo === "00")) {
+                  resultado = n;
+                  break;
+                }
+              }
+              setNacionalidadSeleccionada(resultado || null);
+              setTiradas({});
+              setResultadoHabilidades(null);
+              setOrigenSeleccionado(null);
+              handleComboChange();
+            }}
+          />
         </div>
       </div>
       {/* Combo de Origen */}
@@ -1058,6 +1107,7 @@ function App() {
           <select
             id="origen-select"
             className="ficha-select"
+            title="Selecciona un origen"
             value={origenSeleccionado?.nombre || ""}
             onChange={(e) => {
               const o = origenesFiltrados.find(
@@ -1077,6 +1127,52 @@ function App() {
               </option>
             ))}
           </select>
+          <input
+            type="number"
+            maxLength={3}
+            className="combo-mini-input"
+            placeholder="###"
+            disabled={!nacionalidadSeleccionada}
+            onChange={(e) => {
+              if (!nacionalidadSeleccionada) return;
+              const valor = parseInt(e.target.value, 10);
+              if (isNaN(valor)) return;
+              const origenSocial = nacionalidadSeleccionada.origen_social;
+              if (!Array.isArray(origenSocial)) return;
+              let origenNombre = null;
+              for (const rango of origenSocial) {
+                const partes = rango.split(":");
+                if (partes.length < 2) continue;
+                const rangoStr = partes[0].trim();
+                const nombre = partes[1].trim();
+                let [minStr, maxStr] = rangoStr.split("-");
+                minStr = minStr.trim();
+                maxStr = maxStr.trim();
+                let min = parseInt(minStr, 10);
+                let max = parseInt(maxStr, 10);
+                if (minStr === "00") min = 100;
+                if (maxStr === "00") max = 100;
+                if (min > max) [min, max] = [max, min];
+                if (valor >= min && valor <= max) {
+                  origenNombre = nombre.toUpperCase();
+                  break;
+                }
+                if (valor === 100 && (minStr === "00" || maxStr === "00")) {
+                  origenNombre = nombre.toUpperCase();
+                  break;
+                }
+              }
+              if (origenNombre) {
+                const origenObj = origenesFiltrados.find(
+                  (o) => o.nombre.trim().toUpperCase() === origenNombre
+                );
+                setOrigenSeleccionado(origenObj || null);
+                setTiradas({});
+                setResultadoHabilidades(null);
+                handleComboChange();
+              }
+            }}
+          />
         </div>
       </div>
 
