@@ -131,6 +131,11 @@ function App() {
       </div>
     );
   };
+  // Estado para los valores de los inputs numéricos de los combos
+  const [inputRaza, setInputRaza] = useState("");
+  const [inputClase, setInputClase] = useState("");
+  const [inputNacionalidad, setInputNacionalidad] = useState("");
+  const [inputOrigen, setInputOrigen] = useState("");
   // Estado para mostrar/ocultar el logo
   const [mostrarLogo, setMostrarLogo] = useState(true);
   // Función para ocultar el logo al interactuar con cualquier combobox
@@ -775,19 +780,8 @@ function App() {
   return (
     <div className="ficha-container">
       {mostrarLogo && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "2rem 0",
-          }}
-        >
-          <img
-            src={"/StromRol/logo.webp"}
-            alt="Logo"
-            style={{ maxWidth: "320px", width: "100%", height: "auto" }}
-          />
+        <div className="logo-container">
+          <img src={"/StromRol/logo.webp"} alt="Logo" className="logo-img" />
         </div>
       )}
       <h2 className="ficha-title">Generador de Fichas</h2>
@@ -830,6 +824,7 @@ function App() {
               handleComboChange();
               setResultadoHabilidades(null); // Oculta resultados de habilidades
               setNacionalidadSeleccionada(null); // Deselecciona nacionalidad al cambiar raza
+              setInputRaza(""); // Limpiar input asociado
               if (
                 r &&
                 ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
@@ -837,6 +832,7 @@ function App() {
                 )
               ) {
                 setClaseSeleccionada(null);
+                setInputClase("");
               }
             }}
           >
@@ -852,6 +848,8 @@ function App() {
             maxLength={3}
             className="combo-mini-input"
             placeholder="###"
+            value={inputRaza}
+            onChange={(e) => setInputRaza(e.target.value)}
             disabled
           />
         </div>
@@ -903,6 +901,7 @@ function App() {
               setResultadoHabilidades(null); // Oculta resultados de habilidades
               setNacionalidadSeleccionada(null); // Deselecciona nacionalidad
               setOrigenSeleccionado(null); // Limpia el origen seleccionado
+              setInputClase(""); // Limpiar input asociado
               handleComboChange();
               // Si hay un origen seleccionado, recalcular automáticamente los valores de ese origen
               if (origenSeleccionado && c) {
@@ -930,6 +929,8 @@ function App() {
             maxLength={3}
             className="combo-mini-input"
             placeholder="###"
+            value={inputClase}
+            onChange={(e) => setInputClase(e.target.value)}
             disabled
           />
         </div>
@@ -995,6 +996,8 @@ function App() {
               setTiradas({}); // Limpiar tiradas al cambiar nacionalidad
               setResultadoHabilidades(null); // Oculta resultados de habilidades
               setOrigenSeleccionado(null); // Limpiar origen al cambiar nacionalidad
+              setInputNacionalidad(""); // Limpiar input de nacionalidad siempre que cambie el combo
+              setInputOrigen(""); // Limpiar input de origen también
               handleComboChange();
             }}
             disabled={!razaSeleccionada}
@@ -1011,8 +1014,9 @@ function App() {
             maxLength={3}
             className="combo-mini-input"
             placeholder="###"
-            disabled={!razaSeleccionada}
+            value={inputNacionalidad}
             onChange={(e) => {
+              setInputNacionalidad(e.target.value);
               const valor = parseInt(e.target.value, 10);
               if (isNaN(valor)) return;
               let resultado = null;
@@ -1035,8 +1039,10 @@ function App() {
               setTiradas({});
               setResultadoHabilidades(null);
               setOrigenSeleccionado(null);
+              if (e.target.value === "") setInputNacionalidad("");
               handleComboChange();
             }}
+            disabled={!razaSeleccionada}
           />
         </div>
       </div>
@@ -1116,6 +1122,7 @@ function App() {
               setOrigenSeleccionado(o || null);
               setTiradas({}); // Limpiar tiradas al cambiar origen
               setResultadoHabilidades(null); // Oculta resultados de habilidades
+              setInputOrigen(""); // Limpiar input de origen siempre que cambie el combo
               handleComboChange();
             }}
             disabled={!nacionalidadSeleccionada}
@@ -1132,8 +1139,9 @@ function App() {
             maxLength={3}
             className="combo-mini-input"
             placeholder="###"
-            disabled={!nacionalidadSeleccionada}
+            value={inputOrigen}
             onChange={(e) => {
+              setInputOrigen(e.target.value);
               if (!nacionalidadSeleccionada) return;
               const valor = parseInt(e.target.value, 10);
               if (isNaN(valor)) return;
@@ -1169,9 +1177,11 @@ function App() {
                 setOrigenSeleccionado(origenObj || null);
                 setTiradas({});
                 setResultadoHabilidades(null);
+                if (e.target.value === "") setInputOrigen("");
                 handleComboChange();
               }
             }}
+            disabled={!nacionalidadSeleccionada}
           />
         </div>
       </div>

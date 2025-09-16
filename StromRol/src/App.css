@@ -1,3 +1,16 @@
+/* Estilos para el logo (antes inline) */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.logo-img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}
 /* Input pequeño junto a los combos */
 .combo-mini-input {
   width: 3em;
