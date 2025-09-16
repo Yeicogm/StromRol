@@ -836,7 +836,7 @@ function App() {
               }
             }}
           >
-            <option value="">Elige una raza</option>
+            <option value="">Raza</option>
             {razas.map((r) => (
               <option key={r.nombre} value={r.nombre}>
                 {r.nombre.toUpperCase()}
@@ -917,7 +917,7 @@ function App() {
                 )
             )}
           >
-            <option value="">Elige una clase</option>
+            <option value="">Clase</option>
             {clases.map((c) => (
               <option key={c.nombre} value={c.nombre}>
                 {c.nombre.toUpperCase()}
@@ -1002,7 +1002,7 @@ function App() {
             }}
             disabled={!razaSeleccionada}
           >
-            <option value="">Elige una nacionalidad</option>
+            <option value="">Nacionalidad</option>
             {nacionalidades.map((n) => (
               <option key={n.nombre} value={n.nombre}>
                 {n.nombre}
@@ -1135,7 +1135,7 @@ function App() {
             }}
             disabled={!nacionalidadSeleccionada}
           >
-            <option value="">Elige un origen</option>
+            <option value="">Origen</option>
             {origenesFiltrados.map((o) => (
               <option key={o.nombre} value={o.nombre}>
                 {o.nombre}
