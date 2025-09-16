@@ -237,8 +237,8 @@ a:hover {
 /* Estilos para el generador de fichas */
 .ficha-container {
   max-width: 800px;
-  margin: 2rem auto;
-  padding: 1.5rem;
+  margin: 1rem auto;
+  padding: 1rem;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -499,7 +499,7 @@ a:hover {
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   box-sizing: border-box;
   width: 100%;
