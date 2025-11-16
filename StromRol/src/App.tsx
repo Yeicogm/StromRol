@@ -1218,7 +1218,7 @@ function App() {
                 <input
                   type="number"
                   min="1"
-                  className="ficha-resultado-input"
+                  className="ficha-resultado-input ficha-resultado-input-grande"
                   placeholder="Tirada"
                   value={tiradas[car] || ""}
                   onChange={(e) => {

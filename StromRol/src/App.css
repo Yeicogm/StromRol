@@ -1,3 +1,18 @@
+/* Input grande para la sección 'Dados que debe tirar el jugador' */
+.ficha-resultado-input-grande {
+  width: 80px !important;
+  font-size: 1.1em;
+  padding: 6px 10px;
+}
+
+/* Agrandar texto de la sección 'Dados que debe tirar el jugador' */
+.ficha-resultado-title,
+.ficha-resultado-list,
+.ficha-resultado-item,
+.ficha-resultado-carac,
+.ficha-resultado-dado {
+  font-size: 1.12em;
+}
 /* Tooltip personalizado para el input de nacionalidad */
 .tooltip-wrapper {
   position: relative;
