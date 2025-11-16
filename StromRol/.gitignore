@@ -21,6 +21,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Ignorar archivos generados automáticamente en docs/assets
-docs/assets/

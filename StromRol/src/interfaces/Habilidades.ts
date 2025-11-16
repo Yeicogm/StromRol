@@ -270,7 +270,7 @@ export const MAPEO_HABILIDADES: Record<string, NombreHabilidad> = {
   equitación: "Equitación",
   emboscada: "Emboscada",
   evitar: "Evitar",
-  deslizarse: "deslizarse",
+  // deslizarse ya está definido arriba, se elimina duplicado
   esconderse: "Esconderse",
   disimular: "Disimular",
   percepción: "Percepción",

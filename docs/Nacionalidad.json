@@ -39,9 +39,9 @@
         "31-45: Guerrero",
         "46-60: Cazador",
         "61-65: Campesino",
-        "66-70: Aprendiz Magia",
+        "66-70: Sacerdote",
         "71-75: Noble",
-        "76-85: Ladrón",
+        "76-85: Ladron",
         "86-90: Mendigo",
         "91-00: Artesano"
       ],
@@ -116,9 +116,9 @@
         "01-20: Guerrero",
         "21-30: Mercader",
         "31-65: Marino",
-        "66-70: Aprendiz Magia",
+        "66-70: Sacerdote",
         "71-75: Noble",
-        "76-85: Ladrón",
+        "76-85: Ladron",
         "86-90: Mendigo",
         "91-00: Artesano"
       ],
@@ -217,12 +217,12 @@
       "variacion_caracteristicas": ["Fuerza +1D4", "Constitución +1D6"],
       "origen_social": [
         "01-20: Guerrero",
-        "21-30: Mercader",
+        "21-30: Mercader(3)",
         "31-60: Marino",
         "61-65: Campesino",
-        "66-70: Aprendiz Magia",
-        "71-75: Noble",
-        "76-85: Ladrón",
+        "66-70: Sacerdote(1)",
+        "71-75: Noble(3)",
+        "76-85: Ladron",
         "86-90: Mendigo",
         "91-00: Artesano"
       ],
@@ -325,7 +325,7 @@
         "46-60: Cazador",
         "61-70: Campesino",
         "71-75: Noble",
-        "76-85: Ladrón",
+        "76-85: Ladron",
         "86-90: Mendigo",
         "91-00: Artesano"
       ],
@@ -348,7 +348,7 @@
         "61-65: Campesino",
         "66-70: Cazador",
         "71-75: Noble",
-        "76-85: Ladrón",
+        "76-85: Ladron",
         "86-90: Mendigo",
         "91-00: Artesano"
       ],
