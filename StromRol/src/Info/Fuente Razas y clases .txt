@@ -7,12 +7,12 @@ COMPENDIO STROM!
 
 DEMONIOS
 
-Los Demonios son criaturas provenientes de los infiernos, criaturas despiadadas. Son más parecidas a un animal que a otras razas. Es una raza guerrera y conquistadora por naturaleza. En la actualidad solo existen unos pocos, los cuales se unen a aventureros para sobrevivir, ya que de lo contrario serian atados como sus antepasados. Los demonios son antisociales, no usan ropa y son mal vistos por todas las razas.
+Los Demonios son criaturas provenientes de los infiernos, criaturas despiadadas. Son mï¿½s parecidas a un animal que a otras razas. Es una raza guerrera y conquistadora por naturaleza. En la actualidad solo existen unos pocos, los cuales se unen a aventureros para sobrevivir, ya que de lo contrario serian atados como sus antepasados. Los demonios son antisociales, no usan ropa y son mal vistos por todas las razas.
 
-CARACTERÍSTICAS:
+CARACTERï¿½STICAS:
 Fuerza: 7D8
-Constitución: 4D6
-Tamaño: 4D6
+Constituciï¿½n: 4D6
+Tamaï¿½o: 4D6
 Inteligencia: 2D6
 Poder: 2D6
 Destreza: 3D6
@@ -22,7 +22,7 @@ No eligen clase ni origen, no usan armas y no niegan la magia.
 Armadura -4.   50% - 50%(GarraX2 y Mordisco) 
 Rango: -2 TABLA DE CUALIDADES PROPIA
 
-Bonificación en características:
+Bonificaciï¿½n en caracterï¿½sticas:
 Olfatear    +5
 Degustar +25
 Persuadir +10
@@ -31,96 +31,96 @@ Trepar      +5
 ---
 
 DROW
-Aunque relacionados con los elfos, los drow son el primo vil y malvado, en el mejor de los casos. A veces llamados elfos oscuros, estas astutas criaturas merodean por las cuevas y túneles de la oscuridad. Adoradores de demonios y esclavizan a la mayoría de razas que encuentran. Tienen piel oscura, que va desde el negro hasta un tono púrpura brumoso. La mayoría de los drow tienen pelo blanco o plateado y ojos blancos o rojos. La sociedad drow está gobernada por una poderosa nobleza, se rigen por sádicas y peligrosas matriarcas que constantemente intrigan y conspiran contra las casas rivales En combate, son completamente despiadados, con poco respeto por la justicia o la piedad.
-CARACTERÍSTICAS:
+Aunque relacionados con los elfos, los drow son el primo vil y malvado, en el mejor de los casos. A veces llamados elfos oscuros, estas astutas criaturas merodean por las cuevas y tï¿½neles de la oscuridad. Adoradores de demonios y esclavizan a la mayorï¿½a de razas que encuentran. Tienen piel oscura, que va desde el negro hasta un tono pï¿½rpura brumoso. La mayorï¿½a de los drow tienen pelo blanco o plateado y ojos blancos o rojos. La sociedad drow estï¿½ gobernada por una poderosa nobleza, se rigen por sï¿½dicas y peligrosas matriarcas que constantemente intrigan y conspiran contra las casas rivales En combate, son completamente despiadados, con poco respeto por la justicia o la piedad.
+CARACTERï¿½STICAS:
 Fuerza: 3D8
-Constitución: 5D6
-Tamaño: 2D4+1
+Constituciï¿½n: 5D6
+Tamaï¿½o: 2D4+1
 Inteligencia: 4D6
 Poder: 2D6
 Destreza: 4D6 +1
 Carisma: 2D6 +1
 
 30% de poseer un Hechizo
-Se comunica con otros Drow a 120 metros con un lenguaje de símbolos.
+Se comunica con otros Drow a 120 metros con un lenguaje de sï¿½mbolos.
 Rango: -1
 
-Bonificación en características:
-Música y Leyendas +5
+Bonificaciï¿½n en caracterï¿½sticas:
+Mï¿½sica y Leyendas +5
 Conocimiento de plantas y venenos +5
 Escuchar +5
 Cantar  +5
 ---
 
 ELFOS
-Los Elfos tienden a ser un poco más bajos y delgados que los Humanos. Sus rasgos son tallados y delicados, hablan en todo melódico. Aunque parecen frágiles y débiles, como raza son rápidos y fuertes. Los Elfos viven unos 1.200 años. Los Elfos conocen la magia y no la niegan. Prefieren distanciarse de los Humanos y sienten poco amor por los Enanos y los ocupantes malignos de los bosques.
+Los Elfos tienden a ser un poco mï¿½s bajos y delgados que los Humanos. Sus rasgos son tallados y delicados, hablan en todo melï¿½dico. Aunque parecen frï¿½giles y dï¿½biles, como raza son rï¿½pidos y fuertes. Los Elfos viven unos 1.200 aï¿½os. Los Elfos conocen la magia y no la niegan. Prefieren distanciarse de los Humanos y sienten poco amor por los Enanos y los ocupantes malignos de los bosques.
 
-CARACTERÍSTICAS:
+CARACTERï¿½STICAS:
 Fuerza: 3D8
-Constitución: 4D6
-Tamaño: 3D6
+Constituciï¿½n: 4D6
+Tamaï¿½o: 3D6
 Inteligencia: 4D6
 Poder: 2D8
 Destreza: 4D6
 Carisma: 1D8+2
 
-Poseen un hechizo de primer nivel de cualquier clase de elección del DJ. (Este hechizo no se dará en el caso de que ya controlé magia).
+Poseen un hechizo de primer nivel de cualquier clase de elecciï¿½n del DJ. (Este hechizo no se darï¿½ en el caso de que ya controlï¿½ magia).
 Rango: +1
 
-Bonificación en características:
-Música y Leyendas  +5
+Bonificaciï¿½n en caracterï¿½sticas:
+Mï¿½sica y Leyendas  +5
 Conocimiento de plantas y venenos  +5
-Escuchar  +5 – Ver +5%
+Escuchar  +5 ï¿½ Ver +5%
 Cantar  +5
 ENANOS
 
-Los Enanos son bajos, robustos y fácilmente identificables por su tamaño y forma. Tienen mofletes rojizos, ojos y pelo oscuro. Los Enanos viven unos 350 años. Están acostumbrados a trabajar duro, son fuertes y valientes. Odian a los Elfos y a la navegación, pero les encantan las gemas. Prefieren la vida en la penumbra bajo tierra.
+Los Enanos son bajos, robustos y fï¿½cilmente identificables por su tamaï¿½o y forma. Tienen mofletes rojizos, ojos y pelo oscuro. Los Enanos viven unos 350 aï¿½os. Estï¿½n acostumbrados a trabajar duro, son fuertes y valientes. Odian a los Elfos y a la navegaciï¿½n, pero les encantan las gemas. Prefieren la vida en la penumbra bajo tierra.
 
-CARACTERÍSTICAS:
+CARACTERï¿½STICAS:
 Fuerza: 6D8
-Constitución: 5D6
-Tamaño: 2D6 +1
+Constituciï¿½n: 5D6
+Tamaï¿½o: 2D6 +1
 Inteligencia: 3D6
 Poder: 2D6
 Destreza: 2D6
 Carisma: 2D6
 
-Poseen infra visión y conocen por perfección todo lo referente a grutas y cueva.
+Poseen infra visiï¿½n y conocen por perfecciï¿½n todo lo referente a grutas y cueva.
 Rango: 0
 
-Bonificación en características:
+Bonificaciï¿½n en caracterï¿½sticas:
 Evaluar un tesoro +10
 Olfatear +5
 Ver +10
 ---
 
 HUMANO DEMONIO
-Los humanos demonios se crearon en la Gran Batalla de los Reinos, entontes los demonios eran atados a las armas, pero el hierro empezó a faltar y los grandes hechiceros comenzaron a utilizar a los humanos. Los H&D son más humanos, pero poseen la fuerza brutal de los demonios y su gran maldad. Tienen aspecto de humano gigante muy corpulento y estúpido.
+Los humanos demonios se crearon en laï¿½Gran Batalla de los Reinos, entontes los demonios eran atados a las armas,ï¿½pero el hierro empezï¿½ a faltar y los grandes hechiceros comenzaron a utilizar a los humanos. Los H&D son mï¿½s humanos, pero poseen la fuerza brutal de los demonios y su gran maldad. Tienen aspecto de humano gigante muy corpulento y estï¿½pido.
 
-Características:
+Caracterï¿½sticas:
 Fuerza: 5D8
-Constitución: 4D6
-Tamaño: 5D8
+Constituciï¿½n: 4D6
+Tamaï¿½o: 5D8
 Inteligencia: 2D4+1
-Poder:  2D6
+Poder: ï¿½2D6
 Destreza: 2D6
 Carisma: 1D6
-Sus uñas son muy resistentes y se pueden usar de arma Daño 1d4
+Sus uï¿½as son muy resistentes y se pueden usar de arma Daï¿½o 1d4
 Rango: -1
 
-Bonificación en características:
+Bonificaciï¿½n en caracterï¿½sticas:
 Degustar +10
 Persuadir +10
 Trepar +5
 
 ---
 HUMANO
-Los humanos en la actualidad son la raza que más existe en los reinos. Los humanos no destacan en nada, son unas de les razas más valientes debido a que es la raza que más cree en la religión. Sin embargo, los humanos tienen un lado tenebroso que les hace hacer el mal en algunas ocasiones.
+Los humanos en la actualidad son la raza que mï¿½s existe en los reinos. Los humanos no destacan en nada, son unas de les razas mï¿½s valientes debido a que es la raza que mï¿½s cree en la religiï¿½n. Sin embargo, los humanos tienen un lado tenebroso que les hace hacer el mal en algunas ocasiones.
 
-Características:
+Caracterï¿½sticas:
 Fuerza: 5D6
-Constitución: 4D6
-Tamaño: 4D6
+Constituciï¿½n: 4D6
+Tamaï¿½o: 4D6
 Inteligencia 3D6
 Poder: 2D6
 Destreza 3D6+1
@@ -130,27 +130,27 @@ Raza muy social
 
 Rango: 0
 
-Bonificación en Características
+Bonificaciï¿½n en Caracterï¿½sticas
 
 Equilibrio +5
-Equitación +6
+Equitaciï¿½n +6
 Primeros Auxilios +5
-Saltar +5 – Nadar +5
+Saltar +5 ï¿½ Nadar +5
 ---
 MEDIANO
-Los medianos alcanzan una discreta altura de unos 3 pies. Prefieren caminar descalzos, haciendo que las plantas de sus pies acaben siendo sumamente duras. Optimistas y alegres por naturaleza, dotados de una extraordinaria suerte y con una inusitada pasión por los viajes, los medianos compensan su corta estatura con una gran dosis de bravuconería y curiosidad. Los medianos se enorgullecen por su habilidad de pasar desapercibidos a las demás razas es precisamente esto lo que les permite a muchos de ellos destacar en el robo y el engaño.
+Los medianos alcanzan una discreta altura de unos 3 pies. Prefieren caminar descalzos, haciendo que las plantas de sus pies acaben siendo sumamente duras. Optimistas y alegres por naturaleza, dotados de una extraordinaria suerte y con una inusitada pasiï¿½n por los viajes, los medianos compensan su corta estatura con una gran dosis de bravuconerï¿½a y curiosidad. Los medianos se enorgullecen por su habilidad de pasar desapercibidos a las demï¿½s razas es precisamente esto lo que les permite a muchos de ellos destacar en el robo y el engaï¿½o.
 
-CARACTERÍSTICAS:
+CARACTERï¿½STICAS:
 Fuerza: 3D8
-Constitución: 5D6
-Tamaño: 2D4
+Constituciï¿½n: 5D6
+Tamaï¿½o: 2D4
 Inteligencia: 4D6
 Poder: 2D6
 Destreza: 4D6 +1
 Carisma: 2D6 +1
 Rango:  0 
 
-Bonificación en características:
+Bonificaciï¿½n en caracterï¿½sticas:
 Movimiento silencioso +3%
 Hacer volteretas +5%
 Robar Bolsa +5%
@@ -160,12 +160,12 @@ Equilibrio +10%
 
 ---
 SELOROK
-Se cree que provienen de los Onais. Son gordos, de color rosado, tienen manos y pies con garras y no son muy listos. Esta raza tiene alguna simpatía por parte de los humanos debido a su aspecto, pues recuerda al de los cerdos. Son antisociales y no usan ropa.
+Se cree que provienen de los Onais. Son gordos, de color rosado, tienen manos y pies con garras y no son muy listos. Esta raza tiene alguna simpatï¿½a por parte de los humanos debido a su aspecto, pues recuerda al de los cerdos. Son antisociales y no usan ropa.
 
-CARACTERÍSTICAS:
+CARACTERï¿½STICAS:
 Fuerza: 6D8
-Constitución: 6D8
-Tamaño: 4D6
+Constituciï¿½n: 6D8
+Tamaï¿½o: 4D6
 Inteligencia: 2D6
 Poder: 2D6
 Destreza: 2D6
@@ -174,7 +174,7 @@ Carisma: 1D4
 No eligen clase, no usan armas. Flotan bastante en el agua.
 Rango: -1 TABLA DE CUALIDADES PROPIA
 
-Bonificación en características:
+Bonificaciï¿½n en caracterï¿½sticas:
 Olfatear    +5
 Degustar  +25
 Persuadir +10
@@ -183,11 +183,11 @@ Nadar       +50
 ---
 TIFLIN
 
-Los Tiflin son humanos con sangre de demonios, diablos u otros ajenos malvados en su ascendencia. A menudo perseguidos por su aspecto extraño y sus peculiaridades antinaturales, la mayoría de los Tiflin disfrazan su naturaleza o son obligados a vivir en los límites o en los bajos fondos de las sociedades civilizadas. A pesar de que no nacen malvados, es sencillo para ellos seguir ese camino, especialmente debido a que la mayoría sufren a manos de la gente “normal” durante su crecimiento. Los Tiflin aparentan ser humanos casi normales, excepto por algunas particularidades físicas que revelan su extraña herencia.
-CARACTERÍSTICAS:
+Los Tiflin son humanos con sangre de demonios, diablos u otros ajenos malvados en su ascendencia. A menudo perseguidos por su aspecto extraï¿½o y sus peculiaridades antinaturales, la mayorï¿½a de los Tiflin disfrazan su naturaleza o son obligados a vivir en los lï¿½mites o en los bajos fondos de las sociedades civilizadas. A pesar de que no nacen malvados, es sencillo para ellos seguir ese camino, especialmente debido a que la mayorï¿½a sufren a manos de la gente ï¿½normalï¿½ durante su crecimiento. Los Tiflin aparentan ser humanos casi normales, excepto por algunas particularidades fï¿½sicas que revelan su extraï¿½a herencia.
+CARACTERï¿½STICAS:
 Fuerza: 4D6
-Constitución: 4D6
-Tamaño: 4D6
+Constituciï¿½n: 4D6
+Tamaï¿½o: 4D6
 Inteligencia: 3D6
 Poder: 2D6 +1
 Destreza: 3D6
@@ -198,11 +198,11 @@ BLOQUE 1
 Pelaje -1
 Piernas Animal ( +2 cuadros sin ataque)
 Marca Nacimiento (+5% rango contrario)	BLOQUE 2
-Infra visión
+Infra visiï¿½n
 Mordisco 1D10
 Cuernos ( Yelmo que no sube armadura. Pro.Crict 50%)
-Protección Mágica ( Frio, Fuego, Hielo  15% + 1% por nivel)
-Bonificación en características:
+Protecciï¿½n Mï¿½gica ( Frio, Fuego, Hielo  15% + 1% por nivel)
+Bonificaciï¿½n en caracterï¿½sticas:
 Equilibrio +5
 + 200 PX en la tabla
 
@@ -212,81 +212,81 @@ Equilibrio +5
 
 GUARDABOSQUES
 RANGO	+1
-DESCRIPCION	Hombre de los bosques, experto cazador, rastreador y superviviente, y un mero vistazo a su iteración original revela a las claras que su fuente de inspiración directa son los montaraces del norte de la obra de J.R.R.
+DESCRIPCION	Hombre de los bosques, experto cazador, rastreador y superviviente, y un mero vistazo a su iteraciï¿½n original revela a las claras que su fuente de inspiraciï¿½n directa son los montaraces del norte de la obra de J.R.R.
 VARIACION CARACTERISTICAS	Int +1
-VARIACION HABILIDADES	+10 Percepción
+VARIACION HABILIDADES	+10 Percepciï¿½n
 EQUIPO ESPECIAL	Arco Simple, Hacha de mano.
 BONUS ATAQUE	ATAQUE: 35% - DEFENSA 30%  - ARMAS ARROJADIZAS 40%
 ESPECIAL	-GOLPE DE CAZADOR-
-1 ATAQUE CON +15% y Daño +3 contra criaturas salvajes 1 vez por combate 
+1 ATAQUE CON +15% y Daï¿½o +3 contra criaturas salvajes 1 vez por combate 
 1 HECHIZO DE GUARDABOSQUES X NIVEL
-Bonus daño Arco Simple.
+Bonus daï¿½o Arco Simple.
 CUALIDADES	GUERRERO
 
 ---
 JINETE
 RANGO	0
-DESCRIPCION	Los jinetes de caballería son diestros guerreros a caballo. Su simbiosis con el animal hace que el control sobre él sea absoluto
+DESCRIPCION	Los jinetes de caballerï¿½a son diestros guerreros a caballo. Su simbiosis con el animal hace que el control sobre ï¿½l sea absoluto
 VARIACION CARACTERISTICAS	
-VARIACION HABILIDADES	Equitación 100%
-EQUIPO ESPECIAL	Caballo Pura Sangre + Escudo Pavés
+VARIACION HABILIDADES	Equitaciï¿½n 100%
+EQUIPO ESPECIAL	Caballo Pura Sangre + Escudo Pavï¿½s
 BONUS ATAQUE	ATAQUE: 35% - DEFENSA 35% - MONTADO A CABALLO +15% - A.R. 35%
-ESPECIAL	-Cambio de arma fuera de turno si está en caballo.
+ESPECIAL	-Cambio de arma fuera de turno si estï¿½ en caballo.
  Sin Restricciones de uso en lanzas.
 CUALIDADES	GUERRERO
 
 ---
 CASACA AZUL
 RANGO	0
-DESCRIPCION	Guerrero bárbaro criado en los bosques
+DESCRIPCION	Guerrero bï¿½rbaro criado en los bosques
 VARIACION CARACTERISTICAS	Des +3
-VARIACION HABILIDADES	Conocimiento de plantas y venenos 100%, Cartografía +25, Percepción +25, Agilidad +10, Discreción +5
+VARIACION HABILIDADES	Conocimiento de plantas y venenos 100%, Cartografï¿½a +25, Percepciï¿½n +25, Agilidad +10, Discreciï¿½n +5
 EQUIPO ESPECIAL	Lanza larga, hierbas curativas 1d6 (3), Cuero -2
 BONUS ATAQUE	ATAQUE: 30% /45%* - DEFENSA 35%  - A.R. 35%
 ESPECIAL	No necesita comprar alimentos debido a sus conocimientos de supervivencia.
 +15 con todo tipo de armas tipo picas, lanzas.
 Sin Restricciones de uso en lanzas.
-Bonus daño Lanzas Arrojadizas
+Bonus daï¿½o Lanzas Arrojadizas
 CUALIDADES	GUERRERO
 
 ---
 MAGO / HECHICERO
 RANGO	-2/+2
-DESCRIPCION	Los magos son los practicantes supremos de la magia, definidos y unidos como una clase por los hechizos que conjuran. A partir de la sutil onda de la magia que impregna el cosmos, los magos lanzan explosivos hechizos de fuego, arcos voltaicos, sutiles engaños y brutales formas de control mental.
+DESCRIPCION	Losï¿½magosï¿½son los practicantes supremos de la magia, definidos y unidos como una clase por los hechizos que conjuran. A partir de la sutil onda de la magia que impregna el cosmos, losï¿½magosï¿½lanzan explosivos hechizos de fuego, arcos voltaicos, sutiles engaï¿½os y brutales formas de control mental.
 VARIACION CARACTERISTICAS	POD 5D8 INT +1D6 (MAX FUE18)
-VARIACION HABILIDADES	Regeneración de SM 3 al día
-EQUIPO ESPECIAL	Bastón de combate Mágico +5% Bonus
+VARIACION HABILIDADES	Regeneraciï¿½n de SM 3 al dï¿½a
+EQUIPO ESPECIAL	Bastï¿½n de combate Mï¿½gico +5% Bonus
 BONUS ATAQUE	ATAQUE: 25% - DEFENSA 25% - A.R. 25%
-ESPECIAL	 5 HECHIZOS SEGÚN RANGO MAGO O HECHICERO
-Pueden Elegir Escuela y tendrá ½ de conjuros de ella.
+ESPECIAL	 5 HECHIZOS SEGï¿½N RANGO MAGO O HECHICERO
+Pueden Elegir Escuela y tendrï¿½ ï¿½ de conjuros de ella.
 CUALIDADES	MAGOS Y HECHICEROS
 
 ---
 GUERERRO MELNIBONES 
 RANGO	0
-DESCRIPCION	Todos los guerreros comparten un dominio magistral de las armas y armaduras, y un exhaustivo conocimiento de las habilidades del combate. Además, están muy relacionados con la muerte, tanto repartiéndola como mirándola fijamente, desafiantes. 
+DESCRIPCION	Todos los guerreros comparten un dominio magistral de las armas y armaduras, y un exhaustivo conocimiento de las habilidades del combate. Ademï¿½s, estï¿½n muy relacionados con la muerte, tanto repartiï¿½ndola como mirï¿½ndola fijamente, desafiantes. 
 VARIACION CARACTERISTICAS	FUE +1
 VARIACION HABILIDADES	
 EQUIPO ESPECIAL	PLACA COMPLETA SIN YELMO (-8 PESADA)
 BONUS ATAQUE	ATAQUE: 50% - DEFENSA 50% - A.R. 40%
-ESPECIAL	 Adapta Tamaño Armadura TAM +-3
+ESPECIAL	 Adapta Tamaï¿½o Armadura TAM +-3
 CUALIDADES	GUERRERO
 
 ---
 MELNIBONES BORAIN
 RANGO	0 / +1
-DESCRIPCION	Guerrero Clérigo adorador de los 4 elementos 
+DESCRIPCION	Guerrero Clï¿½rigo adorador de los 4 elementos 
 VARIACION CARACTERISTICAS	
-VARIACION HABILIDADES	Regeneración de SM 2 al dia
+VARIACION HABILIDADES	Regeneraciï¿½n de SM 2 al dia
 EQUIPO ESPECIAL	Cuero y Anillas + Espada ancha
 BONUS ATAQUE	ATAQUE: 40% - DEFENSA 40%  - A.R. 40%
-ESPECIAL	 CONVOCA ELEMENTALES CON 30 SM – Sin Restricciones en Cimitarras
+ESPECIAL	 CONVOCA ELEMENTALES CON 30 SM ï¿½ Sin Restricciones en Cimitarras
 CUALIDADES	GUERRERO
 ---
 GUARDIA DE LEY / CAOS
 RANGO	+2 /-1
-DESCRIPCION	Adorador fanático 
-VARIACION CARACTERISTICAS	+ 2 En todas por medallón mágico.
+DESCRIPCION	Adorador fanï¿½tico 
+VARIACION CARACTERISTICAS	+ 2 En todas por medallï¿½n mï¿½gico.
 VARIACION HABILIDADES	
 EQUIPO ESPECIAL	Hacha de Batalla, Cuero y Anillas
 BONUS ATAQUE	ATAQUE: 30% - DEFENSA 35%  - A.R. 30%
@@ -297,11 +297,11 @@ ARQUERO
 RANGO	0
 DESCRIPCION	Especialista en arcos. 
 VARIACION CARACTERISTICAS	
-VARIACION HABILIDADES	Percepción +10
+VARIACION HABILIDADES	Percepciï¿½n +10
 EQUIPO ESPECIAL	Arco Simple + espada corta
 BONUS ATAQUE	ATAQUE: 30% - DEFENSA 35%  - Arco 50% -- A.R. 35%
 ESPECIAL	Sin Restricciones de uso en arcos y ballestas.
-Bonus daños en arcos y ballestas.
+Bonus daï¿½os en arcos y ballestas.
 CUALIDADES	GUERRERO
 ---
 GUERRO MON
@@ -316,31 +316,31 @@ CUALIDADES	GUERRERO
 ---
 NINJA
 RANGO	1/0/-1
-DESCRIPCION	Se mueven por entre las sombras, abatiendo a los incautos y desvaneciéndose de nuevo con facilidad. Caminan donde otros no pueden, combinando su entrenamiento en el sigilo y el asesinato con una mente centrada.
+DESCRIPCION	Se mueven por entre las sombras, abatiendo a los incautos y desvaneciï¿½ndose de nuevo con facilidad. Caminan donde otros no pueden, combinando su entrenamiento en el sigilo y el asesinato con una mente centrada.
 VARIACION CARACTERISTICAS	
 VARIACION HABILIDADES	Agilidad +10, Equilibrio +15, Ver+10, Evitar+5, Hacer V.+30, Saltar +10, Trepar +10 Emboscada +15, Desli Y Esconderse +10
 EQUIPO ESPECIAL	Dos Espadas C. Ninja o Catana + 10 Shuriken y 5 plutonios por aventura.
 BONUS ATAQUE	ATAQUE: 50% - DEFENSA 50% - A.R. 45%
-ESPECIAL	 SOLO ARMAS NINJA – Asesinato X 2 (50%)
+ESPECIAL	 SOLO ARMAS NINJA ï¿½ Asesinato X 2 (50%)
 Sin Restricciones de uso ARMAS NINJA.
 CUALIDADES	GUERRERO / PICAROS (Cambio rango)
 ---
 
 DRUIDA
 RANGO	+1
-DESCRIPCION	Ya sea invocando a las fuerzas elementales o emulando a las criaturas del mundo animal, los druidas son la personificación de la resistencia, astucia y furia de la naturaleza. Dicen no tener un dominio sobre la naturaleza. En lugar de eso, se ven como una extensión de la voluntad indomable de la misma.
+DESCRIPCION	Ya sea invocando a las fuerzas elementales o emulando a las criaturas del mundo animal, los druidas son la personificaciï¿½n de la resistencia, astucia y furia de la naturaleza. Dicen no tener un dominio sobre la naturaleza. En lugar de eso, se ven como una extensiï¿½n de la voluntad indomable de la misma.
 VARIACION CARACTERISTICAS	+1d POD (minino 5D) + 1D INT (MAX FUE19)
-VARIACION HABILIDADES	+50 % plantas y venenos +5 Percepción.
-Regeneración de SM 3 al día
+VARIACION HABILIDADES	+50 % plantas y venenos +5 Percepciï¿½n.
+Regeneraciï¿½n de SM 3 al dï¿½a
 EQUIPO ESPECIAL	Cimitarra y tarja
 BONUS ATAQUE	ATAQUE: 25% - DEFENSA 25% - A.R. 25%
 ESPECIAL	 5 HECHICOS DE DRUIDA
 CUALIDADES	MAGOS Y HECHICEROS
 
 ---
-Bárbaro
+Bï¿½rbaro
 RANGO	0
-DESCRIPCION	Para algunos, su rabia brota de la comunión con espíritus de animales salvajes. Otros recurren a su hirviente reserva de ira frente a un mundo lleno de dolor. Para los barbaros, la furia es un poder que no solo les proporciona un frenesí? ciego en la batalla, sino también extraordinarios reflejos, resistencia y proezas de fuerza.
+DESCRIPCION	Para algunos, su rabia brota de la comuniï¿½n con espï¿½ritus de animales salvajes. Otros recurren a su hirviente reserva de ira frente a un mundo lleno de dolor. Para los barbaros, la furia es un poder que no solo les proporciona un frenesï¿½? ciego en la batalla, sino tambiï¿½n extraordinarios reflejos, resistencia y proezas de fuerza.
 VARIACION CARACTERISTICAS	-2 INT
 VARIACION HABILIDADES	Primeros Auxilios 100 % 1D6 sobre si mismo. +15 saltar(extralargo)
 EQUIPO ESPECIAL	Bastarda
@@ -352,7 +352,7 @@ CUALIDADES	GUERREROS
 ---
 Guardia Purpura
 RANGO	0
-DESCRIPCION	Entrenado como soltado, el purpura nunca abandonara el combate ni la formación.
+DESCRIPCION	Entrenado como soltado, el purpura nunca abandonara el combate ni la formaciï¿½n.
 VARIACION CARACTERISTICAS	CON +1
 VARIACION HABILIDADES	Emboscara + 10 %
 EQUIPO ESPECIAL	Semi placa en torso Demonio PV variables
@@ -362,19 +362,19 @@ CUALIDADES	GUERREROS
 ---
 Guerrero ilmionario
 RANGO	0
-DESCRIPCION	Bárbaro en las montañas de ilmiora. Vivir en un terreno tan duro le ha forjado unas habilidades especiales.
+DESCRIPCION	Bï¿½rbaro en las montaï¿½as de ilmiora. Vivir en un terreno tan duro le ha forjado unas habilidades especiales.
 VARIACION CARACTERISTICAS	
-VARIACION HABILIDADES	Emboscara + 10 %, Agilidad +25, Percepción +10
+VARIACION HABILIDADES	Emboscara + 10 %, Agilidad +25, Percepciï¿½n +10
 EQUIPO ESPECIAL	Hacha de batalla + 2 Protectores
 BONUS ATAQUE	ATAQUE: 50% - DEFENSA 50% - A.R. 40%
-ESPECIAL	No usa armas 2M. Puede equipar 2 hachas de batalla. No usa armaduras metálicas, excepto virtuosas. Sin Restricciones de uso HACHAS 1M. Bonus Daño Hachas Arrojadizas.
+ESPECIAL	No usa armas 2M. Puede equipar 2 hachas de batalla. No usa armaduras metï¿½licas, excepto virtuosas. Sin Restricciones de uso HACHAS 1M. Bonus Daï¿½o Hachas Arrojadizas.
 CUALIDADES	GUERREROS
 ---
 Bardo
 RANGO	2
-DESCRIPCION	Ya sea un erudito, un poeta o un canalla, un bardo teje su magia a través de sus palabras y su música para inspirar a los aliados, desmoralizar a los enemigos, manipular mentes, crear ilusiones e incluso sanar heridas.
+DESCRIPCION	Ya sea un erudito, un poeta o un canalla, un bardo teje su magia a travï¿½s de sus palabras y su mï¿½sica para inspirar a los aliados, desmoralizar a los enemigos, manipular mentes, crear ilusiones e incluso sanar heridas.
 VARIACION CARACTERISTICAS	Poder +2, Carisma +1D. Inteligencia +1 (MAX FUE20)
-VARIACION HABILIDADES	Comunicación +25%. Regeneración de  SM 2 al día
+VARIACION HABILIDADES	Comunicaciï¿½n +25%. Regeneraciï¿½n de  SM 2 al dï¿½a
 EQUIPO ESPECIAL	Espada Ionica (3d6 a una mano con escudo)
 BONUS ATAQUE	ATAQUE: 35% - DEFENSA 40%  - A.R. 35%
 ESPECIAL	2 hechizos de Bardo por nivel
@@ -383,70 +383,70 @@ CUALIDADES	GUERREROS/MAGOS
 ---
 Noble Guerrero / Caballero del Caos 
 RANGO	+3/-3
-DESCRIPCION	Sean cuales sean sus orígenes y sus misiones, los paladines están unidos por sus juramentos para luchar en contra de las fuerzas del mal. El juramento de un paladín es un lazo muy poderoso. Es una fuente de poder que convierte a un devoto guerrero en un campeón bendecido.
+DESCRIPCION	Sean cuales sean sus orï¿½genes y sus misiones, los paladines estï¿½n unidos por sus juramentos para luchar en contra de las fuerzas del mal. El juramento de un paladï¿½n es un lazo muy poderoso. Es una fuente de poder que convierte a un devoto guerrero en un campeï¿½n bendecido.
 VARIACION CARACTERISTICAS	
-VARIACION HABILIDADES	Comunicación +5%, Primeros Auxilio +5%
+VARIACION HABILIDADES	Comunicaciï¿½n +5%, Primeros Auxilio +5%
 EQUIPO ESPECIAL	Caballo de Guerra, Lanza Torneo.1100 M.O
 BONUS ATAQUE	ATAQUE: 50% - DEFENSA 50% - A.R. 40%
-ESPECIAL	Resistencia hasta -10PV en pie – Sin Res. Lanza Torneo
+ESPECIAL	Resistencia hasta -10PV en pie ï¿½ Sin Res. Lanza Torneo
 CUALIDADES	GUERREROS
 
 ---
-Ladrón
+Ladrï¿½n
 RANGO	-1
-DESCRIPCION	Has perfeccionado tus habilidades en las artes del latrocinio. Ladrones, bandidos, rateros y otros criminales suelen seguir este arquetipo, pero también lo hacen los pícaros que prefieren pensar en sí mismos como en buscadores de tesoros profesionales.
+DESCRIPCION	Has perfeccionado tus habilidades en las artes del latrocinio. Ladrones, bandidos, rateros y otros criminales suelen seguir este arquetipo, pero tambiï¿½n lo hacen los pï¿½caros que prefieren pensar en sï¿½ mismos como en buscadores de tesoros profesionales.
 VARIACION CARACTERISTICAS	INT +2, DES +1D (MAX FUE 19)
-VARIACION HABILIDADES	Evaluar T. +10, Percepción +5, Agilidad +5, Manipulación + 10, Forzar C. + 15, Robar Bolsas +15, Disimular +15
-EQUIPO ESPECIAL	Cerbatana 5 dardos Veneno somnífero Pot 14, Espada Corta.
+VARIACION HABILIDADES	Evaluar T. +10, Percepciï¿½n +5, Agilidad +5, Manipulaciï¿½n + 10, Forzar C. + 15, Robar Bolsas +15, Disimular +15
+EQUIPO ESPECIAL	Cerbatana 5 dardos Veneno somnï¿½fero Pot 14, Espada Corta.
 BONUS ATAQUE	ATAQUE: 25% - DEFENSA 25% - A.R. 25%
 ESPECIAL	-Saqueo
 -Asesinato X2 100%
--Doble Acción si está escondido
--Improvisar. (requiere nivel 3 y solo una vez) puede elegir un objeto mágico que normalmente no puede usar y usarlo permanentemente. NEGOCIAR con Master.
+-Doble Acciï¿½n si estï¿½ escondido
+-Improvisar. (requiere nivel 3 y solo una vez) puede elegir un objeto mï¿½gico que normalmente no puede usar y usarlo permanentemente. NEGOCIAR con Master.
 CUALIDADES	PICAROS
 
 ---
 Asesino
 RANGO	-2
-DESCRIPCION	El asesino es un maestro en asestar golpes rápidos y letales. También sobresale en el arte del difraz y la infiltración. Los asesinos trabajan a menudo como espías, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatomía, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mortíferas con precisión espeluznante y terrorífica.
-VARIACION CARACTERISTICAS	INT +2, DES +1D(mínimo 5D) (MAX FUE 19)
-VARIACION HABILIDADES	Conocimiento de plantas y venenos +10, Equilibrio +5, Agilidad +5, Manipulación +3, disimular +10, esconderse 
-+10, deslizarse +10,
+DESCRIPCION	El asesino es un maestro en asestar golpes rï¿½pidos y letales. Tambiï¿½n sobresale en el arte del difraz y la infiltraciï¿½n. Los asesinos trabajan a menudo como espï¿½as, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatomï¿½a, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mortï¿½feras con precisiï¿½n espeluznante y terrorï¿½fica.
+VARIACION CARACTERISTICAS	INT +2, DES +1D(mï¿½nimo 5D) (MAX FUE 19)
+VARIACION HABILIDADES	Conocimiento de plantas y venenos +10, Equilibrio +5, Agilidad +5, Manipulaciï¿½n +3, disimular +10, esconderse 
++10, Movimiento silencioso +10,
 EQUIPO ESPECIAL	Espada Corta
 BONUS ATAQUE	ATAQUE: 25% - DEFENSA 25% - A.R. 25%
 ESPECIAL	-Asesinato X2 100% y X5 con 25%
--Doble Acción si está escondido
+-Doble Acciï¿½n si estï¿½ escondido
 CUALIDADES	PICAROS
 ---
 
 Asesino Eshmiriano
 RANGO	-2
-DESCRIPCION	El asesino es un maestro en asestar golpes rápidos y letales. También sobresale en el arte del difraz y la infiltración. Los asesinos trabajan a menudo como espías, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatomía, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mortíferas con precisión espeluznante y terrorífica.
-VARIACION CARACTERISTICAS	INT +2, DES +1D(mínimo 5D) (MAX FUE 19)
-VARIACION HABILIDADES	Conocimiento de plantas y venenos +20, Equilibrio +5, Agilidad +5, Manipulación +5, disimular +5, esconderse 
-+6, deslizarse +6,
+DESCRIPCION	El asesino es un maestro en asestar golpes rï¿½pidos y letales. Tambiï¿½n sobresale en el arte del difraz y la infiltraciï¿½n. Los asesinos trabajan a menudo como espï¿½as, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatomï¿½a, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mortï¿½feras con precisiï¿½n espeluznante y terrorï¿½fica.
+VARIACION CARACTERISTICAS	INT +2, DES +1D(mï¿½nimo 5D) (MAX FUE 19)
+VARIACION HABILIDADES	Conocimiento de plantas y venenos +20, Equilibrio +5, Agilidad +5, Manipulaciï¿½n +5, disimular +5, esconderse 
++6, Movimiento silencioso +6,
 EQUIPO ESPECIAL	Pack Asesino Esmir (Libro Demonios y magia)
 BONUS ATAQUE	ATAQUE: 25% - DEFENSA 25% - A.R. 25%
 ESPECIAL	-Asesinato X2 100% y X5 con 25%
--Doble Acción si está escondido
+-Doble Acciï¿½n si estï¿½ escondido
 CUALIDADES	PICAROS
 ---
-Clérigo
+Clï¿½rigo
 RANGO	+1
-DESCRIPCION	Los clérigos buenos se dedican a curar, proteger y vengar, los malignos a saquear, destruir y sabotear. Un clérigo manifiesta la voluntad divina utilizando el poder de su dios, aunque también es de esperar que lo emplee para mejorar sus propios asuntos.
+DESCRIPCION	Los clï¿½rigos buenos se dedican a curar, proteger y vengar, los malignos a saquear, destruir y sabotear. Un clï¿½rigo manifiesta la voluntad divina utilizando el poder de su dios, aunque tambiï¿½n es de esperar que lo emplee para mejorar sus propios asuntos.
 VARIACION CARACTERISTICAS	FUE -1, POD +1D INT+1
-VARIACION HABILIDADES	Emboscada +5. Regeneración de  SM 2 al día
+VARIACION HABILIDADES	Emboscada +5. Regeneraciï¿½n de  SM 2 al dï¿½a
 EQUIPO ESPECIAL	Martillo de guerra
 BONUS ATAQUE	ATAQUE: 30% - DEFENSA 35% - A.R. 30%
-ESPECIAL	3 hechizos Clérigo
+ESPECIAL	3 hechizos Clï¿½rigo
 CUALIDADES	GUERREROS / MAGO
 ---
 
 Hechicero Guerrero
 RANGO	-1
-DESCRIPCION	Combinando los poderes dinámicos de la habilidad marcial y el poder arcano, el Hechicero Guerrero supone un desafío mortal para los oponentes que no están acostumbrados a enemigos de su calibre.
+DESCRIPCION	Combinando los poderes dinï¿½micos de la habilidad marcial y el poder arcano, el Hechicero Guerrero supone un desafï¿½o mortal para los oponentes que no estï¿½n acostumbrados a enemigos de su calibre.
 VARIACION CARACTERISTICAS	 POD +1D INT+1 (MAX FUE 30)
-VARIACION HABILIDADES	Emboscada +5. Regeneración de SM 2 al día
+VARIACION HABILIDADES	Emboscada +5. Regeneraciï¿½n de SM 2 al dï¿½a
 EQUIPO ESPECIAL	Daga + Espada corta
 BONUS ATAQUE	ATAQUE: 30% - DEFENSA 35% - A.R. 30%
 ESPECIAL	3 hechizos 
@@ -454,13 +454,13 @@ CUALIDADES	GUERREROS / MAGO
 ---
 Guerrero Asesino
 RANGO	-1
-DESCRIPCION	Algunos son sigilosos ladrones; otros, embusteros con pico de oro; y aún otros son infiltrados, espías, diplomáticos o matones. Lo único que tienen en común es que son polifacéticos, además de poseer un gran ingenio y mucha capacidad de adaptación.
+DESCRIPCION	Algunos son sigilosos ladrones; otros, embusteros con pico de oro; y aï¿½n otros son infiltrados, espï¿½as, diplomï¿½ticos o matones. Lo ï¿½nico que tienen en comï¿½n es que son polifacï¿½ticos, ademï¿½s de poseer un gran ingenio y mucha capacidad de adaptaciï¿½n.
 VARIACION CARACTERISTICAS	 Fuerza -1 Destreza +1D (MAX FUE 30)
-VARIACION HABILIDADES	Conocimiento de plantas y venenos +5, Equilibrio +5, Agilidad +5, Manipulación +5, disimular +10, esconderse +10, deslizarse +5
-EQUIPO ESPECIAL	Cimitarra + 5 Dardos de Veneno Somnífero POT 13
+VARIACION HABILIDADES	Conocimiento de plantas y venenos +5, Equilibrio +5, Agilidad +5, Manipulaciï¿½n +5, disimular +10, esconderse +10Movimiento silenciosose +5
+EQUIPO ESPECIAL	Cimitarra + 5 Dardos de Veneno Somnï¿½fero POT 13
 BONUS ATAQUE	ATAQUE: 30% - DEFENSA 35% - A.R. 30%
 ESPECIAL	-Asesinato X2 75%
--Doble Acción si está escondido
+-Doble Acciï¿½n si estï¿½ escondido
 CUALIDADES	GUERREROS / PIKAROS
 ---
 
