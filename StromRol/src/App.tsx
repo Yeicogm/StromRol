@@ -132,12 +132,12 @@ function App() {
     );
   };
   // Estado para los valores de los inputs numéricos de los combos
-  const [inputRaza, setInputRaza] = useState("");
-  const [inputClase, setInputClase] = useState("");
-  const [inputNacionalidad, setInputNacionalidad] = useState("");
-  const [inputOrigen, setInputOrigen] = useState("");
+  const [inputRaza, setInputRaza] = useState<string>("");
+  const [inputClase, setInputClase] = useState<string>("");
+  const [inputNacionalidad, setInputNacionalidad] = useState<string>("");
+  const [inputOrigen, setInputOrigen] = useState<string>("");
   // Estado para mostrar/ocultar el logo
-  const [mostrarLogo, setMostrarLogo] = useState(true);
+  const [mostrarLogo, setMostrarLogo] = useState<boolean>(true);
   // Función para ocultar el logo al interactuar con cualquier combobox
   const handleComboChange = () => {
     if (mostrarLogo) setMostrarLogo(false);
@@ -203,7 +203,7 @@ function App() {
   // Estado para los resultados de las tiradas
   const [tiradas, setTiradas] = useState<Record<string, string>>({});
   // Estado para el checkbox "Dados min. 2"
-  const [dadosMin2, setDadosMin2] = useState(true);
+  const [dadosMin2, setDadosMin2] = useState<boolean>(true);
   // Estado para las limitaciones de la clase actual
   const [limitaciones, setLimitaciones] = useState<LimitacionCaracteristica[]>(
     []
@@ -237,7 +237,8 @@ function App() {
   };
 
   // Función para tirar dados aleatorios según el formato (ej: "2D6+3")
-  function tirarDado(formula: string): number {
+  // Devuelve el resultado de la tirada de dados según la fórmula
+  const tirarDado = (formula: string): number => {
     // Ejemplo de fórmula: "3D6+1D10+2", "2D6+3", "1D10", "3D4-2"
     let total = 0;
     // Buscar todas las expresiones de dados (ej: 3D6, 1D10)
@@ -260,7 +261,7 @@ function App() {
       total += parseInt(modMatch[1], 10);
     }
     return total;
-  }
+  };
 
   // Genera tiradas aleatorias para cada característica
   const generarTiradasAleatorias = () => {
@@ -791,6 +792,7 @@ function App() {
             type="button"
             className="ficha-dado-btn"
             title="Seleccionar raza aleatoria"
+            aria-label="Seleccionar raza aleatoria"
             disabled={razas.length === 0}
             onClick={() => {
               if (razas.length === 0) return;
@@ -860,6 +862,7 @@ function App() {
             type="button"
             className="ficha-dado-btn"
             title="Seleccionar clase aleatoria"
+            aria-label="Seleccionar clase aleatoria"
             disabled={
               clases.length === 0 ||
               (!!razaSeleccionada &&
@@ -942,6 +945,7 @@ function App() {
             type="button"
             className="ficha-dado-btn"
             title="Tirar dado de nacionalidad"
+            aria-label="Tirar dado de nacionalidad"
             disabled={!razaSeleccionada}
             onClick={() => {
               // Lanzar número aleatorio entre 1 y 100
@@ -1061,6 +1065,7 @@ function App() {
             type="button"
             className="ficha-dado-btn"
             title="Tirar dado de origen"
+            aria-label="Tirar dado de origen"
             disabled={!nacionalidadSeleccionada}
             onClick={() => {
               if (!nacionalidadSeleccionada) return;
@@ -1219,6 +1224,7 @@ function App() {
                   onChange={(e) => {
                     manejarCambioCaracteristica(car, e.target.value);
                   }}
+                  aria-label={`Tirada para ${car}`}
                 />
               </li>
             ))}
@@ -1231,6 +1237,7 @@ function App() {
                 checked={dadosMin2}
                 onChange={(e) => setDadosMin2(e.target.checked)}
                 className="ficha-dadosmin-checkbox"
+                aria-label="Activar dados mínimo 2"
               />
               Dados min. 2
             </label>
@@ -1241,6 +1248,7 @@ function App() {
               className="ficha-calcular-btn"
               onClick={generarTiradasAleatorias}
               disabled={Object.keys(resultado || {}).length === 0}
+              aria-label="Generar tiradas aleatorias"
             >
               Generar tiradas aleatorias
             </button>
@@ -1251,6 +1259,7 @@ function App() {
                 Object.entries(resultado || {}).some(([car]) => !tiradas[car])
               }
               onClick={() => {
+                // Cálculo de habilidades a partir de las tiradas ingresadas
                 // Cálculo del bonus de fuerza CC
                 const fuerza = parseInt(tiradas["Fuerza"] || "0", 10);
                 let bonusCC = "";
@@ -1330,6 +1339,7 @@ function App() {
                   puntosVida: Math.max(1, con + tam - 12),
                 });
               }}
+              aria-label="Calcular habilidades"
             >
               Calcular habilidades
             </button>
@@ -1359,6 +1369,7 @@ function App() {
             <div className="raza-content">
               <h4 className="raza-section-title">Resultados de habilidades</h4>
               <div className="raza-list">
+                {/* Bonus de fuerza CC y AA */}
                 <div className="raza-list-item">
                   <span className="raza-bonus-name">
                     {resultadoHabilidades.bonusCC.split(":")[0]}:
