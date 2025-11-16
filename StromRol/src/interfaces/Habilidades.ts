@@ -30,7 +30,7 @@ export interface Habilidades {
   Evitar?: number;
 
   /** Habilidad para moverse sin ser detectado */
-  Movimiento silencioso?: number;
+  deslizarse?: number;
 
   /** Capacidad de ocultarse de la vista */
   Esconderse?: number;
@@ -38,7 +38,7 @@ export interface Habilidades {
   /** Habilidad para hacerse pasar por otra persona o cosa */
   Disimular?: number;
 
-  /** Combinación de Movimiento silencioso y esconderse */
+  /** Combinación de deslizarse y esconderse */
   "Desli Y Esconderse"?: number;
 
   // === HABILIDADES DE PERCEPCIÓN ===
@@ -139,7 +139,7 @@ export type NombreHabilidad =
   // Combate y Sigilo
   | "Emboscada"
   | "Evitar"
-  | "Movimiento silencioso"
+  | "deslizarse"
   | "Esconderse"
   | "Disimular"
   | "Desli Y Esconderse"
@@ -187,7 +187,7 @@ export const CATEGORIAS_HABILIDADES = {
   COMBATE_SIGILO: [
     "Emboscada",
     "Evitar",
-    "Movimiento silencioso",
+    "deslizarse",
     "Esconderse",
     "Disimular",
     "Desli Y Esconderse",
@@ -236,7 +236,7 @@ export const MAPEO_HABILIDADES: Record<string, NombreHabilidad> = {
   Equitación: "Equitación",
   Emboscada: "Emboscada",
   Evitar: "Evitar",
-  Movimiento silencioso: "Movimiento silencioso",
+  deslizarse: "deslizarse",
   Esconderse: "Esconderse",
   Disimular: "Disimular",
   "Desli Y Esconderse": "Desli Y Esconderse",
@@ -270,7 +270,7 @@ export const MAPEO_HABILIDADES: Record<string, NombreHabilidad> = {
   equitación: "Equitación",
   emboscada: "Emboscada",
   evitar: "Evitar",
-  Movimiento silencioso: "Movimiento silencioso",
+  deslizarse: "deslizarse",
   esconderse: "Esconderse",
   disimular: "Disimular",
   percepción: "Percepción",

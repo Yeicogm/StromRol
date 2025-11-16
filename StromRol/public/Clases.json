@@ -184,7 +184,7 @@
         "Saltar +10",
         "Trepar +10",
         "Emboscada +15",
-        "Movimiento silencioso +10",
+        "deslizarse +10",
         "Esconderse +10"
       ],
       "equipo_especial": "Dos Espadas C. Ninja o Catana + 10 Shuriken y 5 plutonios por aventura.",
@@ -352,7 +352,7 @@
         "Manipulación +3",
         "disimular +10",
         "esconderse +10",
-        "Movimiento silencioso +10"
+        "deslizarse +10"
       ],
       "equipo_especial": "Espada Corta",
       "Bonus_combate": {
@@ -377,7 +377,7 @@
         "Manipulación +5",
         "disimular +5",
         "esconderse +6",
-        "Movimiento silencioso +6"
+        "deslizarse +6"
       ],
       "equipo_especial": "Pack Asesino Esmir (Libro Demonios y magia)",
       "Bonus_combate": {
@@ -440,7 +440,7 @@
         "Manipulación +5",
         "disimular +10",
         "esconderse +10",
-        "Movimiento silencioso +5"
+        "deslizarse +5"
       ],
       "equipo_especial": "Cimitarra + 5 Dardos de Veneno Somnífero POT 13",
       "Bonus_combate": {

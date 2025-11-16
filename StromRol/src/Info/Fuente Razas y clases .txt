@@ -151,7 +151,7 @@ Carisma: 2D6 +1
 Rango:  0 
 
 Bonificaci�n en caracter�sticas:
-Movimiento silencioso +3%
+deslizarse +3%
 Hacer volteretas +5%
 Robar Bolsa +5%
 Cantar +5%
@@ -411,7 +411,7 @@ RANGO	-2
 DESCRIPCION	El asesino es un maestro en asestar golpes r�pidos y letales. Tambi�n sobresale en el arte del difraz y la infiltraci�n. Los asesinos trabajan a menudo como esp�as, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatom�a, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mort�feras con precisi�n espeluznante y terror�fica.
 VARIACION CARACTERISTICAS	INT +2, DES +1D(m�nimo 5D) (MAX FUE 19)
 VARIACION HABILIDADES	Conocimiento de plantas y venenos +10, Equilibrio +5, Agilidad +5, Manipulaci�n +3, disimular +10, esconderse 
-+10, Movimiento silencioso +10,
++10, deslizarse +10,
 EQUIPO ESPECIAL	Espada Corta
 BONUS ATAQUE	ATAQUE: 25% - DEFENSA 25% - A.R. 25%
 ESPECIAL	-Asesinato X2 100% y X5 con 25%
@@ -424,7 +424,7 @@ RANGO	-2
 DESCRIPCION	El asesino es un maestro en asestar golpes r�pidos y letales. Tambi�n sobresale en el arte del difraz y la infiltraci�n. Los asesinos trabajan a menudo como esp�as, informadores, asesinos de alquiler o medios de venganza. Su entrenamiento en anatom�a, sigilo, venenos y en las artes siniestras, les permite llevar a cabo misiones mort�feras con precisi�n espeluznante y terror�fica.
 VARIACION CARACTERISTICAS	INT +2, DES +1D(m�nimo 5D) (MAX FUE 19)
 VARIACION HABILIDADES	Conocimiento de plantas y venenos +20, Equilibrio +5, Agilidad +5, Manipulaci�n +5, disimular +5, esconderse 
-+6, Movimiento silencioso +6,
++6, deslizarse +6,
 EQUIPO ESPECIAL	Pack Asesino Esmir (Libro Demonios y magia)
 BONUS ATAQUE	ATAQUE: 25% - DEFENSA 25% - A.R. 25%
 ESPECIAL	-Asesinato X2 100% y X5 con 25%
@@ -456,7 +456,7 @@ Guerrero Asesino
 RANGO	-1
 DESCRIPCION	Algunos son sigilosos ladrones; otros, embusteros con pico de oro; y a�n otros son infiltrados, esp�as, diplom�ticos o matones. Lo �nico que tienen en com�n es que son polifac�ticos, adem�s de poseer un gran ingenio y mucha capacidad de adaptaci�n.
 VARIACION CARACTERISTICAS	 Fuerza -1 Destreza +1D (MAX FUE 30)
-VARIACION HABILIDADES	Conocimiento de plantas y venenos +5, Equilibrio +5, Agilidad +5, Manipulaci�n +5, disimular +10, esconderse +10Movimiento silenciosose +5
+VARIACION HABILIDADES	Conocimiento de plantas y venenos +5, Equilibrio +5, Agilidad +5, Manipulaci�n +5, disimular +10, esconderse +10deslizarsese +5
 EQUIPO ESPECIAL	Cimitarra + 5 Dardos de Veneno Somn�fero POT 13
 BONUS ATAQUE	ATAQUE: 30% - DEFENSA 35% - A.R. 30%
 ESPECIAL	-Asesinato X2 75%
