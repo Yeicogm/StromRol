@@ -21,7 +21,7 @@
         "Poder +1D8",
         "Tamaño +1"
       ],
-      "origen_social": ["01-20: Noble-Guerrero", "21-00: Guerrero"],
+      "origen_social": ["01-20: Noble", "21-00: Guerrero"],
       "info_nacionalidad": ""
     },
     {
