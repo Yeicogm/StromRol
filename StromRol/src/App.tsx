@@ -254,7 +254,7 @@ function App() {
         total += signo * dado;
       }
     }
-    // Buscar modificadores numéricos (ej: +2, -1)
+    // Buscar modificadores numéricos (ej: +2, -1).
     const modRegex = /([+-]\d+)(?!D)/g;
     let modMatch;
     while ((modMatch = modRegex.exec(formula)) !== null) {
