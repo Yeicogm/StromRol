@@ -715,19 +715,19 @@ function App() {
 
   useEffect(() => {
     // Cargar razas
-    fetch("/StromRol/Razas.json")
+    fetch("/Razas.json")
       .then((res) => res.json())
       .then((data) => setRazas(data.razas as Raza[]));
     // Cargar clases
-    fetch("/StromRol/Clases.json")
+    fetch("/Clases.json")
       .then((res) => res.json())
       .then((data) => setClases(data.clases as Clase[]));
     //carga nacionalides
-    fetch("/StromRol/Nacionalidad.json")
+    fetch("/Nacionalidad.json")
       .then((res) => res.json())
       .then((data) => setNacionalidades(data.nacionalidades as Nacionalidad[]));
     //carga origenes
-    fetch("/StromRol/Origen.json")
+    fetch("/Origen.json")
       .then((res) => res.json())
       .then((data) => setOrigenes(data.origenes as Origen[]));
   }, []);
@@ -782,7 +782,7 @@ function App() {
     <div className="ficha-container">
       {mostrarLogo && (
         <div className="logo-container">
-          <img src={"/StromRol/logo.webp"} alt="Logo" className="logo-img" />
+          <img src={"/logo.webp"} alt="Logo" className="logo-img" />
         </div>
       )}
       <h2 className="ficha-title">Generador de Fichas</h2>
