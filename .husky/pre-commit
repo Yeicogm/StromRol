@@ -1,3 +1,4 @@
+echo "pre-commit ejecutado"
 cd StromRol && npm run build
 cd ..
 git add docs
