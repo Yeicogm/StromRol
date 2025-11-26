@@ -1553,4 +1553,29 @@ function App() {
   );
 }
 
-export default App;
+// Fecha de última actualización visible en la web
+function FechaActualizacion() {
+  return (
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: "2rem",
+        color: "#888",
+        fontSize: "0.95rem",
+      }}
+    >
+      Última actualización: 26 de noviembre de 2025
+    </div>
+  );
+}
+
+export default function AppConFecha() {
+  return (
+    <>
+      <App />
+      <FechaActualizacion />
+    </>
+  );
+}
+
+// Última actualización: 26 de noviembre de 2025
