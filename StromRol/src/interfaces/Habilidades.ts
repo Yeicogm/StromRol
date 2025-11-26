@@ -99,8 +99,17 @@ export interface Habilidades {
   /** Habilidad para abrir cerraduras */
   "Forzar C."?: number;
 
+  /** Habilidad para forzar cerraduras (alternativa) */
+  "Forzar Cerraduras"?: number;
+
+  /** Habilidad para abrir cerraduras */
+  "Abrir cerradura"?: number;
+
   /** Habilidad para robar carteras y objetos pequeños */
   "Robar Bolsas"?: number;
+
+  /** Habilidad para robar objetos (forma general) */
+  Robar?: number;
 
   /** Habilidad para realizar trucos de manos */
   "Hacer V."?: number;
@@ -165,7 +174,10 @@ export type NombreHabilidad =
   | "Discreción"
   | "Manipulación"
   | "Forzar C."
+  | "Forzar Cerraduras"
+  | "Abrir cerradura"
   | "Robar Bolsas"
+  | "Robar"
   | "Hacer V."
   // Especiales
   | "Regeneración de SM"
@@ -213,7 +225,10 @@ export const CATEGORIAS_HABILIDADES = {
     "Discreción",
     "Manipulación",
     "Forzar C.",
+    "Forzar Cerraduras",
+    "Abrir cerradura",
     "Robar Bolsas",
+    "Robar",
     "Hacer V.",
   ],
   ESPECIALES: [
@@ -258,7 +273,10 @@ export const MAPEO_HABILIDADES: Record<string, NombreHabilidad> = {
   Discreción: "Discreción",
   Manipulación: "Manipulación",
   "Forzar C.": "Forzar C.",
+  "Forzar Cerraduras": "Forzar Cerraduras",
+  "Abrir cerradura": "Abrir cerradura",
   "Robar Bolsas": "Robar Bolsas",
+  Robar: "Robar",
   "Hacer V.": "Hacer V.",
 
   // Variaciones en minúsculas
@@ -284,6 +302,9 @@ export const MAPEO_HABILIDADES: Record<string, NombreHabilidad> = {
   cantar: "Cantar",
   discreción: "Discreción",
   manipulación: "Manipulación",
+  robar: "Robar",
+  "forzar cerraduras": "Forzar Cerraduras",
+  "abrir cerradura": "Abrir cerradura",
 
   // Abreviaciones comunes
   "plantas y venenos": "Conocimiento de plantas y venenos",

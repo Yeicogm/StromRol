@@ -697,7 +697,7 @@ function App() {
     return (
       <div className="ficha-resultado">
         <h3 className="ficha-resultado-title">
-          Total de Bonificaciones (Raza + Clase):
+          Total de Bonificaciones (Raza + Clase + Origen):
         </h3>
         <ul className="ficha-resultado-list">
           {Object.entries(bonificaciones).map(([habilidad, total]) => (
