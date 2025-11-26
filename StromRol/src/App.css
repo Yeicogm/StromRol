@@ -563,3 +563,27 @@ a:hover {
 .read-the-docs {
   color: #888;
 }
+
+/* Estilos para la fecha de última actualización y enlace a GitHub */
+.fecha-actualizacion {
+  text-align: center;
+  margin-top: 2rem;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.github-link-wrapper {
+  margin-top: 0.5rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  text-decoration: none;
+}
+
+.github-link svg {
+  display: block;
+}
