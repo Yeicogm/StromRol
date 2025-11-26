@@ -117,11 +117,18 @@
 }
 
 body {
-  background: linear-gradient(
-    135deg,
-    var(--background-color) 60%,
-    var(--secondary-color) 100%
-  );
+  /* Mosaic tiled image on top, gradient underneath */
+  /* usar imagen existente en public/ como mosaico */
+  background-image: url("/dadoFondo_750x750.png"),
+    linear-gradient(
+      90deg,
+      var(--background-color) 20%,
+      var(--secondary-color) 100%
+    );
+  background-repeat: repeat, no-repeat;
+  background-size: 220px auto, cover; /* ajuste de tamaño del mosaico */
+  background-position: center center, center;
+  background-blend-mode: overlay;
   color: var(--text-color);
   font-family: "Segoe UI", "Roboto", Arial, sans-serif;
   font-weight: normal;
