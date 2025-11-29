@@ -1,11 +1,14 @@
-**Estado de la traducción — 26 de noviembre de 2025**
+**Estado de la traducción — 29 de noviembre de 2025**
 
 - Archivo objetivo: `src/Info/spells.json`
 - Script de aplicación: `scripts/translate_spells_batch.py` (usa `MAPPING` con traducciones por `id`).
 - Backup más reciente: `src/Info/spells.json.bak` (creado antes de la última escritura).
-- Último id traducido y aplicado: `300` (traducciones añadidas y escritas al JSON).
-- Estado actual: Traducción en curso (tarea `Traducir 261–fin` marcada como en progreso).
-- Siguiente id pendiente: `301`.
+ - Último id traducido y aplicado: `360` (traducciones añadidas y escritas al JSON).
+ - Estado actual: Traducción por lotes: ids `301–360` aplicados.
+ - Siguiente id pendiente: `361`.
+ - Último id traducido y aplicado: `380` (traducciones añadidas y escritas al JSON).
+ - Estado actual: Traducción por lotes: ids `301–380` aplicados.
+ - Siguiente id pendiente: `381`.
 
 Pasos para reanudar (automático, recomendado):
 

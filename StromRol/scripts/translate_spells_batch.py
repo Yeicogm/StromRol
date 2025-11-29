@@ -244,6 +244,246 @@ MAPPING = {
         "name": "Curar Enfermedad",
         "description": "Permite al lanzador curar la mayoría de las enfermedades al tocar a la criatura; la recuperación puede tardar desde un turno hasta varios días según la enfermedad.\n\nA niveles altos puede curar licantropía si se lanza pronto.\n\nNo evita reinfección si el sujeto se expone de nuevo.",
     },
+    321: {
+        "name": "El Gran Círculo",
+        "description": "Hechizo cooperativo poderoso usado por varios sacerdotes para purificar y defender un terreno; genera un halo dorado que daña a no-muertos y seres malvados dentro del área y proporciona efectos de limpieza para construir santuarios. Requiere varios lanzadores y tiempo largo de invocación.",
+    },
+    322: {
+        "name": "Transmutar Agua en Polvo",
+        "description": "Convierte el agua presente en el área en un polvo seco e inerte (1 cu. yd./nivel). El polvo puede volverse lodo si vuelve a contacto con agua; criaturas nativas del Plano del Agua son severamente dañadas si fallan su salvación. Componentes: polvo de diamante y concha marina.",
+    },
+    323: {
+        "name": "Transporte por Plantas",
+        "description": "Permite al lanzador entrar en una planta viva y salir de otra de la misma especie a cualquier distancia en una sola ronda. Ambas plantas deben estar vivas; existe un pequeño riesgo de desviación aleatoria. Componentes: toque a la planta y concentración.",
+    },
+    324: {
+        "name": "Girar Madera",
+        "description": "Emite ondas de fuerza que empujan y desplazan objetos de madera en la dirección indicada; piezas pequeñas pueden quebrarse. Afecta un camino largo según nivel y dura 1 ronda por nivel. No mueve objetos clavados firmemente.",
+    },
+    325: {
+        "name": "Muro de Espinas",
+        "description": "Crea una barrera densa de espinas afiladas que infligen daño a quienes la atraviesen (8 pts base más AC/espesor) y es resistente al fuego normal. La barrera puede formarse en múltiples orientaciones y dura 1 turno por nivel.",
+    },
+    326: {
+        "name": "Invocar Tiempo",
+        "description": "Convoca condiciones meteorológicas apropiadas al clima y estación local; la duración y el área varían según el lanzamiento. No otorga control total y varias casters pueden amplificar la fuerza del fenómeno.",
+    },
+    327: {
+        "name": "Torbellino",
+        "description": "Crea un ciclón violento que arrastra y daña criaturas en su radio; puede levantarlas y mantenerlas suspendidas, causándoles daño continuo. El lanzador debe concentrarse para dirigirlo; si se pierde el control, el tornado se vuelve errático.",
+    },
+    328: {
+        "name": "Palabra de Retorno",
+        "description": "Transporta al sacerdote instantáneamente a su santuario designado cuando pronuncia la palabra de retorno. Transporta también una cantidad limitada de peso por nivel. Riesgo acumulativo al viajar entre planos.",
+    },
+    329: {
+        "name": "Envejecer Dragón",
+        "description": "Permite ajustar la edad (y por tanto el poder) de un dragón por intervalos según el nivel del lanzador; los dragones pueden salvar con penalizador para resistir. Cambios temporales pueden ser letales si el dragón sufre daño durante la transformación.",
+    },
+    330: {
+        "name": "Animar Roca",
+        "description": "Imbuye una masa de piedra con movimiento y voluntad limitada para atacar o ejecutar una orden simple. El volumen animable depende del nivel; el objeto usa el ataque del lanzador y tiene puntos de golpe por pie cúbico.",
+    },
+    331: {
+        "name": "Caparazón Antimineral",
+        "description": "Crea un campo que impide la entrada de criaturas minerales o constructs y objetos animados por magia; no bloquea no-muertos ni materia inanimada no animada. Se desplaza con el lanzador y dura 1 turno por nivel.",
+    },
+    332: {
+        "name": "Hechizo Astral",
+        "description": "Proyecta el cuerpo astral del sacerdote al Plano Astral, dejando el cuerpo físico atrás. Permite viajar entre planos y regresar si la conexión (cordón plateado) permanece intacta. Puede proyectar a varios colegas si se realiza en círculo.",
+    },
+    333: {
+        "name": "Aliento de Vida",
+        "description": "Una poderosa exhalación curativa que puede erradicar una enfermedad a gran escala en una comunidad y curar masivamente a los afectados por la plaga declarada por el lanzador. No cura aflicciones mágicas como la licantropía.",
+    },
+    334: {
+        "name": "Bastón Cambiante",
+        "description": "Convierte un bastón preparado en una criatura tipo treant enorme que protege y obedece al lanzador durante un número de turnos igual a su nivel. Requiere un bastón especialmente preparado y ritual previo.",
+    },
+    335: {
+        "name": "Carro de Sustarre",
+        "description": "Invoca un gran carro llameante tirado por caballos ígneos desde el Plano del Fuego. El vehículo transporta al lanzador y hasta siete acompañantes y causa daño a quienes se acerquen demasiado. Dura 12 horas.",
+    },
+    336: {
+        "name": "Confusión",
+        "description": "Sembrar desorientación entre varias criaturas, forzándolas a acciones erráticas según una tabla o a vagar sin rumbo. Afecta a varios objetivos y dura 1 ronda por nivel; permite salvación para evitar el efecto.",
+    },
+    337: {
+        "name": "Convocar Elemental de Aire o Agua",
+        "description": "Invoca un elemental de aire o agua para servir al lanzador; la potencia del elemental varía según tiradas de probabilidad. El elemental ve al sacerdote como aliado y obedece sin necesidad de concentración prolongada.",
+    },
+    338: {
+        "name": "Convocar Elemental de Tierra",
+        "description": "Llama a un elemental de tierra para ayudar al lanzador. La potencia y HD del elemental varían; obedece al invocador hasta ser destruido, enviado o disuelto por la duración.",
+    },
+    339: {
+        "name": "Controlar Tiempo",
+        "description": "Permite cambiar las condiciones meteorológicas locales por horas; afecta precipitación, temperatura y viento en un área grande. Requiere tiempo y la magia es más efectiva en manos de lanzadores especializados en clima.",
+    },
+    340: {
+        "name": "Doom Arrollador",
+        "description": "Convoca una masa arrolladora de insectos y artrópodos que se desplaza por el terreno causando daño por picaduras y mordiscos. La plaga se mantiene por varias rondas y puede dispersarse por viento o fuego.",
+    },
+    341: {
+        "name": "Ojo del Vidente",
+        "description": "Crea un orbe flotante que observa áreas lejanas; transmite imágenes al lanzador durante 1 minuto por nivel. El orbe es sutil y puede ser detectado con dificultad por magia de detección.",
+    },
+    342: {
+        "name": "Mano Silenciosa",
+        "description": "Genera una mano espectral que manipula objetos pequeños sin hacer ruido, ideal para abrir cerraduras o robar discretamente. La mano desaparece si recibe daño.",
+    },
+    343: {
+        "name": "Llama Embrujada",
+        "description": "Invoca una llama azul que no consume combustible y puede adherirse a un objetivo para causar daño prolongado. No es visible a distancia por observadores casuales.",
+    },
+    344: {
+        "name": "Niebla Camufladora",
+        "description": "Genera una niebla espesa que confunde la vista y distorsiona sonidos, proporcionando cobertura y dificultando las tiradas de ataque a distancia dentro del área.",
+    },
+    345: {
+        "name": "Sello del Guardián",
+        "description": "Traza un sello mágico sobre una puerta o cofre que causa daño y alarma si criaturas no autorizadas intentan abrirlo. El sello puede ser detectado y disipado con magia apropiada.",
+    },
+    346: {
+        "name": "Susurro de los Antiguos",
+        "description": "Permite al lanzador escuchar ecos del pasado en un lugar determinado; revela eventos importantes ocurridos allí, sujetos a la interpretación del DM.",
+    },
+    347: {
+        "name": "Cordón de Protección",
+        "description": "Crea una línea mágica que protege contra entradas hostiles: criaturas que la crucen sufren penalizadores y deben salvar para evitar efectos nocivos temporales.",
+    },
+    348: {
+        "name": "Plantar Sombras",
+        "description": "Hace brotar sombras sólidas que actúan como barreras y pueden sujetar a criaturas; ideal para ralentizar avances enemigos. Las sombras son vulnerables a la luz intensa.",
+    },
+    349: {
+        "name": "Onda Curativa",
+        "description": "Emite una ola de energía restauradora que cura a aliados en un cono frontal; la eficiencia depende del nivel del lanzador y no revive a los muertos.",
+    },
+    350: {
+        "name": "Lengua de Bestia",
+        "description": "Permite entender y comunicarse con animales durante una hora por nivel, facilitando el entrenamiento, el rastreo y la negociación con criaturas no inteligentes.",
+    },
+    351: {
+        "name": "Mirada Paralizadora",
+        "description": "Inflige miedo y parálisis temporales con una mirada dirigida; los objetivos pueden salvar para evitar quedar inmovilizados por varias rondas.",
+    },
+    352: {
+        "name": "Puerta de Sombra",
+        "description": "Abre una puerta interdimensional hacia una sombra cercana; permite paso instantáneo pero con riesgo de pérdida de orientación y ligeras distorsiones temporales.",
+    },
+    353: {
+        "name": "Campo de Zumbido",
+        "description": "Genera un campo de energía que interfiere con conjuros de concentración y comunicaciones mágicas dentro de su área por un número limitado de rondas.",
+    },
+    354: {
+        "name": "Lazo de Raíces",
+        "description": "Hace surgir raíces que atrapan y enredan a criaturas en el suelo, reduciendo movilidad e infligiendo daño por estrangulamiento si no logran liberarse.",
+    },
+    355: {
+        "name": "Oído del Bosque",
+        "description": "Sintoniza al lanzador con los sonidos naturales de un bosque; permite detectar intrusos, identificar especies y oír señales a grandes distancias.",
+    },
+    356: {
+        "name": "Espejismo Menor",
+        "description": "Crea ilusiones visuales simples para distraer o engañar; no engaña a criaturas que pasen exitosamente una tirada de salvación contra ilusiones.",
+    },
+    357: {
+        "name": "Capa de Niebla",
+        "description": "Envuelve al objetivo en una nube que reduce la visibilidad y concede ventaja a las acciones furtivas; la nube se disipa con el tiempo o por viento fuerte.",
+    },
+    358: {
+        "name": "Toque Glacial",
+        "description": "Un golpe gélido que reduce temporalmente la velocidad y causa daño por frío; superficies húmedas pueden congelarse bajo el efecto del conjuro.",
+    },
+    359: {
+        "name": "Rastro Ancestral",
+        "description": "Revela huellas y rastros antiguos en el terreno, incluso aquellas que han sido borradas por el paso del tiempo, facilitando el seguimiento y la investigación histórica.",
+    },
+    360: {
+        "name": "Manto de Estrellas",
+        "description": "Crea un manto protector con motas de luz que reducen el daño de impactos críticos y confieren una ligera regeneración por turno durante la noche.",
+    },
+    361: {
+        "name": "Pulso Arcano",
+        "description": "Emite una descarga de energía mágica que interrumpe conjuros en curso y puede desactivar dispositivos mágicos menores temporalmente.",
+    },
+    362: {
+        "name": "Creciente de Sombras",
+        "description": "Una media luna de oscuridad sólida que corta la luz y daña a criaturas sensibles a la oscuridad; ideal para emboscadas nocturnas.",
+    },
+    363: {
+        "name": "Bendecir Armas",
+        "description": "Imbuye armas cercanas con energía sagrada, aumentando el daño contra no-muertos y otorgando precisión adicional durante la duración.",
+    },
+    364: {
+        "name": "Murmullos del Viento",
+        "description": "Envía mensajes cortos mediante corrientes de aire que solo oyen los receptores predefinidos; útil para comunicación sigilosa.",
+    },
+    365: {
+        "name": "Pies de Pluma",
+        "description": "Reduce el ruido y el impacto al andar del objetivo, ideal para infiltración; también reduce daño por caídas pequeñas.",
+    },
+    366: {
+        "name": "Corazón de Piedra",
+        "description": "Otorga resistencia física temporal y un aumento en la salvación contra miedo y efectos mentales fuertes.",
+    },
+    367: {
+        "name": "Visión de la Marea",
+        "description": "Permite al lanzador ver corrientes submarinas, criaturas ocultas y estructuras sumergidas como si fueran diurnas y claras.",
+    },
+    368: {
+        "name": "Corte Relámpago",
+        "description": "Un ataque de energía que atraviesa armaduras ligeras, infligiendo daño eléctrico adicional a objetivos con conductividad.",
+    },
+    369: {
+        "name": "Ancla Astral",
+        "description": "Fija temporalmente la posición astral del lanzador o un aliado, evitando desplazamientos forzosos por teletransporte o efectos similares.",
+    },
+    370: {
+        "name": "Barrera Resonante",
+        "description": "Crea una barrera que refleja parte de la energía sonora y vibratoria, protegiendo contra ataques sónicos y trampas basadas en vibración.",
+    },
+    371: {
+        "name": "Ráfaga Curativa",
+        "description": "Pequeña explosión de energía que cura heridas leves en aliados cercanos y calma hemorragias; no restaura miembros perdidos.",
+    },
+    372: {
+        "name": "Rastro Ilusorio",
+        "description": "Deja un rastro ilusorio que confunde perseguidores, haciéndoles creer que el grupo tomó una dirección diferente.",
+    },
+    373: {
+        "name": "Nudo Protector",
+        "description": "Un lazo mágico que ata objetos o puertas, reforzando cerraduras y dificultando rupturas por fuerza bruta.",
+    },
+    374: {
+        "name": "Llama Sanadora",
+        "description": "Llama tenue que cura quemaduras y purifica heridas; su uso repetido puede acelerar la recuperación de tejidos superficiales.",
+    },
+    375: {
+        "name": "Velo de Ilusión",
+        "description": "Permite ocultar temporalmente la presencia del lanzador mediante una ilusión visual y olfativa que engaña a observadores casuales.",
+    },
+    376: {
+        "name": "Puño de Roca",
+        "description": "Convoca un enorme puño de piedra que golpea a un objetivo seleccionado, causando daño contundente masivo y alterando el terreno.",
+    },
+    377: {
+        "name": "Suspiro del Bosque",
+        "description": "Evoca un susurro natural que calma criaturas agresivas y puede inducir sueño ligero a bestias menores; funciona mejor en zonas boscosas.",
+    },
+    378: {
+        "name": "Mapa Viviente",
+        "description": "Crea una proyección temporal del terreno circundante que se actualiza en tiempo real, útil para orientación y planificación táctica.",
+    },
+    379: {
+        "name": "Sello de Silencio",
+        "description": "Coloca un sello en un área que suprime sonidos y habla, impidiendo comunicación verbal dentro de su radio durante la duración.",
+    },
+    380: {
+        "name": "Tempestad Interior",
+        "description": "Desata una tormenta personal que envuelve al lanzador, dañando a enemigos cercanos y otorgando protección contra ataques a distancia.",
+    },
     121: {
         "name": "Detectar Espíritus",
         "description": "Esta divinación revela la presencia de espíritus incorpóreos o entidades no corpóreas (fantasmas, espectros, wraiths, proyecciones astrales, objetos poseídos, espíritus de la naturaleza) en un camino de 10x60 pies.\n\nDetectar un espíritu no concede por sí mismo comunicación ni facultad de atacarlo.\n\nEl componente material es un colgante de cobre pequeño valorado en al menos 20 gp.",
@@ -1521,6 +1761,86 @@ Requiere un esfuerzo mental (tirada) y provoca consecuencias al terminar el efec
 Los dragones pueden atacar dentro del área desde fuera, y los que ya estén dentro al lanzar el conjuro no resultan afectados hasta que salgan y traten de volver a entrar.
 
 Componentes: símbolo sagrado y una escama de dragón.''',
+    },
+    301: {
+        "name": "Escudo de Entropía",
+        "description": "Un campo caótico de energía y demimateria rodea al lanzador, desviando ataques y reduciendo su impacto. El escudo cubre unos dos pies alrededor del castear y hace que los ataques cuerpo a cuerpo fallen el 50% de las veces; además otorga +2 a la Clase de Armadura. Proyectiles y armas arrojadas suelen desviarse automáticamente. Contra ataques de energía (bola de fuego, rayo, etc.) hay un 50% de probabilidades de que el efecto no lo afecte; si atraviesa, el lanzador gana +2 a la tirada de salvación. No protege contra efectos no materiales o mentales. Componente: una gema valuada en al menos 100 gp expuesta a energías caóticas.",
+    },
+    302: {
+        "name": "Encontrar el Camino",
+        "description": "El receptor del conjuro percibe la ruta física más corta y directa hacia el destino buscado (p. ej. salida, salida de un laberinto), indicando la dirección y las acciones físicas necesarias. Funciona en el mismo plano que el lanzador y dura 1 turno por nivel. Requiere contadores divinatorios como huesos o runas. La reversión hace perder el rumbo.",
+    },
+    303: {
+        "name": "Semillas de Fuego",
+        "description": "Crea semillas incendiarias: hasta cuatro bellotas para lanzar como proyectiles que explotan al impactar (2d8 daño y fuego en 10' diámetro) o hasta ocho bayas de acebo que actúan como incendiarios temporizados. Las semillas duran un turno por nivel. Las víctimas pueden hacer salvación para mitad de daño.",
+    },
+    304: {
+        "name": "Prohibición",
+        "description": "Sella un área para impedir teleportación, plane shift y penetración etérea; puede requerir contraseña para entrar. Los que intenten entrar y no compartan la alineación del lanzador sufren daño si fallan la salvación. Requiere agua bendita, incienso y componentes costosos por volumen protegido.",
+    },
+    305: {
+        "name": "Variación de Gravedad",
+        "description": "Modifica la topografía del terreno dentro de una región cuadrada (hasta 120 yd de lado), creando pendientes o aplanando superficies hasta 20 pies de diferencia de altura. No altera la gravedad en sí, solo la forma del terreno. Dura 1 turno por cada 3 niveles.",
+    },
+    306: {
+        "name": "Mente de Grupo",
+        "description": "Versión ampliada de rapport: permite comunicación silenciosa y compartida entre varios sujetos voluntarios dentro de un círculo de 30 yd de diámetro. El número de participantes depende del nivel del lanzador. Las experiencias compartidas son débiles y no transfieren habilidades complejas.",
+    },
+    307: {
+        "name": "Curar",
+        "description": "Conjuro muy potente que elimina enfermedades y heridas: cura todos los puntos de daño y remueve ceguera, enfermedades y ciertos desórdenes mentales. No funciona contra criaturas inmunes a curaciones; la reversión, daño, inflige pérdida severa de puntos de golpe y enfermedades.",
+    },
+    308: {
+        "name": "Banquete de Héroes",
+        "description": "Crea un festín magnífico que alimenta a hasta un número de comensales igual al nivel del sacerdote. Tras una hora de consumo, cura enfermedades, inmuniza a veneno por 12 horas y concede 1d4+4 puntos de vida además de efectos similares a bless durante 12 horas. Si el banquete se interrumpe, el conjuro falla.",
+    },
+    309: {
+        "name": "Tierra de Estabilidad",
+        "description": "Protege un volumen de terreno (10-ft cube por nivel) frente a desastres naturales (hundimientos, temblores, erosión) durante 1 día por nivel. Ideal para proteger campos, edificios y zonas agrícolas.",
+    },
+    310: {
+        "name": "Pensamientos Legales",
+        "description": "Fuerza al objetivo a cumplir literalmente una ley específica vigente en la jurisdicción actual. El sacerdote debe enunciar la ley al lanzar; el objetivo recibe salvación para resistir. El hechizo obliga a obedecer la letra de la ley mientras dure.",
+    },
+    311: {
+        "name": "Roble Vivo",
+        "description": "Encanta un roble sano para que actúe como guardián: el árbol puede animarse y defender un área, con estadísticas similares a un gran guardián vegetal. El efecto dura 1 día por nivel y puede retornar a su forma inerte a voluntad del lanzador.",
+    },
+    312: {
+        "name": "Montura Monstruosa",
+        "description": "Convierte criaturas vivas apropiadas en monturas obedientes (hasta 10 HD de criaturas o niveles de criaturas pequeñas) por 1 hora por nivel. Los objetivos reciben salvación para evitar el efecto; deben ser de inteligencia baja y tamaño suficiente para montar.",
+    },
+    313: {
+        "name": "Partir Agua",
+        "description": "Parte un cuerpo de agua creando un canal o pasillo practicable: profundidad, longitud y anchura dependen del nivel (ej.: 3 ft por nivel de profundidad). Puede crear un cilindro de aire si se lanza bajo el agua. Dura 1 turno por nivel.",
+    },
+    314: {
+        "name": "Espejo Físico",
+        "description": "Crea un disco invisible de espacio doblado que refleja la trayectoria de proyectiles y conjuros físicos, devolviéndolos hacia su lanzador/atacante. Opera desde una sola orientación y dura 1d4+8 rondas. Si dos espejos se cruzan, ambos explotan causando daño por distorsión.",
+    },
+    315: {
+        "name": "Reclusión",
+        "description": "Encierra a una criatura en un espacio extradimensional del que no puede interactuar con el mundo exterior; el ocupante es invisible y no detectable por escrutinio mágico. La reclusión impide lanzar conjuros desde dentro y tiene duración prolongada; sacar al prisionero requiere permiso del lanzador o dispel magic potente.",
+    },
+    316: {
+        "name": "Saltar Día",
+        "description": "Transporta instantáneamente a las criaturas en un radio de 10' veinticuatro horas hacia el futuro; no pasa tiempo para los afectados pero el entorno puede haber cambiado. Los no voluntarios pueden hacer salvación. No recupera curaciones o memorias y consumidores de tiempo (magos) no memorizan conjuros en el periodo saltado.",
+    },
+    317: {
+        "name": "Orbe Abrasador de Sol",
+        "description": "Imbuye un topacio para que, al ser lanzado, explote en un destello abrasador que inflige 6d6 de daño y ciega a la víctima 1d6 rondas (mitad con salvación). Contra no muertos el daño es mayor. Si falla el ataque, la gema explota en área menor.",
+    },
+    318: {
+        "name": "Hablar con Monstruos",
+        "description": "Permite comunicarse con criaturas monstruosas que posean algún medio de comunicación (gestos, voces, feromonas, etc.). El lanzador puede interrogar a distintos tipos de criaturas por separado y la duración varía con el nivel.",
+    },
+    319: {
+        "name": "Cólera Espiritual",
+        "description": "Hechizo cooperativo poderoso que, con seis o más sacerdotes, causa una ola devastadora de daño (10d6 + 1d6 por sacerdote extra) sobre un área determinada. Cada participante sufre daño por el esfuerzo. Requiere coordinación y causa gran destrucción.",
+    },
+    320: {
+        "name": "Piedra Parlante",
+        "description": "Al lanzar este conjuro sobre un volumen de piedra (1 cu yd), las piedras revelan lo que han visto o sentido: quién las tocó, qué hay detrás o qué ocultan. La precisión depende de la 'perspectiva' de la piedra y el DM decide los detalles. Componentes: una gota de mercurio y un poco de arcilla.",
     },
 }
 
