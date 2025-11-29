@@ -664,6 +664,306 @@ MAPPING = {
         "name": "Toque Eterno",
         "description": "Imprime una marca mágica que permite rastrear a la criatura marcada a través de distancias moderadas por un tiempo limitado.",
     },
+    426: {
+        "name": "Senda de Brisa",
+        "description": "Crea una corriente de aire que acelera el movimiento de aliados a lo largo de una ruta definida, reduciendo su cansancio temporalmente.",
+    },
+    427: {
+        "name": "Luz de Farol",
+        "description": "Genera una luz orientadora que sólo ven aliados designados; puede marcar caminos seguros y señales predefinidas.",
+    },
+    428: {
+        "name": "Corte de Ceniza",
+        "description": "Una onda dirigida de ceniza que daña y ciega temporalmente a criaturas expuestas; se dispersa con viento fuerte.",
+    },
+    429: {
+        "name": "Barrido Terrestre",
+        "description": "Provoca un temblor menor que desequilibra y derriba a enemigos en un área, útil para romper formaciones.",
+    },
+    430: {
+        "name": "Susurro de Héroes",
+        "description": "Invoca voces ancestrales que inspiran a los presentes, otorgando pequeños bonos a la moral y la resolución.",
+    },
+    431: {
+        "name": "Muro de Vapor",
+        "description": "Erige una pared de vapor caliente que impide el paso y quema levemente a los que intentan cruzarla.",
+    },
+    432: {
+        "name": "Caricia de Marea",
+        "description": "Una corriente curativa suave que restaura vitalidad menor y alivia fatiga en quienes se bañan en ella.",
+    },
+    433: {
+        "name": "Grito de Guerra",
+        "description": "Un clamor que añade ferocidad temporal a aliados cercanos, aumentando daño corporal por breves instantes.",
+    },
+    434: {
+        "name": "Perdón Espiritual",
+        "description": "Quita rencores menores y atempera ánimos, facilitando reconciliaciones y reduciendo agravios en contactos sociales.",
+    },
+    435: {
+        "name": "Hoja de Viento",
+        "description": "Forma una cuchilla de aire cortante que puede alcanzar a objetivos a distancia y cortar telas y cuerdas finas.",
+    },
+    436: {
+        "name": "Ancla de Luz",
+        "description": "Fija un punto de luz que repele sombras y criaturas de la oscuridad, manteniendo el área iluminada por la duración.",
+    },
+    437: {
+        "name": "Rastro Resplandeciente",
+        "description": "Deja un rastro luminoso que sólo los aliados pueden seguir, ideal para guiarlos en la oscuridad.",
+    },
+    438: {
+        "name": "Puño Ígneo",
+        "description": "Convoca una mano envuelta en llamas que golpea a un objetivo, causando daño por fuego y posible combustión.",
+    },
+    439: {
+        "name": "Lento Reversal",
+        "description": "Invierte temporalmente flujos menores (como corrientes o mecanismos) durante unos momentos controlados.",
+    },
+    440: {
+        "name": "Bendición de la Hoja",
+        "description": "Imbuye una arma cortante para que cause daño adicional contra criaturas de cierto tipo por la duración.",
+    },
+    441: {
+        "name": "Recoveco Espectral",
+        "description": "Crea un pequeño refugio etéreo donde las heridas sanan ligeramente más rápido y las mentes se calman.",
+    },
+    442: {
+        "name": "Círculo de Silencio",
+        "description": "Establece un área donde el sonido es absorbido; útil para proteger rituales o realizar acciones silenciosas.",
+    },
+    443: {
+        "name": "Sello de Miedo",
+        "description": "Marca un objetivo con un sello que incrementa la probabilidad de que sufra miedo ante estímulos inesperados.",
+    },
+    444: {
+        "name": "Cascada de Brillos",
+        "description": "Una lluvia de chispas que deslumbra y distrae, reduciendo la precisión de los atacantes por la duración.",
+    },
+    445: {
+        "name": "Velo de Acebo",
+        "description": "Crea un camuflaje natural que confunde la vista y el olfato, ideal para emboscadas en bosque.",
+    },
+    446: {
+        "name": "Marcha Imperturbable",
+        "description": "Confiere paso firme y resistencia a fatiga al grupo que avanza, útil en largas marchas o terreno difícil.",
+    },
+    447: {
+        "name": "Punto de Anulación",
+        "description": "Genera un punto pequeño donde la magia menor queda temporalmente neutralizada; funcional para desactivar trampas arcanas.",
+    },
+    448: {
+        "name": "Mirada de Obsidiana",
+        "description": "Un rayo oscuro que hiere la mente y puede dejar visiones perturbadoras a víctimas que fallen su salvación.",
+    },
+    449: {
+        "name": "Brote de Vida",
+        "description": "Acelera la regeneración de plantas y vida menor en un área, aumentando explosiones de crecimiento natural.",
+    },
+    450: {
+        "name": "Corona del Guardián",
+        "description": "Otorga a un líder temporal atributos que inspiran a sus seguidores, mejorando defensa y coordinación por la duración.",
+    },
+    451: {
+        "name": "Senda de Recuperación",
+        "description": "Marca un sendero que acelera la recuperación de heridas y fatiga a quienes lo sigan durante varios minutos.",
+    },
+    452: {
+        "name": "Llama de Guía",
+        "description": "Una llama pequeña que sólo ve el lanzador y sus aliados designados, útil para evitar perderse en la oscuridad.",
+    },
+    453: {
+        "name": "Mordisco del Viento",
+        "description": "Un golpe cortante de aire que inflige daño cortante ligero y puede desgarrar velos y telas finas.",
+    },
+    454: {
+        "name": "Barrera Peregrina",
+        "description": "Crea una barrera portátil que protege del frío y la radiación leve durante viajes largos.",
+    },
+    455: {
+        "name": "Canto del Bosquecillo",
+        "description": "Atrae fauna pequeña y amortigua el combate en el área, facilitando la captura de criaturas o la negociación.",
+    },
+    456: {
+        "name": "Toque de Piedra",
+        "description": "Convierte temporalmente la piel del objetivo en una coraza pétrea, aumentando su armadura natural.",
+    },
+    457: {
+        "name": "Esfera de Aislamiento",
+        "description": "Encierra un punto en una burbuja que bloquea comunicaciones mágicas y físicas menores por la duración.",
+    },
+    458: {
+        "name": "Clarividencia Local",
+        "description": "Proporciona visión remota de un lugar cercano y eventos recientes, útil para vigilancia de corto alcance.",
+    },
+    459: {
+        "name": "Aliento de Fuego Menor",
+        "description": "Exhala una pequeña llamarada que prende objetos combustibles y causa daño ígneo reducido.",
+    },
+    460: {
+        "name": "Rediente Vital",
+        "description": "Restaura una parte de la energía vital del objetivo, curando heridas superficiales y reanimando a cansados.",
+    },
+    461: {
+        "name": "Muro de Hojas",
+        "description": "Levanta una pantalla de follaje denso que bloquea la vista y reduce el daño de proyectiles.",
+    },
+    462: {
+        "name": "Susurros del Viento",
+        "description": "Envía mensajes cortos a través del viento que sólo pueden ser escuchados por el receptor deseado.",
+    },
+    463: {
+        "name": "Espejo Rápido",
+        "description": "Crea una réplica ilusoria momentánea del lanzador que distrae a los atacantes y absorbe un golpe.",
+    },
+    464: {
+        "name": "Llaga Curativa",
+        "description": "Aplica una curación profunda que sella heridas y reduce la probabilidad de infección durante días.",
+    },
+    465: {
+        "name": "Cadenas de Niebla",
+        "description": "Forman cadenas vaporosas que ralentizan y sujetan a las criaturas que las atraviesan.",
+    },
+    466: {
+        "name": "Hoja Lunar",
+        "description": "Una hoja de luz lunar que daña a criaturas sensibles al brillo solar y corta con precisión mágica.",
+    },
+    467: {
+        "name": "Bendición del Manantial",
+        "description": "Purifica pequeñas fuentes de agua y proporciona propiedades curativas leves a quienes beben.",
+    },
+    468: {
+        "name": "Canción de Vigilia",
+        "description": "Mantiene a un grupo alerta, reduciendo la probabilidad de ser sorprendido y mejorando percepciones.",
+    },
+    469: {
+        "name": "Aro de Protección",
+        "description": "Crea un aro alrededor del lanzador que dispersa ataques menores y reduce daño físico entrante.",
+    },
+    470: {
+        "name": "Marca de Paso",
+        "description": "Deja marcas sutiles que solo el lanzador o sus aliados pueden seguir, útil para guiar grupos.",
+    },
+    471: {
+        "name": "Desvanecimiento",
+        "description": "Reduce la visibilidad del objetivo, haciéndolo más difícil de detectar tanto visual como mágicamente.",
+    },
+    472: {
+        "name": "Llama Sanadora",
+        "description": "Una variante menor que cura quemaduras y acelera la regeneración de tejidos superficiales.",
+    },
+    473: {
+        "name": "Ojo del Navegante",
+        "description": "Permite detectar corrientes de viento y obstáculos en rutas aéreas, útil para pilotos y viajeros.",
+    },
+    474: {
+        "name": "Trampa de Sombras",
+        "description": "Crea una zona donde las sombras se vuelven tangibles y atrapan a los incautos que pasen.",
+    },
+    475: {
+        "name": "Cántico de Fortaleza",
+        "description": "Un canto inspirador que fortalece la resistencia y la moral de los aliados cercanos durante la batalla.",
+    },
+    476: {
+        "name": "Velo de Aurora",
+        "description": "Envuelve al objetivo en luces cambiantes que confunden sensores y reducen la probabilidad de detección mágica.",
+    },
+    477: {
+        "name": "Golpe Abisal",
+        "description": "Canaliza presión y oscuridad en un golpe que hiere profundamente y puede empujar al enemigo hacia atrás.",
+    },
+    478: {
+        "name": "Eco Sanador",
+        "description": "Una resonancia que restaura energía y calma dolores, ideal tras combates breves para recuperación inmediata.",
+    },
+    479: {
+        "name": "Rastro Fantasma",
+        "description": "Crea huellas ilusorias que distraen y desorientan a perseguidores, haciendo creer que el grupo tomó otra dirección.",
+    },
+    480: {
+        "name": "Manto de Ceniza",
+        "description": "Cubre un área con una capa gris que reduce visibilidad y asfixia levemente a criaturas pequeñas si permanecen dentro.",
+    },
+    481: {
+        "name": "Luz de Esperanza",
+        "description": "Una luz reconfortante que repele miedos menores y cura el desaliento, mejorando la moral del grupo.",
+    },
+    482: {
+        "name": "Toque de Escarcha",
+        "description": "Congela ligeramente la superficie de contacto, ralentizando movimientos y causando daño por frío gradual.",
+    },
+    483: {
+        "name": "Flecha de Bruma",
+        "description": "Dispara una flecha hecha de niebla compacta que atraviesa coberturas ligeras y deja un rastro para seguimiento.",
+    },
+    484: {
+        "name": "Sello de Tranquilidad",
+        "description": "Marca un área con energía que evita peleas y calma a criaturas dentro, salvo que sean muy hostiles.",
+    },
+    485: {
+        "name": "Guardia Lunar",
+        "description": "Invoca figuras de luz lunar que vigilan un perímetro y alertan al lanzador de intrusos.",
+    },
+    486: {
+        "name": "Corriente Vital",
+        "description": "Canaliza energía vital hacia un aliado, acelerando recuperación de heridas menores y fatiga.",
+    },
+    487: {
+        "name": "Tridente de Niebla",
+        "description": "Materializa tres puntas de niebla sólida que pueden lanzarse para inmovilizar o herir a objetivos.",
+    },
+    488: {
+        "name": "Barrera de Púas",
+        "description": "Levanta una defensa punzante que daña a quien intente cruzarla y protege flancos vulnerables.",
+    },
+    489: {
+        "name": "Silencio Profundo",
+        "description": "Extiende un silencio denso que bloquea sonidos y silencio mágico en una zona limitada.",
+    },
+    490: {
+        "name": "Manantial de Aliento",
+        "description": "Un flujo de aire vivificante que refresca y restaura pequeñas cantidades de energía a quienes lo inhalen.",
+    },
+    491: {
+        "name": "Cúpula Protectora",
+        "description": "Crea una cúpula translúcida que reduce daño elemental entrante y actúa como refugio temporal.",
+    },
+    492: {
+        "name": "Onda de Confusión",
+        "description": "Emite una onda que desordena a criaturas cercanas, causando errores de orientación y acciones involuntarias.",
+    },
+    493: {
+        "name": "Pacto Silvestre",
+        "description": "Establece un acuerdo temporal con la flora local para obtener ayuda en forma de cobertura o alimentos.",
+    },
+    494: {
+        "name": "Luz Anclada",
+        "description": "Fija una luz que no puede ser extinguida fácilmente por medios naturales durante la duración.",
+    },
+    495: {
+        "name": "Brisa Curativa",
+        "description": "Una brisa suave que alivia heridas menores y calma venenos leves, mejorando la recuperación.",
+    },
+    496: {
+        "name": "Trampa de Espinas",
+        "description": "Coloca un área cubierta de espinas mágicas que hieren y ralentizan a los que la pisan.",
+    },
+    497: {
+        "name": "Visión Compartida",
+        "description": "Permite a aliados ver a través de los ojos del lanzador por un breve periodo, facilitando coordinación.",
+    },
+    498: {
+        "name": "Canto de Curación",
+        "description": "Una melodía que restaura salud lentamente a todos los oyentes amistosos dentro de su alcance.",
+    },
+    499: {
+        "name": "Lanza Terrestre",
+        "description": "Hace surgir una aguja de tierra que atraviesa la armadura ligera y deja al objetivo expuesto.",
+    },
+    500: {
+        "name": "Emblema del Protector",
+        "description": "Imprime un símbolo místico en el objetivo que reduce daño recibido y atrae ayuda menor durante la duración.",
+    },
     121: {
         "name": "Detectar Espíritus",
         "description": "Esta divinación revela la presencia de espíritus incorpóreos o entidades no corpóreas (fantasmas, espectros, wraiths, proyecciones astrales, objetos poseídos, espíritus de la naturaleza) en un camino de 10x60 pies.\n\nDetectar un espíritu no concede por sí mismo comunicación ni facultad de atacarlo.\n\nEl componente material es un colgante de cobre pequeño valorado en al menos 20 gp.",
