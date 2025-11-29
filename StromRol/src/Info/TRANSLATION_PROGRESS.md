@@ -12,15 +12,15 @@
 - Último id traducido y aplicado: `425` (traducciones añadidas y escritas al JSON).
 - Estado actual: Traducción por lotes: ids `301–425` aplicados.
 - Siguiente id pendiente: `426`.
- - Último id traducido y aplicado: `450` (traducciones añadidas y escritas al JSON).
- - Estado actual: Traducción por lotes: ids `301–450` aplicados.
- - Siguiente id pendiente: `451`.
- - Último id traducido y aplicado: `475` (traducciones añadidas y escritas al JSON).
- - Estado actual: Traducción por lotes: ids `301–475` aplicados.
- - Siguiente id pendiente: `476`.
- - Último id traducido y aplicado: `500` (traducciones añadidas y escritas al JSON).
- - Estado actual: Traducción por lotes: ids `301–500` aplicados.
- - Siguiente id pendiente: `501`.
+- Último id traducido y aplicado: `450` (traducciones añadidas y escritas al JSON).
+- Estado actual: Traducción por lotes: ids `301–450` aplicados.
+- Siguiente id pendiente: `451`.
+- Último id traducido y aplicado: `475` (traducciones añadidas y escritas al JSON).
+- Estado actual: Traducción por lotes: ids `301–475` aplicados.
+- Siguiente id pendiente: `476`.
+- Último id traducido y aplicado: `500` (traducciones añadidas y escritas al JSON).
+- Estado actual: Traducción por lotes: ids `301–500` aplicados.
+- Siguiente id pendiente: `501`.
 
 Pasos para reanudar (automático, recomendado):
 
