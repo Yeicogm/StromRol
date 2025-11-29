@@ -484,6 +484,186 @@ MAPPING = {
         "name": "Tempestad Interior",
         "description": "Desata una tormenta personal que envuelve al lanzador, dañando a enemigos cercanos y otorgando protección contra ataques a distancia.",
     },
+    381: {
+        "name": "Nudo de Sombras",
+        "description": "Conjura sombras que se enroscan alrededor de un objetivo, reduciendo su movilidad y dificultando acciones que requieran destreza.",
+    },
+    382: {
+        "name": "Bendición de la Lámpara",
+        "description": "Otorga a una fuente de luz propiedades mágicas que ahuyentan criaturas sensibles a la luz y revelan ilusiones cercanas.",
+    },
+    383: {
+        "name": "Pilar del Guardián",
+        "description": "Erige una columna de piedra animada que protege un punto y ataca a quienes se aproximen, obedeciendo órdenes simples del lanzador.",
+    },
+    384: {
+        "name": "Pasos Silentes",
+        "description": "Hace que los movimientos del objetivo no dejen rastro sonoro ni huellas visibles durante la duración del conjuro.",
+    },
+    385: {
+        "name": "Voz de la Marea",
+        "description": "Permite comunicarse con criaturas marinas y llamar a ayuda de fauna acuática local por un breve periodo.",
+    },
+    386: {
+        "name": "Círculo Restaurador",
+        "description": "Dibuja un círculo que lentamente regenera heridas y purifica venenos menores de quienes se encuentren dentro.",
+    },
+    387: {
+        "name": "Quemadura Etérea",
+        "description": "Inflige daño etéreo que atraviesa protecciones físicas, siendo especialmente efectivo contra criaturas parcialmente incorpóreas.",
+    },
+    388: {
+        "name": "Lazo Mental",
+        "description": "Establece un vínculo telepático breve entre aliados cercanos, permitiendo intercambio de pensamientos simples.",
+    },
+    389: {
+        "name": "Cosecha Nocturna",
+        "description": "Acelera el crecimiento y la maduración de plantas en una parcela pequeña, útil para cultivos y rituales vegetales.",
+    },
+    390: {
+        "name": "Rugido Elemental",
+        "description": "Emite un estruendo elemental que aturde a criaturas y puede desestabilizar focos mágicos de baja potencia.",
+    },
+    391: {
+        "name": "Capa de Carbón",
+        "description": "Cubre la piel u objeto con una película negra que oculta huellas y reduce la detección por rastreadores.",
+    },
+    392: {
+        "name": "Somnolencia Serena",
+        "description": "Induce sueño ligero a criaturas no resistentes, creando oportunidades para evitar confrontaciones o capturar prisioneros.",
+    },
+    393: {
+        "name": "Foco de Claridad",
+        "description": "Concentra la mente del objetivo, eliminando confusión y mejorando la concentración para acciones complejas por tiempo limitado.",
+    },
+    394: {
+        "name": "Marea de Hielo",
+        "description": "Despliega una ola congelante que ralentiza y daña a enemigos en su avance; superficies quedarán resbaladizas.",
+    },
+    395: {
+        "name": "Redención Menor",
+        "description": "Reduce temporalmente la malignidad de espíritus menores, facilitando su negociación o recolección sin violencia.",
+    },
+    396: {
+        "name": "Eco Lúgubre",
+        "description": "Crea ecos que confunden a enemigos en la percepción del espacio, propagando sonidos falsos y distrayendo guardias.",
+    },
+    397: {
+        "name": "Pétalo Cortante",
+        "description": "Lanza una lluvia de pétalos afilados que cortan y causan sangrado leve en un área concentrada.",
+    },
+    398: {
+        "name": "Fuerza Compartida",
+        "description": "Permite redistribuir parte de la vitalidad entre aliados, transfiriendo puntos temporales para equilibrar bajas críticas.",
+    },
+    399: {
+        "name": "Mapa de Corrientes",
+        "description": "Revela corrientes de energía mágica bajo la superficie local, útil para encontrar fuentes de poder y evitar trampas arcanas.",
+    },
+    400: {
+        "name": "Ascensión del Héroe",
+        "description": "Otorga un aumento temporal de capacidades físicas y mentales, inspirando a aliados cercanos y mejorando proezas heroicas por varios minutos.",
+    },
+    401: {
+        "name": "Llama Conmutada",
+        "description": "Convierte una llama común en una llama mágica que arde sin consumirse y puede aplicar efectos elementales menores al contacto.",
+    },
+    402: {
+        "name": "Barrera de Ceniza",
+        "description": "Levanta una barrera de ceniza que obstaculiza la visión y quema ligeramente a quien la atraviese; útil contra avanzadas rápidas.",
+    },
+    403: {
+        "name": "Toque de Serenidad",
+        "description": "Calma emociones violentas y reduce la hostilidad por un breve periodo; funciona mejor con criaturas humanoides.",
+    },
+    404: {
+        "name": "Vínculo de Almas",
+        "description": "Crea un lazo empático entre dos aliados que permite compartir sensaciones y coordinar acciones con mejor sincronía.",
+    },
+    405: {
+        "name": "Hoja de Bruma",
+        "description": "Materializa una cuchilla de niebla que corta como acero pero desaparece con la luz intensa; ideal para ataques furtivos.",
+    },
+    406: {
+        "name": "Guardia Silvestre",
+        "description": "Convoca espíritus menores del bosque que patrullan un área y alertan sobre criaturas hostiles.",
+    },
+    407: {
+        "name": "Onda Saneadora",
+        "description": "Emite una onda curativa que alivia heridas superficiales y alivia el dolor, mejorando la movilidad momentáneamente.",
+    },
+    408: {
+        "name": "Tormenta de Fantasmas",
+        "description": "Invoca apariciones menores que hostigan y distraen a los enemigos, reduciendo su moral y concentración.",
+    },
+    409: {
+        "name": "Capa de Inercia",
+        "description": "Añade masa al objetivo para reducir la velocidad de empujes y arrollamientos, ideal para fijar posiciones.",
+    },
+    410: {
+        "name": "Rayo Purificador",
+        "description": "Un rayo de luz que disipa corrupción menor y puede dañar a criaturas con alineamientos malignos.",
+    },
+    411: {
+        "name": "Manto de Humo",
+        "description": "Cubre al lanzador con humo denso que oculta su figura y dificulta la puntería enemiga.",
+    },
+    412: {
+        "name": "Punta Fluvial",
+        "description": "Concentra agua en una lanza líquida que puede ser lanzada con fuerza para herir y empujar objetivos.",
+    },
+    413: {
+        "name": "Trampa de Escarcha",
+        "description": "Dispara hielo que se adhiere al suelo, creando zonas resbaladizas y dañando a los que las atraviesan.",
+    },
+    414: {
+        "name": "Ecos del Pasado",
+        "description": "Reproduce fragmentos de conversaciones o sonidos antiguos en un lugar, útil para distracciones o investigación.",
+    },
+    415: {
+        "name": "Velo Reparador",
+        "description": "Cubre un objeto o persona con un velo que acelera la curación superficial y protege contra corrosión menor.",
+    },
+    416: {
+        "name": "Efusión de Fuego",
+        "description": "Una ráfaga concentrada de fuego que puede encender materiales inflamables y causar daño por quemadura.",
+    },
+    417: {
+        "name": "Senda Iluminada",
+        "description": "Ilumina un camino invisible sólo para aliados, evitando emboscadas y señales externas.",
+    },
+    418: {
+        "name": "Anillo del Vigía",
+        "description": "Crea un anillo que observa y alerta sobre acercamientos hostiles, pudiendo también transmitir señales simples.",
+    },
+    419: {
+        "name": "Lazo de Llama",
+        "description": "Aturde y enciende ligeramente a un objetivo con un lazo de fuego ritual; adecuado contra criaturas vulnerables al calor.",
+    },
+    420: {
+        "name": "Marea de Tierras",
+        "description": "Levanta o hunde tramos de terreno en una onda que puede bloquear rutas y crear cobertura instantánea.",
+    },
+    421: {
+        "name": "Susurro Etéreo",
+        "description": "Envía un mensaje breve a través del plano etéreo que sólo puede ser escuchado por el receptor designado.",
+    },
+    422: {
+        "name": "Piedra de Anclaje",
+        "description": "Fija objetos móviles a un punto del terreno con vínculos mágicos, evitando desplazamientos no deseados.",
+    },
+    423: {
+        "name": "Aura de Valor",
+        "description": "Confiere coraje temporal a aliados cercanos, reduciendo efectos de miedo y mejorando la resistencia moral.",
+    },
+    424: {
+        "name": "Candado Arcano",
+        "description": "Sella una cerradura con energía mágica que sólo se abre con la llave o palabra correcta; resistente a apertura forzada.",
+    },
+    425: {
+        "name": "Toque Eterno",
+        "description": "Imprime una marca mágica que permite rastrear a la criatura marcada a través de distancias moderadas por un tiempo limitado.",
+    },
     121: {
         "name": "Detectar Espíritus",
         "description": "Esta divinación revela la presencia de espíritus incorpóreos o entidades no corpóreas (fantasmas, espectros, wraiths, proyecciones astrales, objetos poseídos, espíritus de la naturaleza) en un camino de 10x60 pies.\n\nDetectar un espíritu no concede por sí mismo comunicación ni facultad de atacarlo.\n\nEl componente material es un colgante de cobre pequeño valorado en al menos 20 gp.",
