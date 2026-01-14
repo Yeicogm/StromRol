@@ -142,6 +142,311 @@ export function aplicarVariaciones(
   return nuevasCaracteristicas;
 }
 
+/**
+ * Extrae un mapa atributo -> cambio desde un array de variaciones
+ */
+export function extraerCambiosMap(
+  variaciones?: string[]
+): Record<string, string> {
+  const mapa: Record<string, string> = {};
+  if (!variaciones || variaciones.length === 0) return mapa;
+
+  for (const variacion of variaciones) {
+    // Reusar la misma lógica de parseo que en aplicarVariaciones
+    let match = variacion.match(
+      /^([\wÁÉÍÓÚÜÑáéíóúüñ]+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i
+    );
+
+    if (!match) {
+      match = variacion.match(
+        /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+([\wÁÉÍÓÚÜÑáéíóúüñ]+)$/i
+      );
+      if (match) {
+        const temp = match[1];
+        match[1] = match[2];
+        match[2] = temp;
+      }
+    }
+
+    if (!match) continue;
+    const atributo = match[1];
+    const cambio = match[2].trim();
+
+    const nombreNormalizado =
+      MAPEO_CARACTERISTICAS[atributo.toUpperCase()] ||
+      MAPEO_CARACTERISTICAS[atributo];
+    if (!nombreNormalizado) continue;
+
+    if (mapa[nombreNormalizado]) {
+      // Evitar duplicados básicos y concatenar con '+' si hace falta
+      const prev = mapa[nombreNormalizado];
+      const cambioSinMas = cambio.replace(/^\+/, "");
+      if (!prev.includes(cambioSinMas))
+        mapa[nombreNormalizado] = `${prev}+${cambioSinMas}`;
+    } else {
+      mapa[nombreNormalizado] = cambio;
+    }
+  }
+
+  return mapa;
+}
+
+/**
+ * Calcula una expresión total normalizada a partir de tokens (ej: ['3D6','+1D6','+2'])
+ */
+export function computeTotalExpression(
+  terms: string[],
+  baseFaces?: string | null
+): string {
+  const diceTotals: Record<string, number> = {};
+  let modifierTotal = 0;
+
+  function handleToken(token: string) {
+    token = token.trim();
+    if (!token) return;
+    // Descomponer tokens compuestos si existen (ej: '3D6+1')
+    const subTokens = token.match(/([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)/g);
+    if (subTokens && subTokens.length > 1) {
+      for (const st of subTokens) handleToken(st);
+      return;
+    }
+
+    // Dice con caras: +1D6, -2D8, 3D6
+    const diceMatch = token.match(/^([+-]?)(\d+)D(\d+)$/i);
+    if (diceMatch) {
+      const sign = diceMatch[1] === "-" ? -1 : 1;
+      const count = parseInt(diceMatch[2], 10) * sign;
+      const faces = diceMatch[3];
+      diceTotals[faces] = (diceTotals[faces] || 0) + count;
+      return;
+    }
+
+    // Dice sin caras (ej: +1D) - intentar inferir de base
+    const diceNoFaces = token.match(/^([+-]?)(\d+)D$/i);
+    if (diceNoFaces && baseFaces) {
+      const sign = diceNoFaces[1] === "-" ? -1 : 1;
+      const count = parseInt(diceNoFaces[2], 10) * sign;
+      diceTotals[baseFaces] = (diceTotals[baseFaces] || 0) + count;
+      return;
+    }
+
+    // Modificador simple: +2, -1
+    const modMatch = token.match(/^([+-]?\d+)$/);
+    if (modMatch) {
+      modifierTotal += parseInt(modMatch[1], 10);
+      return;
+    }
+  }
+
+  for (const t of terms) handleToken(t);
+
+  const parts: string[] = [];
+  // Ordenar caras por valor numérico descendente para consistencia
+  const facesKeys = Object.keys(diceTotals).sort(
+    (a, b) => parseInt(b) - parseInt(a)
+  );
+  for (const f of facesKeys) {
+    const cnt = diceTotals[f];
+    if (!cnt) continue;
+    parts.push(`${cnt}D${f}`);
+  }
+  if (modifierTotal !== 0) parts.push(`${modifierTotal}`);
+
+  if (parts.length === 0) return "";
+  let expr = parts.join("+");
+  // Normalizar signos: '+-' -> '-', '++' -> '+'
+  expr = expr.replace(/\+-/g, "-");
+  expr = expr.replace(/\+\+/g, "+");
+  return expr;
+}
+
+/**
+ * Construye un desglose por origen (raza, clase, nacionalidad) para cada característica
+ */
+export function construirDesgloseDados(
+  raza: Raza,
+  clase?: {
+    variacion_caracteristicas?: string[];
+    variacion_caracMINMAX?: string[];
+  },
+  nacionalidad?: { variacion_caracteristicas?: string[] } | string[] | undefined
+): Record<string, string> {
+  const base = raza.caracteristicas || {};
+  const cambiosClase = extraerCambiosMap(clase?.variacion_caracteristicas);
+  const nacionalVariacionesArray = Array.isArray(nacionalidad)
+    ? nacionalidad
+    : (nacionalidad &&
+        (nacionalidad as { variacion_caracteristicas?: string[] })
+          .variacion_caracteristicas) ||
+      undefined;
+  const cambiosNacion = extraerCambiosMap(
+    nacionalVariacionesArray as string[] | undefined
+  );
+
+  const atributos = new Set<string>([
+    ...Object.keys(base),
+    ...Object.keys(cambiosClase),
+    ...Object.keys(cambiosNacion),
+  ]);
+
+  const resultado: Record<string, string> = {};
+
+  for (const attr of atributos) {
+    const b = (base as unknown as Record<string, string>)[attr] || "";
+    const c = cambiosClase[attr] || "";
+    const n = cambiosNacion[attr] || "";
+
+    const partes: string[] = [];
+    const tokensForTotal: string[] = [];
+
+    if (b) {
+      partes.push(`${b} (raza)`);
+      const bTokens = b.match(/([+-]?\d+D\d+|[+-]?\d+)/g) || [];
+      tokensForTotal.push(...bTokens);
+    }
+
+    if (c) {
+      let cFmt = c;
+      // Si es '+1D' o '1D' sin caras, intentar inferir caras desde b (ej: 3D6)
+      const matchPlusD = c.match(/^([+-]?\d+)D$/i);
+      const baseFaces = b ? (b.match(/D(\d+)/i) || [])[1] : undefined;
+      if (matchPlusD && baseFaces) {
+        const inc = matchPlusD[1];
+        cFmt = `${inc}D${baseFaces}`;
+      }
+      // Añadir signo + si es positivo y no tiene signo
+      if (!/^[+-]/.test(cFmt) && /^\d/.test(cFmt)) cFmt = `+${cFmt}`;
+      // Mostrar sin '+' redundante (evitar '+ +1D6')
+      partes.push(`${cFmt.replace(/^\+/, "")} (clase)`);
+      tokensForTotal.push(cFmt);
+    }
+
+    if (n) {
+      let nFmt = n;
+      const matchPlusD = n.match(/^([+-]?\d+)D$/i);
+      const baseFaces = b ? (b.match(/D(\d+)/i) || [])[1] : undefined;
+      if (matchPlusD && baseFaces) {
+        const inc = matchPlusD[1];
+        nFmt = `${inc}D${baseFaces}`;
+      }
+      if (!/^[+-]/.test(nFmt) && /^\d/.test(nFmt)) nFmt = `+${nFmt}`;
+      partes.push(`${nFmt.replace(/^\+/, "")} (nacionalidad)`);
+      tokensForTotal.push(nFmt);
+    }
+
+    if (partes.length === 0) {
+      resultado[attr] = "";
+    } else {
+      // Unir y limpiar combinaciones como '+ -' a '- '
+      let str = partes.join(" + ");
+      str = str.replace(/\+\s+-/g, "- ");
+      // Calcular total a partir de tokens normalizados
+      const baseFaces = b ? (b.match(/D(\d+)/i) || [])[1] : null;
+      const totalExpr = computeTotalExpression(tokensForTotal, baseFaces);
+      if (totalExpr) str = `${str} (TOTAL: ${totalExpr})`;
+      resultado[attr] = str;
+    }
+  }
+
+  return resultado;
+}
+
+/**
+ * Construye un desglose estructurado por origen para render con colores
+ */
+export function construirDesgloseEstructurado(
+  raza: Raza,
+  clase?: {
+    variacion_caracteristicas?: string[];
+    variacion_caracMINMAX?: string[];
+  },
+  nacionalidad?: { variacion_caracteristicas?: string[] } | string[] | undefined
+): Record<
+  string,
+  { raza?: string; clase?: string; nacionalidad?: string; total?: string }
+> {
+  const base = raza.caracteristicas || {};
+  const cambiosClase = extraerCambiosMap(clase?.variacion_caracteristicas);
+  const nacionalVariacionesArray = Array.isArray(nacionalidad)
+    ? nacionalidad
+    : (nacionalidad &&
+        (nacionalidad as { variacion_caracteristicas?: string[] })
+          .variacion_caracteristicas) ||
+      undefined;
+  const cambiosNacion = extraerCambiosMap(
+    nacionalVariacionesArray as string[] | undefined
+  );
+
+  const atributos = new Set<string>([
+    ...Object.keys(base),
+    ...Object.keys(cambiosClase),
+    ...Object.keys(cambiosNacion),
+  ]);
+
+  const resultado: Record<
+    string,
+    { raza?: string; clase?: string; nacionalidad?: string; total?: string }
+  > = {};
+
+  for (const attr of atributos) {
+    const b = (base as unknown as Record<string, string>)[attr] || "";
+    const c = cambiosClase[attr] || "";
+    const n = cambiosNacion[attr] || "";
+
+    const tokensForTotal: string[] = [];
+
+    if (b) {
+      tokensForTotal.push(...(b.match(/([+-]?\d+D\d+|[+-]?\d+)/g) || []));
+    }
+
+    let cFmt = "";
+    if (c) {
+      const matchPlusD = c.match(/^([+-]?\d+)D$/i);
+      const baseFaces = b ? (b.match(/D(\d+)/i) || [])[1] : undefined;
+      if (matchPlusD && baseFaces) {
+        const inc = matchPlusD[1];
+        cFmt = `${inc}D${baseFaces}`;
+      } else {
+        cFmt = c.replace(/^\+/, "");
+      }
+      if (!/^[+-]/.test(cFmt) && /^\d/.test(cFmt)) cFmt = `+${cFmt}`;
+      tokensForTotal.push(cFmt);
+    }
+
+    let nFmt = "";
+    if (n) {
+      const matchPlusD = n.match(/^([+-]?\d+)D$/i);
+      const baseFaces = b ? (b.match(/D(\d+)/i) || [])[1] : undefined;
+      if (matchPlusD && baseFaces) {
+        const inc = matchPlusD[1];
+        nFmt = `${inc}D${baseFaces}`;
+      } else {
+        nFmt = n.replace(/^\+/, "");
+      }
+      if (!/^[+-]/.test(nFmt) && /^\d/.test(nFmt)) nFmt = `+${nFmt}`;
+      tokensForTotal.push(nFmt);
+    }
+
+    const baseFaces = b ? (b.match(/D(\d+)/i) || [])[1] : null;
+    const totalExpr = computeTotalExpression(tokensForTotal, baseFaces);
+
+    const obj: {
+      raza?: string;
+      clase?: string;
+      nacionalidad?: string;
+      total?: string;
+    } = {};
+    if (b) obj.raza = b;
+    if (cFmt) obj.clase = cFmt.replace(/^\+/, "");
+    if (nFmt) obj.nacionalidad = nFmt.replace(/^\+/, "");
+    if (totalExpr) obj.total = totalExpr;
+
+    resultado[attr] = obj;
+  }
+
+  return resultado;
+}
+
 export function calcularCaracteristicasFinales(
   raza: Raza,
   clase?: {

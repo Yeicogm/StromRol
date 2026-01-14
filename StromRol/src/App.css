@@ -297,6 +297,74 @@ a:hover {
   gap: 0.5em;
 }
 
+/* Colores para desglose de dados por origen */
+.dado-raza {
+  color: #1976d2; /* azul */
+  font-weight: 600;
+}
+.dado-clase {
+  color: #2e7d32; /* verde */
+  font-weight: 600;
+}
+.dado-nacion {
+  color: #ff8f00; /* naranja */
+  font-weight: 600;
+}
+.dado-total {
+  color: #d32f2f; /* rojo */
+  font-weight: 700;
+}
+.dado-sep {
+  color: rgba(0, 0, 0, 0.54);
+  margin: 0 4px;
+}
+
+/* Leyenda para los colores de desglose de dados */
+.ficha-dados-legend {
+  margin: 0.6rem 0 1rem 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center; /* Centrar horizontalmente */
+  text-align: center;
+  flex-wrap: wrap;
+  font-size: 0.95em;
+}
+.ficha-dados-legend b {
+  margin-right: 8px;
+}
+.ficha-dados-legend-items {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(0, 0, 0, 0.75);
+}
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+.legend-dot.dado-raza {
+  background-color: #1976d2;
+}
+.legend-dot.dado-clase {
+  background-color: #2e7d32;
+}
+.legend-dot.dado-nacion {
+  background-color: #ff8f00;
+}
+.legend-dot.dado-total {
+  background-color: #d32f2f;
+  font-weight: 700;
+}
+
 .raza-content {
   padding: 1.5rem;
 }

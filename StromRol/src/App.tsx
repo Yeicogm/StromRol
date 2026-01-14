@@ -6,6 +6,8 @@ import {
   obtenerLimitacionesClase,
   validarLimitesCaracteristica,
   aplicarVariaciones,
+  construirDesgloseDados,
+  construirDesgloseEstructurado,
   type LimitacionCaracteristica,
 } from "./logic/logica";
 import type { Nacionalidad } from "./interfaces/Nacionalidad";
@@ -200,6 +202,15 @@ function App() {
     setOrigenesFiltrados(filtrados);
   }, [nacionalidadSeleccionada, origenes]);
   const [resultado, setResultado] = useState<Caracteristicas | null>(null);
+  const [desgloseDados, setDesgloseDados] = useState<Record<string, string>>(
+    {}
+  );
+  const [desgloseDadosEstructurado, setDesgloseDadosEstructurado] = useState<
+    Record<
+      string,
+      { raza?: string; clase?: string; nacionalidad?: string; total?: string }
+    >
+  >({});
   // Estado para los resultados de las tiradas
   const [tiradas, setTiradas] = useState<Record<string, string>>({});
   // Estado para el checkbox "Dados min. 2"
@@ -763,8 +774,56 @@ function App() {
         );
       }
       setResultado(resultadoBase);
+      // Construir desglose por origen (raza, clase, nacionalidad)
+      const desglose = construirDesgloseDados(
+        razaSeleccionada,
+        claseSeleccionada
+          ? {
+              variacion_caracteristicas: Array.isArray(
+                claseSeleccionada.variacion_caracteristicas
+              )
+                ? claseSeleccionada.variacion_caracteristicas
+                : typeof claseSeleccionada.variacion_caracteristicas ===
+                  "string"
+                ? [claseSeleccionada.variacion_caracteristicas]
+                : undefined,
+              variacion_caracMINMAX: Array.isArray(
+                claseSeleccionada.variacion_caracMINMAX
+              )
+                ? claseSeleccionada.variacion_caracMINMAX
+                : undefined,
+            }
+          : undefined,
+        nacionalidadSeleccionada || undefined
+      );
+      setDesgloseDados(desglose);
+
+      // Estructurado para render con colores
+      const desgloseE = construirDesgloseEstructurado(
+        razaSeleccionada,
+        claseSeleccionada
+          ? {
+              variacion_caracteristicas: Array.isArray(
+                claseSeleccionada.variacion_caracteristicas
+              )
+                ? claseSeleccionada.variacion_caracteristicas
+                : typeof claseSeleccionada.variacion_caracteristicas ===
+                  "string"
+                ? [claseSeleccionada.variacion_caracteristicas]
+                : undefined,
+              variacion_caracMINMAX: Array.isArray(
+                claseSeleccionada.variacion_caracMINMAX
+              )
+                ? claseSeleccionada.variacion_caracMINMAX
+                : undefined,
+            }
+          : undefined,
+        nacionalidadSeleccionada || undefined
+      );
+      setDesgloseDadosEstructurado(desgloseE);
     } else {
       setResultado(null);
+      setDesgloseDados({});
     }
   }, [razaSeleccionada, claseSeleccionada, nacionalidadSeleccionada]);
 
@@ -1214,7 +1273,41 @@ function App() {
             {Object.entries(resultado).map(([car, dado]) => (
               <li key={car} className="ficha-resultado-item">
                 <b className="ficha-resultado-carac">{car}:</b>{" "}
-                <span className="ficha-resultado-dado">{dado}</span>
+                <span className="ficha-resultado-dado">
+                  {desgloseDadosEstructurado[car] ? (
+                    <>
+                      {desgloseDadosEstructurado[car].raza && (
+                        <span className="dado-raza">
+                          {desgloseDadosEstructurado[car].raza}
+                        </span>
+                      )}
+                      {desgloseDadosEstructurado[car].clase && (
+                        <>
+                          <span className="dado-sep"> + </span>
+                          <span className="dado-clase">
+                            {desgloseDadosEstructurado[car].clase}
+                          </span>
+                        </>
+                      )}
+                      {desgloseDadosEstructurado[car].nacionalidad && (
+                        <>
+                          <span className="dado-sep"> + </span>
+                          <span className="dado-nacion">
+                            {desgloseDadosEstructurado[car].nacionalidad}
+                          </span>
+                        </>
+                      )}
+                      {desgloseDadosEstructurado[car].total && (
+                        <span className="dado-total">
+                          {" "}
+                          &nbsp;(TOTAL: {desgloseDadosEstructurado[car].total})
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    desgloseDados[car] || dado
+                  )}
+                </span>
                 <input
                   type="number"
                   min="1"
@@ -1229,6 +1322,27 @@ function App() {
               </li>
             ))}
           </ul>
+
+          {/* Leyenda de colores para desglose de dados */}
+          <div className="ficha-dados-legend" aria-hidden={false}>
+            <b>Leyenda:</b>
+            <div className="ficha-dados-legend-items">
+              <span className="legend-item">
+                <span className="legend-dot dado-raza" aria-hidden></span>Raza
+              </span>
+              <span className="legend-item">
+                <span className="legend-dot dado-clase" aria-hidden></span>Clase
+              </span>
+              <span className="legend-item">
+                <span className="legend-dot dado-nacion" aria-hidden></span>
+                Nacionalidad
+              </span>
+              <span className="legend-item">
+                <span className="legend-dot dado-total" aria-hidden></span>TOTAL
+              </span>
+            </div>
+          </div>
+
           {/* Checkbox justo encima de los botones */}
           <div className="ficha-dadosmin2-group">
             <label className="ficha-dadosmin-label">
