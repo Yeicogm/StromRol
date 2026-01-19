@@ -1,8 +1,8 @@
 /* Input grande para la sección 'Dados que debe tirar el jugador' */
 .ficha-resultado-input-grande {
-  width: 80px !important;
-  font-size: 1.1em;
-  padding: 6px 10px;
+  width: 48px !important; /* compacto: normalmente caben 2 cifras */
+  font-size: 1rem;
+  padding: 4px 6px;
 }
 
 /* Agrandar texto de la sección 'Dados que debe tirar el jugador' */
@@ -199,6 +199,34 @@ a:hover {
   margin-bottom: 4px;
 }
 
+/* Agrupar cada resultado en una pequeña tarjeta para distinguir secciones */
+.ficha-resultado-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ficha-resultado-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+.ficha-resultado-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
 @media (max-width: 600px) {
   .ficha-resultado-list {
     align-items: stretch;
@@ -209,6 +237,32 @@ a:hover {
     justify-content: center;
     align-items: center;
     padding: 0.8em;
+  }
+
+  /* Reducir ligeramente la fuente de la sección 'Dados que debe tirar el jugador' en pantallas pequeñas */
+  .ficha-resultado-title {
+    font-size: 1em;
+  }
+  .ficha-resultado-carac,
+  .ficha-resultado-dado,
+  .ficha-resultado-list,
+  .ficha-resultado-item {
+    font-size: 0.98em;
+  }
+
+  /* En pantallas pequeñas poner el textbox debajo de cada sección */
+  .ficha-resultado-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+  }
+  .ficha-resultado-input,
+  .ficha-resultado-input-grande {
+    margin-left: 0;
+    align-self: center; /* centrado bajo el texto */
+    width: 48px;
   }
 }
 /* Contenedor de botones alineados horizontalmente */
@@ -223,7 +277,21 @@ a:hover {
 .ficha-resultado-input {
   text-align: center;
   margin-left: 8px;
-  width: 60px;
+  width: 48px; /* ajustado para 2 cifras */
+  padding: 4px 6px;
+}
+
+/* Quitar botones de subir/bajar en inputs numéricos (Chrome, Safari, Edge, Firefox) */
+input.ficha-resultado-input[type="number"],
+input.ficha-resultado-input-grande[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+input.ficha-resultado-input[type="number"]::-webkit-outer-spin-button,
+input.ficha-resultado-input[type="number"]::-webkit-inner-spin-button,
+input.ficha-resultado-input-grande[type="number"]::-webkit-outer-spin-button,
+input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari, Edge */
+  margin: 0;
 }
 
 /* Botón principal de ficha */
