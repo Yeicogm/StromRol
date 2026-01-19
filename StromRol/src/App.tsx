@@ -45,7 +45,7 @@ function App() {
                           {variacion}
                         </span>
                       </div>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -105,7 +105,7 @@ function App() {
                           Habilidad
                         </span>
                       </div>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -117,7 +117,7 @@ function App() {
                 <h4 className="raza-section-title">Bonus de Combate</h4>
                 <div className="raza-list">
                   {Object.entries(
-                    origenSeleccionado.variacion_bonus_combate
+                    origenSeleccionado.variacion_bonus_combate,
                   ).map(([tipo, valor], idx) => (
                     <div key={idx} className="raza-list-item">
                       <span className="raza-bonus-name">{tipo}:</span>
@@ -166,11 +166,11 @@ function App() {
   // Estado para los orígenes filtrados según nacionalidad
   const [origenesFiltrados, setOrigenesFiltrados] = useState<Origen[]>([]);
   const [origenSeleccionado, setOrigenSeleccionado] = useState<Origen | null>(
-    null
+    null,
   );
   const [razaSeleccionada, setRazaSeleccionada] = useState<Raza | null>(null);
   const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(
-    null
+    null,
   );
   const [nacionalidadSeleccionada, setNacionalidadSeleccionada] =
     useState<Nacionalidad | null>(null);
@@ -197,13 +197,13 @@ function App() {
     }
     // Filtrar los orígenes que coincidan con los nombres permitidos
     const filtrados = origenes.filter((origen) =>
-      origenesPermitidos.includes(origen.nombre.trim().toUpperCase())
+      origenesPermitidos.includes(origen.nombre.trim().toUpperCase()),
     );
     setOrigenesFiltrados(filtrados);
   }, [nacionalidadSeleccionada, origenes]);
   const [resultado, setResultado] = useState<Caracteristicas | null>(null);
   const [desgloseDados, setDesgloseDados] = useState<Record<string, string>>(
-    {}
+    {},
   );
   const [desgloseDadosEstructurado, setDesgloseDadosEstructurado] = useState<
     Record<
@@ -217,13 +217,13 @@ function App() {
   const [dadosMin2, setDadosMin2] = useState<boolean>(true);
   // Estado para las limitaciones de la clase actual
   const [limitaciones, setLimitaciones] = useState<LimitacionCaracteristica[]>(
-    []
+    [],
   );
 
   // Función para manejar cambios en inputs con validación de límites
   const manejarCambioCaracteristica = (
     caracteristica: string,
-    valor: string
+    valor: string,
   ) => {
     const valorNumerico = parseInt(valor, 10);
 
@@ -232,7 +232,7 @@ function App() {
       const validacion = validarLimitesCaracteristica(
         caracteristica as NombreCaracteristica,
         valorNumerico,
-        limitaciones
+        limitaciones,
       );
       if (!validacion.valido && validacion.valorCorregido !== undefined) {
         // Aplicar valor corregido automáticamente, sin mostrar alerta
@@ -280,7 +280,7 @@ function App() {
     if (
       Object.values(tiradas).some((v) => v && v.trim() !== "") &&
       !window.confirm(
-        "¿Seguro que quieres generar tiradas aleatorias? Se borrarán los valores que hayas insertado manualmente."
+        "¿Seguro que quieres generar tiradas aleatorias? Se borrarán los valores que hayas insertado manualmente.",
       )
     ) {
       return;
@@ -291,8 +291,14 @@ function App() {
       let formulaToUse: string | undefined;
       if (typeof dado === "string") {
         formulaToUse = dado;
-      } else if (desgloseDadosEstructurado[car] && desgloseDadosEstructurado[car].total) {
-        formulaToUse = desgloseDadosEstructurado[car].total.replace(/\s*ℹ$/u, "");
+      } else if (
+        desgloseDadosEstructurado[car] &&
+        desgloseDadosEstructurado[car].total
+      ) {
+        formulaToUse = desgloseDadosEstructurado[car].total.replace(
+          /\s*ℹ$/u,
+          "",
+        );
       } else if (desgloseDados[car]) {
         // Intentar extraer '(TOTAL: ...)' del texto de desglose como respaldo
         const m = (desgloseDados[car] as string).match(/\(TOTAL:\s*([^)]+)\)/i);
@@ -306,7 +312,7 @@ function App() {
           const validacion = validarLimitesCaracteristica(
             car as NombreCaracteristica,
             valor,
-            limitaciones
+            limitaciones,
           );
           if (!validacion.valido && validacion.valorCorregido !== undefined) {
             valor = validacion.valorCorregido;
@@ -335,7 +341,7 @@ function App() {
     if (
       claseSeleccionada &&
       clasesAA.some(
-        (c) => claseSeleccionada.nombre.toUpperCase() === c.toUpperCase()
+        (c) => claseSeleccionada.nombre.toUpperCase() === c.toUpperCase(),
       )
     ) {
       if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
@@ -401,7 +407,7 @@ function App() {
                         {valor}
                       </span>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             </div>
@@ -418,7 +424,7 @@ function App() {
                         {bonus}
                       </span>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             </div>
@@ -492,7 +498,7 @@ function App() {
                             {variacion}
                           </span>
                         </div>
-                      )
+                      ),
                     )}
                   </div>
                 </div>
@@ -516,7 +522,7 @@ function App() {
                             Límite
                           </span>
                         </div>
-                      )
+                      ),
                     )}
                   </div>
                 </div>
@@ -538,7 +544,7 @@ function App() {
                             Habilidad
                           </span>
                         </div>
-                      )
+                      ),
                     )}
                   </div>
                 </div>
@@ -645,7 +651,7 @@ function App() {
             bonificacionesTotales[habilidad] =
               (bonificacionesTotales[habilidad] || 0) + valorNumerico * signo;
           }
-        }
+        },
       );
     }
 
@@ -766,7 +772,7 @@ function App() {
           ? {
               ...claseSeleccionada,
               variacion_caracteristicas: Array.isArray(
-                claseSeleccionada.variacion_caracteristicas
+                claseSeleccionada.variacion_caracteristicas,
               )
                 ? claseSeleccionada.variacion_caracteristicas
                 : typeof claseSeleccionada.variacion_caracteristicas ===
@@ -774,7 +780,7 @@ function App() {
                   ? [claseSeleccionada.variacion_caracteristicas]
                   : undefined,
             }
-          : undefined
+          : undefined,
       );
       if (
         nacionalidadSeleccionada &&
@@ -782,7 +788,7 @@ function App() {
       ) {
         resultadoBase = aplicarVariaciones(
           resultadoBase,
-          nacionalidadSeleccionada.variacion_caracteristicas
+          nacionalidadSeleccionada.variacion_caracteristicas,
         );
       }
       setResultado(resultadoBase);
@@ -792,7 +798,7 @@ function App() {
         claseSeleccionada
           ? {
               variacion_caracteristicas: Array.isArray(
-                claseSeleccionada.variacion_caracteristicas
+                claseSeleccionada.variacion_caracteristicas,
               )
                 ? claseSeleccionada.variacion_caracteristicas
                 : typeof claseSeleccionada.variacion_caracteristicas ===
@@ -800,13 +806,13 @@ function App() {
                   ? [claseSeleccionada.variacion_caracteristicas]
                   : undefined,
               variacion_caracMINMAX: Array.isArray(
-                claseSeleccionada.variacion_caracMINMAX
+                claseSeleccionada.variacion_caracMINMAX,
               )
                 ? claseSeleccionada.variacion_caracMINMAX
                 : undefined,
             }
           : undefined,
-        nacionalidadSeleccionada || undefined
+        nacionalidadSeleccionada || undefined,
       );
       setDesgloseDados(desglose);
 
@@ -816,7 +822,7 @@ function App() {
         claseSeleccionada
           ? {
               variacion_caracteristicas: Array.isArray(
-                claseSeleccionada.variacion_caracteristicas
+                claseSeleccionada.variacion_caracteristicas,
               )
                 ? claseSeleccionada.variacion_caracteristicas
                 : typeof claseSeleccionada.variacion_caracteristicas ===
@@ -824,13 +830,13 @@ function App() {
                   ? [claseSeleccionada.variacion_caracteristicas]
                   : undefined,
               variacion_caracMINMAX: Array.isArray(
-                claseSeleccionada.variacion_caracMINMAX
+                claseSeleccionada.variacion_caracMINMAX,
               )
                 ? claseSeleccionada.variacion_caracMINMAX
                 : undefined,
             }
           : undefined,
-        nacionalidadSeleccionada || undefined
+        nacionalidadSeleccionada || undefined,
       );
       setDesgloseDadosEstructurado(desgloseE);
     } else {
@@ -876,7 +882,7 @@ function App() {
               if (
                 r &&
                 ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                  r.nombre.toUpperCase()
+                  r.nombre.toUpperCase(),
                 )
               ) {
                 setClaseSeleccionada(null);
@@ -901,7 +907,7 @@ function App() {
               if (
                 r &&
                 ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                  r.nombre.toUpperCase()
+                  r.nombre.toUpperCase(),
                 )
               ) {
                 setClaseSeleccionada(null);
@@ -938,7 +944,7 @@ function App() {
               clases.length === 0 ||
               (!!razaSeleccionada &&
                 ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                  razaSeleccionada.nombre.toUpperCase()
+                  razaSeleccionada.nombre.toUpperCase(),
                 ))
             }
             onClick={() => {
@@ -946,7 +952,7 @@ function App() {
                 clases.length === 0 ||
                 (razaSeleccionada &&
                   ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                    razaSeleccionada.nombre.toUpperCase()
+                    razaSeleccionada.nombre.toUpperCase(),
                   ))
               )
                 return;
@@ -987,8 +993,8 @@ function App() {
             disabled={Boolean(
               razaSeleccionada &&
               ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                razaSeleccionada.nombre.toUpperCase()
-              )
+                razaSeleccionada.nombre.toUpperCase(),
+              ),
             )}
           >
             <option value="">Clase</option>
@@ -1144,7 +1150,7 @@ function App() {
               const origenSocial = nacionalidadSeleccionada.origen_social;
               if (!Array.isArray(origenSocial)) {
                 alert(
-                  "La nacionalidad seleccionada no tiene tabla de origen social válida."
+                  "La nacionalidad seleccionada no tiene tabla de origen social válida.",
                 );
                 return;
               }
@@ -1175,7 +1181,7 @@ function App() {
               if (origenNombre) {
                 // Buscar el objeto origen en origenesFiltrados
                 const origenObj = origenesFiltrados.find(
-                  (o) => o.nombre.trim().toUpperCase() === origenNombre
+                  (o) => o.nombre.trim().toUpperCase() === origenNombre,
                 );
                 if (origenObj) {
                   setOrigenSeleccionado(origenObj);
@@ -1184,7 +1190,7 @@ function App() {
                   alert(`Tirada: ${tirada} → Origen: ${origenObj.nombre}`);
                 } else {
                   alert(
-                    `Tirada: ${tirada} → Origen encontrado en tabla: ${origenNombre}, pero no existe en el combo.`
+                    `Tirada: ${tirada} → Origen encontrado en tabla: ${origenNombre}, pero no existe en el combo.`,
                   );
                 }
               } else {
@@ -1201,7 +1207,7 @@ function App() {
             value={origenSeleccionado?.nombre || ""}
             onChange={(e) => {
               const o = origenesFiltrados.find(
-                (o) => o.nombre === e.target.value
+                (o) => o.nombre === e.target.value,
               );
               setOrigenSeleccionado(o || null);
               setTiradas({}); // Limpiar tiradas al cambiar origen
@@ -1257,7 +1263,7 @@ function App() {
                 }
                 if (origenNombre) {
                   const origenObj = origenesFiltrados.find(
-                    (o) => o.nombre.trim().toUpperCase() === origenNombre
+                    (o) => o.nombre.trim().toUpperCase() === origenNombre,
                   );
                   setOrigenSeleccionado(origenObj || null);
                   setTiradas({});
@@ -1340,11 +1346,18 @@ function App() {
                   onClick={() => {
                     // Determinar fórmula: preferir TOTAL del desglose estructurado si existe
                     const totalFromEstructurado =
-                      desgloseDadosEstructurado[car] && desgloseDadosEstructurado[car].total
-                        ? desgloseDadosEstructurado[car].total.replace(/\s*ℹ$/u, "")
+                      desgloseDadosEstructurado[car] &&
+                      desgloseDadosEstructurado[car].total
+                        ? desgloseDadosEstructurado[car].total.replace(
+                            /\s*ℹ$/u,
+                            "",
+                          )
                         : undefined;
                     const formula =
-                      totalFromEstructurado ?? (typeof dado === "string" ? dado : desgloseDados[car] || "");
+                      totalFromEstructurado ??
+                      (typeof dado === "string"
+                        ? dado
+                        : desgloseDados[car] || "");
 
                     let valor = 0;
                     try {
@@ -1357,7 +1370,7 @@ function App() {
                       const validacion = validarLimitesCaracteristica(
                         car as NombreCaracteristica,
                         valor,
-                        limitaciones
+                        limitaciones,
                       );
                       if (
                         !validacion.valido &&
@@ -1416,7 +1429,10 @@ function App() {
             <button
               className="ficha-calcular-btn"
               onClick={generarTiradasAleatorias}
-              disabled={!nacionalidadSeleccionada || Object.keys(resultado || {}).length === 0}
+              disabled={
+                !nacionalidadSeleccionada ||
+                Object.keys(resultado || {}).length === 0
+              }
               aria-label="Generar tiradas aleatorias"
             >
               Generar tiradas aleatorias
@@ -1453,7 +1469,8 @@ function App() {
                   claseSeleccionada &&
                   clasesAA.some(
                     (c) =>
-                      claseSeleccionada.nombre.toUpperCase() === c.toUpperCase()
+                      claseSeleccionada.nombre.toUpperCase() ===
+                      c.toUpperCase(),
                   )
                 ) {
                   if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
@@ -1620,7 +1637,7 @@ function App() {
                     type BonusCombateValor = string | number | undefined;
                     function sumarBonus(
                       a: BonusCombateValor,
-                      b: BonusCombateValor
+                      b: BonusCombateValor,
                     ): string {
                       const numA =
                         typeof a === "string"
@@ -1649,7 +1666,7 @@ function App() {
                         : undefined,
                       bonusOrigen && "ataque" in bonusOrigen
                         ? (bonusOrigen.ataque as BonusCombateValor)
-                        : undefined
+                        : undefined,
                     );
                     const defensa = sumarBonus(
                       bonusClase && "defensa" in bonusClase
@@ -1657,7 +1674,7 @@ function App() {
                         : undefined,
                       bonusOrigen && "defensa" in bonusOrigen
                         ? (bonusOrigen.defensa as BonusCombateValor)
-                        : undefined
+                        : undefined,
                     );
                     const armasArrojadizas = sumarBonus(
                       bonusClase && "armas_arrojadizas" in bonusClase
@@ -1665,7 +1682,7 @@ function App() {
                         : undefined,
                       bonusOrigen && "armas_arrojadizas" in bonusOrigen
                         ? (bonusOrigen.armas_arrojadizas as BonusCombateValor)
-                        : undefined
+                        : undefined,
                     );
                     return (
                       <>
@@ -1705,7 +1722,7 @@ function App() {
       {/* Información de la clase seleccionada */}
       {razaSeleccionada &&
       ["SELOROK", "DEMONIO", "SELOROKS", "DEMONIOS"].includes(
-        razaSeleccionada.nombre.toUpperCase()
+        razaSeleccionada.nombre.toUpperCase(),
       )
         ? null
         : renderClaseInfo()}
