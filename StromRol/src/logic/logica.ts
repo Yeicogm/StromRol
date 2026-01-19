@@ -23,7 +23,7 @@ export function parseDados(dado: string): number {
 
 export function aplicarVariaciones(
   caracteristicas: Caracteristicas,
-  variaciones: string[] | undefined
+  variaciones: string[] | undefined,
 ): Caracteristicas {
   if (!variaciones || variaciones.length === 0) return caracteristicas;
 
@@ -32,12 +32,12 @@ export function aplicarVariaciones(
   for (const variacion of variaciones) {
     // Ejemplo: "Inteligencia +1", "Destreza +1D", "PODER +2D6", "-2 INTELIGENCIA", etc.
     let match = variacion.match(
-      /^([\wÁÉÍÓÚÜÑáéíóúüñ]+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i
+      /^([\wÁÉÍÓÚÜÑáéíóúüñ]+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i,
     );
 
     if (!match) {
       match = variacion.match(
-        /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+([\wÁÉÍÓÚÜÑáéíóúüñ]+)$/i
+        /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+([\wÁÉÍÓÚÜÑáéíóúüñ]+)$/i,
       );
       if (match) {
         const temp = match[1];
@@ -83,20 +83,18 @@ export function aplicarVariaciones(
         // Sumar dados y modificadores
         const totalDados = dadosActual + dadosCambio;
         const totalMod = modActual + modCambio;
-        nuevasCaracteristicas[
-          nombreNormalizado
-        ] = `${totalDados}D${carasActual}${
-          totalMod !== 0 ? (totalMod > 0 ? "+" : "") + totalMod : ""
-        }`;
+        nuevasCaracteristicas[nombreNormalizado] =
+          `${totalDados}D${carasActual}${
+            totalMod !== 0 ? (totalMod > 0 ? "+" : "") + totalMod : ""
+          }`;
       } else {
         // Si el tipo de dado es diferente, concatenar la expresión
         const actualStr = actual.trim();
         const cambioStr = cambio.trim().replace(/^\+/, "");
         // Si ya contiene la expresión, no duplicar
         if (!actualStr.includes(cambioStr)) {
-          nuevasCaracteristicas[
-            nombreNormalizado
-          ] = `${actualStr}+${cambioStr}`;
+          nuevasCaracteristicas[nombreNormalizado] =
+            `${actualStr}+${cambioStr}`;
         }
       }
       continue;
@@ -146,7 +144,7 @@ export function aplicarVariaciones(
  * Extrae un mapa atributo -> cambio desde un array de variaciones
  */
 export function extraerCambiosMap(
-  variaciones?: string[]
+  variaciones?: string[],
 ): Record<string, string> {
   const mapa: Record<string, string> = {};
   if (!variaciones || variaciones.length === 0) return mapa;
@@ -154,12 +152,12 @@ export function extraerCambiosMap(
   for (const variacion of variaciones) {
     // Reusar la misma lógica de parseo que en aplicarVariaciones
     let match = variacion.match(
-      /^([\wÁÉÍÓÚÜÑáéíóúüñ]+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i
+      /^([\wÁÉÍÓÚÜÑáéíóúüñ]+)\s*([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)$/i,
     );
 
     if (!match) {
       match = variacion.match(
-        /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+([\wÁÉÍÓÚÜÑáéíóúüñ]+)$/i
+        /^([+-]?\d+D\d+|[+-]?\d+D|[+-]?\d+)\s+([\wÁÉÍÓÚÜÑáéíóúüñ]+)$/i,
       );
       if (match) {
         const temp = match[1];
@@ -196,7 +194,7 @@ export function extraerCambiosMap(
  */
 export function computeTotalExpression(
   terms: string[],
-  baseFaces?: string | null
+  baseFaces?: string | null,
 ): string {
   const diceTotals: Record<string, number> = {};
   let modifierTotal = 0;
@@ -243,7 +241,7 @@ export function computeTotalExpression(
   const parts: string[] = [];
   // Ordenar caras por valor numérico descendente para consistencia
   const facesKeys = Object.keys(diceTotals).sort(
-    (a, b) => parseInt(b) - parseInt(a)
+    (a, b) => parseInt(b) - parseInt(a),
   );
   for (const f of facesKeys) {
     const cnt = diceTotals[f];
@@ -269,7 +267,10 @@ export function construirDesgloseDados(
     variacion_caracteristicas?: string[];
     variacion_caracMINMAX?: string[];
   },
-  nacionalidad?: { variacion_caracteristicas?: string[] } | string[] | undefined
+  nacionalidad?:
+    | { variacion_caracteristicas?: string[] }
+    | string[]
+    | undefined,
 ): Record<string, string> {
   const base = raza.caracteristicas || {};
   const cambiosClase = extraerCambiosMap(clase?.variacion_caracteristicas);
@@ -280,7 +281,7 @@ export function construirDesgloseDados(
           .variacion_caracteristicas) ||
       undefined;
   const cambiosNacion = extraerCambiosMap(
-    nacionalVariacionesArray as string[] | undefined
+    nacionalVariacionesArray as string[] | undefined,
   );
 
   const atributos = new Set<string>([
@@ -343,7 +344,36 @@ export function construirDesgloseDados(
       // Calcular total a partir de tokens normalizados
       const baseFaces = b ? (b.match(/D(\d+)/i) || [])[1] : null;
       const totalExpr = computeTotalExpression(tokensForTotal, baseFaces);
-      if (totalExpr) str = `${str} (TOTAL: ${totalExpr})`;
+      // Aplicar limitaciones MIN de la clase si existen (ej: MIN PODER 5D)
+      const limitaciones = obtenerLimitacionesClase(clase);
+      let adjustedTotal = totalExpr;
+      const minLimit = limitaciones.find(
+        (l) => l.caracteristica === attr && l.tipo === "MIN" && l.dados,
+      );
+      if (adjustedTotal && minLimit) {
+        const diceOnly = adjustedTotal.match(/^([+-]?)?(\d+)D(\d+)([+-]\d+)?$/);
+        if (diceOnly) {
+          const cnt = parseInt(diceOnly[2], 10);
+          const faces = diceOnly[3];
+          const mod = diceOnly[4] ? diceOnly[4] : "";
+          if (minLimit.dados && cnt < minLimit.dados) {
+            const prev = adjustedTotal;
+            adjustedTotal = `${minLimit.dados}D${faces}${mod}`;
+            console.log(
+              `[Aplicando límite MIN en desglose]`,
+              attr,
+              `${prev} -> ${adjustedTotal}`,
+            );
+          }
+        }
+      }
+      if (adjustedTotal) {
+        const marcado =
+          totalExpr && adjustedTotal !== totalExpr
+            ? `${adjustedTotal} ℹ`
+            : adjustedTotal;
+        str = `${str} (TOTAL: ${marcado})`;
+      }
       resultado[attr] = str;
     }
   }
@@ -360,7 +390,10 @@ export function construirDesgloseEstructurado(
     variacion_caracteristicas?: string[];
     variacion_caracMINMAX?: string[];
   },
-  nacionalidad?: { variacion_caracteristicas?: string[] } | string[] | undefined
+  nacionalidad?:
+    | { variacion_caracteristicas?: string[] }
+    | string[]
+    | undefined,
 ): Record<
   string,
   { raza?: string; clase?: string; nacionalidad?: string; total?: string }
@@ -374,7 +407,7 @@ export function construirDesgloseEstructurado(
           .variacion_caracteristicas) ||
       undefined;
   const cambiosNacion = extraerCambiosMap(
-    nacionalVariacionesArray as string[] | undefined
+    nacionalVariacionesArray as string[] | undefined,
   );
 
   const atributos = new Set<string>([
@@ -430,6 +463,30 @@ export function construirDesgloseEstructurado(
     const baseFaces = b ? (b.match(/D(\d+)/i) || [])[1] : null;
     const totalExpr = computeTotalExpression(tokensForTotal, baseFaces);
 
+    // Aplicar limitaciones MIN de la clase si existen (ej: MIN PODER 5D)
+    const limitaciones = obtenerLimitacionesClase(clase);
+    let adjustedTotal = totalExpr;
+    const minLimit = limitaciones.find(
+      (l) => l.caracteristica === attr && l.tipo === "MIN" && l.dados,
+    );
+    if (adjustedTotal && minLimit) {
+      const diceOnly = adjustedTotal.match(/^([+-]?)?(\d+)D(\d+)([+-]\d+)?$/);
+      if (diceOnly) {
+        const cnt = parseInt(diceOnly[2], 10);
+        const faces = diceOnly[3];
+        const mod = diceOnly[4] ? diceOnly[4] : "";
+        if (minLimit.dados && cnt < minLimit.dados) {
+          const prev = adjustedTotal;
+          adjustedTotal = `${minLimit.dados}D${faces}${mod}`;
+          console.log(
+            `[Aplicando límite MIN en desglose estructurado]`,
+            attr,
+            `${prev} -> ${adjustedTotal}`,
+          );
+        }
+      }
+    }
+
     const obj: {
       raza?: string;
       clase?: string;
@@ -439,7 +496,12 @@ export function construirDesgloseEstructurado(
     if (b) obj.raza = b;
     if (cFmt) obj.clase = cFmt.replace(/^\+/, "");
     if (nFmt) obj.nacionalidad = nFmt.replace(/^\+/, "");
-    if (totalExpr) obj.total = totalExpr;
+    if (adjustedTotal) {
+      obj.total =
+        totalExpr && adjustedTotal !== totalExpr
+          ? `${adjustedTotal} ℹ`
+          : adjustedTotal;
+    }
 
     resultado[attr] = obj;
   }
@@ -452,7 +514,7 @@ export function calcularCaracteristicasFinales(
   clase?: {
     variacion_caracteristicas?: string[];
     variacion_caracMINMAX?: string[];
-  }
+  },
 ): Caracteristicas {
   const base = raza.caracteristicas;
   const variaciones = clase?.variacion_caracteristicas;
@@ -482,7 +544,7 @@ export interface LimitacionCaracteristica {
  * Ejemplo: ["MIN PODER 5D", "MAX FUERZA 19"]
  */
 export function parsearLimitaciones(
-  variacionMINMAX: string[]
+  variacionMINMAX: string[],
 ): LimitacionCaracteristica[] {
   const limitaciones: LimitacionCaracteristica[] = [];
 
@@ -528,7 +590,7 @@ export function parsearLimitaciones(
  */
 export function aplicarLimitaciones(
   caracteristicas: Caracteristicas,
-  limitaciones: LimitacionCaracteristica[]
+  limitaciones: LimitacionCaracteristica[],
 ): Caracteristicas {
   const nuevasCaracteristicas = { ...caracteristicas };
 
@@ -546,13 +608,12 @@ export function aplicarLimitaciones(
         const mod = dadoMatch[3] ? dadoMatch[3] : "";
 
         if (dadosActuales < limitacion.dados) {
-          nuevasCaracteristicas[
-            limitacion.caracteristica
-          ] = `${limitacion.dados}D${caras}${mod}`;
+          nuevasCaracteristicas[limitacion.caracteristica] =
+            `${limitacion.dados}D${caras}${mod}`;
           console.log(
             `[Aplicando límite MIN]`,
             limitacion.caracteristica,
-            `${dadosActuales}D${caras}${mod} -> ${limitacion.dados}D${caras}${mod}`
+            `${dadosActuales}D${caras}${mod} -> ${limitacion.dados}D${caras}${mod}`,
           );
         }
       }
@@ -568,7 +629,7 @@ export function aplicarLimitaciones(
 export function validarLimitesCaracteristica(
   caracteristica: NombreCaracteristica,
   valor: number,
-  limitaciones: LimitacionCaracteristica[]
+  limitaciones: LimitacionCaracteristica[],
 ): { valido: boolean; mensaje?: string; valorCorregido?: number } {
   for (const limitacion of limitaciones) {
     if (limitacion.caracteristica === caracteristica) {
