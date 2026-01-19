@@ -1319,6 +1319,45 @@ function App() {
                   }}
                   aria-label={`Tirada para ${car}`}
                 />
+                <button
+                  type="button"
+                  className="ficha-dado-btn"
+                  title={`Tirar ${car}`}
+                  aria-label={`Tirar ${car}`}
+                  onClick={() => {
+                    // Determinar fórmula: usar la cadena original si existe
+                    const formula =
+                      typeof dado === "string"
+                        ? dado
+                        : desgloseDados[car] || "";
+                    let valor = 0;
+                    try {
+                      valor = formula ? tirarDado(formula) : 0;
+                    } catch (e) {
+                      valor = 0;
+                    }
+                    // Validar límites si existen
+                    if (limitaciones.length > 0) {
+                      const validacion = validarLimitesCaracteristica(
+                        car as NombreCaracteristica,
+                        valor,
+                        limitaciones
+                      );
+                      if (
+                        !validacion.valido &&
+                        validacion.valorCorregido !== undefined
+                      ) {
+                        valor = validacion.valorCorregido;
+                      }
+                    }
+                    setTiradas((prev) => ({
+                      ...prev,
+                      [car]: valor.toString(),
+                    }));
+                  }}
+                >
+                  🎲
+                </button>
               </li>
             ))}
           </ul>
