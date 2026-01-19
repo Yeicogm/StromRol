@@ -287,8 +287,20 @@ function App() {
     }
     const nuevasTiradas: Record<string, string> = {};
     Object.entries(resultado).forEach(([car, dado]) => {
+      // Preferir la expresión TOTAL del desglose estructurado si existe (limpiando el sufijo ℹ)
+      let formulaToUse: string | undefined;
       if (typeof dado === "string") {
-        let valor = tirarDado(dado);
+        formulaToUse = dado;
+      } else if (desgloseDadosEstructurado[car] && desgloseDadosEstructurado[car].total) {
+        formulaToUse = desgloseDadosEstructurado[car].total.replace(/\s*ℹ$/u, "");
+      } else if (desgloseDados[car]) {
+        // Intentar extraer '(TOTAL: ...)' del texto de desglose como respaldo
+        const m = (desgloseDados[car] as string).match(/\(TOTAL:\s*([^)]+)\)/i);
+        if (m) formulaToUse = m[1];
+      }
+
+      if (formulaToUse) {
+        let valor = tirarDado(formulaToUse);
         // Validar límites si existen
         if (limitaciones.length > 0) {
           const validacion = validarLimitesCaracteristica(
@@ -1324,16 +1336,20 @@ function App() {
                   className="ficha-dado-btn"
                   title={`Tirar ${car}`}
                   aria-label={`Tirar ${car}`}
+                  disabled={!nacionalidadSeleccionada}
                   onClick={() => {
-                    // Determinar fórmula: usar la cadena original si existe
+                    // Determinar fórmula: preferir TOTAL del desglose estructurado si existe
+                    const totalFromEstructurado =
+                      desgloseDadosEstructurado[car] && desgloseDadosEstructurado[car].total
+                        ? desgloseDadosEstructurado[car].total.replace(/\s*ℹ$/u, "")
+                        : undefined;
                     const formula =
-                      typeof dado === "string"
-                        ? dado
-                        : desgloseDados[car] || "";
+                      totalFromEstructurado ?? (typeof dado === "string" ? dado : desgloseDados[car] || "");
+
                     let valor = 0;
                     try {
                       valor = formula ? tirarDado(formula) : 0;
-                    } catch (e) {
+                    } catch {
                       valor = 0;
                     }
                     // Validar límites si existen
@@ -1400,7 +1416,7 @@ function App() {
             <button
               className="ficha-calcular-btn"
               onClick={generarTiradasAleatorias}
-              disabled={Object.keys(resultado || {}).length === 0}
+              disabled={!nacionalidadSeleccionada || Object.keys(resultado || {}).length === 0}
               aria-label="Generar tiradas aleatorias"
             >
               Generar tiradas aleatorias
