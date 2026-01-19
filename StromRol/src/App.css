@@ -88,7 +88,9 @@
   cursor: pointer;
   margin-top: 0;
   margin-bottom: 0;
-  transition: background 0.2s, border 0.2s;
+  transition:
+    background 0.2s,
+    border 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,15 +121,20 @@
 body {
   /* Mosaic tiled image on top, gradient underneath */
   /* usar imagen existente en public/ como mosaico */
-  background-image: url("/dadoFondo_750x750.png"),
+  background-image:
+    url("/dadoFondo_750x750.png"),
     linear-gradient(
       90deg,
       var(--background-color) 20%,
       var(--secondary-color) 100%
     );
   background-repeat: repeat, no-repeat;
-  background-size: 220px auto, cover; /* ajuste de tamaño del mosaico */
-  background-position: center center, center;
+  background-size:
+    220px auto,
+    cover; /* ajuste de tamaño del mosaico */
+  background-position:
+    center center,
+    center;
   background-blend-mode: overlay;
   color: var(--text-color);
   font-family: "Segoe UI", "Roboto", Arial, sans-serif;
@@ -156,7 +163,9 @@ body {
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .button:hover {
@@ -276,7 +285,9 @@ a:hover {
   margin: 2rem 0;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
   overflow: hidden;
 }
@@ -555,6 +566,42 @@ a:hover {
   text-align-last: center; /* Centra el texto seleccionado en la mayoría de navegadores */
 }
 
+/* Estilos para selects que reflejan el color de la leyenda */
+.seleccion-raza {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.08);
+  background: rgba(25, 118, 210, 0.04);
+  color: #1976d2;
+  font-weight: 600;
+}
+.seleccion-clase {
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.08);
+  background: rgba(46, 125, 50, 0.04);
+  color: #2e7d32;
+  font-weight: 600;
+}
+.seleccion-nacion {
+  border-color: #ff8f00;
+  box-shadow: 0 0 0 4px rgba(255, 143, 0, 0.08);
+  background: rgba(255, 143, 0, 0.04);
+  color: #ff8f00;
+  font-weight: 600;
+}
+/* Mejora visual al enfocar */
+.ficha-select.seleccion-raza:focus {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(25, 118, 210, 0.12);
+}
+.ficha-select.seleccion-clase:focus {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(46, 125, 50, 0.12);
+}
+.ficha-select.seleccion-nacion:focus {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(255, 143, 0, 0.12);
+}
+
 @media (max-width: 600px) {
   .ficha-select {
     max-width: 100%;
@@ -580,7 +627,7 @@ a:hover {
   margin-bottom: 8px;
 }
 .ficha-resultado-carac {
-  color: #0077cc;
+  color: #000; /* Etiquetas en negro */
 }
 .ficha-resultado-dado {
   color: #222;

@@ -758,9 +758,9 @@ function App() {
               )
                 ? claseSeleccionada.variacion_caracteristicas
                 : typeof claseSeleccionada.variacion_caracteristicas ===
-                  "string"
-                ? [claseSeleccionada.variacion_caracteristicas]
-                : undefined,
+                    "string"
+                  ? [claseSeleccionada.variacion_caracteristicas]
+                  : undefined,
             }
           : undefined
       );
@@ -784,9 +784,9 @@ function App() {
               )
                 ? claseSeleccionada.variacion_caracteristicas
                 : typeof claseSeleccionada.variacion_caracteristicas ===
-                  "string"
-                ? [claseSeleccionada.variacion_caracteristicas]
-                : undefined,
+                    "string"
+                  ? [claseSeleccionada.variacion_caracteristicas]
+                  : undefined,
               variacion_caracMINMAX: Array.isArray(
                 claseSeleccionada.variacion_caracMINMAX
               )
@@ -808,9 +808,9 @@ function App() {
               )
                 ? claseSeleccionada.variacion_caracteristicas
                 : typeof claseSeleccionada.variacion_caracteristicas ===
-                  "string"
-                ? [claseSeleccionada.variacion_caracteristicas]
-                : undefined,
+                    "string"
+                  ? [claseSeleccionada.variacion_caracteristicas]
+                  : undefined,
               variacion_caracMINMAX: Array.isArray(
                 claseSeleccionada.variacion_caracMINMAX
               )
@@ -876,7 +876,7 @@ function App() {
           </button>
           <select
             id="raza-select"
-            className="ficha-select"
+            className={`ficha-select ${razaSeleccionada ? "seleccion-raza" : ""}`}
             title="Selecciona una raza"
             value={razaSeleccionada?.nombre || ""}
             onChange={(e) => {
@@ -953,7 +953,7 @@ function App() {
           </button>
           <select
             id="clase-select"
-            className="ficha-select"
+            className={`ficha-select ${claseSeleccionada ? "seleccion-clase" : ""}`}
             title="Selecciona una clase"
             value={claseSeleccionada?.nombre || ""}
             onChange={(e) => {
@@ -974,9 +974,9 @@ function App() {
             }}
             disabled={Boolean(
               razaSeleccionada &&
-                ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                  razaSeleccionada.nombre.toUpperCase()
-                )
+              ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
+                razaSeleccionada.nombre.toUpperCase()
+              )
             )}
           >
             <option value="">Clase</option>
@@ -1050,7 +1050,7 @@ function App() {
           </button>
           <select
             id="nacionalidad-select"
-            className="ficha-select"
+            className={`ficha-select ${nacionalidadSeleccionada ? "seleccion-nacion" : ""}`}
             title="Selecciona una nacionalidad"
             value={nacionalidadSeleccionada?.nombre || ""}
             onChange={(e) => {
@@ -1324,7 +1324,7 @@ function App() {
           </ul>
 
           {/* Leyenda de colores para desglose de dados */}
-          <div className="ficha-dados-legend" aria-hidden={false}>
+          <div className="ficha-dados-legend">
             <b>Leyenda:</b>
             <div className="ficha-dados-legend-items">
               <span className="legend-item">
@@ -1571,14 +1571,14 @@ function App() {
                         typeof a === "string"
                           ? parseInt(a)
                           : typeof a === "number"
-                          ? a
-                          : 0;
+                            ? a
+                            : 0;
                       const numB =
                         typeof b === "string"
                           ? parseInt(b)
                           : typeof b === "number"
-                          ? b
-                          : 0;
+                            ? b
+                            : 0;
                       const total = numA + numB;
                       if (
                         (typeof a === "string" && a.includes("%")) ||
