@@ -609,6 +609,70 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   color: #222;
   margin-bottom: 24px;
 }
+.ficha-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 22px;
+  margin: 0 0 20px 0;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 6px 0 0;
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ficha-tab-btn {
+  appearance: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #4b5563;
+  padding: 10px 2px 12px;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.ficha-tab-btn:hover {
+  color: #1f2937;
+  opacity: 1;
+}
+
+.ficha-tab-btn.active {
+  color: #1976d2;
+  border-color: #1976d2;
+}
+
+.ficha-tab-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.18);
+  border-radius: 6px;
+}
+
+.ficha-tab-empty {
+  margin-top: 14px;
+  background: #f8f9fb;
+  border: 1px dashed #b9c4d0;
+  border-radius: 10px;
+  padding: 16px;
+  color: #4b5563;
+  text-align: center;
+}
+
 .ficha-select-group {
   margin-bottom: 8px;
   display: flex;
@@ -671,6 +735,20 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
 }
 
 @media (max-width: 600px) {
+  .ficha-tabs {
+    justify-content: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding: 6px 8px 0;
+  }
+
+  .ficha-tab-btn {
+    width: auto;
+    max-width: none;
+    white-space: nowrap;
+  }
+
   .ficha-select {
     max-width: 100%;
     font-size: 1rem;
