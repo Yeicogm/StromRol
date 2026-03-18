@@ -22,6 +22,12 @@ const puntosFormatter = new Intl.NumberFormat("es-ES", {
   maximumFractionDigits: 2,
 });
 
+const ETIQUETA_PUESTO: Record<number, string> = {
+  1: "Campeon",
+  2: "Subcampeon",
+  3: "Tercer puesto",
+};
+
 const normalizarNivel = (valor: unknown): number => {
   const numero = Number(valor);
 
@@ -170,6 +176,7 @@ export default function ListaExitosSection({
       <div className="lista-exitos-podio" role="list">
         {podio.map((personaje, index) => {
           const puesto = index + 1;
+          const etiquetaPuesto = ETIQUETA_PUESTO[puesto] ?? `Puesto ${puesto}`;
 
           return (
             <article
@@ -177,6 +184,7 @@ export default function ListaExitosSection({
               className={`lista-exitos-podio-card puesto-${puesto}`}
               role="listitem"
             >
+              <p className="lista-exitos-podio-etiqueta">{etiquetaPuesto}</p>
               <p className="lista-exitos-podio-puesto">#{puesto}</p>
               <h3 className="lista-exitos-podio-nombre">
                 {personaje.nombrePersonaje}
