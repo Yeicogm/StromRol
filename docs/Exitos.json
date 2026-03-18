@@ -1,0 +1,104 @@
+{
+  "personajes": [
+    {
+      "jugador": "Javi",
+      "nombrePersonaje": "Prob Llama ",
+      "raza": "Enano",
+      "clases": ["Noble"],
+      "nivelGuerrero": 2,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 0
+    },
+    {
+      "jugador": "Raul",
+      "nombrePersonaje": "Albahaco",
+      "raza": "Humamano",
+      "clases": ["Hechicero", "Ninja"],
+      "nivelGuerrero": 0,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 2
+    },
+    {
+      "jugador": "Juanjo",
+      "nombrePersonaje": "Sir Drasek Balin",
+      "raza": "Enano",
+      "clases": ["Noble", "Ilmionario"],
+      "nivelGuerrero": 9,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 0
+    },
+    {
+      "jugador": "Manolo",
+      "nombrePersonaje": "Arumys",
+      "raza": "H.Demonio",
+      "clases": ["Hechicero", "Barbaro"],
+      "nivelGuerrero": 2,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 2
+    },
+    {
+      "jugador": "Damian",
+      "nombrePersonaje": "Violeta Balin",
+      "raza": "Selorok",
+      "clases": [],
+      "nivelGuerrero": 3,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 0
+    },
+    {
+      "jugador": "Javi",
+      "nombrePersonaje": "Vivi Ornitier(Mago Negro)",
+      "raza": "Elfo",
+      "clases": ["Hechicero"],
+      "nivelGuerrero": 0,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 2
+    },
+    {
+      "jugador": "Beck",
+      "nombrePersonaje": "Vendimio de Borgoña y Balin",
+      "raza": "H-Demonio",
+      "clases": ["Noble"],
+      "nivelGuerrero": 3,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 0
+    },
+    {
+      "jugador": "Sebas",
+      "nombrePersonaje": "Gloin",
+      "raza": "Enano",
+      "clases": ["Púrpura"],
+      "nivelGuerrero": 3,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 0
+    },
+    {
+      "jugador": "Curro",
+      "nombrePersonaje": "Reshi",
+      "raza": "Mediano",
+      "clases": ["Asesino"],
+      "nivelGuerrero": 0,
+      "nivelSemi": 0,
+      "nivelPicaro": 5,
+      "nivelMago": 0
+    },
+    {
+      "jugador": "Manolo",
+      "nombrePersonaje": "Aatrox",
+      "raza": "H.Demonio",
+      "clases": ["Menibones", "Brujo"],
+      "nivelGuerrero": 5,
+      "nivelSemi": 0,
+      "nivelPicaro": 0,
+      "nivelMago": 0
+    }
+  ]
+}

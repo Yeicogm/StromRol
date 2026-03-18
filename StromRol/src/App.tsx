@@ -1154,8 +1154,7 @@ function App() {
 
       <ListaExitosSection
         isActive={activeTab === "bonificaciones"}
-        content={null}
-        emptyMessage="Próximamente: lista de exitos."
+        emptyMessage="Aún no hay personajes en la lista de éxitos."
       />
 
       <CompendioSection isActive={activeTab === "detalles"}>

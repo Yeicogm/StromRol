@@ -673,6 +673,113 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   text-align: center;
 }
 
+.lista-exitos {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.lista-exitos-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #1f2937;
+}
+
+.lista-exitos-podio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lista-exitos-podio-card {
+  background: #ffffff;
+  border: 1px solid #d7e1ec;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 3px 10px rgba(16, 24, 40, 0.08);
+}
+
+.lista-exitos-podio-card.puesto-1 {
+  border-color: #f59e0b;
+  background: linear-gradient(180deg, #fff9eb 0%, #ffffff 100%);
+}
+
+.lista-exitos-podio-card.puesto-2 {
+  border-color: #94a3b8;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.lista-exitos-podio-card.puesto-3 {
+  border-color: #b45309;
+  background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+}
+
+.lista-exitos-podio-puesto {
+  margin: 0 0 6px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.lista-exitos-podio-nombre {
+  margin: 0;
+  font-size: 1.12rem;
+  color: #111827;
+}
+
+.lista-exitos-podio-jugador {
+  margin: 3px 0 0;
+  color: #475569;
+}
+
+.lista-exitos-podio-puntos {
+  margin: 8px 0 0;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.lista-exitos-podio-niveles {
+  margin: 3px 0 0;
+  color: #334155;
+}
+
+.lista-exitos-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #d8e1ec;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.lista-exitos-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+}
+
+.lista-exitos-table th,
+.lista-exitos-table td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 0.93rem;
+  color: #1f2937;
+}
+
+.lista-exitos-table th {
+  background: #f8fafc;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lista-exitos-table tbody tr:nth-child(even) {
+  background: #fcfdff;
+}
+
+.lista-exitos-table tbody tr:hover {
+  background: #eef5ff;
+}
+
 .ficha-select-group {
   margin-bottom: 8px;
   display: flex;
@@ -752,6 +859,15 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   .ficha-select {
     max-width: 100%;
     font-size: 1rem;
+  }
+
+  .lista-exitos-podio {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-exitos-title {
+    font-size: 1.1rem;
+    text-align: center;
   }
 }
 .ficha-resultado {
