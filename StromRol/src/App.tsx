@@ -391,8 +391,13 @@ function App() {
         ? "Lista de Exitos"
         : "Compendio";
 
+  const fichaContainerClass =
+    activeTab === "detalles"
+      ? "ficha-container ficha-container--wide"
+      : "ficha-container";
+
   return (
-    <div className="ficha-container">
+    <div className={fichaContainerClass}>
       <div className="ficha-tabs" aria-label="Secciones del generador">
         <button
           type="button"
@@ -419,10 +424,20 @@ function App() {
 
       {mostrarLogo && (
         <div className="logo-container">
-          <img src={"/logo.webp"} alt="Logo" className="logo-img" />
+          <img
+            src={"/logo.webp"}
+            alt="Logo"
+            className={`logo-img${
+              activeTab === "bonificaciones" || activeTab === "detalles"
+                ? " logo-img--small"
+                : ""
+            }`}
+          />
         </div>
       )}
-      <h2 className="ficha-title">{tituloSeccion}</h2>
+      {activeTab !== "detalles" && (
+        <h2 className="ficha-title">{tituloSeccion}</h2>
+      )}
 
       <GeneradorSection isActive={activeTab === "generador"}>
         <div className="ficha-select-group">
@@ -1157,11 +1172,7 @@ function App() {
         emptyMessage="Aún no hay personajes en la lista de éxitos."
       />
 
-      <CompendioSection isActive={activeTab === "detalles"}>
-        <div className="ficha-tab-empty">
-          Próximamente: referencia completa de razas, clases y reglas.
-        </div>
-      </CompendioSection>
+      <CompendioSection isActive={activeTab === "detalles"} />
     </div>
   );
 }

@@ -170,6 +170,7 @@ export default function ListaExitosSection({
   }
 
   const podio = personajes.slice(0, 3);
+  const medalEmojis = ["🥇", "🥈", "🥉"];
 
   return (
     <section className="lista-exitos" aria-label="Lista de éxitos">
@@ -177,6 +178,7 @@ export default function ListaExitosSection({
         {podio.map((personaje, index) => {
           const puesto = index + 1;
           const etiquetaPuesto = ETIQUETA_PUESTO[puesto] ?? `Puesto ${puesto}`;
+          const medalEmoji = medalEmojis[index];
 
           return (
             <article
@@ -184,18 +186,27 @@ export default function ListaExitosSection({
               className={`lista-exitos-podio-card puesto-${puesto}`}
               role="listitem"
             >
+              <div className="lista-exitos-podio-medal">
+                <span className="lista-exitos-podio-emoji">{medalEmoji}</span>
+              </div>
               <p className="lista-exitos-podio-etiqueta">{etiquetaPuesto}</p>
-              <p className="lista-exitos-podio-puesto">#{puesto}</p>
               <h3 className="lista-exitos-podio-nombre">
                 {personaje.nombrePersonaje}
               </h3>
               <p className="lista-exitos-podio-jugador">{personaje.jugador}</p>
-              <p className="lista-exitos-podio-puntos">
-                {puntosFormatter.format(personaje.totalPuntos)} puntos
-              </p>
-              <p className="lista-exitos-podio-niveles">
-                {personaje.totalNiveles} niveles
-              </p>
+              <div className="lista-exitos-podio-stats">
+                <span className="lista-exitos-podio-stat">
+                  <strong>
+                    {puntosFormatter.format(personaje.totalPuntos)}
+                  </strong>
+                  <small>pts</small>
+                </span>
+                <span className="lista-exitos-podio-separator">•</span>
+                <span className="lista-exitos-podio-stat">
+                  <strong>{personaje.totalNiveles}</strong>
+                  <small>lvl</small>
+                </span>
+              </div>
             </article>
           );
         })}
