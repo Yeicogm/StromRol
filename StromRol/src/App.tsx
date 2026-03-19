@@ -44,6 +44,32 @@ function App() {
   };
   type FichaTab = "generador" | "bonificaciones" | "detalles" | "strom";
   const [activeTab, setActiveTab] = useState<FichaTab>("generador");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const fichaTabs: Array<{ key: FichaTab; label: string }> = [
+    { key: "generador", label: "GENERADOR" },
+    { key: "bonificaciones", label: "LISTA DE EXITOS" },
+    { key: "strom", label: "STROM" },
+    { key: "detalles", label: "COMPENDIO" },
+  ];
+
+  const cambiarTab = (tab: FichaTab) => {
+    setActiveTab(tab);
+    setIsMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const cerrarMenuEnPantallasGrandes = () => {
+      if (window.innerWidth > 450) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", cerrarMenuEnPantallasGrandes);
+
+    return () => {
+      window.removeEventListener("resize", cerrarMenuEnPantallasGrandes);
+    };
+  }, []);
   // Estado para mostrar el resultado del cálculo de habilidades
   const [resultadoHabilidades, setResultadoHabilidades] =
     useState<HabilidadesResultado | null>(null);
@@ -399,37 +425,56 @@ function App() {
       ? "ficha-container ficha-container--wide"
       : "ficha-container";
 
+  const activeTabLabel =
+    fichaTabs.find((tab) => tab.key === activeTab)?.label ?? "SECCIONES";
+
   return (
     <div className={fichaContainerClass}>
       <div className="ficha-tabs" aria-label="Secciones del generador">
-        <button
-          type="button"
-          className={`ficha-tab-btn ${activeTab === "generador" ? "active" : ""}`}
-          onClick={() => setActiveTab("generador")}
-        >
-          GENERADOR
-        </button>
-        <button
-          type="button"
-          className={`ficha-tab-btn ${activeTab === "bonificaciones" ? "active" : ""}`}
-          onClick={() => setActiveTab("bonificaciones")}
-        >
-          LISTA DE EXITOS
-        </button>
-        <button
-          type="button"
-          className={`ficha-tab-btn ${activeTab === "strom" ? "active" : ""}`}
-          onClick={() => setActiveTab("strom")}
-        >
-          STROM
-        </button>
-        <button
-          type="button"
-          className={`ficha-tab-btn ${activeTab === "detalles" ? "active" : ""}`}
-          onClick={() => setActiveTab("detalles")}
-        >
-          COMPENDIO
-        </button>
+        <div className="ficha-tabs-desktop">
+          {fichaTabs.map((tab) => (
+            <button
+              key={tab.key}
+              type="button"
+              className={`ficha-tab-btn ${activeTab === tab.key ? "active" : ""}`}
+              onClick={() => cambiarTab(tab.key)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="ficha-tabs-mobile">
+          <button
+            type="button"
+            className={`ficha-hamburger-btn ${isMobileMenuOpen ? "is-open" : ""}`}
+            aria-controls="ficha-mobile-menu"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          >
+            <span className="ficha-hamburger-label">{activeTabLabel}</span>
+            <span className="ficha-hamburger-icon" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          </button>
+
+          <div
+            id="ficha-mobile-menu"
+            className={`ficha-mobile-menu ${isMobileMenuOpen ? "is-open" : ""}`}
+          >
+            {fichaTabs.map((tab) => (
+              <button
+                key={tab.key}
+                type="button"
+                className={`ficha-tab-btn ficha-mobile-tab-btn ${activeTab === tab.key ? "active" : ""}`}
+                onClick={() => cambiarTab(tab.key)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {mostrarLogo && (
