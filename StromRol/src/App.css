@@ -353,7 +353,7 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   border: 1px solid #ddd;
   box-sizing: border-box;
   width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 /* Estilos para la tarjeta de información de raza */
