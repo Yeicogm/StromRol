@@ -4,6 +4,7 @@ import "./App.css";
 import GeneradorSection from "./components/sections/GeneradorSection";
 import ListaExitosSection from "./components/sections/ListaExitosSection";
 import CompendioSection from "./components/sections/CompendioSection";
+import StromSection from "./components/sections/StromSection";
 import RazaInfo from "./components/RazaInfo";
 import ClaseInfo from "./components/ClaseInfo";
 import NacionalidadInfo from "./components/NacionalidadInfo";
@@ -41,7 +42,7 @@ function App() {
   const handleComboChange = () => {
     if (mostrarLogo) setMostrarLogo(false);
   };
-  type FichaTab = "generador" | "bonificaciones" | "detalles";
+  type FichaTab = "generador" | "bonificaciones" | "detalles" | "strom";
   const [activeTab, setActiveTab] = useState<FichaTab>("generador");
   // Estado para mostrar el resultado del cálculo de habilidades
   const [resultadoHabilidades, setResultadoHabilidades] =
@@ -389,7 +390,9 @@ function App() {
       ? "Generador de Fichas"
       : activeTab === "bonificaciones"
         ? "Lista de Exitos"
-        : "Compendio";
+        : activeTab === "strom"
+          ? "STROM"
+          : "Compendio";
 
   const fichaContainerClass =
     activeTab === "detalles"
@@ -415,6 +418,13 @@ function App() {
         </button>
         <button
           type="button"
+          className={`ficha-tab-btn ${activeTab === "strom" ? "active" : ""}`}
+          onClick={() => setActiveTab("strom")}
+        >
+          STROM
+        </button>
+        <button
+          type="button"
           className={`ficha-tab-btn ${activeTab === "detalles" ? "active" : ""}`}
           onClick={() => setActiveTab("detalles")}
         >
@@ -425,17 +435,17 @@ function App() {
       {mostrarLogo && (
         <div className="logo-container">
           <img
-            src={"/logo.webp"}
+            src={activeTab === "strom" ? "/Foto1.JPG" : "/logo.webp"}
             alt="Logo"
             className={`logo-img${
               activeTab === "bonificaciones" || activeTab === "detalles"
                 ? " logo-img--small"
                 : ""
-            }`}
+            }${activeTab === "strom" ? " logo-img--strom" : ""}`}
           />
         </div>
       )}
-      {activeTab !== "detalles" && (
+      {activeTab !== "detalles" && activeTab !== "strom" && (
         <h2 className="ficha-title">{tituloSeccion}</h2>
       )}
 
@@ -1166,6 +1176,8 @@ function App() {
         {/* Información del origen seleccionado */}
         {origenSeleccionado && <OrigenInfo origen={origenSeleccionado} />}
       </GeneradorSection>
+
+      <StromSection isActive={activeTab === "strom"} />
 
       <ListaExitosSection
         isActive={activeTab === "bonificaciones"}
