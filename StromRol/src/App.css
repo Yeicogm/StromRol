@@ -671,6 +671,18 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   border-radius: 6px;
 }
 
+@media (max-width: 500px) {
+  .ficha-tabs {
+    gap: 10px;
+    padding: 4px 0 0;
+  }
+
+  .ficha-tab-btn {
+    padding: 8px 1px 10px;
+    font-size: 0.85rem;
+  }
+}
+
 .ficha-tab-empty {
   margin-top: 14px;
   background: #f8f9fb;
@@ -874,6 +886,21 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   .lista-exitos-podio-card::after {
     display: none;
   }
+
+  /* Tablas en móviles: permitir scroll en vez de comprimir demasiado */
+  .lista-exitos-table-wrapper {
+    max-width: 100%;
+  }
+
+  .lista-exitos-table {
+    /* Mantener un ancho base para evitar que la tabla se aplaste */
+    min-width: 900px;
+  }
+
+  .lista-exitos-table th,
+  .lista-exitos-table td {
+    white-space: nowrap;
+  }
 }
 
 .lista-exitos-podio-card {
@@ -1071,7 +1098,7 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
 .lista-exitos-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 980px;
+  min-width: 900px;
 }
 
 .lista-exitos-table th,
@@ -1081,6 +1108,7 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   text-align: center;
   font-size: 0.93rem;
   color: #1f2937;
+  white-space: nowrap;
 }
 
 .lista-exitos-table th {
@@ -1176,50 +1204,6 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   .ficha-select {
     max-width: 100%;
     font-size: 1rem;
-  }
-
-  .lista-exitos-podio {
-    grid-template-columns: 1fr;
-    align-items: stretch;
-    gap: 12px;
-    min-height: auto;
-    padding: 20px 12px;
-    background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
-  }
-
-  .lista-exitos-podio-card {
-    width: 100%;
-    max-width: none;
-    justify-self: stretch;
-    transform: none !important;
-    margin-bottom: 8px;
-  }
-
-  .lista-exitos-podio-card:hover {
-    transform: none !important;
-  }
-
-  .lista-exitos-podio-card::after {
-    display: none;
-  }
-
-  .lista-exitos-podio-card.puesto-1,
-  .lista-exitos-podio-card.puesto-2,
-  .lista-exitos-podio-card.puesto-3 {
-    order: unset;
-    z-index: auto;
-    transform: none;
-    border: 2px solid #d7e1ec;
-  }
-
-  .lista-exitos-podio-card.puesto-1 {
-    border-color: #fbbf24;
-    border-width: 2px;
-  }
-
-  .lista-exitos-title {
-    font-size: 1.1rem;
-    text-align: center;
   }
 }
 .ficha-resultado {
