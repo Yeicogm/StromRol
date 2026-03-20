@@ -188,6 +188,12 @@ function App() {
     return total;
   };
 
+  const puedeTirarCaracteristica = (caracteristica: string): boolean =>
+    Boolean(
+      nacionalidadSeleccionada &&
+      desgloseDadosEstructurado[caracteristica]?.total?.trim(),
+    );
+
   // Genera tiradas aleatorias para cada característica
   const generarTiradasAleatorias = () => {
     if (!resultado) return;
@@ -201,6 +207,10 @@ function App() {
     }
     const nuevasTiradas: Record<string, string> = {};
     Object.entries(resultado).forEach(([car, dado]) => {
+      if (!puedeTirarCaracteristica(car)) {
+        return;
+      }
+
       // Preferir la expresión TOTAL del desglose estructurado si existe (limpiando el sufijo ℹ)
       let formulaToUse: string | undefined;
       if (typeof dado === "string") {
@@ -982,13 +992,9 @@ function App() {
                     className="ficha-dado-btn"
                     title={`Tirar ${car}`}
                     aria-label={`Tirar ${car}`}
-                    disabled={
-                      !nacionalidadSeleccionada ||
-                      !desgloseDadosEstructurado[car]?.total?.trim()
-                    }
+                    disabled={!puedeTirarCaracteristica(car)}
                     onClick={() => {
-                      if (!desgloseDadosEstructurado[car]?.total?.trim())
-                        return;
+                      if (!puedeTirarCaracteristica(car)) return;
                       // Determinar fórmula: preferir TOTAL del desglose estructurado si existe
                       const totalFromEstructurado =
                         desgloseDadosEstructurado[car] &&

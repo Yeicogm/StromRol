@@ -137,7 +137,9 @@ export default function ResultadoHabilidades({
                     ? (bonusOrigen.ataque as BonusCombateValor)
                     : undefined,
                 );
-                const mostrarNotaAtaqueRaza = ataque === "0" || ataque === "0%";
+                const ataqueNumerico = parseInt(ataque, 10);
+                const mostrarNotaAtaqueRaza =
+                  !Number.isNaN(ataqueNumerico) && ataqueNumerico <= 10;
                 const defensa = sumarBonus(
                   bonusClase && "defensa" in bonusClase
                     ? (bonusClase.defensa as BonusCombateValor)
