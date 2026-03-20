@@ -982,8 +982,13 @@ function App() {
                     className="ficha-dado-btn"
                     title={`Tirar ${car}`}
                     aria-label={`Tirar ${car}`}
-                    disabled={!nacionalidadSeleccionada}
+                    disabled={
+                      !nacionalidadSeleccionada ||
+                      !desgloseDadosEstructurado[car]?.total?.trim()
+                    }
                     onClick={() => {
+                      if (!desgloseDadosEstructurado[car]?.total?.trim())
+                        return;
                       // Determinar fórmula: preferir TOTAL del desglose estructurado si existe
                       const totalFromEstructurado =
                         desgloseDadosEstructurado[car] &&
