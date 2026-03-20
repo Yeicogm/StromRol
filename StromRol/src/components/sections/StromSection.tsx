@@ -15,7 +15,7 @@ export default function StromSection({ isActive }: StromSectionProps) {
           <p className="strom-text">
             Strom es un juego de fantasía creado en 1996 por un grupo de
             chavales de Marbella. Está inspirado en juegos como Stormbringer,
-            Elric, RuneQuest y D&D.
+            Elric, RuneQuest y D&D. Actualmente seguimos reuniendonos a jugar en el mismo sitio donde se creo.
           </p>
           <p className="strom-text">
             Esta aplicación te ayuda a generar personajes y conectar con la
