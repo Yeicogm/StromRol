@@ -439,8 +439,8 @@ function App() {
     fichaTabs.find((tab) => tab.key === activeTab)?.label ?? "SECCIONES";
 
   return (
-    <div className={fichaContainerClass}>
-      <div className="ficha-tabs" aria-label="Secciones del generador">
+    <main className={fichaContainerClass}>
+      <nav className="ficha-tabs" aria-label="Secciones del generador">
         <div className="ficha-tabs-desktop">
           {fichaTabs.map((tab) => (
             <button
@@ -485,7 +485,7 @@ function App() {
             ))}
           </div>
         </div>
-      </div>
+      </nav>
 
       {mostrarLogo && (
         <div className="logo-container">
@@ -1241,7 +1241,10 @@ function App() {
       />
 
       <CompendioSection isActive={activeTab === "detalles"} />
-    </div>
+      <footer className="app-footer">
+        <p>© 2026 StromRol.</p>
+      </footer>
+    </main>
   );
 }
 
