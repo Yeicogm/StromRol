@@ -211,11 +211,9 @@ function App() {
         return;
       }
 
-      // Preferir la expresión TOTAL del desglose estructurado si existe (limpiando el sufijo ℹ)
+      // Igual que en la tirada individual: priorizar TOTAL estructurado.
       let formulaToUse: string | undefined;
-      if (typeof dado === "string") {
-        formulaToUse = dado;
-      } else if (
+      if (
         desgloseDadosEstructurado[car] &&
         desgloseDadosEstructurado[car].total
       ) {
@@ -223,6 +221,8 @@ function App() {
           /\s*ℹ$/u,
           "",
         );
+      } else if (typeof dado === "string") {
+        formulaToUse = dado;
       } else if (desgloseDados[car]) {
         // Intentar extraer '(TOTAL: ...)' del texto de desglose como respaldo
         const m = (desgloseDados[car] as string).match(/\(TOTAL:\s*([^)]+)\)/i);

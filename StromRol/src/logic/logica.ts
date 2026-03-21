@@ -69,16 +69,17 @@ export function aplicarVariaciones(
 
     // Si ambos son expresiones de dados, combinar como suma de expresiones
     const actualDadosExp = actual.match(/^(\d+)D(\d+)([+-]\d+)?$/);
-    const cambioDadosExp = cambio.match(/^[+-]?(\d+)D(\d+)([+-]\d+)?$/);
+    const cambioDadosExp = cambio.match(/^([+-]?)(\d+)D(\d+)([+-]\d+)?$/);
 
     if (actualDadosExp && cambioDadosExp) {
       // Si el tipo de dado es igual, sumar los dados
       const dadosActual = parseInt(actualDadosExp[1], 10);
       const carasActual = parseInt(actualDadosExp[2], 10);
       const modActual = actualDadosExp[3] ? parseInt(actualDadosExp[3], 10) : 0;
-      const dadosCambio = parseInt(cambioDadosExp[1], 10);
-      const carasCambio = parseInt(cambioDadosExp[2], 10);
-      const modCambio = cambioDadosExp[3] ? parseInt(cambioDadosExp[3], 10) : 0;
+      const signoCambio = cambioDadosExp[1] === "-" ? -1 : 1;
+      const dadosCambio = parseInt(cambioDadosExp[2], 10) * signoCambio;
+      const carasCambio = parseInt(cambioDadosExp[3], 10);
+      const modCambio = cambioDadosExp[4] ? parseInt(cambioDadosExp[4], 10) : 0;
       if (carasActual === carasCambio) {
         // Sumar dados y modificadores
         const totalDados = dadosActual + dadosCambio;
