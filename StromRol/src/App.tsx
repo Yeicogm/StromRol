@@ -188,6 +188,12 @@ function App() {
     return total;
   };
 
+  const puedeTirarCaracteristica = (caracteristica: string): boolean =>
+    Boolean(
+      nacionalidadSeleccionada &&
+      desgloseDadosEstructurado[caracteristica]?.total?.trim(),
+    );
+
   // Genera tiradas aleatorias para cada característica
   const generarTiradasAleatorias = () => {
     if (!resultado) return;
@@ -201,11 +207,13 @@ function App() {
     }
     const nuevasTiradas: Record<string, string> = {};
     Object.entries(resultado).forEach(([car, dado]) => {
-      // Preferir la expresión TOTAL del desglose estructurado si existe (limpiando el sufijo ℹ)
+      if (!puedeTirarCaracteristica(car)) {
+        return;
+      }
+
+      // Igual que en la tirada individual: priorizar TOTAL estructurado.
       let formulaToUse: string | undefined;
-      if (typeof dado === "string") {
-        formulaToUse = dado;
-      } else if (
+      if (
         desgloseDadosEstructurado[car] &&
         desgloseDadosEstructurado[car].total
       ) {
@@ -213,6 +221,8 @@ function App() {
           /\s*ℹ$/u,
           "",
         );
+      } else if (typeof dado === "string") {
+        formulaToUse = dado;
       } else if (desgloseDados[car]) {
         // Intentar extraer '(TOTAL: ...)' del texto de desglose como respaldo
         const m = (desgloseDados[car] as string).match(/\(TOTAL:\s*([^)]+)\)/i);
@@ -429,8 +439,8 @@ function App() {
     fichaTabs.find((tab) => tab.key === activeTab)?.label ?? "SECCIONES";
 
   return (
-    <div className={fichaContainerClass}>
-      <div className="ficha-tabs" aria-label="Secciones del generador">
+    <main className={fichaContainerClass}>
+      <nav className="ficha-tabs" aria-label="Secciones del generador">
         <div className="ficha-tabs-desktop">
           {fichaTabs.map((tab) => (
             <button
@@ -475,7 +485,7 @@ function App() {
             ))}
           </div>
         </div>
-      </div>
+      </nav>
 
       {mostrarLogo && (
         <div className="logo-container">
@@ -982,8 +992,9 @@ function App() {
                     className="ficha-dado-btn"
                     title={`Tirar ${car}`}
                     aria-label={`Tirar ${car}`}
-                    disabled={!nacionalidadSeleccionada}
+                    disabled={!puedeTirarCaracteristica(car)}
                     onClick={() => {
+                      if (!puedeTirarCaracteristica(car)) return;
                       // Determinar fórmula: preferir TOTAL del desglose estructurado si existe
                       const totalFromEstructurado =
                         desgloseDadosEstructurado[car] &&
@@ -1230,7 +1241,10 @@ function App() {
       />
 
       <CompendioSection isActive={activeTab === "detalles"} />
-    </div>
+      <footer className="app-footer">
+        <p>© 2026 StromRol.</p>
+      </footer>
+    </main>
   );
 }
 

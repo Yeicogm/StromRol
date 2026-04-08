@@ -137,6 +137,9 @@ export default function ResultadoHabilidades({
                     ? (bonusOrigen.ataque as BonusCombateValor)
                     : undefined,
                 );
+                const ataqueNumerico = parseInt(ataque, 10);
+                const mostrarNotaAtaqueRaza =
+                  !Number.isNaN(ataqueNumerico) && ataqueNumerico <= 10;
                 const defensa = sumarBonus(
                   bonusClase && "defensa" in bonusClase
                     ? (bonusClase.defensa as BonusCombateValor)
@@ -161,6 +164,11 @@ export default function ResultadoHabilidades({
                         {ataque}
                       </span>
                     </div>
+                    {mostrarNotaAtaqueRaza && (
+                      <p className="raza-bonus-hint">
+                        El bonus de combate se indican en la zona de Raza.
+                      </p>
+                    )}
                     <div className="raza-list-item">
                       <span className="raza-bonus-name">Defensa:</span>
                       <span className="raza-chip raza-chip-secondary">

@@ -164,6 +164,8 @@
         "Destreza": "2D6",
         "Carisma": "1D4"
       },
+      "armadura": "-4",
+      "ataque": "50% - 45% (Garra y Mordisco)",
       "notas": "No eligen clase, no usan armas. Flotan bastante en el agua.",
       "rango": "-1",
       "bonificaciones": {
