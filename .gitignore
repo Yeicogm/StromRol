@@ -21,3 +21,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Entornos
+.env
+.env.*
+**/.env
+**/.env.*
+opencode.json
+*.local
