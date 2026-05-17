@@ -1436,3 +1436,136 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
 .github-link svg {
   display: block;
 }
+
+/* Chat local con Prompt API */
+.prompt-chat-section {
+  width: min(920px, 100%);
+  margin: 0 auto 1rem auto;
+}
+
+.prompt-chat-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(25, 118, 210, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  text-align: left;
+}
+
+.prompt-chat-title {
+  margin: 0;
+  color: #123b63;
+}
+
+.prompt-chat-subtitle {
+  margin: 0.4rem 0 0.8rem 0;
+  color: #2f4b66;
+}
+
+.prompt-chat-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.prompt-chat-btn {
+  min-width: 220px;
+}
+
+.prompt-chat-status {
+  font-weight: 700;
+  color: #174a78;
+}
+
+.prompt-chat-help {
+  margin: 0.6rem 0 0.8rem 0;
+  color: #29455e;
+}
+
+.prompt-chat-window {
+  max-height: 340px;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f2f8ff 0%, #f9fcff 100%);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.prompt-chat-bubble {
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.prompt-chat-bubble--assistant {
+  background: #e8f2ff;
+  border: 1px solid rgba(17, 84, 137, 0.2);
+}
+
+.prompt-chat-bubble--user {
+  align-self: flex-end;
+  background: #d8f7ea;
+  border: 1px solid rgba(9, 108, 78, 0.2);
+}
+
+.prompt-chat-input-row {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.prompt-chat-input {
+  width: 100%;
+  min-height: 96px;
+  resize: vertical;
+  border-radius: 10px;
+  border: 1px solid #99b4d0;
+  background: #ffffff;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+  color: #1f3346;
+}
+
+.prompt-chat-input::placeholder {
+  color: #5b6f82;
+}
+
+.prompt-chat-input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.18);
+}
+
+.prompt-chat-input-row .prompt-chat-btn {
+  align-self: flex-end;
+  min-width: 160px;
+}
+
+.prompt-chat-snippet {
+  margin: 0.9rem 0 0 0;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #0f2133;
+  color: #d7ebff;
+  padding: 0.8rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .prompt-chat-btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .prompt-chat-input-row .prompt-chat-btn {
+    align-self: stretch;
+  }
+}

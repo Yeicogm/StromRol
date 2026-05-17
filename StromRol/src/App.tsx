@@ -5,6 +5,7 @@ import GeneradorSection from "./components/sections/GeneradorSection";
 import ListaExitosSection from "./components/sections/ListaExitosSection";
 import CompendioSection from "./components/sections/CompendioSection";
 import StromSection from "./components/sections/StromSection";
+import PromptApiChatSection from "./components/sections/PromptApiChatSection";
 import RazaInfo from "./components/RazaInfo";
 import ClaseInfo from "./components/ClaseInfo";
 import NacionalidadInfo from "./components/NacionalidadInfo";
@@ -42,12 +43,18 @@ function App() {
   const handleComboChange = () => {
     if (mostrarLogo) setMostrarLogo(false);
   };
-  type FichaTab = "generador" | "bonificaciones" | "detalles" | "strom";
+  type FichaTab =
+    | "generador"
+    | "bonificaciones"
+    | "detalles"
+    | "strom"
+    | "chatlocal";
   const [activeTab, setActiveTab] = useState<FichaTab>("generador");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const fichaTabs: Array<{ key: FichaTab; label: string }> = [
     { key: "generador", label: "GENERADOR" },
     { key: "bonificaciones", label: "LISTA DE EXITOS" },
+    { key: "chatlocal", label: "CHAT LOCAL" },
     { key: "strom", label: "STROM" },
     { key: "detalles", label: "COMPENDIO" },
   ];
@@ -426,6 +433,8 @@ function App() {
       ? "Generador de Fichas"
       : activeTab === "bonificaciones"
         ? "Lista de Exitos"
+        : activeTab === "chatlocal"
+          ? "Chat local con Prompt API"
         : activeTab === "strom"
           ? "STROM"
           : "Compendio";
@@ -1239,6 +1248,8 @@ function App() {
         isActive={activeTab === "bonificaciones"}
         emptyMessage="Aún no hay personajes en la lista de éxitos."
       />
+
+      <PromptApiChatSection isActive={activeTab === "chatlocal"} />
 
       <CompendioSection isActive={activeTab === "detalles"} />
       <footer className="app-footer">
