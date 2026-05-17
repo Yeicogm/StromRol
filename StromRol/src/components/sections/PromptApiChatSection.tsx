@@ -69,18 +69,12 @@ function getLegacyPromptAiApi(): LegacyPromptAiApi | null {
 
 function getLanguageModelApi(): LanguageModelApi | null {
   const lm = (window as Window & { LanguageModel?: unknown }).LanguageModel;
-  if (
-    !lm ||
-    (typeof lm !== "object" && typeof lm !== "function")
-  ) {
+  if (!lm || (typeof lm !== "object" && typeof lm !== "function")) {
     return null;
   }
 
   const maybeApi = lm as Partial<LanguageModelApi>;
-  if (
-    typeof maybeApi.availability === "function" &&
-    typeof maybeApi.create === "function"
-  ) {
+  if (typeof maybeApi.availability === "function" && typeof maybeApi.create === "function") {
     return maybeApi as LanguageModelApi;
   }
 
@@ -109,17 +103,11 @@ function getPromptProvider(): PromptProvider | null {
   return null;
 }
 
-const INITIAL_MESSAGE =
-  "Hola. Este chat intenta usar el modelo local del navegador con Prompt API. " +
-  "Primero revisa disponibilidad y luego envía un prompt.";
+const INITIAL_MESSAGE = "";
 
-export default function PromptApiChatSection({
-  isActive,
-}: PromptApiChatSectionProps) {
+export default function PromptApiChatSection({ isActive }: PromptApiChatSectionProps) {
   const [availability, setAvailability] = useState<string>("unknown");
-  const [statusText, setStatusText] = useState<string>(
-    "Sin comprobar disponibilidad.",
-  );
+  const [statusText, setStatusText] = useState<string>("Sin comprobar disponibilidad.");
   const [loadingAvailability, setLoadingAvailability] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");
   const [isSending, setIsSending] = useState<boolean>(false);
@@ -130,6 +118,7 @@ export default function PromptApiChatSection({
   const nextIdRef = useRef<number>(2);
 
   const provider = useMemo(() => getPromptProvider(), []);
+  const canShowChat = availability === "available";
 
   useEffect(() => {
     return () => {
@@ -146,9 +135,7 @@ export default function PromptApiChatSection({
   const checkAvailability = async () => {
     if (!provider) {
       setAvailability("not-supported");
-      setStatusText(
-        "Prompt API no existe en este navegador. Usa fallback en servidor.",
-      );
+      setStatusText("Prompt API no existe en este navegador. Usa fallback en servidor.");
       return;
     }
 
@@ -165,15 +152,11 @@ export default function PromptApiChatSection({
           `Estado ${state}. Puede requerir descarga inicial del modelo local antes de responder.`,
         );
       } else {
-        setStatusText(
-          `Estado detectado: ${state}. Si no es 'readily', usa fallback en servidor.`,
-        );
+        setStatusText(`Estado detectado: ${state}. Si no es 'readily', usa fallback en servidor.`);
       }
     } catch (error) {
       setAvailability("error");
-      setStatusText(
-        `No se pudo consultar disponibilidad: ${String(error)}. Usa fallback en servidor.`,
-      );
+      setStatusText(`No se pudo consultar disponibilidad: ${String(error)}. Usa fallback en servidor.`);
     } finally {
       setLoadingAvailability(false);
     }
@@ -183,10 +166,7 @@ export default function PromptApiChatSection({
     const texto = input.trim();
     if (!texto || isSending) return;
 
-    setMessages((prev) => [
-      ...prev,
-      { id: nextIdRef.current++, role: "user", content: texto },
-    ]);
+    setMessages((prev) => [...prev, { id: nextIdRef.current++, role: "user", content: texto }]);
     setInput("");
 
     if (!provider) {
@@ -195,8 +175,7 @@ export default function PromptApiChatSection({
         {
           id: nextIdRef.current++,
           role: "assistant",
-          content:
-            "Prompt API no está soportada aquí. Fallback recomendado: tu endpoint de servidor.",
+          content: "Prompt API no está soportada aquí. Fallback recomendado: tu endpoint de servidor.",
         },
       ]);
       return;
@@ -207,19 +186,13 @@ export default function PromptApiChatSection({
       const state = await provider.availability();
       setAvailability(state);
 
-      if (
-        state !== "readily" &&
-        state !== "available" &&
-        state !== "downloadable" &&
-        state !== "downloading"
-      ) {
+      if (state !== "available" && state !== "downloadable" && state !== "downloading") {
         setMessages((prev) => [
           ...prev,
           {
             id: nextIdRef.current++,
             role: "assistant",
-            content:
-              `Prompt API devuelve '${state}'. No hay sesión local lista; usa fallback en servidor.`,
+            content: `Prompt API devuelve '${state}'. No hay sesión local lista; usa fallback en servidor.`,
           },
         ]);
         return;
@@ -231,13 +204,8 @@ export default function PromptApiChatSection({
       }
 
       const output = await sessionRef.current.prompt(texto);
-      setMessages((prev) => [
-        ...prev,
-        { id: nextIdRef.current++, role: "assistant", content: output },
-      ]);
-      setStatusText(
-        `Sesión local activa en este navegador (${provider.providerName}).`,
-      );
+      setMessages((prev) => [...prev, { id: nextIdRef.current++, role: "assistant", content: output }]);
+      setStatusText(`Sesión local activa en este navegador (${provider.providerName}).`);
     } catch (error) {
       setMessages((prev) => [
         ...prev,
@@ -258,11 +226,6 @@ export default function PromptApiChatSection({
     <section className="prompt-chat-section" aria-label="Chat local Prompt API">
       <div className="prompt-chat-card">
         <h3 className="prompt-chat-title">Prompt API (Chrome/Edge)</h3>
-        <p className="prompt-chat-subtitle">
-          Detecta disponibilidad con <code>LanguageModel.availability()</code> (o
-          <code>ai.canCreateTextSession()</code> en variantes) y crea sesión
-          local cuando esté disponible.
-        </p>
 
         <div className="prompt-chat-controls">
           <button
@@ -279,67 +242,39 @@ export default function PromptApiChatSection({
         </div>
         <p className="prompt-chat-help">{statusText}</p>
 
-        <div className="prompt-chat-window" aria-live="polite">
-          {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className={`prompt-chat-bubble prompt-chat-bubble--${msg.role}`}
-            >
-              <strong>{msg.role === "user" ? "Tú" : "Modelo local"}:</strong>{" "}
-              {msg.content}
+        {canShowChat ? (
+          <>
+            <div className="prompt-chat-window" aria-live="polite">
+              {messages.map((msg) => (
+                <div key={msg.id} className={`prompt-chat-bubble prompt-chat-bubble--${msg.role}`}>
+                  <strong>{msg.role === "user" ? "Tú" : "Modelo local"}:</strong> {msg.content}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="prompt-chat-input-row">
-          <textarea
-            className="prompt-chat-input"
-            rows={3}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Escribe un prompt, por ejemplo: Resume esta página en 3 viñetas"
-          />
-          <button
-            type="button"
-            className="button prompt-chat-btn"
-            onClick={enviarPrompt}
-            disabled={isSending || input.trim().length === 0}
-          >
-            {isSending ? "Enviando..." : "Enviar"}
-          </button>
-        </div>
-
-        <pre className="prompt-chat-snippet">
-{`if (window.LanguageModel) {
-  const opts = {
-    expectedInputs: [{ type: 'text', languages: ['es'] }],
-    expectedOutputs: [{ type: 'text', languages: ['es'] }],
-  };
-  const state = await LanguageModel.availability(opts);
-  if (state === 'available' || state === 'downloadable') {
-    const session = await LanguageModel.create(opts);
-    const out = await session.prompt('Resume esta pagina en 3 vinetas');
-    console.log(out);
-  }
-} else if (window.ai) {
-  if (await ai.canCreateTextSession() === 'readily') {
-    const session = await ai.createTextSession();
-    const out = await session.prompt('Resume esta pagina en 3 vinetas');
-    console.log(out);
-  }
-} else {
-  // fallback a tu API en servidor
-}
-
-// Variante minima original:
-if (await ai.canCreateTextSession() === 'readily') {
-  const session = await ai.createTextSession();
-  const out = await session.prompt('Resume esta pagina en 3 vinetas');
-  console.log(out);
-} else {
-  // fallback a tu API en servidor
-}`}
-        </pre>
+            <div className="prompt-chat-input-row">
+              <textarea
+                className="prompt-chat-input"
+                rows={3}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Escribe un prompt, por ejemplo: Resume esta página en 3 viñetas"
+              />
+              <button
+                type="button"
+                className="button prompt-chat-btn"
+                onClick={enviarPrompt}
+                disabled={isSending || input.trim().length === 0}
+              >
+                {isSending ? "Enviando..." : "Enviar"}
+              </button>
+            </div>
+          </>
+        ) : (
+          <p className="prompt-chat-help">
+            El chat se habilita cuando el estado del modelo pase a <b>available</b>.
+          </p>
+        )}
       </div>
     </section>
   );

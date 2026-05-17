@@ -131,11 +131,7 @@ body {
   /* usar imagen existente en public/ como mosaico */
   background-image:
     url("/dadoFondo_750x750.png"),
-    linear-gradient(
-      90deg,
-      var(--background-color) 20%,
-      var(--secondary-color) 100%
-    );
+    linear-gradient(90deg, var(--background-color) 20%, var(--secondary-color) 100%);
   background-repeat: repeat, no-repeat;
   background-size:
     220px auto,
@@ -154,11 +150,7 @@ body {
 }
 
 .header {
-  background: linear-gradient(
-    90deg,
-    var(--primary-color) 70%,
-    var(--accent-color) 100%
-  );
+  background: linear-gradient(90deg, var(--primary-color) 70%, var(--accent-color) 100%);
   color: #fff;
   box-shadow: 0 2px 8px rgba(76, 81, 109, 0.08);
 }

@@ -10,9 +10,7 @@ import RazaInfo from "./components/RazaInfo";
 import ClaseInfo from "./components/ClaseInfo";
 import NacionalidadInfo from "./components/NacionalidadInfo";
 import OrigenInfo from "./components/OrigenInfo";
-import ResultadoHabilidades, {
-  type HabilidadesResultado,
-} from "./components/ResultadoHabilidades";
+import ResultadoHabilidades, { type HabilidadesResultado } from "./components/ResultadoHabilidades";
 import {
   calcularCaracteristicasFinales,
   obtenerLimitacionesClase,
@@ -26,10 +24,7 @@ import type { Nacionalidad } from "./interfaces/Nacionalidad";
 import type { Origen } from "./interfaces/Origen";
 import type { Raza } from "./interfaces/RazasInterface";
 import type { Clase } from "./interfaces/ClasesInterface";
-import type {
-  Caracteristicas,
-  NombreCaracteristica,
-} from "./interfaces/Caracteristicas";
+import type { Caracteristicas, NombreCaracteristica } from "./interfaces/Caracteristicas";
 
 function App() {
   // Estado para los valores de los inputs numéricos de los combos
@@ -43,12 +38,7 @@ function App() {
   const handleComboChange = () => {
     if (mostrarLogo) setMostrarLogo(false);
   };
-  type FichaTab =
-    | "generador"
-    | "bonificaciones"
-    | "detalles"
-    | "strom"
-    | "chatlocal";
+  type FichaTab = "generador" | "bonificaciones" | "detalles" | "strom" | "chatlocal";
   const [activeTab, setActiveTab] = useState<FichaTab>("generador");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const fichaTabs: Array<{ key: FichaTab; label: string }> = [
@@ -78,23 +68,17 @@ function App() {
     };
   }, []);
   // Estado para mostrar el resultado del cálculo de habilidades
-  const [resultadoHabilidades, setResultadoHabilidades] =
-    useState<HabilidadesResultado | null>(null);
+  const [resultadoHabilidades, setResultadoHabilidades] = useState<HabilidadesResultado | null>(null);
   const [razas, setRazas] = useState<Raza[]>([]);
   const [clases, setClases] = useState<Clase[]>([]);
   const [nacionalidades, setNacionalidades] = useState<Nacionalidad[]>([]);
   const [origenes, setOrigenes] = useState<Origen[]>([]);
   // Estado para los orígenes filtrados según nacionalidad
   const [origenesFiltrados, setOrigenesFiltrados] = useState<Origen[]>([]);
-  const [origenSeleccionado, setOrigenSeleccionado] = useState<Origen | null>(
-    null,
-  );
+  const [origenSeleccionado, setOrigenSeleccionado] = useState<Origen | null>(null);
   const [razaSeleccionada, setRazaSeleccionada] = useState<Raza | null>(null);
-  const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(
-    null,
-  );
-  const [nacionalidadSeleccionada, setNacionalidadSeleccionada] =
-    useState<Nacionalidad | null>(null);
+  const [claseSeleccionada, setClaseSeleccionada] = useState<Clase | null>(null);
+  const [nacionalidadSeleccionada, setNacionalidadSeleccionada] = useState<Nacionalidad | null>(null);
   // Filtrar orígenes según la nacionalidad seleccionada
   useEffect(() => {
     if (!nacionalidadSeleccionada) {
@@ -107,9 +91,7 @@ function App() {
       origenesPermitidos = nacionalidadSeleccionada.origen_social.map((o) => {
         // Ejemplo: "01-50: Noble" => "Noble"
         const partes = o.split(":");
-        return partes.length > 1
-          ? partes[1].trim().toUpperCase()
-          : o.trim().toUpperCase();
+        return partes.length > 1 ? partes[1].trim().toUpperCase() : o.trim().toUpperCase();
       });
     } else if (typeof nacionalidadSeleccionada.origen_social === "string") {
       // Si es string, puede ser una tabla especial, mostrar todos
@@ -123,29 +105,19 @@ function App() {
     setOrigenesFiltrados(filtrados);
   }, [nacionalidadSeleccionada, origenes]);
   const [resultado, setResultado] = useState<Caracteristicas | null>(null);
-  const [desgloseDados, setDesgloseDados] = useState<Record<string, string>>(
-    {},
-  );
+  const [desgloseDados, setDesgloseDados] = useState<Record<string, string>>({});
   const [desgloseDadosEstructurado, setDesgloseDadosEstructurado] = useState<
-    Record<
-      string,
-      { raza?: string; clase?: string; nacionalidad?: string; total?: string }
-    >
+    Record<string, { raza?: string; clase?: string; nacionalidad?: string; total?: string }>
   >({});
   // Estado para los resultados de las tiradas
   const [tiradas, setTiradas] = useState<Record<string, string>>({});
   // Estado para el checkbox "Dados min. 2"
   const [dadosMin2, setDadosMin2] = useState<boolean>(true);
   // Estado para las limitaciones de la clase actual
-  const [limitaciones, setLimitaciones] = useState<LimitacionCaracteristica[]>(
-    [],
-  );
+  const [limitaciones, setLimitaciones] = useState<LimitacionCaracteristica[]>([]);
 
   // Función para manejar cambios en inputs con validación de límites
-  const manejarCambioCaracteristica = (
-    caracteristica: string,
-    valor: string,
-  ) => {
+  const manejarCambioCaracteristica = (caracteristica: string, valor: string) => {
     const valorNumerico = parseInt(valor, 10);
 
     // Si es un número válido, validar límites
@@ -196,10 +168,7 @@ function App() {
   };
 
   const puedeTirarCaracteristica = (caracteristica: string): boolean =>
-    Boolean(
-      nacionalidadSeleccionada &&
-      desgloseDadosEstructurado[caracteristica]?.total?.trim(),
-    );
+    Boolean(nacionalidadSeleccionada && desgloseDadosEstructurado[caracteristica]?.total?.trim());
 
   // Genera tiradas aleatorias para cada característica
   const generarTiradasAleatorias = () => {
@@ -220,14 +189,8 @@ function App() {
 
       // Igual que en la tirada individual: priorizar TOTAL estructurado.
       let formulaToUse: string | undefined;
-      if (
-        desgloseDadosEstructurado[car] &&
-        desgloseDadosEstructurado[car].total
-      ) {
-        formulaToUse = desgloseDadosEstructurado[car].total.replace(
-          /\s*ℹ$/u,
-          "",
-        );
+      if (desgloseDadosEstructurado[car] && desgloseDadosEstructurado[car].total) {
+        formulaToUse = desgloseDadosEstructurado[car].total.replace(/\s*ℹ$/u, "");
       } else if (typeof dado === "string") {
         formulaToUse = dado;
       } else if (desgloseDados[car]) {
@@ -240,11 +203,7 @@ function App() {
         let valor = tirarDado(formulaToUse);
         // Validar límites si existen
         if (limitaciones.length > 0) {
-          const validacion = validarLimitesCaracteristica(
-            car as NombreCaracteristica,
-            valor,
-            limitaciones,
-          );
+          const validacion = validarLimitesCaracteristica(car as NombreCaracteristica, valor, limitaciones);
           if (!validacion.valido && validacion.valorCorregido !== undefined) {
             valor = validacion.valorCorregido;
           }
@@ -271,9 +230,7 @@ function App() {
     const clasesAA = ["ARQUERO", "CASACA AZUL", "ILMIONARIO", "GUARDABOSQUES"];
     if (
       claseSeleccionada &&
-      clasesAA.some(
-        (c) => claseSeleccionada.nombre.toUpperCase() === c.toUpperCase(),
-      )
+      clasesAA.some((c) => claseSeleccionada.nombre.toUpperCase() === c.toUpperCase())
     ) {
       if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
       else if (sumaAA >= 25 && sumaAA <= 40) bonusAA = "+1D4";
@@ -344,25 +301,16 @@ function App() {
         claseSeleccionada
           ? {
               ...claseSeleccionada,
-              variacion_caracteristicas: Array.isArray(
-                claseSeleccionada.variacion_caracteristicas,
-              )
+              variacion_caracteristicas: Array.isArray(claseSeleccionada.variacion_caracteristicas)
                 ? claseSeleccionada.variacion_caracteristicas
-                : typeof claseSeleccionada.variacion_caracteristicas ===
-                    "string"
+                : typeof claseSeleccionada.variacion_caracteristicas === "string"
                   ? [claseSeleccionada.variacion_caracteristicas]
                   : undefined,
             }
           : undefined,
       );
-      if (
-        nacionalidadSeleccionada &&
-        nacionalidadSeleccionada.variacion_caracteristicas
-      ) {
-        resultadoBase = aplicarVariaciones(
-          resultadoBase,
-          nacionalidadSeleccionada.variacion_caracteristicas,
-        );
+      if (nacionalidadSeleccionada && nacionalidadSeleccionada.variacion_caracteristicas) {
+        resultadoBase = aplicarVariaciones(resultadoBase, nacionalidadSeleccionada.variacion_caracteristicas);
       }
       setResultado(resultadoBase);
       // Construir desglose por origen (raza, clase, nacionalidad)
@@ -370,17 +318,12 @@ function App() {
         razaSeleccionada,
         claseSeleccionada
           ? {
-              variacion_caracteristicas: Array.isArray(
-                claseSeleccionada.variacion_caracteristicas,
-              )
+              variacion_caracteristicas: Array.isArray(claseSeleccionada.variacion_caracteristicas)
                 ? claseSeleccionada.variacion_caracteristicas
-                : typeof claseSeleccionada.variacion_caracteristicas ===
-                    "string"
+                : typeof claseSeleccionada.variacion_caracteristicas === "string"
                   ? [claseSeleccionada.variacion_caracteristicas]
                   : undefined,
-              variacion_caracMINMAX: Array.isArray(
-                claseSeleccionada.variacion_caracMINMAX,
-              )
+              variacion_caracMINMAX: Array.isArray(claseSeleccionada.variacion_caracMINMAX)
                 ? claseSeleccionada.variacion_caracMINMAX
                 : undefined,
             }
@@ -394,17 +337,12 @@ function App() {
         razaSeleccionada,
         claseSeleccionada
           ? {
-              variacion_caracteristicas: Array.isArray(
-                claseSeleccionada.variacion_caracteristicas,
-              )
+              variacion_caracteristicas: Array.isArray(claseSeleccionada.variacion_caracteristicas)
                 ? claseSeleccionada.variacion_caracteristicas
-                : typeof claseSeleccionada.variacion_caracteristicas ===
-                    "string"
+                : typeof claseSeleccionada.variacion_caracteristicas === "string"
                   ? [claseSeleccionada.variacion_caracteristicas]
                   : undefined,
-              variacion_caracMINMAX: Array.isArray(
-                claseSeleccionada.variacion_caracMINMAX,
-              )
+              variacion_caracMINMAX: Array.isArray(claseSeleccionada.variacion_caracMINMAX)
                 ? claseSeleccionada.variacion_caracMINMAX
                 : undefined,
             }
@@ -435,17 +373,14 @@ function App() {
         ? "Lista de Exitos"
         : activeTab === "chatlocal"
           ? "Chat local con Prompt API"
-        : activeTab === "strom"
-          ? "STROM"
-          : "Compendio";
+          : activeTab === "strom"
+            ? "STROM"
+            : "Compendio";
 
   const fichaContainerClass =
-    activeTab === "detalles"
-      ? "ficha-container ficha-container--wide"
-      : "ficha-container";
+    activeTab === "detalles" ? "ficha-container ficha-container--wide" : "ficha-container";
 
-  const activeTabLabel =
-    fichaTabs.find((tab) => tab.key === activeTab)?.label ?? "SECCIONES";
+  const activeTabLabel = fichaTabs.find((tab) => tab.key === activeTab)?.label ?? "SECCIONES";
 
   return (
     <main className={fichaContainerClass}>
@@ -478,10 +413,7 @@ function App() {
             </span>
           </button>
 
-          <div
-            id="ficha-mobile-menu"
-            className={`ficha-mobile-menu ${isMobileMenuOpen ? "is-open" : ""}`}
-          >
+          <div id="ficha-mobile-menu" className={`ficha-mobile-menu ${isMobileMenuOpen ? "is-open" : ""}`}>
             {fichaTabs.map((tab) => (
               <button
                 key={tab.key}
@@ -502,16 +434,12 @@ function App() {
             src={activeTab === "strom" ? "/Foto1.JPG" : "/logo.webp"}
             alt="Logo"
             className={`logo-img${
-              activeTab === "bonificaciones" || activeTab === "detalles"
-                ? " logo-img--small"
-                : ""
+              activeTab === "bonificaciones" || activeTab === "detalles" ? " logo-img--small" : ""
             }${activeTab === "strom" ? " logo-img--strom" : ""}`}
           />
         </div>
       )}
-      {activeTab !== "detalles" && activeTab !== "strom" && (
-        <h2 className="ficha-title">{tituloSeccion}</h2>
-      )}
+      {activeTab !== "detalles" && activeTab !== "strom" && <h2 className="ficha-title">{tituloSeccion}</h2>}
 
       <GeneradorSection isActive={activeTab === "generador"}>
         <div className="ficha-select-group">
@@ -530,12 +458,7 @@ function App() {
                 handleComboChange();
                 setResultadoHabilidades(null);
                 setNacionalidadSeleccionada(null);
-                if (
-                  r &&
-                  ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                    r.nombre.toUpperCase(),
-                  )
-                ) {
+                if (r && ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(r.nombre.toUpperCase())) {
                   setClaseSeleccionada(null);
                 }
                 alert(`Raza aleatoria: ${r.nombre}`);
@@ -555,12 +478,7 @@ function App() {
                 setResultadoHabilidades(null); // Oculta resultados de habilidades
                 setNacionalidadSeleccionada(null); // Deselecciona nacionalidad al cambiar raza
                 setInputRaza(""); // Limpiar input asociado
-                if (
-                  r &&
-                  ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                    r.nombre.toUpperCase(),
-                  )
-                ) {
+                if (r && ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(r.nombre.toUpperCase())) {
                   setClaseSeleccionada(null);
                   setInputClase("");
                 }
@@ -643,9 +561,7 @@ function App() {
               }}
               disabled={Boolean(
                 razaSeleccionada &&
-                ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(
-                  razaSeleccionada.nombre.toUpperCase(),
-                ),
+                ["SELOROK", "DEMONIOS", "DEMONIO", "SELEROK"].includes(razaSeleccionada.nombre.toUpperCase()),
               )}
             >
               <option value="">Clase</option>
@@ -695,10 +611,7 @@ function App() {
                     break;
                   }
                   // Para rangos que incluyen 100 como "00"
-                  if (
-                    tirada === 100 &&
-                    (n.minimo === "00" || n.maximo === "00")
-                  ) {
+                  if (tirada === 100 && (n.minimo === "00" || n.maximo === "00")) {
                     resultado = n;
                     break;
                   }
@@ -709,9 +622,7 @@ function App() {
                   setResultadoHabilidades(null);
                   setOrigenSeleccionado(null);
                   handleComboChange();
-                  alert(
-                    `Tirada: ${tirada} → Nacionalidad: ${resultado.nombre}`,
-                  );
+                  alert(`Tirada: ${tirada} → Nacionalidad: ${resultado.nombre}`);
                 } else {
                   alert(`Tirada: ${tirada} → No se encontró nacionalidad.`);
                 }
@@ -725,9 +636,7 @@ function App() {
               title="Selecciona una nacionalidad"
               value={nacionalidadSeleccionada?.nombre || ""}
               onChange={(e) => {
-                const n = nacionalidades.find(
-                  (n) => n.nombre === e.target.value,
-                );
+                const n = nacionalidades.find((n) => n.nombre === e.target.value);
                 setNacionalidadSeleccionada(n || null);
                 setTiradas({}); // Limpiar tiradas al cambiar nacionalidad
                 setResultadoHabilidades(null); // Oculta resultados de habilidades
@@ -768,10 +677,7 @@ function App() {
                       resultado = n;
                       break;
                     }
-                    if (
-                      valor === 100 &&
-                      (n.minimo === "00" || n.maximo === "00")
-                    ) {
+                    if (valor === 100 && (n.minimo === "00" || n.maximo === "00")) {
                       resultado = n;
                       break;
                     }
@@ -805,9 +711,7 @@ function App() {
                 const tirada = Math.floor(Math.random() * 100) + 1;
                 const origenSocial = nacionalidadSeleccionada.origen_social;
                 if (!Array.isArray(origenSocial)) {
-                  alert(
-                    "La nacionalidad seleccionada no tiene tabla de origen social válida.",
-                  );
+                  alert("La nacionalidad seleccionada no tiene tabla de origen social válida.");
                   return;
                 }
                 let origenNombre = null;
@@ -863,9 +767,7 @@ function App() {
               title="Selecciona un origen"
               value={origenSeleccionado?.nombre || ""}
               onChange={(e) => {
-                const o = origenesFiltrados.find(
-                  (o) => o.nombre === e.target.value,
-                );
+                const o = origenesFiltrados.find((o) => o.nombre === e.target.value);
                 setOrigenSeleccionado(o || null);
                 setTiradas({}); // Limpiar tiradas al cambiar origen
                 setResultadoHabilidades(null); // Oculta resultados de habilidades
@@ -932,9 +834,7 @@ function App() {
                 }}
                 disabled={!nacionalidadSeleccionada}
               />
-              <span className="tooltip-text">
-                Introduce un número entre 1 y 100 para seleccionar origen
-              </span>
+              <span className="tooltip-text">Introduce un número entre 1 y 100 para seleccionar origen</span>
             </div>
           </div>
         </div>
@@ -942,9 +842,7 @@ function App() {
         {/* Dados que debe tirar el jugador - Debajo de los combos */}
         {resultado && (
           <div className="ficha-resultado">
-            <h3 className="ficha-resultado-title">
-              Dados que debe tirar el jugador:
-            </h3>
+            <h3 className="ficha-resultado-title">Dados que debe tirar el jugador:</h3>
             <ul className="ficha-resultado-list">
               {Object.entries(resultado).map(([car, dado]) => (
                 <li key={car} className="ficha-resultado-item">
@@ -953,31 +851,24 @@ function App() {
                     {desgloseDadosEstructurado[car] ? (
                       <>
                         {desgloseDadosEstructurado[car].raza && (
-                          <span className="dado-raza">
-                            {desgloseDadosEstructurado[car].raza}
-                          </span>
+                          <span className="dado-raza">{desgloseDadosEstructurado[car].raza}</span>
                         )}
                         {desgloseDadosEstructurado[car].clase && (
                           <>
                             <span className="dado-sep"> + </span>
-                            <span className="dado-clase">
-                              {desgloseDadosEstructurado[car].clase}
-                            </span>
+                            <span className="dado-clase">{desgloseDadosEstructurado[car].clase}</span>
                           </>
                         )}
                         {desgloseDadosEstructurado[car].nacionalidad && (
                           <>
                             <span className="dado-sep"> + </span>
-                            <span className="dado-nacion">
-                              {desgloseDadosEstructurado[car].nacionalidad}
-                            </span>
+                            <span className="dado-nacion">{desgloseDadosEstructurado[car].nacionalidad}</span>
                           </>
                         )}
                         {desgloseDadosEstructurado[car].total && (
                           <span className="dado-total">
                             {" "}
-                            &nbsp;(TOTAL: {desgloseDadosEstructurado[car].total}
-                            )
+                            &nbsp;(TOTAL: {desgloseDadosEstructurado[car].total})
                           </span>
                         )}
                       </>
@@ -1006,18 +897,11 @@ function App() {
                       if (!puedeTirarCaracteristica(car)) return;
                       // Determinar fórmula: preferir TOTAL del desglose estructurado si existe
                       const totalFromEstructurado =
-                        desgloseDadosEstructurado[car] &&
-                        desgloseDadosEstructurado[car].total
-                          ? desgloseDadosEstructurado[car].total.replace(
-                              /\s*ℹ$/u,
-                              "",
-                            )
+                        desgloseDadosEstructurado[car] && desgloseDadosEstructurado[car].total
+                          ? desgloseDadosEstructurado[car].total.replace(/\s*ℹ$/u, "")
                           : undefined;
                       const formula =
-                        totalFromEstructurado ??
-                        (typeof dado === "string"
-                          ? dado
-                          : desgloseDados[car] || "");
+                        totalFromEstructurado ?? (typeof dado === "string" ? dado : desgloseDados[car] || "");
 
                       let valor = 0;
                       try {
@@ -1032,10 +916,7 @@ function App() {
                           valor,
                           limitaciones,
                         );
-                        if (
-                          !validacion.valido &&
-                          validacion.valorCorregido !== undefined
-                        ) {
+                        if (!validacion.valido && validacion.valorCorregido !== undefined) {
                           valor = validacion.valorCorregido;
                         }
                       }
@@ -1092,10 +973,7 @@ function App() {
               <button
                 className="ficha-calcular-btn"
                 onClick={generarTiradasAleatorias}
-                disabled={
-                  !nacionalidadSeleccionada ||
-                  Object.keys(resultado || {}).length === 0
-                }
+                disabled={!nacionalidadSeleccionada || Object.keys(resultado || {}).length === 0}
                 aria-label="Generar tiradas aleatorias"
               >
                 Generar tiradas aleatorias
@@ -1122,19 +1000,10 @@ function App() {
                   const destreza = parseInt(tiradas["Destreza"] || "0", 10);
                   const sumaAA = fuerza + destreza;
                   let bonusAA = "NO TIENE";
-                  const clasesAA = [
-                    "ARQUERO",
-                    "CASACA AZUL",
-                    "ILMIONARIO",
-                    "GUARDABOSQUES",
-                  ];
+                  const clasesAA = ["ARQUERO", "CASACA AZUL", "ILMIONARIO", "GUARDABOSQUES"];
                   if (
                     claseSeleccionada &&
-                    clasesAA.some(
-                      (c) =>
-                        claseSeleccionada.nombre.toUpperCase() ===
-                        c.toUpperCase(),
-                    )
+                    clasesAA.some((c) => claseSeleccionada.nombre.toUpperCase() === c.toUpperCase())
                   ) {
                     if (sumaAA >= 0 && sumaAA <= 24) bonusAA = "Nada";
                     else if (sumaAA >= 25 && sumaAA <= 40) bonusAA = "+1D4";
@@ -1159,8 +1028,7 @@ function App() {
                   const percepcion = int + destreza + 10;
 
                   // COMUNICACIÓN
-                  const comunicacion =
-                    Math.floor(con / 2) + int + pod + car - 5;
+                  const comunicacion = Math.floor(con / 2) + int + pod + car - 5;
 
                   // AGILIDAD
                   const agilidad = destreza * 2 + int + pod - tam - 5;
@@ -1169,8 +1037,7 @@ function App() {
                   const manipulacion = int * 2 + destreza + car - 15;
 
                   // DISCRECION
-                  const discrecion =
-                    int + Math.floor(fuerza / 2) + pod + destreza - tam - 5;
+                  const discrecion = int + Math.floor(fuerza / 2) + pod + destreza - tam - 5;
 
                   // SALUD MENTAL
                   const saludMental = pod + car + int + 40 - con;
@@ -1224,9 +1091,7 @@ function App() {
 
         {/* Información de la clase seleccionada */}
         {razaSeleccionada &&
-        ["SELOROK", "DEMONIO", "SELOROKS", "DEMONIOS"].includes(
-          razaSeleccionada.nombre.toUpperCase(),
-        )
+        ["SELOROK", "DEMONIO", "SELOROKS", "DEMONIOS"].includes(razaSeleccionada.nombre.toUpperCase())
           ? null
           : claseSeleccionada && <ClaseInfo clase={claseSeleccionada} />}
 
@@ -1234,9 +1099,7 @@ function App() {
         {razaSeleccionada && <RazaInfo raza={razaSeleccionada} />}
 
         {/* Información de la nacionalidad seleccionada */}
-        {nacionalidadSeleccionada && (
-          <NacionalidadInfo nacionalidad={nacionalidadSeleccionada} />
-        )}
+        {nacionalidadSeleccionada && <NacionalidadInfo nacionalidad={nacionalidadSeleccionada} />}
 
         {/* Información del origen seleccionado */}
         {origenSeleccionado && <OrigenInfo origen={origenSeleccionado} />}
