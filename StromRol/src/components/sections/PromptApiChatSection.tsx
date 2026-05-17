@@ -24,9 +24,16 @@ type LanguageExpectation = {
   languages: string[];
 };
 
+type PromptMessage = {
+  role: "system" | "user" | "assistant";
+  content: string;
+  prefix?: boolean;
+};
+
 type LanguageModelRequestOptions = {
   expectedInputs?: LanguageExpectation[];
   expectedOutputs?: LanguageExpectation[];
+  initialPrompts?: PromptMessage[];
 };
 
 type LegacyPromptAiApi = {
@@ -49,6 +56,21 @@ const PROMPT_LANGUAGE_OPTIONS: LanguageModelRequestOptions = {
   expectedInputs: [{ type: "text", languages: ["es"] }],
   expectedOutputs: [{ type: "text", languages: ["es"] }],
 };
+
+const INITIAL_PROMPTS: PromptMessage[] = [
+  {
+    role: "system",
+    content:
+      "Eres un asistente local del navegador especializado en buscar información " +
+      "del compendio según la pregunta del usuario. Responde en español con claridad, " +
+      "brevedad y utilidad. Si el usuario pide un resumen, ofrécelo en viñetas. " +
+      "El compendio en texto está organizado en: '/compendio-texto/secciones/README.md' " +
+      "(índice) y '/compendio-texto/secciones/*.md' (contenido por secciones). " +
+      "Cuando el usuario pida buscar en el compendio, indícale primero la sección " +
+      "más probable según el índice y trabaja con el texto de esa sección. " +
+      "Prioriza responder con lo encontrado en el compendio y avisa cuando falte contexto.",
+  },
+];
 
 function getLegacyPromptAiApi(): LegacyPromptAiApi | null {
   const ai = (window as Window & { ai?: unknown }).ai;
@@ -87,7 +109,11 @@ function getPromptProvider(): PromptProvider | null {
     return {
       providerName: "LanguageModel",
       availability: () => languageModel.availability(PROMPT_LANGUAGE_OPTIONS),
-      createSession: () => languageModel.create(PROMPT_LANGUAGE_OPTIONS),
+      createSession: () =>
+        languageModel.create({
+          ...PROMPT_LANGUAGE_OPTIONS,
+          initialPrompts: INITIAL_PROMPTS,
+        }),
     };
   }
 
@@ -103,7 +129,9 @@ function getPromptProvider(): PromptProvider | null {
   return null;
 }
 
-const INITIAL_MESSAGE = "";
+const INITIAL_MESSAGE =
+  "Este chat usa un prompt inicial con rutas del compendio en texto: " +
+  "/compendio-texto/secciones/README.md y /compendio-texto/secciones/*.md.";
 
 export default function PromptApiChatSection({ isActive }: PromptApiChatSectionProps) {
   const [availability, setAvailability] = useState<string>("unknown");
@@ -225,7 +253,7 @@ export default function PromptApiChatSection({ isActive }: PromptApiChatSectionP
   return (
     <section className="prompt-chat-section" aria-label="Chat local Prompt API">
       <div className="prompt-chat-card">
-        <h3 className="prompt-chat-title">Prompt API (Chrome/Edge)</h3>
+        <h3 className="prompt-chat-title">Chat</h3>
 
         <div className="prompt-chat-controls">
           <button
