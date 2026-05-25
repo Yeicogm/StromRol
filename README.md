@@ -16,8 +16,9 @@ Strom es un juego de fantasia creado en 1996 por un grupo de chavales de Marbell
   - `STROM` (información histórica / contextual)
   - `COMPENDIO` (documentación y detalles de reglas)
 - Selección y cálculo automático:
-  - Razas y clases cargadas desde JSON: `Razas.json`, `Clases.json`.
-  - Nacionalidades y orígenes cargados desde JSON: `Nacionalidad.json`, `Origen.json`.
+   - Razas y clases cargadas desde JSON: `Razas.json`, `Clases.json`.
+   - Nacionalidades y orígenes cargados desde JSON: `Nacionalidad.json`, `Origen.json`.
+   - Éxitos cargados desde JSON: `Exitos.json`.
   - Filtros de origen según nacionalidad seleccionada.
   - Limitaciones de características específicas por clase.
 - Generación aleatoria con botones de "🎲" para:
@@ -38,15 +39,18 @@ Strom es un juego de fantasia creado en 1996 por un grupo de chavales de Marbell
 - `StromRol/src/components/` Componentes UI reutilizables
 - `StromRol/src/logic/` Lógica de cálculo de estadísticas y reglas de juego
 - `StromRol/src/interfaces/` Tipos TypeScript para datos de razas, clases, nacionalidades, orígenes, habilidades
-- `public/` Recursos estáticos, JSON de datos y assets
+- `StromRol/src/Info/` Datos adicionales (hechizos, etc.)
+- `StromRol/public/` Recursos estáticos, JSON de datos y assets
 - `docs/` Build de producción para GitHub Pages
 
 ## 🛠️ Comandos principales
 
+Todos los comandos se ejecutan dentro de la carpeta `StromRol/`:
+
 - `npm install` : instalar dependencias
 - `npm run dev` : servidor de desarrollo
-- `npm run build` : generar build de producción (output en `docs/` para deployment).
-- `npm run lint` / `npm run format` : calidad de código (según configuración local)
+- `npm run build` : generar build de producción (output en `docs/` para deployment)
+- `npm run lint` : calidad de código
 
 ## 📦 Despliegue en GitHub Pages
 
