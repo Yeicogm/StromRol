@@ -56,23 +56,10 @@ export default function HechizoDetalle({ spell }: HechizoDetalleProps) {
               {spell.name}
             </Typography>
             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 1 }}>
-              <Chip
-                label={`Nivel ${spell.level}`}
-                size="small"
-                color="primary"
-              />
+              <Chip label={`Nivel ${spell.level}`} size="small" color="primary" />
               <Chip label={spell.school} size="small" variant="outlined" />
-              <Chip
-                label={spell.caster === "mago" ? "Mago" : "Hechicero"}
-                size="small"
-                variant="outlined"
-              />
-              <Chip
-                label={spell.source}
-                size="small"
-                variant="outlined"
-                color="secondary"
-              />
+              <Chip label={spell.caster === "mago" ? "Mago" : "Hechicero"} size="small" variant="outlined" />
+              <Chip label={spell.source} size="small" variant="outlined" color="secondary" />
             </Stack>
           </Box>
 
@@ -88,9 +75,7 @@ export default function HechizoDetalle({ spell }: HechizoDetalleProps) {
                   Ninguno
                 </Typography>
               ) : (
-                componentes.map((c) => (
-                  <Chip key={c.label} label={c.label} size="small" />
-                ))
+                componentes.map((c) => <Chip key={c.label} label={c.label} size="small" />)
               )}
             </Stack>
           </Box>
@@ -114,10 +99,7 @@ export default function HechizoDetalle({ spell }: HechizoDetalleProps) {
             <Typography variant="overline" color="text.secondary">
               Descripción
             </Typography>
-            <Typography
-              variant="body1"
-              sx={{ whiteSpace: "pre-line", mt: 0.5 }}
-            >
+            <Typography variant="body1" sx={{ whiteSpace: "pre-line", mt: 0.5 }}>
               {spell.description}
             </Typography>
           </Box>

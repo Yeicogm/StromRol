@@ -26,34 +26,16 @@ export default function CompendioSection({ isActive }: CompendioSectionProps) {
         className="compendio-tabs"
         variant="fullWidth"
       >
-        <Tab
-          value="pdf"
-          icon={<PictureAsPdfIcon />}
-          iconPosition="start"
-          label="PDF — Compendio Strom"
-        />
-        <Tab
-          value="hechizos"
-          icon={<AutoStoriesIcon />}
-          iconPosition="start"
-          label="Hechizos por libro"
-        />
+        <Tab value="pdf" icon={<PictureAsPdfIcon />} iconPosition="start" label="PDF — Compendio Strom" />
+        <Tab value="hechizos" icon={<AutoStoriesIcon />} iconPosition="start" label="Hechizos por libro" />
       </Tabs>
 
       <Box className="compendio-tab-content">
         {view === "pdf" ? (
-          <iframe
-            src="/CompendioStrom.pdf"
-            title="Compendio StromRol"
-            className="compendio-iframe"
-          >
+          <iframe src="/CompendioStrom.pdf" title="Compendio StromRol" className="compendio-iframe">
             <div className="compendio-fallback">
               <p>Tu navegador no puede mostrar el PDF.</p>
-              <a
-                href="/CompendioStrom.pdf"
-                download
-                className="compendio-fallback-btn"
-              >
+              <a href="/CompendioStrom.pdf" download className="compendio-fallback-btn">
                 Descargar Compendio
               </a>
             </div>

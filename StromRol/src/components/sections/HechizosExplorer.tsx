@@ -135,11 +135,7 @@ export default function HechizosExplorer() {
   return (
     <Box className="hechizos-explorer">
       <Stack spacing={2}>
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={2}
-          className="hechizos-filtros"
-        >
+        <Stack direction={{ xs: "column", md: "row" }} spacing={2} className="hechizos-filtros">
           <TextField
             select
             fullWidth
@@ -160,9 +156,7 @@ export default function HechizosExplorer() {
             fullWidth
             label="Tipo de personaje"
             value={selectedCaster}
-            onChange={(e) =>
-              handleCasterChange(e.target.value as HechizoCaster | "")
-            }
+            onChange={(e) => handleCasterChange(e.target.value as HechizoCaster | "")}
           >
             <MenuItem value="">Todos</MenuItem>
             {(Object.keys(ETIQUETAS_CASTER) as HechizoCaster[]).map((c) => (
@@ -202,11 +196,7 @@ export default function HechizosExplorer() {
             ),
             endAdornment: searchTerm ? (
               <InputAdornment position="end">
-                <IconButton
-                  aria-label="Limpiar búsqueda"
-                  size="small"
-                  onClick={() => handleSearchChange("")}
-                >
+                <IconButton aria-label="Limpiar búsqueda" size="small" onClick={() => handleSearchChange("")}>
                   <ClearIcon fontSize="small" />
                 </IconButton>
               </InputAdornment>
@@ -214,11 +204,7 @@ export default function HechizosExplorer() {
           }}
         />
 
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={2}
-          className="hechizos-master-detail"
-        >
+        <Stack direction={{ xs: "column", md: "row" }} spacing={2} className="hechizos-master-detail">
           <Box className="hechizos-lista-wrapper">
             <List
               dense
@@ -247,9 +233,7 @@ export default function HechizosExplorer() {
                   >
                     <ListItemText
                       primary={s.name}
-                      secondary={`Nivel ${s.level} · ${s.school} · ${
-                        ETIQUETAS_CASTER[s.caster]
-                      }`}
+                      secondary={`Nivel ${s.level} · ${s.school} · ${ETIQUETAS_CASTER[s.caster]}`}
                     />
                   </ListItemButton>
                 ))
