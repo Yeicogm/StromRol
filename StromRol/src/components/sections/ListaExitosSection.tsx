@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import type {
-  ExitosData,
-  PersonajeExito,
-  PersonajeExitoInput,
-} from "../../interfaces/Exitos";
+import type { ExitosData, PersonajeExito, PersonajeExitoInput } from "../../interfaces/Exitos";
 
 type ListaExitosSectionProps = {
   isActive: boolean;
@@ -73,19 +69,15 @@ const construirPersonaje = (item: unknown, index: number): PersonajeExito => {
 
   return {
     jugador:
-      typeof personaje.jugador === "string" &&
-      personaje.jugador.trim().length > 0
+      typeof personaje.jugador === "string" && personaje.jugador.trim().length > 0
         ? personaje.jugador.trim()
         : `Jugador ${index + 1}`,
     nombrePersonaje:
-      typeof personaje.nombrePersonaje === "string" &&
-      personaje.nombrePersonaje.trim().length > 0
+      typeof personaje.nombrePersonaje === "string" && personaje.nombrePersonaje.trim().length > 0
         ? personaje.nombrePersonaje.trim()
         : `Personaje ${index + 1}`,
     raza:
-      typeof personaje.raza === "string" && personaje.raza.trim().length > 0
-        ? personaje.raza.trim()
-        : "-",
+      typeof personaje.raza === "string" && personaje.raza.trim().length > 0 ? personaje.raza.trim() : "-",
     clases: normalizarClases(personaje.clases),
     nivelGuerrero,
     nivelSemi,
@@ -96,10 +88,7 @@ const construirPersonaje = (item: unknown, index: number): PersonajeExito => {
   };
 };
 
-export default function ListaExitosSection({
-  isActive,
-  emptyMessage,
-}: ListaExitosSectionProps) {
+export default function ListaExitosSection({ isActive, emptyMessage }: ListaExitosSectionProps) {
   const [personajes, setPersonajes] = useState<PersonajeExito[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -115,9 +104,7 @@ export default function ListaExitosSection({
         }
 
         const data = (await response.json()) as ExitosData;
-        const personajesRaw = Array.isArray(data.personajes)
-          ? data.personajes
-          : [];
+        const personajesRaw = Array.isArray(data.personajes) ? data.personajes : [];
 
         const personajesNormalizados = personajesRaw
           .map((item, index) => construirPersonaje(item, index))
@@ -163,9 +150,7 @@ export default function ListaExitosSection({
 
   if (personajes.length === 0) {
     return (
-      <div className="ficha-tab-empty">
-        {emptyMessage ?? "No hay personajes en la lista de éxitos."}
-      </div>
+      <div className="ficha-tab-empty">{emptyMessage ?? "No hay personajes en la lista de éxitos."}</div>
     );
   }
 
@@ -190,15 +175,11 @@ export default function ListaExitosSection({
                 <span className="lista-exitos-podio-emoji">{medalEmoji}</span>
               </div>
               <p className="lista-exitos-podio-etiqueta">{etiquetaPuesto}</p>
-              <h3 className="lista-exitos-podio-nombre">
-                {personaje.nombrePersonaje}
-              </h3>
+              <h3 className="lista-exitos-podio-nombre">{personaje.nombrePersonaje}</h3>
               <p className="lista-exitos-podio-jugador">{personaje.jugador}</p>
               <div className="lista-exitos-podio-stats">
                 <span className="lista-exitos-podio-stat">
-                  <strong>
-                    {puntosFormatter.format(personaje.totalPuntos)}
-                  </strong>
+                  <strong>{puntosFormatter.format(personaje.totalPuntos)}</strong>
                   <small>pts</small>
                 </span>
                 <span className="lista-exitos-podio-separator">•</span>
@@ -231,20 +212,18 @@ export default function ListaExitosSection({
           </thead>
           <tbody>
             {personajes.map((personaje, index) => (
-              <tr
-                key={`${personaje.jugador}-${personaje.nombrePersonaje}-${index}`}
-              >
-                <td>{index + 1}</td>
-                <td>{personaje.jugador}</td>
-                <td>{personaje.nombrePersonaje}</td>
-                <td>{personaje.raza}</td>
-                <td>{personaje.clases.join(" / ") || "-"}</td>
-                <td>{puntosFormatter.format(personaje.totalPuntos)}</td>
-                <td>{personaje.nivelGuerrero}</td>
-                <td>{personaje.nivelSemi}</td>
-                <td>{personaje.nivelPicaro}</td>
-                <td>{personaje.nivelMago}</td>
-                <td>{personaje.totalNiveles}</td>
+              <tr key={`${personaje.jugador}-${personaje.nombrePersonaje}-${index}`}>
+                <td data-label="#">{index + 1}</td>
+                <td data-label="Jugador">{personaje.jugador}</td>
+                <td data-label="Nombre">{personaje.nombrePersonaje}</td>
+                <td data-label="Raza">{personaje.raza}</td>
+                <td data-label="Clases">{personaje.clases.join(" / ") || "-"}</td>
+                <td data-label="Total puntos">{puntosFormatter.format(personaje.totalPuntos)}</td>
+                <td data-label="N. Guerrero">{personaje.nivelGuerrero}</td>
+                <td data-label="N. Semi">{personaje.nivelSemi}</td>
+                <td data-label="N. Pícaro">{personaje.nivelPicaro}</td>
+                <td data-label="N. Mago">{personaje.nivelMago}</td>
+                <td data-label="Total niveles">{personaje.totalNiveles}</td>
               </tr>
             ))}
           </tbody>

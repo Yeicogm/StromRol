@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import {
   Alert,
   Box,
@@ -6,6 +6,10 @@ import {
   CardContent,
   Chip,
   CircularProgress,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
   List,
   ListItemButton,
   ListItemText,
@@ -14,6 +18,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   CODIGO_LIBRO_STROM,
   ETIQUETAS_CASTER,
@@ -69,6 +76,10 @@ function limpiarNombre(texto: string): string {
 }
 
 export default function HechizosExplorer() {
+  const theme = useTheme();
+  // En móvil el detalle se muestra en un diálogo a pantalla completa
+  // para no perder el contexto de la lista.
+  const esMovil = useMediaQuery(theme.breakpoints.down("md"));
   const [data, setData] = useState<HechizosDataV2 | null>(null);
   const [cargando, setCargando] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -320,6 +331,7 @@ export default function HechizosExplorer() {
           value={filtroTexto}
           onChange={(e) => setFiltroTexto(e.target.value)}
           size="small"
+          fullWidth
         />
         <TextField
           select
@@ -383,53 +395,53 @@ export default function HechizosExplorer() {
       <Box className="hechizos-master-detail" sx={{ display: "flex", gap: 2 }}>
         {/* Lista */}
         <Box className="hechizos-lista-wrapper">
-          <List className="hechizos-lista" dense subheader={<li />} sx={{ p: 0 }}>
-            {grupos.length === 0 ? (
-              <div className="hechizos-empty">
-                <Typography variant="body2">No hay hechizos que coincidan con los filtros.</Typography>
-              </div>
-            ) : (
-              grupos.map((grupo) => (
-                <li key={`${grupo.caster}-${grupo.nivel}`}>
-                  <ul style={{ padding: 0, margin: 0 }}>
-                    <ListSubheader className="hechizos-subheader" sx={{ lineHeight: "32px" }}>
-                      {ETIQUETAS_CASTER[grupo.caster]} · Nivel {grupo.nivel}
-                      <Typography component="span" variant="caption" sx={{ ml: 1, color: "text.secondary" }}>
-                        ({grupo.items.length})
-                      </Typography>
-                    </ListSubheader>
-                    {grupo.items.map((item, idx) => {
-                      const isSelected =
-                        seleccion?.caster === item.caster &&
-                        seleccion?.hechizo.nombre === item.hechizo.nombre &&
-                        seleccion?.hechizo.nivel === item.hechizo.nivel;
-                      const key = `${item.caster}-${item.hechizo.nivel}-${item.hechizo.nombre}-${idx}`;
-                      return (
-                        <ListItemButton key={key} selected={isSelected} onClick={() => setSeleccion(item)}>
-                          <ListItemText
-                            primary={limpiarNombre(item.hechizo.nombre)}
-                            secondary={tieneStats(item.hechizo) ? item.hechizo.escuela : "Sin estadísticas"}
-                            primaryTypographyProps={{ noWrap: true }}
-                            secondaryTypographyProps={{ noWrap: true }}
-                          />
-                        </ListItemButton>
-                      );
-                    })}
-                  </ul>
-                </li>
-              ))
-            )}
-          </List>
+          {grupos.length === 0 ? (
+            <div className="hechizos-empty">
+              <Typography variant="body2">No hay hechizos que coincidan con los filtros.</Typography>
+            </div>
+          ) : (
+            <List className="hechizos-lista" dense sx={{ p: 0 }}>
+              {grupos.map((grupo) => (
+                <Fragment key={`${grupo.caster}-${grupo.nivel}`}>
+                  <ListSubheader className="hechizos-subheader" sx={{ lineHeight: "32px" }}>
+                    {ETIQUETAS_CASTER[grupo.caster]} · Nivel {grupo.nivel}
+                    <Typography component="span" variant="caption" sx={{ ml: 1, color: "text.secondary" }}>
+                      ({grupo.items.length})
+                    </Typography>
+                  </ListSubheader>
+                  {grupo.items.map((item, idx) => {
+                    const isSelected =
+                      seleccion?.caster === item.caster &&
+                      seleccion?.hechizo.nombre === item.hechizo.nombre &&
+                      seleccion?.hechizo.nivel === item.hechizo.nivel;
+                    const key = `${item.caster}-${item.hechizo.nivel}-${item.hechizo.nombre}-${idx}`;
+                    return (
+                      <ListItemButton key={key} selected={isSelected} onClick={() => setSeleccion(item)}>
+                        <ListItemText
+                          primary={limpiarNombre(item.hechizo.nombre)}
+                          secondary={tieneStats(item.hechizo) ? item.hechizo.escuela : "Sin estadísticas"}
+                          primaryTypographyProps={{ noWrap: true }}
+                          secondaryTypographyProps={{ noWrap: true }}
+                        />
+                      </ListItemButton>
+                    );
+                  })}
+                </Fragment>
+              ))}
+            </List>
+          )}
         </Box>
 
         {/* Detalle */}
         <Box className="hechizos-detalle-wrapper">
-          {seleccion ? (
+          {seleccion && !esMovil ? (
             <DetalleHechizo item={seleccion} leyendaFuentes={data.leyenda_de_fuentes} />
           ) : (
             <div className="hechizos-empty">
               <Typography variant="body2">
-                Selecciona un hechizo de la lista para ver sus detalles.
+                {esMovil
+                  ? "Toca un hechizo de la lista para ver sus detalles."
+                  : "Selecciona un hechizo de la lista para ver sus detalles."}
               </Typography>
               <Typography variant="caption" sx={{ display: "block", mt: 1, color: "text.secondary" }}>
                 {listaCompleta.length.toLocaleString("es-ES")} hechizos disponibles en el compendio.
@@ -438,6 +450,31 @@ export default function HechizosExplorer() {
           )}
         </Box>
       </Box>
+
+      {/* Detalle en diálogo a pantalla completa (solo móvil) */}
+      <Dialog
+        fullScreen
+        open={esMovil && seleccion !== null}
+        onClose={() => setSeleccion(null)}
+        aria-label="Detalle del hechizo"
+      >
+        <DialogTitle className="hechizos-detalle-dialog-title">
+          <Typography component="span" variant="subtitle1" sx={{ fontWeight: 700 }}>
+            Ficha del hechizo
+          </Typography>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="Cerrar detalle"
+            onClick={() => setSeleccion(null)}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          {seleccion && <DetalleHechizo item={seleccion} leyendaFuentes={data.leyenda_de_fuentes} />}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

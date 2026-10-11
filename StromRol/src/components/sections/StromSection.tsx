@@ -13,14 +13,13 @@ export default function StromSection({ isActive }: StromSectionProps) {
         <div className="strom-info">
           <h3 className="strom-title">Qué es Strom</h3>
           <p className="strom-text">
-            Strom es un juego de fantasía creado en 1996 por un grupo de
-            chavales de Marbella. Está inspirado en juegos como Stormbringer,
-            Elric, RuneQuest y D&D. Actualmente seguimos reuniendonos a jugar en el mismo sitio donde se creo.
+            Strom es un juego de fantasía creado en 1996 por un grupo de chavales de Marbella. Está inspirado
+            en juegos como Stormbringer, Elric, RuneQuest y D&D. Actualmente seguimos reuniendonos a jugar en
+            el mismo sitio donde se creo.
           </p>
           <p className="strom-text">
-            Esta aplicación te ayuda a generar personajes y conectar con la
-            ambientación del juego. Si quieres profundizar, puedes descargar el
-            compendio o mirar el código fuente.
+            Esta aplicación te ayuda a generar personajes y conectar con la ambientación del juego. Si quieres
+            profundizar, puedes descargar el compendio o mirar el código fuente.
           </p>
           <div className="strom-actions">
             <a
@@ -31,10 +30,7 @@ export default function StromSection({ isActive }: StromSectionProps) {
             >
               Ver en GitHub
             </a>
-            <a
-              href="/CompendioStrom.pdf"
-              className="strom-button strom-button--secondary"
-            >
+            <a href="/CompendioStrom.pdf" className="strom-button strom-button--secondary">
               Descargar compendio
             </a>
           </div>
