@@ -22,10 +22,7 @@ import {
   type HechizoCodigoFuente,
   type HechizoConCaster,
 } from "../../interfaces/Hechizo";
-import type {
-  HechizoCaster,
-  HechizosDataV2,
-} from "../../interfaces/Hechizo";
+import type { HechizoCaster, HechizosDataV2 } from "../../interfaces/Hechizo";
 import "../../App.css";
 
 type FiltroTipo = "todos" | HechizoCaster;
@@ -35,10 +32,7 @@ type FiltroTipo = "todos" | HechizoCaster;
  * `leyenda_de_fuentes`. Si el código no aparece en la leyenda, devuelve
  * el propio código.
  */
-function nombreFuente(
-  codigo: string,
-  leyenda: Record<string, string>,
-): string {
+function nombreFuente(codigo: string, leyenda: Record<string, string>): string {
   return leyenda[codigo] ?? codigo;
 }
 
@@ -86,9 +80,7 @@ export default function HechizosExplorer() {
   // hechizos del LIBRO JUGADOR STROM (los 486 con estadísticas
   // completas). El usuario puede cambiar a "Todos" para ver el
   // compendio completo.
-  const [filtroLibro, setFiltroLibro] = useState<string>(
-    `${CODIGO_LIBRO_STROM} — ${ETIQUETA_LIBRO_STROM}`,
-  );
+  const [filtroLibro, setFiltroLibro] = useState<string>(`${CODIGO_LIBRO_STROM} — ${ETIQUETA_LIBRO_STROM}`);
   const [filtroTipo, setFiltroTipo] = useState<FiltroTipo>("todos");
 
   const [seleccion, setSeleccion] = useState<HechizoConCaster | null>(null);
@@ -214,8 +206,7 @@ export default function HechizosExplorer() {
     // Libro seleccionado: un hechizo con stats lo "tiene" si su
     // `fuente_strom` está presente; un hechizo sin stats lo tiene si
     // su `codigos_de_fuente` lo incluye.
-    const codigoLibro =
-      filtroLibro !== "todos" ? filtroLibro.split(" — ")[0] : null;
+    const codigoLibro = filtroLibro !== "todos" ? filtroLibro.split(" — ")[0] : null;
     return listaCompleta
       .filter((item) => {
         if (filtroTipo !== "todos" && item.caster !== filtroTipo) return false;
@@ -232,11 +223,7 @@ export default function HechizosExplorer() {
             if (!codigos.includes(codigoLibro)) return false;
           }
         }
-        if (
-          filtroNivel !== "todos" &&
-          String(item.hechizo.nivel) !== filtroNivel
-        )
-          return false;
+        if (filtroNivel !== "todos" && String(item.hechizo.nivel) !== filtroNivel) return false;
         if (filtroEscuela !== "todas") {
           if (!tieneStats(item.hechizo)) return false;
           if (item.hechizo.escuela !== filtroEscuela) return false;
@@ -264,13 +251,8 @@ export default function HechizosExplorer() {
   /**
    * Agrupa la lista filtrada en subheaders por caster → nivel.
    */
-  const grupos = useMemo<
-    Array<{ caster: HechizoCaster; nivel: string; items: HechizoConCaster[] }>
-  >(() => {
-    const map = new Map<
-      string,
-      { caster: HechizoCaster; nivel: string; items: HechizoConCaster[] }
-    >();
+  const grupos = useMemo<Array<{ caster: HechizoCaster; nivel: string; items: HechizoConCaster[] }>>(() => {
+    const map = new Map<string, { caster: HechizoCaster; nivel: string; items: HechizoConCaster[] }>();
     for (const item of listaFiltrada) {
       const key = `${item.caster}-${item.hechizo.nivel}`;
       const existente = map.get(key);
@@ -328,10 +310,7 @@ export default function HechizosExplorer() {
   return (
     <div className="hechizos-explorer">
       {/* === Filtros === */}
-      <Box
-        className="hechizos-filtros"
-        sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2 }}
-      >
+      <Box className="hechizos-filtros" sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2 }}>
         <TextField
           label="Buscar por nombre"
           value={filtroTexto}
@@ -397,38 +376,21 @@ export default function HechizosExplorer() {
       </Box>
 
       {/* === Maestro-detalle === */}
-      <Box
-        className="hechizos-master-detail"
-        sx={{ display: "flex", gap: 2 }}
-      >
+      <Box className="hechizos-master-detail" sx={{ display: "flex", gap: 2 }}>
         {/* Lista */}
         <Box className="hechizos-lista-wrapper">
-          <List
-            className="hechizos-lista"
-            dense
-            subheader={<li />}
-            sx={{ p: 0 }}
-          >
+          <List className="hechizos-lista" dense subheader={<li />} sx={{ p: 0 }}>
             {grupos.length === 0 ? (
               <div className="hechizos-empty">
-                <Typography variant="body2">
-                  No hay hechizos que coincidan con los filtros.
-                </Typography>
+                <Typography variant="body2">No hay hechizos que coincidan con los filtros.</Typography>
               </div>
             ) : (
               grupos.map((grupo) => (
                 <li key={`${grupo.caster}-${grupo.nivel}`}>
                   <ul style={{ padding: 0, margin: 0 }}>
-                    <ListSubheader
-                      className="hechizos-subheader"
-                      sx={{ lineHeight: "32px" }}
-                    >
+                    <ListSubheader className="hechizos-subheader" sx={{ lineHeight: "32px" }}>
                       {ETIQUETAS_CASTER[grupo.caster]} · Nivel {grupo.nivel}
-                      <Typography
-                        component="span"
-                        variant="caption"
-                        sx={{ ml: 1, color: "text.secondary" }}
-                      >
+                      <Typography component="span" variant="caption" sx={{ ml: 1, color: "text.secondary" }}>
                         ({grupo.items.length})
                       </Typography>
                     </ListSubheader>
@@ -439,18 +401,10 @@ export default function HechizosExplorer() {
                         seleccion?.hechizo.nivel === item.hechizo.nivel;
                       const key = `${item.caster}-${item.hechizo.nivel}-${item.hechizo.nombre}-${idx}`;
                       return (
-                        <ListItemButton
-                          key={key}
-                          selected={isSelected}
-                          onClick={() => setSeleccion(item)}
-                        >
+                        <ListItemButton key={key} selected={isSelected} onClick={() => setSeleccion(item)}>
                           <ListItemText
                             primary={limpiarNombre(item.hechizo.nombre)}
-                            secondary={
-                              tieneStats(item.hechizo)
-                                ? item.hechizo.escuela
-                                : "Sin estadísticas"
-                            }
+                            secondary={tieneStats(item.hechizo) ? item.hechizo.escuela : "Sin estadísticas"}
                             primaryTypographyProps={{ noWrap: true }}
                             secondaryTypographyProps={{ noWrap: true }}
                           />
@@ -467,21 +421,14 @@ export default function HechizosExplorer() {
         {/* Detalle */}
         <Box className="hechizos-detalle-wrapper">
           {seleccion ? (
-            <DetalleHechizo
-              item={seleccion}
-              leyendaFuentes={data.leyenda_de_fuentes}
-            />
+            <DetalleHechizo item={seleccion} leyendaFuentes={data.leyenda_de_fuentes} />
           ) : (
             <div className="hechizos-empty">
               <Typography variant="body2">
                 Selecciona un hechizo de la lista para ver sus detalles.
               </Typography>
-              <Typography
-                variant="caption"
-                sx={{ display: "block", mt: 1, color: "text.secondary" }}
-              >
-                {listaCompleta.length.toLocaleString("es-ES")} hechizos
-                disponibles en el compendio.
+              <Typography variant="caption" sx={{ display: "block", mt: 1, color: "text.secondary" }}>
+                {listaCompleta.length.toLocaleString("es-ES")} hechizos disponibles en el compendio.
               </Typography>
             </div>
           )}
@@ -501,8 +448,7 @@ interface DetalleHechizoProps {
 function DetalleHechizo({ item, leyendaFuentes }: DetalleHechizoProps) {
   const { caster, hechizo } = item;
   const conStats = tieneStats(hechizo);
-  const esIngles =
-    conStats && hechizo.idioma_descripcion === "en";
+  const esIngles = conStats && hechizo.idioma_descripcion === "en";
   const verificacion = hechizo.fuente_traduccion;
 
   return (
@@ -522,13 +468,8 @@ function DetalleHechizo({ item, leyendaFuentes }: DetalleHechizoProps) {
             )}
           </Typography>
           {hechizo.nombre_original_en &&
-            limpiarNombre(hechizo.nombre_original_en) !==
-              limpiarNombre(hechizo.nombre) && (
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ fontStyle: "italic" }}
-              >
+            limpiarNombre(hechizo.nombre_original_en) !== limpiarNombre(hechizo.nombre) && (
+              <Typography variant="body2" color="text.secondary" sx={{ fontStyle: "italic" }}>
                 {limpiarNombre(hechizo.nombre_original_en)}
               </Typography>
             )}
@@ -538,17 +479,9 @@ function DetalleHechizo({ item, leyendaFuentes }: DetalleHechizoProps) {
               size="small"
               className={`hechizo-chip hechizo-chip-${caster}`}
             />
-            <Chip
-              label={`Nivel ${hechizo.nivel}`}
-              size="small"
-              className="hechizo-chip"
-            />
+            <Chip label={`Nivel ${hechizo.nivel}`} size="small" className="hechizo-chip" />
             {conStats && hechizo.escuela && (
-              <Chip
-                label={hechizo.escuela}
-                size="small"
-                className="hechizo-chip"
-              />
+              <Chip label={hechizo.escuela} size="small" className="hechizo-chip" />
             )}
             {conStats && hechizo.esfera && (
               <Chip
@@ -558,11 +491,7 @@ function DetalleHechizo({ item, leyendaFuentes }: DetalleHechizoProps) {
               />
             )}
             {verificacion === "oficial/verificada" && (
-              <Chip
-                label="Nombre verificado"
-                size="small"
-                className="hechizo-chip hechizo-chip-verificada"
-              />
+              <Chip label="Nombre verificado" size="small" className="hechizo-chip hechizo-chip-verificada" />
             )}
             {verificacion === "pendiente" && (
               <Chip
@@ -579,32 +508,17 @@ function DetalleHechizo({ item, leyendaFuentes }: DetalleHechizoProps) {
             <Box className="hechizo-detalle-grid">
               <DetalleRow label="Alcance" valor={hechizo.alcance} />
               <DetalleRow label="Componentes" valor={hechizo.componentes} />
-              <DetalleRow
-                label="Tiempo de lanzamiento"
-                valor={hechizo.tiempo_de_lanzamiento}
-              />
+              <DetalleRow label="Tiempo de lanzamiento" valor={hechizo.tiempo_de_lanzamiento} />
               <DetalleRow label="Duración" valor={hechizo.duracion} />
-              <DetalleRow
-                label="Área de efecto"
-                valor={hechizo.area_de_efecto}
-              />
-              <DetalleRow
-                label="Tirada de salvación"
-                valor={hechizo.tirada_de_salvacion}
-              />
+              <DetalleRow label="Área de efecto" valor={hechizo.area_de_efecto} />
+              <DetalleRow label="Tirada de salvación" valor={hechizo.tirada_de_salvacion} />
             </Box>
 
             <Box sx={{ mt: 2 }}>
-              <Typography
-                variant="overline"
-                sx={{ display: "block", color: "text.secondary" }}
-              >
+              <Typography variant="overline" sx={{ display: "block", color: "text.secondary" }}>
                 Descripción
               </Typography>
-              <Typography
-                variant="body2"
-                sx={{ whiteSpace: "pre-wrap", textAlign: "justify" }}
-              >
+              <Typography variant="body2" sx={{ whiteSpace: "pre-wrap", textAlign: "justify" }}>
                 {hechizo.descripcion}
               </Typography>
             </Box>
@@ -622,18 +536,11 @@ function DetalleHechizo({ item, leyendaFuentes }: DetalleHechizoProps) {
             `codigos_de_fuente` o no. */}
         {conStats && hechizo.fuente_strom && (
           <Box sx={{ mt: conStats ? 2 : 0 }}>
-            <Typography
-              variant="overline"
-              sx={{ display: "block", color: "text.secondary" }}
-            >
+            <Typography variant="overline" sx={{ display: "block", color: "text.secondary" }}>
               Libro
             </Typography>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-              <Chip
-                label={hechizo.fuente_strom}
-                size="small"
-                className="hechizo-chip hechizo-chip-fuente"
-              />
+              <Chip label={hechizo.fuente_strom} size="small" className="hechizo-chip hechizo-chip-fuente" />
             </Box>
           </Box>
         )}
@@ -651,10 +558,7 @@ function DetalleRow({ label, valor }: DetalleRowProps) {
   if (!valor || valor.trim() === "") return null;
   return (
     <div className="hechizo-detalle-row">
-      <Typography
-        variant="overline"
-        sx={{ lineHeight: 1.2, color: "text.secondary" }}
-      >
+      <Typography variant="overline" sx={{ lineHeight: 1.2, color: "text.secondary" }}>
         {label}
       </Typography>
       <Typography variant="body2" sx={{ fontWeight: 500 }}>
@@ -680,19 +584,12 @@ function FuentesList({ codigos, reversible, leyenda }: FuentesListProps) {
   }
   return (
     <Box>
-      <Typography
-        variant="overline"
-        sx={{ display: "block", color: "text.secondary" }}
-      >
+      <Typography variant="overline" sx={{ display: "block", color: "text.secondary" }}>
         Libro
       </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
         {reversible && (
-          <Chip
-            label="Reversible"
-            size="small"
-            className="hechizo-chip hechizo-chip-reversible"
-          />
+          <Chip label="Reversible" size="small" className="hechizo-chip hechizo-chip-reversible" />
         )}
         {codigos.map((c) => (
           <Chip

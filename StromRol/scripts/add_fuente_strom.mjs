@@ -49,10 +49,7 @@ function main() {
   let tocados = 0;
   let yaTenian = 0;
 
-  for (const seccion of [
-    data.conjuros_de_hechicero,
-    data.conjuros_de_sacerdote,
-  ]) {
+  for (const seccion of [data.conjuros_de_hechicero, data.conjuros_de_sacerdote]) {
     for (const h of seccion.conjuros_con_estadisticas_completas) {
       if (h.fuente_strom && h.fuente_strom === TARGET) {
         yaTenian += 1;
