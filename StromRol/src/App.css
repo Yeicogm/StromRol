@@ -131,11 +131,7 @@ body {
   /* usar imagen existente en public/ como mosaico */
   background-image:
     url("/dadoFondo_750x750.png"),
-    linear-gradient(
-      90deg,
-      var(--background-color) 20%,
-      var(--secondary-color) 100%
-    );
+    linear-gradient(90deg, var(--background-color) 20%, var(--secondary-color) 100%);
   background-repeat: repeat, no-repeat;
   background-size:
     220px auto,
@@ -154,11 +150,7 @@ body {
 }
 
 .header {
-  background: linear-gradient(
-    90deg,
-    var(--primary-color) 70%,
-    var(--accent-color) 100%
-  );
+  background: linear-gradient(90deg, var(--primary-color) 70%, var(--accent-color) 100%);
   color: #fff;
   box-shadow: 0 2px 8px rgba(76, 81, 109, 0.08);
 }
@@ -912,8 +904,11 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
 }
 
 .ficha-container--wide {
-  max-width: 98vw;
-  width: 98vw;
+  /* Antes era 98vw, lo que hacía que el main desbordara el wrapper
+     de 1280px de la app. Ahora toma como máximo el 100% del padre
+     (que en la app de escritorio es ~1248px) y nunca excede 98vw. */
+  max-width: min(98vw, 100%);
+  width: 100%;
 }
 
 .compendio-iframe {
@@ -1435,4 +1430,214 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
 
 .github-link svg {
   display: block;
+}
+
+/* === Consultor del compendio: tabs (PDF | Hechizos) === */
+
+.compendio-tab-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.compendio-tabs {
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.compendio-tab-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* === Hechizos: filtros y lista maestro-detalle === */
+
+.hechizos-explorer {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.hechizos-filtros > .MuiTextField-root {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.hechizos-master-detail {
+  align-items: stretch;
+  width: 100%;
+}
+
+.hechizos-lista-wrapper,
+.hechizos-detalle-wrapper {
+  flex: 1 1 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  .hechizos-lista-wrapper {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+  .hechizos-detalle-wrapper {
+    flex: 1 1 60%;
+    max-width: 60%;
+  }
+}
+
+.hechizos-lista {
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+.hechizos-subheader {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+.hechizo-detalle-card {
+  height: 100%;
+}
+
+.hechizo-detalle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px 16px;
+}
+
+.hechizo-detalle-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.hechizos-empty {
+  padding: 24px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* === Hechizos: chips de estado en la ficha de detalle === */
+
+.hechizo-chip {
+  font-weight: 500;
+}
+
+.hechizo-chip-en {
+  background-color: #fff3e0 !important;
+  color: #e65100 !important;
+  border: 1px solid #ffb74d !important;
+}
+
+.hechizo-chip-mago {
+  background-color: #ede7f6 !important;
+  color: #4527a0 !important;
+  border: 1px solid #9575cd !important;
+}
+
+.hechizo-chip-sacerdote {
+  background-color: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  border: 1px solid #81c784 !important;
+}
+
+.hechizo-chip-esfera {
+  background-color: #e3f2fd !important;
+  color: #1565c0 !important;
+  border: 1px solid #64b5f6 !important;
+}
+
+.hechizo-chip-verificada {
+  background-color: #e0f2f1 !important;
+  color: #00695c !important;
+  border: 1px solid #4db6ac !important;
+}
+
+.hechizo-chip-pendiente {
+  background-color: #fff8e1 !important;
+  color: #f57f17 !important;
+  border: 1px solid #ffd54f !important;
+}
+
+.hechizo-chip-reversible {
+  background-color: #f3e5f5 !important;
+  color: #6a1b9a !important;
+  border: 1px solid #ba68c8 !important;
+}
+
+.hechizo-chip-fuente {
+  background-color: #fafafa !important;
+  color: #424242 !important;
+  border: 1px solid #bdbdbd !important;
+  font-size: 0.72rem !important;
+}
+
+/* MUI recorta los labels largos (p.ej. "Tipo de personaje")
+   porque los posiciona dentro del fieldset con `position: absolute`
+   y `overflow: hidden`. Sacamos el label del flujo del fieldset
+   y lo mostramos como un bloque arriba del input, sin clipping. */
+.hechizos-filtros .MuiTextField-root {
+  display: flex;
+  flex-direction: column;
+}
+
+.hechizos-filtros .MuiTextField-root .MuiInputLabel-root {
+  position: static;
+  transform: none !important;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 4px;
+  max-width: 100%;
+}
+
+.hechizos-filtros .MuiTextField-root .MuiInputLabel-root.MuiInputLabel-shrink {
+  position: static;
+  transform: none !important;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* El <legend> del fieldset crea la muesca del borde outlined cuando el
+   label está encogido. Como el label ahora vive fuera del fieldset
+   (position: static arriba del input), esa muesca queda como un
+   "corte" feo en el borde superior. La ocultamos. */
+.hechizos-filtros .MuiTextField-root .MuiOutlinedInput-notchedOutline legend {
+  display: none;
+}
+
+.hechizos-filtros .MuiTextField-root .MuiOutlinedInput-notchedOutline {
+  /* Evita que el legend recorte el label */
+  overflow: visible;
+}
+
+/* Móvil (<450px — breakpoint del proyecto): apilar todo verticalmente
+   y permitir scroll vertical natural. */
+@media (max-width: 449px) {
+  .compendio-tab-panel {
+    min-height: auto;
+  }
+  .hechizos-master-detail {
+    flex-direction: column !important;
+  }
+  .hechizos-lista-wrapper,
+  .hechizos-detalle-wrapper {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .hechizos-lista {
+    max-height: 50vh;
+  }
 }
