@@ -309,9 +309,13 @@ export default function HechizosExplorer() {
 
   return (
     <div className="hechizos-explorer">
-      {/* === Filtros === */}
-      <Box className="hechizos-filtros" sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2 }}>
+      {/* === Filtros ===
+          El layout (grid/flex, anchos, espaciado) lo controla
+          App.css. La separación con la lista viene del
+          `margin-top` en `.hechizos-master-detail`. */}
+      <Box className="hechizos-filtros">
         <TextField
+          className="hechizos-filtro-buscar"
           label="Buscar por nombre"
           value={filtroTexto}
           onChange={(e) => setFiltroTexto(e.target.value)}
