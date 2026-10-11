@@ -1642,7 +1642,7 @@
       "save": "None",
       "damage": "",
       "description": "Este hechizo encanta un arma en proceso de forja para que sea especialmente brutal en combate.\n\nEl arma debe ser de calidad exquisita (valor mínimo de 50,000 cobre) y estar siendo forjada al lanzarse el hechizo.\n\nEn una tirada natural de 18-20, se tira d10 para determinar efectos críticos (sangrado, aturdimiento, mutilación, etc.).\n\nLos efectos y sus consecuencias se resuelven según la tabla del hechizo; pueden acumularse.",
-      "source": "Players Handbook",
+      "source": "Player's Handbook",
       "page": 0,
       "reversible": false
     },
