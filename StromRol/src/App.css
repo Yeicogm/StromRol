@@ -1531,6 +1531,61 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   color: rgba(0, 0, 0, 0.6);
 }
 
+/* === Hechizos: chips de estado en la ficha de detalle === */
+
+.hechizo-chip {
+  font-weight: 500;
+}
+
+.hechizo-chip-en {
+  background-color: #fff3e0 !important;
+  color: #e65100 !important;
+  border: 1px solid #ffb74d !important;
+}
+
+.hechizo-chip-mago {
+  background-color: #ede7f6 !important;
+  color: #4527a0 !important;
+  border: 1px solid #9575cd !important;
+}
+
+.hechizo-chip-sacerdote {
+  background-color: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  border: 1px solid #81c784 !important;
+}
+
+.hechizo-chip-esfera {
+  background-color: #e3f2fd !important;
+  color: #1565c0 !important;
+  border: 1px solid #64b5f6 !important;
+}
+
+.hechizo-chip-verificada {
+  background-color: #e0f2f1 !important;
+  color: #00695c !important;
+  border: 1px solid #4db6ac !important;
+}
+
+.hechizo-chip-pendiente {
+  background-color: #fff8e1 !important;
+  color: #f57f17 !important;
+  border: 1px solid #ffd54f !important;
+}
+
+.hechizo-chip-reversible {
+  background-color: #f3e5f5 !important;
+  color: #6a1b9a !important;
+  border: 1px solid #ba68c8 !important;
+}
+
+.hechizo-chip-fuente {
+  background-color: #fafafa !important;
+  color: #424242 !important;
+  border: 1px solid #bdbdbd !important;
+  font-size: 0.72rem !important;
+}
+
 /* MUI recorta los labels largos (p.ej. "Tipo de personaje")
    porque los posiciona dentro del fieldset con `position: absolute`
    y `overflow: hidden`. Sacamos el label del flujo del fieldset
