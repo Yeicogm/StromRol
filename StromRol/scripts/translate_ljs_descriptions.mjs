@@ -84,11 +84,7 @@ function aplicar(parche) {
       continue;
     }
     const seccionKey =
-      caster === "mago"
-        ? "conjuros_de_hechicero"
-        : caster === "sacerdote"
-          ? "conjuros_de_sacerdote"
-          : null;
+      caster === "mago" ? "conjuros_de_hechicero" : caster === "sacerdote" ? "conjuros_de_sacerdote" : null;
     if (!seccionKey) {
       console.warn(`Aviso: caster desconocido "${caster}", se ignora`);
       continue;
@@ -96,9 +92,7 @@ function aplicar(parche) {
     const seccion = data[seccionKey];
     const hechizo = seccion?.conjuros_con_estadisticas_completas?.[indice];
     if (!hechizo) {
-      console.warn(
-        `Aviso: no se encontró ${caster}[${indice}], se ignora`,
-      );
+      console.warn(`Aviso: no se encontró ${caster}[${indice}], se ignora`);
       noEncontrados += 1;
       continue;
     }

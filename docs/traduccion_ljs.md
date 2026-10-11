@@ -1,29 +1,23 @@
 # Traducción de los 486 hechizos LJS — Guía operativa
 
-Esta guía explica cómo continuar, en otra sesión o en otro día, la
-traducción al español de las descripciones de los 486 hechizos del
-**LIBRO JUGADOR STROM** (LJS) del dataset
-`StromRol/public/dnd_2e_spells_es.json`.
+Esta guía explica cómo continuar, en otra sesión o en otro día, la traducción al español de las descripciones
+de los 486 hechizos del **LIBRO JUGADOR STROM** (LJS) del dataset `StromRol/public/dnd_2e_spells_es.json`.
 
-> **Estado a 2026-10-11**: 0/486 descripciones traducidas (todas en
-> inglés con `idioma_descripcion: "en"`). El script ya existe y
-> está probado. Pendiente: empezar a traducir por lotes.
+> **Estado a 2026-10-11**: 0/486 descripciones traducidas (todas en inglés con `idioma_descripcion: "en"`). El
+> script ya existe y está probado. Pendiente: empezar a traducir por lotes.
 
 ---
 
 ## Lo que hay en el repo hoy
 
-- **`StromRol/public/dnd_2e_spells_es.json`** — dataset de hechizos.
-  Los 486 con stats completas (312 mago + 174 sacerdote) están
-  marcados con `fuente_strom: "LIBRO JUGADOR STROM"`.
-- **`StromRol/public/dnd_2e_spells_es.json.bak`** — backup creado
-  por el script `add_fuente_strom.mjs`. Tiene los datos **anteriores**
-  al campo `fuente_strom`. No usar para restaurar.
-- **`StromRol/scripts/add_fuente_strom.mjs`** — añade el campo
-  `fuente_strom` a los 486 hechizos con stats. Ya ejecutado.
-- **`StromRol/scripts/translate_ljs_descriptions.mjs`** — aplica
-  parches JSON de traducciones al dataset. Solo modifica
-  `descripcion` e `idioma_descripcion`. **Es idempotente**.
+- **`StromRol/public/dnd_2e_spells_es.json`** — dataset de hechizos. Los 486 con stats completas (312 mago +
+  174 sacerdote) están marcados con `fuente_strom: "LIBRO JUGADOR STROM"`.
+- **`StromRol/public/dnd_2e_spells_es.json.bak`** — backup creado por el script `add_fuente_strom.mjs`. Tiene
+  los datos **anteriores** al campo `fuente_strom`. No usar para restaurar.
+- **`StromRol/scripts/add_fuente_strom.mjs`** — añade el campo `fuente_strom` a los 486 hechizos con stats. Ya
+  ejecutado.
+- **`StromRol/scripts/translate_ljs_descriptions.mjs`** — aplica parches JSON de traducciones al dataset. Solo
+  modifica `descripcion` e `idioma_descripcion`. **Es idempotente**.
 
 ---
 
@@ -46,9 +40,8 @@ node -e "const d=require('./public/dnd_2e_spells_es.json');const t=[...d.conjuro
 
 ### 1) Elegir lote
 
-Buen punto de partida: **mago nivel 1** (45 hechizos) o **sacerdote
-nivel 1** (24 hechizos). Cada nivel de mago tiene ~30-50; el nivel
-9 de mago tiene solo 18 (más rápido).
+Buen punto de partida: **mago nivel 1** (45 hechizos) o **sacerdote nivel 1** (24 hechizos). Cada nivel de
+mago tiene ~30-50; el nivel 9 de mago tiene solo 18 (más rápido).
 
 Para listar un nivel concreto:
 
@@ -60,19 +53,16 @@ node -e "const d=require('./public/dnd_2e_spells_es.json');const m=d.conjuros_de
 
 Abre un chat con el LLM y dile:
 
-> "Aquí tienes N descripciones de hechizos de AD&D 2E en inglés.
-> Devuélvemelas en JSON con el formato:
+> "Aquí tienes N descripciones de hechizos de AD&D 2E en inglés. Devuélvemelas en JSON con el formato:
 > `[{ \"caster\": \"mago\" | \"sacerdote\", \"indice\": <n>, \"descripcion\": \"<texto en español>\" }, ...]`
-> Mantén los nombres propios (Melf, Leomund, Tenser's...). Traduce
-> 'wizard' como 'mago', 'priest' como 'sacerdote', 'level' como
-> 'nivel', 'round' como 'asiento' (ronda), 'spell' como 'conjuro'."
+> Mantén los nombres propios (Melf, Leomund, Tenser's...). Traduce 'wizard' como 'mago', 'priest' como
+> 'sacerdote', 'level' como 'nivel', 'round' como 'asiento' (ronda), 'spell' como 'conjuro'."
 
 El LLM te devuelve un array JSON. Pégalo en el siguiente paso.
 
 ### 3) Escribir el parche a disco (¡cuidado con el encoding!)
 
-⚠️ **No uses `Set-Content -Encoding utf8`** en PowerShell 5.1 —
-añade BOM y rompe el JSON. Usa **Node**:
+⚠️ **No uses `Set-Content -Encoding utf8`** en PowerShell 5.1 — añade BOM y rompe el JSON. Usa **Node**:
 
 ```powershell
 # Pegar el JSON del LLM como una string multilínea
@@ -81,7 +71,7 @@ $parche = @'
 '@
 
 # Escribirlo correctamente a un archivo
-node -e "const fs=require('fs');fs.writeFileSync('$env:TEMP\\lote.json', process.env.PARCHE, 'utf8')" 
+node -e "const fs=require('fs');fs.writeFileSync('$env:TEMP\\lote.json', process.env.PARCHE, 'utf8')"
 # Si el comando anterior no funciona, usa este método alternativo:
 
 # Método alternativo (temporal + heredoc)
@@ -92,10 +82,8 @@ node -e "const fs=require('fs');fs.writeFileSync(process.env.TEMP+'\\lote.json',
 Get-Content "$env:TEMP\lote.json"
 ```
 
-> **Truco**: si el JSON del LLM tiene caracteres UTF-8 raros
-> (tildes, eñes), prueba `Get-Content` con `-Encoding utf8` (sin BOM
-> en PS 6+) o simplemente confíate de Node, que escribe UTF-8
-> siempre bien.
+> **Truco**: si el JSON del LLM tiene caracteres UTF-8 raros (tildes, eñes), prueba `Get-Content` con
+> `-Encoding utf8` (sin BOM en PS 6+) o simplemente confíate de Node, que escribe UTF-8 siempre bien.
 
 ### 4) Aplicar el parche
 
@@ -129,10 +117,8 @@ node -e "const d=require('./public/dnd_2e_spells_es.json');const t=[...d.conjuro
 ### 6) Verificar en el navegador
 
 1. `npm run build` (regenera `docs/`).
-2. Abre `http://localhost:5173/` → pestaña **COMPENDIO** →
-   **Hechizos por libro**.
-3. El filtro **Libro** ya está en `LJS — LIBRO JUGADOR STROM`
-   por defecto.
+2. Abre `http://localhost:5173/` → pestaña **COMPENDIO** → **Hechizos por libro**.
+3. El filtro **Libro** ya está en `LJS — LIBRO JUGADOR STROM` por defecto.
 4. Selecciona un hechizo del lote recién traducido.
 5. Comprueba que:
    - La descripción aparece en español.
@@ -151,89 +137,95 @@ git push
 
 ## Plan de hitos (orientativo)
 
-| Hito | Hechizos | % | Sugerencia de lote |
-| --- | --- | --- | --- |
-| H1 | 50 | 10% | Mago N1 (45) |
-| H2 | 150 | 31% | Sacerdote N1-2 (24 + 27) + Mago N2 (50) |
-| H3 | 250 | 51% | Mago N3 (47) + Sacerdote N3 (29) |
-| H4 | 350 | 72% | Mago N4-5 (48 + 50) |
-| H5 | 486 | 100% | Mago N6-9 + Sacerdote N4-7 (resto) |
+| Hito | Hechizos | %    | Sugerencia de lote                      |
+| ---- | -------- | ---- | --------------------------------------- |
+| H1   | 50       | 10%  | Mago N1 (45)                            |
+| H2   | 150      | 31%  | Sacerdote N1-2 (24 + 27) + Mago N2 (50) |
+| H3   | 250      | 51%  | Mago N3 (47) + Sacerdote N3 (29)        |
+| H4   | 350      | 72%  | Mago N4-5 (48 + 50)                     |
+| H5   | 486      | 100% | Mago N6-9 + Sacerdote N4-7 (resto)      |
 
-Cada sesión debería traducir entre 30 y 50 hechizos para no saturar
-al LLM ni al usuario. Con 8-10 sesiones se cubren los 486.
+Cada sesión debería traducir entre 30 y 50 hechizos para no saturar al LLM ni al usuario. Con 8-10 sesiones se
+cubren los 486.
 
 ---
 
 ## Convenciones de traducción
 
-| Inglés | Español |
-| --- | --- |
-| wizard | mago |
-| priest | sacerdote |
-| caster | lanzador |
-| level | nivel |
-| round / rd. | asiento (ronda) |
-| spell | conjuro |
-| saving throw | tirada de salvación |
-| touch | toque |
-| foot / feet | pie / pies |
-| inch / inches | pulgada / pulgadas |
-| yard / yards | yarda / yardas |
-| damage | daño |
-| hit points | puntos de golpe |
-| area of effect | área de efecto |
-| duration | duración |
-| casting time | tiempo de lanzamiento |
-| components | componentes |
-| range | alcance |
-| school | escuela |
-| sphere | esfera |
-| save vs. spell | salvación contra conjuro |
+| Inglés                | Español                   |
+| --------------------- | ------------------------- |
+| wizard                | mago                      |
+| priest                | sacerdote                 |
+| caster                | lanzador                  |
+| level                 | nivel                     |
+| round / rd.           | asiento (ronda)           |
+| spell                 | conjuro                   |
+| saving throw          | tirada de salvación       |
+| touch                 | toque                     |
+| foot / feet           | pie / pies                |
+| inch / inches         | pulgada / pulgadas        |
+| yard / yards          | yarda / yardas            |
+| damage                | daño                      |
+| hit points            | puntos de golpe           |
+| area of effect        | área de efecto            |
+| duration              | duración                  |
+| casting time          | tiempo de lanzamiento     |
+| components            | componentes               |
+| range                 | alcance                   |
+| school                | escuela                   |
+| sphere                | esfera                    |
+| save vs. spell        | salvación contra conjuro  |
 | None / Neg. / Special | Ninguna / Neg. / Especial |
-| Reversible | Reversible |
-| Reversed | Invertido / Reverso |
-| Material component | componente material |
-| Verbal component | componente verbal |
-| Somatic component | componente somático |
+| Reversible            | Reversible                |
+| Reversed              | Invertido / Reverso       |
+| Material component    | componente material       |
+| Verbal component      | componente verbal         |
+| Somatic component     | componente somático       |
 
 ### Reglas específicas del proyecto
 
 - **No traducir** `nombre_original_en` (queda en inglés en cursiva).
 - **No traducir** nombres propios (Melf, Leomund, Tenser's, Bigby, Nahal, Hornung, Mordenkainen, etc.).
 - **No traducir** nombres de deidades o planos (Oerth, Ravenloft, etc.).
-- **No traducir** "Hit Dice" → en español se mantiene como "Dados de Golpe" o se deja "Hit Dice" entre comillas si suena raro.
+- **No traducir** "Hit Dice" → en español se mantiene como "Dados de Golpe" o se deja "Hit Dice" entre
+  comillas si suena raro.
 - **No traducir** "Saving Throw" → "Tirada de Salvación" (con mayúsculas).
 - **Mantener** el formato de listas y abreviaturas (VSM, VS, V, M).
-- **Mantener** el sentido del original: si el original dice "wizard may", traducir como "el mago puede", no como "puede el mago" (mantener orden natural en español cuando se pueda).
+- **Mantener** el sentido del original: si el original dice "wizard may", traducir como "el mago puede", no
+  como "puede el mago" (mantener orden natural en español cuando se pueda).
 
 ---
 
 ## Errores comunes y soluciones
 
 ### "ERROR: Unexpected token '�', ... is not valid JSON"
-Estás intentando leer un archivo con BOM. Solución: reescribe el
-archivo con Node (ver paso 3).
+
+Estás intentando leer un archivo con BOM. Solución: reescribe el archivo con Node (ver paso 3).
 
 ### "Backup ya existía: ... (no se sobrescribe)"
+
 Es el comportamiento correcto. El `.bak` original se mantiene.
 
 ### "saltados: 5" cuando esperas 0
-Has ejecutado el mismo parche dos veces. No es un problema: el
-script es idempotente. Los 5 ya estaban traducidos.
+
+Has ejecutado el mismo parche dos veces. No es un problema: el script es idempotente. Los 5 ya estaban
+traducidos.
 
 ### "no encontrados: 3"
-Algún índice del parche está mal. Revisa que el array empiece en
-0 y que la sección (`mago` / `sacerdote`) coincida con el hechizo
-que esperabas traducir.
+
+Algún índice del parche está mal. Revisa que el array empiece en 0 y que la sección (`mago` / `sacerdote`)
+coincida con el hechizo que esperabas traducir.
 
 ### Al restaurar el `.bak` pierdes `fuente_strom`
-El `.bak` se creó **antes** de `add_fuente_strom.mjs`. Si lo
-restauras, tienes que re-ejecutar:
+
+El `.bak` se creó **antes** de `add_fuente_strom.mjs`. Si lo restauras, tienes que re-ejecutar:
+
 ```powershell
 node scripts/add_fuente_strom.mjs
 ```
-Para evitar esto, considera renombrar el backup tras cada hito
-importante:
+
+Para evitar esto, considera renombrar el backup tras cada hito importante:
+
 ```powershell
 Copy-Item public/dnd_2e_spells_es.json public/dnd_2e_spells_es.json.bak_h1
 ```
@@ -242,8 +234,8 @@ Copy-Item public/dnd_2e_spells_es.json public/dnd_2e_spells_es.json.bak_h1
 
 ## Resumen en un comando
 
-Si quieres traducir **toda la sección mago de golpe** en una sola
-sesión (muchas horas, recomendado solo para valientes):
+Si quieres traducir **toda la sección mago de golpe** en una sola sesión (muchas horas, recomendado solo para
+valientes):
 
 ```powershell
 # 1) Listar todo lo pendiente de mago
@@ -265,17 +257,14 @@ node -e "const d=require('./public/dnd_2e_spells_es.json');const m=d.conjuros_de
 
 ## Recursos adicionales
 
-- **Plan completo en memoria**: `/memories/session/translate_ljs_plan.md`
-  (con detalles de diseño, riesgos, decisiones).
-- **Comandos de inspección** del dataset: ver la sección
-  "Comprobaciones rápidas" arriba.
-- **Lista de escuelas / esferas / fuentes**: están en el JSON
-  raíz (`leyenda_de_fuentes`) y en cada hechizo.
-- **Compendio de magia original** (referencia): Ediciones Zinco
-  1992-1997 (Manual del Jugador + Tomo de Magia).
+- **Plan completo en memoria**: `/memories/session/translate_ljs_plan.md` (con detalles de diseño, riesgos,
+  decisiones).
+- **Comandos de inspección** del dataset: ver la sección "Comprobaciones rápidas" arriba.
+- **Lista de escuelas / esferas / fuentes**: están en el JSON raíz (`leyenda_de_fuentes`) y en cada hechizo.
+- **Compendio de magia original** (referencia): Ediciones Zinco 1992-1997 (Manual del Jugador + Tomo de
+  Magia).
 
 ---
 
-**Última actualización**: 2026-10-11. Plan operativo creado por
-el LLM asistente. Probado y verificado en navegador con
-`http://localhost:5173/`.
+**Última actualización**: 2026-10-11. Plan operativo creado por el LLM asistente. Probado y verificado en
+navegador con `http://localhost:5173/`.
