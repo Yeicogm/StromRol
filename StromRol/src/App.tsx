@@ -1184,7 +1184,7 @@ function App() {
 function FechaActualizacion() {
   return (
     <div className="fecha-actualizacion">
-      <div>Última actualización: 17 de Marzo de 2026</div>
+      <div>Última actualización: 11 de Octubre de 2026</div>
       <div className="github-link-wrapper">
         <a
           href="https://github.com/Yeicogm/StromRol"

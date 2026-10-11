@@ -1659,9 +1659,43 @@ input[type="number"]::-webkit-inner-spin-button {
   overflow: hidden;
 }
 
-.hechizos-filtros > .MuiTextField-root {
-  flex: 1 1 0;
+/* Bloque de filtros: rejilla responsive.
+   - Móvil: 1 columna, el campo de búsqueda a ancho completo.
+   - Tablet: 2 columnas, búsqueda a ancho completo.
+   - Desktop: 4 columnas para los selects. */
+.hechizos-filtros {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+  width: 100%;
+}
+
+.hechizos-filtros .MuiTextField-root {
+  width: 100%;
   min-width: 0;
+}
+
+.hechizos-filtros .hechizos-filtros-search {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 520px) {
+  .hechizos-filtros {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hechizos-filtros .hechizos-filtros-search {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 820px) {
+  .hechizos-filtros {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .hechizos-filtros .hechizos-filtros-search {
+    grid-column: 1 / -1;
+  }
 }
 
 .hechizos-master-detail {
@@ -1694,6 +1728,16 @@ input[type="number"]::-webkit-inner-spin-button {
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--sr-border);
   border-radius: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Subheader pegado arriba cuando hay scroll */
+.hechizos-lista .hechizos-subheader {
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .hechizos-subheader {
@@ -1794,30 +1838,27 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .hechizos-filtros .MuiTextField-root .MuiInputLabel-root {
-  position: static;
+  position: static !important;
   transform: none !important;
   font-size: 0.75rem;
   color: var(--sr-text-dim);
   margin-bottom: 4px;
   max-width: 100%;
+  text-align: left;
 }
 
 .hechizos-filtros .MuiTextField-root .MuiInputLabel-root.MuiInputLabel-shrink {
-  position: static;
+  position: static !important;
   transform: none !important;
-  color: var(--sr-text-dim);
+  color: var(--sr-gold);
+  font-weight: 600;
 }
 
-/* El <legend> del fieldset crea la muesca del borde outlined cuando el
-   label está encogido. Como el label ahora vive fuera del fieldset
-   (position: static arriba del input), esa muesca queda como un
-   "corte" feo en el borde superior. La ocultamos. */
 .hechizos-filtros .MuiTextField-root .MuiOutlinedInput-notchedOutline legend {
   display: none;
 }
 
 .hechizos-filtros .MuiTextField-root .MuiOutlinedInput-notchedOutline {
-  /* Evita que el legend recorte el label */
   overflow: visible;
 }
 
