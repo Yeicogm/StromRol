@@ -1465,17 +1465,59 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
-.hechizos-filtros > .MuiTextField-root {
-  flex: 1 1 0;
-  min-width: 0;
+/* === Filtros ===
+   Escritorio: fila horizontal con campos de igual ancho (flex: 1).
+   Tablet  (≤899px): grid de 2 columnas.
+   Móvil   (≤449px): grid de 2 columnas, pero la fila de "Buscar"
+   ocupa las 2 columnas. */
+.hechizos-filtros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  .hechizos-filtros {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .hechizos-filtros > .MuiTextField-root {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 899px) and (min-width: 450px) {
+  /* Tablet: grid de 2 columnas, Buscar ocupa fila completa. */
+  .hechizos-filtros {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hechizos-filtros > .hechizos-filtro-buscar {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 449px) {
+  .hechizos-filtros {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .hechizos-filtros > .hechizos-filtro-buscar {
+    grid-column: 1 / -1;
+  }
 }
 
 .hechizos-master-detail {
+  display: flex;
+  gap: 16px;
   align-items: stretch;
   width: 100%;
+  margin-top: 16px;
+  box-sizing: border-box;
 }
 
 .hechizos-lista-wrapper,
@@ -1508,15 +1550,26 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
 .hechizos-subheader {
   background: #fafafa;
   font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .hechizo-detalle-card {
   height: 100%;
 }
 
+.hechizo-detalle-card .MuiCardContent-root {
+  /* Permite que la descripción larga se scrollee dentro de la
+     propia tarjeta en pantallas pequeñas en vez de empujar toda
+     la página hacia abajo. */
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
 .hechizo-detalle-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 8px 16px;
 }
 
@@ -1631,13 +1684,49 @@ input.ficha-resultado-input-grande[type="number"]::-webkit-inner-spin-button {
   }
   .hechizos-master-detail {
     flex-direction: column !important;
+    gap: 8px !important;
   }
   .hechizos-lista-wrapper,
   .hechizos-detalle-wrapper {
     flex: 1 1 100%;
     max-width: 100%;
   }
+  /* En móvil, la lista se queda con una altura fija razonable
+     (suficiente para escanear pero sin tapar el detalle). */
   .hechizos-lista {
-    max-height: 50vh;
+    max-height: 38vh;
+  }
+  .hechizo-detalle-card .MuiCardContent-root {
+    max-height: none;
+    overflow-y: visible;
+  }
+  /* Encabezado del nombre del hechizo: que no rompa a 2 líneas
+     feas ni desborde el ancho del chip "EN". */
+  .hechizos-detalle-wrapper h2 {
+    font-size: 1.15rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word;
+  }
+  .hechizos-detalle-wrapper .MuiChip-root {
+    font-size: 0.7rem !important;
+    height: 22px !important;
+  }
+  /* Reducir padding del card en móvil. */
+  .hechizo-detalle-card .MuiCardContent-root {
+    padding: 12px !important;
+  }
+  /* El subheader "Mago · Nivel 1 (45)" con 1 línea, sin overflow. */
+  .hechizos-subheader {
+    font-size: 0.85rem !important;
+    line-height: 28px !important;
+  }
+  /* Tabs superiores: texto sin icono en móvil para no desbordar. */
+  .compendio-tabs .MuiTab-root {
+    min-height: 40px;
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+  .compendio-tabs .MuiTab-root svg {
+    font-size: 1rem;
   }
 }
