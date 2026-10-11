@@ -394,24 +394,15 @@ export default function HechizosExplorer() {
         <Box className="hechizos-lista-wrapper">
           {grupos.length === 0 ? (
             <div className="hechizos-empty">
-              <Typography variant="body2">
-                No hay hechizos que coincidan con los filtros.
-              </Typography>
+              <Typography variant="body2">No hay hechizos que coincidan con los filtros.</Typography>
             </div>
           ) : (
             <List className="hechizos-lista" dense sx={{ p: 0 }}>
               {grupos.map((grupo) => (
                 <Fragment key={`${grupo.caster}-${grupo.nivel}`}>
-                  <ListSubheader
-                    className="hechizos-subheader"
-                    sx={{ lineHeight: "32px" }}
-                  >
+                  <ListSubheader className="hechizos-subheader" sx={{ lineHeight: "32px" }}>
                     {ETIQUETAS_CASTER[grupo.caster]} · Nivel {grupo.nivel}
-                    <Typography
-                      component="span"
-                      variant="caption"
-                      sx={{ ml: 1, color: "text.secondary" }}
-                    >
+                    <Typography component="span" variant="caption" sx={{ ml: 1, color: "text.secondary" }}>
                       ({grupo.items.length})
                     </Typography>
                   </ListSubheader>
@@ -422,18 +413,10 @@ export default function HechizosExplorer() {
                       seleccion?.hechizo.nivel === item.hechizo.nivel;
                     const key = `${item.caster}-${item.hechizo.nivel}-${item.hechizo.nombre}-${idx}`;
                     return (
-                      <ListItemButton
-                        key={key}
-                        selected={isSelected}
-                        onClick={() => setSeleccion(item)}
-                      >
+                      <ListItemButton key={key} selected={isSelected} onClick={() => setSeleccion(item)}>
                         <ListItemText
                           primary={limpiarNombre(item.hechizo.nombre)}
-                          secondary={
-                            tieneStats(item.hechizo)
-                              ? item.hechizo.escuela
-                              : "Sin estadísticas"
-                          }
+                          secondary={tieneStats(item.hechizo) ? item.hechizo.escuela : "Sin estadísticas"}
                           primaryTypographyProps={{ noWrap: true }}
                           secondaryTypographyProps={{ noWrap: true }}
                         />

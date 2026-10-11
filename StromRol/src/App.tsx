@@ -16,6 +16,7 @@ import CasinoIcon from "@mui/icons-material/Casino";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import BoltIcon from "@mui/icons-material/Bolt";
 import "./App.css";
 import GeneradorSection from "./components/sections/GeneradorSection";
 import ListaExitosSection from "./components/sections/ListaExitosSection";
@@ -62,7 +63,12 @@ function App() {
     { key: "detalles", label: "COMPENDIO", icon: <MenuBookIcon /> },
   ];
 
+  const FICHA_TABS_VALIDOS: readonly FichaTab[] = ["generador", "bonificaciones", "detalles", "strom"];
+
   const cambiarTab = (tab: FichaTab) => {
+    // Filtra valores espurios (p.ej. acciones no-tab dentro del BottomNavigation,
+    // como el enlace externo a SIS, que llevan un value distinto a los tabs reales).
+    if (!FICHA_TABS_VALIDOS.includes(tab)) return;
     setActiveTab(tab);
     // Al cambiar de sección, volver arriba para ver el título/logo
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -408,9 +414,22 @@ function App() {
               className={`ficha-tab-btn ${activeTab === tab.key ? "active" : ""}`}
               onClick={() => cambiarTab(tab.key)}
             >
-              {tab.label}
+              <span className="ficha-tab-btn-icon">{tab.icon}</span>
+              <span className="ficha-tab-btn-label">{tab.label}</span>
             </button>
           ))}
+          <a
+            href="https://yeicogm.github.io/SIS/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ficha-tab-btn ficha-tab-btn--external"
+            aria-label="Abrir Sistema de Iniciativa (SIS) en una pestaña nueva"
+          >
+            <span className="ficha-tab-btn-icon">
+              <BoltIcon />
+            </span>
+            <span className="ficha-tab-btn-label">SIS</span>
+          </a>
         </nav>
       </header>
 
@@ -1140,6 +1159,13 @@ function App() {
             icon={tab.icon}
           />
         ))}
+        <BottomNavigationAction
+          value="sis"
+          aria-label="Abrir Sistema de Iniciativa (SIS) en una pestaña nueva"
+          label="SIS"
+          icon={<BoltIcon />}
+          onClick={() => window.open("https://yeicogm.github.io/SIS/", "_blank", "noopener,noreferrer")}
+        />
       </BottomNavigation>
 
       {/* Feedback de acciones (sustituye a los alert() nativos) */}

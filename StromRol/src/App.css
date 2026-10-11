@@ -196,9 +196,36 @@ a:hover {
   text-transform: uppercase;
   line-height: 1;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transition:
     color 0.2s ease,
     border-color 0.2s ease;
+}
+
+.ficha-tab-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.ficha-tab-btn-icon .MuiSvgIcon-root {
+  font-size: 1.05rem;
+}
+
+.ficha-tab-btn-label {
+  display: inline-block;
+}
+
+/* Compacta los labels en pantallas medianas para que los 5 botones quepan
+   sin desbordar la topbar (breakpoint del nav inferior: 901px). */
+@media (max-width: 1100px) {
+  .ficha-tab-btn-label {
+    display: none;
+  }
 }
 
 .ficha-tab-btn:hover {
@@ -212,6 +239,29 @@ a:hover {
 }
 
 .ficha-tab-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(224, 168, 60, 0.25);
+  border-radius: 6px;
+}
+
+/* Variante "enlace externo" dentro de la topbar: mantiene el mismo tamaño
+   que los tabs internos pero usa un acento cálido distinto y nunca se marca
+   como activo, para señalar que abre un sitio externo (SIS). */
+.ficha-tab-btn--external {
+  color: var(--sr-text-dim);
+  border-bottom-color: transparent;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ficha-tab-btn--external:hover {
+  color: var(--sr-gold-soft);
+  text-decoration: none;
+}
+
+.ficha-tab-btn--external:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(224, 168, 60, 0.25);
   border-radius: 6px;
