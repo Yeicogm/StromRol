@@ -235,7 +235,7 @@
       "cualidades": "GUERREROS"
     },
     {
-      "nombre": "Guardia úrpura",
+      "nombre": "Guardia Púrpura",
       "descripcion": "Entrenado como soldado, el púrpura nunca abandonará el combate ni la formación.",
       "rango": "0",
       "variacion_caracteristicas": ["Constitución +1"],
